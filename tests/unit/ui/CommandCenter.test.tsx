@@ -89,6 +89,34 @@ describe("command center", () => {
     }
   });
 
+  it("switches or creates a draft for extension captures of a different match without asking", async () => {
+    render(<App />);
+    const paste = await screen.findByLabelText(/paste copied hltv page/i);
+    fireEvent.paste(paste, {
+      clipboardData: {
+        getData: (type: string) => (type === "text/plain" ? duplicatedLabelsPlain : ""),
+      },
+    });
+    expect(await screen.findByRole("heading", { name: /QuantumX vs Alter Ego/ })).toBeVisible();
+
+    window.dispatchEvent(
+      new MessageEvent("message", {
+        data: {
+          source: "pmt-match-desk-extension",
+          kind: "capture-batch",
+          batchId: "batch-2",
+          captures: [{ plain, html }],
+        },
+        origin: window.location.origin,
+        source: window,
+      }),
+    );
+
+    expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.getByText(/ready to post/i)).toBeVisible();
+  });
+
   it("ignores window messages that are not extension capture batches", async () => {
     render(<App />);
     await screen.findByLabelText(/paste copied hltv page/i);

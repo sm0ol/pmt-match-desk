@@ -59,7 +59,15 @@ export function useDraftController() {
   const [drafts, setDrafts] = useState<DraftLedger[]>([]);
   const [status, setStatus] = useState<WorkStatus>({ tone: "idle", message: "Paste is ready." });
   const [hydrated, setHydrated] = useState(false);
-  const [pendingDecision, setPendingDecision] = useState<PendingMatchDecision | null>(null);
+  const [pendingDecision, setPendingDecisionState] = useState<PendingMatchDecision | null>(null);
+  // Mirrors pendingDecision synchronously so import queues can check it
+  // before React has re-rendered.
+  const pendingDecisionSync = useRef(false);
+  const setPendingDecision = useCallback((value: PendingMatchDecision | null) => {
+    pendingDecisionSync.current = value !== null;
+    setPendingDecisionState(value);
+  }, []);
+  const hasPendingDecision = useCallback(() => pendingDecisionSync.current, []);
   const [pendingBundle, setPendingBundle] = useState<DraftLedger | null>(null);
   const [lastRejectedCapture, setLastRejectedCapture] = useState<{ plain: string; html: string } | null>(null);
 
@@ -215,11 +223,14 @@ export function useDraftController() {
         : `Imported ${proposal.match.maps.length} maps and ${proposal.match.players.length} player rows.`;
       setStatus({ tone: proposal.diagnostics.length ? "warning" : "success", message });
     },
-    [drafts, ledger, persist],
+    [drafts, ledger, persist, setPendingDecision],
   );
 
   const importClipboard = useCallback(
-    async (raw: { plain: string; html: string }) => {
+    async (
+      raw: { plain: string; html: string },
+      options?: { onDifferentMatch?: "ask" | "switch-or-create" },
+    ) => {
       setStatus({ tone: "working", message: "Reading copied HLTV data…" });
       const proposal = parseHltvClipboard(raw);
       if (!proposal.match) {
@@ -233,6 +244,13 @@ export function useDraftController() {
       const activeMatch = ledger ? replayDraft(ledger).match : null;
       if (activeMatch && activeMatch.id !== proposal.match.id) {
         const matching = drafts.find((draft) => replayDraft(draft).match?.id === proposal.match?.id);
+        if (options?.onDifferentMatch === "switch-or-create") {
+          // An extension capture names its match explicitly, so switch to the
+          // matching draft or create one instead of asking.
+          const target = matching ? (await repositoryRef.current.get(matching.id)) ?? matching : null;
+          await acceptProposal(proposal, raw, target);
+          return;
+        }
         setPendingDecision({
           proposal,
           raw,
@@ -244,7 +262,7 @@ export function useDraftController() {
       }
       await acceptProposal(proposal, raw);
     },
-    [acceptProposal, drafts, ledger],
+    [acceptProposal, drafts, ledger, setPendingDecision],
   );
 
   const retryLastRejected = useCallback(async () => {
@@ -461,7 +479,7 @@ export function useDraftController() {
         : pendingDecision.proposal;
       await acceptProposal(proposal, pendingDecision.raw, target);
     },
-    [acceptProposal, ledger, pendingDecision],
+    [acceptProposal, ledger, pendingDecision, setPendingDecision],
   );
 
   const clearDraft = useCallback(async () => {
@@ -528,6 +546,7 @@ export function useDraftController() {
     output,
     status,
     pendingDecision,
+    hasPendingDecision,
     pendingBundle,
     importClipboard,
     updateManual,

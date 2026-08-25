@@ -450,13 +450,10 @@ export default function App() {
   // The browser extension forwards capture batches through window.postMessage
   // and re-posts until the app acknowledges. The listener only exists once the
   // draft store has hydrated, so early posts are simply retried by the bridge.
-  // Imports run one at a time, and the queue waits while a match-decision
-  // dialog is open so a batch for a different match resolves in order.
-  const pendingDecisionRef = useRef(controller.pendingDecision);
-  useEffect(() => {
-    pendingDecisionRef.current = controller.pendingDecision;
-  }, [controller.pendingDecision]);
-  const { hydrated } = controller;
+  // Imports run one at a time; an extension capture for a different match
+  // switches to or creates that match's draft instead of asking, and the
+  // queue waits while a manual paste's decision dialog is open.
+  const { hydrated, hasPendingDecision } = controller;
   useEffect(() => {
     if (!hydrated) return;
     const processed = new Set<string>();
@@ -464,7 +461,7 @@ export default function App() {
     let stopped = false;
     const waitForDecision = async () => {
       const startedAt = Date.now();
-      while (!stopped && pendingDecisionRef.current && Date.now() - startedAt < 300_000) {
+      while (!stopped && hasPendingDecision() && Date.now() - startedAt < 300_000) {
         await new Promise((resolve) => window.setTimeout(resolve, 300));
       }
     };
@@ -489,7 +486,11 @@ export default function App() {
         if (!plain && !html) continue;
         queue = queue
           .then(waitForDecision)
-          .then(() => (stopped ? undefined : importClipboard({ plain, html })))
+          .then(() =>
+            stopped
+              ? undefined
+              : importClipboard({ plain, html }, { onDifferentMatch: "switch-or-create" }),
+          )
           .catch(() => {});
       }
     };
@@ -498,7 +499,7 @@ export default function App() {
       stopped = true;
       window.removeEventListener("message", onMessage);
     };
-  }, [hydrated, importClipboard]);
+  }, [hydrated, hasPendingDecision, importClipboard]);
 
   if (!controller.hydrated) {
     return <div className="grid min-h-screen place-items-center text-muted-foreground">Loading…</div>;
