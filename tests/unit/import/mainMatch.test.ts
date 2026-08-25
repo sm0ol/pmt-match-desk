@@ -27,6 +27,10 @@ const livePlain = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/live-pain-peladona/clipboard.txt"),
   "utf8",
 );
+const liveHtml = readFileSync(
+  resolve(process.cwd(), "tests/fixtures/hltv/live-pain-peladona/clipboard.html"),
+  "utf8",
+);
 
 describe("parseHltvClipboard", () => {
   it("parses the real completed BO3 capture", () => {
@@ -211,6 +215,24 @@ describe("parseHltvClipboard", () => {
     );
     // The live page shows a VRS forecast, not a result; it must not be picked up.
     expect(result.match?.vrs).toBeUndefined();
+  });
+
+  it("associates roles on a live page where lineup photos have no player links", () => {
+    const result = parseHltvClipboard({ plain: livePlain, html: liveHtml });
+    const players = result.match?.players ?? [];
+    const byNick = (nick: string) => players.find((player) => player.name.includes(`'${nick}'`));
+
+    expect(result.match?.sourceUrl).toBe(
+      "https://www.hltv.org/matches/2396964/pain-academy-vs-peladona-cct-2026-south-america-series-5",
+    );
+    // Association comes from data-player-id on the compare widgets.
+    expect(byNick("Misfit")).toEqual(expect.objectContaining({ id: "22163", awper: true }));
+    expect(byNick("history")).toEqual(expect.objectContaining({ id: "20939", awper: true }));
+    expect(players.filter((player) => player.awper || player.igl)).toHaveLength(2);
+    expect(result.match?.maps[0].halves).toEqual([
+      { team1: 2, team2: 10, team1Side: "CT" },
+      { team1: 1, team2: 3, team1Side: "T" },
+    ]);
   });
 
   it("rejects unrelated and over-budget input without guessing", () => {

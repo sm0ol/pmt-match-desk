@@ -167,7 +167,12 @@ function collectHtmlFacts(root: NodeLike | null): HtmlFacts {
         title === "Main AWPer",
       igl: classes.includes("role-pill--igl") || title === "In-game leader",
     };
-    const playerId = href?.match(/^\/player\/(\d+)\//)?.[1];
+    // Live pages render lineup photos as compare widgets with a
+    // data-player-id attribute and no player link.
+    const dataPlayerId = attr(node, "data-player-id");
+    const playerId =
+      href?.match(/^\/player\/(\d+)\//)?.[1] ??
+      (dataPlayerId && /^\d+$/.test(dataPlayerId) ? dataPlayerId : undefined);
     if (playerId) subtree.playerIds.add(playerId);
 
     for (const child of node.childNodes ?? []) {

@@ -1,3 +1,4 @@
+
 News
 Matches
 Results
@@ -21,7 +22,7 @@ paiN Academy
 10:10
 25th of August 2026
 CCT 2026 South America Series 5
-
+ 
 LIVE
 Brazil
 Peladona
@@ -75,53 +76,84 @@ Twitch
 BrazilTris_Mara
 147
 Twitch
+OtherAnalyticVictor
+45
+Twitch
+BrazilTris_Mara
+26
+Kick
+OtherAnalyticVictor
+5
+Kick
 
 Scoreboard
-R: 7 - Mirage
-2
+R: 11 - Mirage
+4
 :
-5
-Round over
+6
+0:38
 
  Peladona
-            $    K    A    D    ADR
-history            100        $3350    6    3    3    108.6
-t9rnay            100        $2950    5    1    3    74.1
-nicks            100        $2450    5    1    6    80.4
-Noktse            0        $1250    3    0    5    25.4
-mlhzin            0        $100    2    1    4    47.1
+			$	K	A	D	ADR
+t9rnay			100		$1450	9	2	5	73.5
+history			100		$8800	8	5	3	89.5
+nicks			100		$8900	7	3	6	77.9
+Noktse			100		$300	6	2	6	53.4
+mlhzin			0		$1200	6	2	7	55.7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  paiN Academy
-            $    K    A    D    ADR
-Tatu            38        $1450    7    2    3    125.4
-Rkzinho            0        $1950    5    1    4    53.0
-Misfit            0        $3550    4    0    5    64.7
-tsug            0        $950    3    0    5    42.6
-shazn            0        $400    2    2    4    43.9
+			$	K	A	D	ADR
+Rkzinho			0		$900	9	1	7	70.0
+Tatu			0		$450	8	2	7	90.6
+tsug			100		$1450	4	0	8	36.2
+Misfit			100		$3450	4	0	8	41.2
+shazn			0		$350	2	2	6	35.1
 Game logHide minimap
-Round over - Winner: CT (5 - 2) - Target saved
-nicks + history (assist) killedshazn with m4a1 (headshot)
-shazn killedNoktse with ak47
-Tatu killedmlhzin with ak47 (headshot)
-mlhzin killedRkzinho with m4a1_silencer
-Noktse killedtsug with m4a1 (headshot)
+t9rnay + history (assist) killedshazn with m4a1_silencer (headshot)
+t9rnay + mlhzin (assist) killedRkzinho with m4a1_silencer (headshot)
+Rkzinho killedmlhzin with ak47 (headshot)
+mlhzin killedTatu with m4a1
+Round started
+Round over - Winner: T (6 - 4) - Target bombed
 history killedMisfit with awp
+Noktse killedTatu with m4a1
+Misfit planted the bomb on B (4on3)
+Rkzinho killedmlhzin with ak47 (headshot)
+Rkzinho killedt9rnay with ak47 (headshot)
+mlhzin killedtsug with m4a1 (headshot)
 Round started
-Round over - Winner: T (5 - 1) - Target bombed
-Rkzinho killednicks with ak47 (headshot)
-history killedtsug with awp
-history killedTatu with awp
-Tatu planted the bomb on A (5on4)
-Tatu killedNoktse with ak47
-Round started
+Round over - Winner: CT (5 - 4) - Enemy eliminated
 Map by SimpleRadar
 Live win probability
 paiN Academy
-68.9%
+57.0%
 OT1
-12.4%
+16.1%
 Peladona
-18.7%
+26.9%
 Match stats
 Eco-adjusted
 Side
@@ -283,6 +315,66 @@ bo3
 BrazilALKA
 bo3
 0 - 2
+BrazilMETANOIA Wolves
+bo3
+2 - 0
+BrazilKeyd Stars
+bo3
+1 - 2
+BrazilUNO MILLE
+bo3
+2 - 0
+BrazilALKA
+bo3
+0 - 2
+BrazilMEIA NOITE
+bo3
+2 - 1
+BrazilGrêmio
+bo3
+1 - 2
+BrazilFluxo
+bo3
+0 - 2
+BrazilGrêmio
+bo3
+2 - 1
+BrazilGUARA
+bo3
+1 - 0
+ArgentinaProcyon
+bo3
+0 - 2
+South AmericaBlitzkrieg
+bo3
+1 - 0
+BrazilODDIK
+bo3
+0 - 2
+BrazilUNO MILLE
+bo3
+0 - 2
+BrazilFake do Biru
+bo3
+1 - 2
+BrazilFluxo
+bo3
+1 - 2
+BrazilRed Feet
+bo3
+2 - 1
+BrazilBESTIA Academy
+bo3
+0 - 2
+BrazilGUARA
+bo3
+2 - 0
+South AmericaBlitzkrieg
+bo3
+2 - 0
+BrazilALKA
+bo3
+1 - 2
 BrazilPeladona
 ArgentinaIsurus
 bo3
@@ -290,6 +382,24 @@ bo3
 BrazilODDIK
 bo3
 2 - 0
+BrazilGrêmio
+bo3
+2 - 0
+BrazilMETANOIA Wolves
+bo3
+2 - 0
+BrazilFluxo
+bo3
+0 - 2
+BrazilUNO MILLE
+bo3
+2 - 1
+BrazilGUARA
+bo3
+2 - 0
+BrazilMIBR Academy
+bo3
+2 - 1
 Head to head
 paiN Academy
 paiN Academy
@@ -301,7 +411,7 @@ Overtimes
 Wins
 Peladona
 Peladona
-VRS forecast
+VRS forecast 
 Teamlogo
 paiN Academy
 Teamlogo
@@ -325,17 +435,30 @@ If team loses
 -15pt
 #259
 -10
-Old school: User been here for more than 10 years  |
- Noktse |
-Greenland
+Old school: User been here for more than 10 years  | 
+ Noktse | 
+Greenland 
 faanc
 dale nicoooooo
 2026-08-24 18:51
- Stewie2K |
-Lithuania
+ Stewie2K | 
+Lithuania 
 verslininkas
 cutzmeretz finally cut? nooo
 2026-08-25 10:06
+500 | 
+Bulgaria 
+mikace
+⚠️ WARNING! THIS MATCH IS RIGGED! BE CAREFUL!
+
+🎯 Information on this 322 fixed match is available on Telegram: esicbet
+
+Access is open for 1 hour! 🔓
+
+Betting on these matches without information is like playing roulette. We make a profit every day on 322 fixed matches on Telegram: esicbet
+
+Join us and enjoy easy money!
+2026-08-25 10:22
 
 Login or register to add your comment to the discussion.
 
@@ -348,10 +471,420 @@ Bounty Hunters
 +21
 Prizepool
 $15,000
+Previous in event
+Brazil
+BORRACHEIROS
+Argentina
+DAMAJUANA
+13(2)
+3(1)
+Next in event
+Argentina
+Procyon
+Brazil
+Mansão Maromba
+13:00
+Other upcoming
+Europe Drip Too Hard
+Russia Just Players
+2(0)
+5(0)
+Russia K27
+Russia SPARTA
+12:00
+United Kingdom Privateer
+United Kingdom Ryvex
+12:00
+Argentina Procyon
+Brazil Mansão Maromba
+13:00
+Brazil Fluxo
+Brazil PEAK
+15:00
+Brazil Yawara
+Brazil Keyd Stars
+15:00
+Brazil Bounty Hunters
+Brazil MEIA NOITE
+15:00
+Brazil BORRACHEIROS
+Brazil Galorys
+15:00
+Argentina ShindeN
+Brazil ALKA
+15:00
+Brazil ex-MIBR Academy
+Brazil Turma do Pagode
+15:00
+RECENT ACTIVITY
+Falcons Never Give Up.
+22
+jL is on every fifth Fantasy team for Porto groups
+28
+zont1x cringe
+43
+the cycle
+18
+Luminosity confirm kakafu signing
+26
+S1mple goat falloff?
+14
+1win vs Nemiga
+68
+MIBR bench brnz4n
+31
+ZywOo only has to win once
+62
+OG vs Eternal Fire
+4
+new version of fantasy AI just dropped
+1
+End of Vitality
+20
+they try to stop us
+24
+Luminosity sign yxngstxr to replace Bymas
+28
+Spirit vs DENDELE
+44
+ex-RUBY vs BET-M
+20
+Blast Fantasy
+12
+Vitality relied on Animgraph 1?
+16
+BYMAS BYMAS BYMAS
+5
+Drip Too Hard vs Just Players
+8
+MINIGAME
+Timeline
+Play
+TOP 30 TRANSFERS
+All transfers
+Now playing
+Thumbnail for stream
+Russia
+strogo
+16156 viewers
+Top streams
+All
+(95)
+
+Casters
+(54)
+
+Streamers
+(31)
+
+Organizers
+(10)
+CasterRussia
+strogo
+(16156)
+Top playerBelgium
+ScreaM
+(3448)
+CasterRussia
+skywhywalker
+(221)
+Top playerRussia
+chopper
+(2268)
+Top playerBrazil
+nak
+(2138)
+CasterUkraine
+inkmate0
+(1750)
+Top playerPortugal
+hdstr
+(1574)
+CasterRussia
+m4ga
+(1227)
+Top playerBrazil
+nak
+(1198)
+CasterPoland
+Angelka
+(408)
+Top playerRussia
+hooch
+(1186)
+CasterBrazil
+Liminha
+(971)
+CasterBrazil
+wastzera
+(945)
+Top playerBrazil
+nak
+(871)
+Top playerRussia
+Bandurka
+(829)
+Top playerCanada
+jasonR
+(776)
+CasterPoland
+IzakOOO
+(737)
+CasterRussia
+BAC9CKOPOCTb
+(550)
+OrganizerCzech Republic
+PLAYzoneTV
+(817)
+OrganizerOther
+CCT 3
+(631)
+CasterBrazil
+bt0
+(682)
+CasterBrazil
+Liminha
+(546)
+Top playerArgentina
+NikoM
+(544)
+OrganizerUnited Kingdom
+ESL TV
+(500)
+Top playerCzech Republic
+oskar
+(489)
+Top playerDenmark
+vigg0
+(433)
+OrganizerOther
+CCT
+(474)
+Top playerPoland
+Goofy
+(188)
+CasterRussia
+BreeL
+(370)
+Top playerPoland
+dycha
+(391)
+CasterIran
+iMaN MorisoN
+(320)
+Top playerHungary
+DeadFox
+(309)
+CasterOther
+VanFanTV
+(289)
+Top playerArgentina
+reversive
+(286)
+CasterArgentina
+imicaelax
+(271)
+CasterRussia
+BetBoom 5
+(276)
+Top playerNetherlands
+D0cC
+(202)
+CasterUkraine
+Maincast
+(257)
+Top playerUnited States
+CoJoMo
+(235)
+CasterUzbekistan
+bReelGx
+(192)
+Top playerFinland
+p3kko
+(203)
+CasterHungary
+KODIAK
+(195)
+OrganizerUnited Kingdom
+ESL TV
+(175)
+CasterRussia
+BetBoom
+(174)
+Top playerBrazil
+steel
+(154)
+CasterBrazil
+Tris_Mara
+(147)
+CasterRussia
+BetBoom 3
+(142)
+OrganizerOther
+Exort 2
+(123)
+CasterDenmark
+Dust2 TV
+(109)
+OrganizerKazakhstan
+BRO
+(101)
+CasterBulgaria
+Niku
+(105)
+Top playerBrazil
+yeL
+(112)
+Top playerSpain
+NaOw
+(111)
+natuFinland
+natu
+(99)
+OrganizerRussia
+GLuck
+(90)
+OrganizerOther
+Exort Fiesta
+(84)
+Top playerPoland
+tudsoN
+(68)
+CasterOther
+MissRage
+(80)
+CasterUkraine
+PETR1K
+(76)
+CasterBrazil
+mwhs
+(67)
+CasterOther
+Straty
+(59)
+CasterRussia
+NarodCast
+(56)
+CasterRussia
+floppya
+(50)
+CasterOther
+ClutchZone
+(52)
+OrganizerRussia
+GLuck
+(46)
+CasterOther
+AnalyticVictor
+(45)
+CasterOther
+FlubyTV
+(43)
+CasterBrazil
+fluyr
+(38)
+CasterHungary
+Esport1 TV
+(32)
+Top playerUkraine
+Edward
+(31)
+CasterBrazil
+mch
+(27)
+CasterBrazil
+Tris_Mara
+(26)
+Top playerIsrael
+anarkez
+(26)
+Top playerBelgium
+Nivera
+(40)
+Top playerPoland
+MICHU
+(27)
+CasterUnited Kingdom
+Vince
+(18)
+CasterGermany
+ScrunK
+(22)
+CasterRussia
+BAKS
+(18)
+CasterGermany
+Albi1985
+(18)
+CasterGermany
+Albi1985
+(16)
+CasterRussia
+BOLT
+(10)
+CasterFinland
+ROUNDS
+(15)
+CasterRussia
+TEN
+(8)
+CasterRomania
+HEAVENACHE
+(8)
+CasterArgentina
+SV_TheUnknown
+(10)
+Top playerPoland
+rallen
+(0)
+CasterRussia
+GoYareGo
+(7)
+CasterOther
+AnalyticVictor
+(5)
+CasterSlovenia
+MevliN
+(3)
+CasterRussia
+untalentedkid785
+(2)
+Top playerSweden
+PALM1
+(0)
+CasterUnited Kingdom
+Byfield
+(0)
+CasterGermany
+Maj0rRabbit
+(0)
+CasterPoland
+Majki
+(1)
+Top playerRussia
+Bandurka
+(1)
 HLTV merchandise
+HLTV Community t-shirt and sweatshirt available now
+Download the HLTV app
+Optimized to keep you up to date on the go
 Jobs
 Contact
 About
 Terms
 Privacy policy
+Cookie policy
+Disclosures
+RSS
+Skins
+Cologne Major
+
+
 © HLTV.org
+Gamcare logo18+ Bet Responsibly | Be Gamble Aware logo
+21+
+Gambling problem? Call or TEXT 1-800-GAMBLER.
+Colorado Self-Exclusion
+
+A part of Better Collective
+Update privacy preferences
