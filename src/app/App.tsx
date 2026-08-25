@@ -453,7 +453,9 @@ export default function App() {
   // Imports run one at a time, and the queue waits while a match-decision
   // dialog is open so a batch for a different match resolves in order.
   const pendingDecisionRef = useRef(controller.pendingDecision);
-  pendingDecisionRef.current = controller.pendingDecision;
+  useEffect(() => {
+    pendingDecisionRef.current = controller.pendingDecision;
+  }, [controller.pendingDecision]);
   const { hydrated } = controller;
   useEffect(() => {
     if (!hydrated) return;
