@@ -11,6 +11,10 @@ const html = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/completed-bo3/clipboard.html"),
   "utf8",
 );
+const duplicatedLabelsPlain = readFileSync(
+  resolve(process.cwd(), "tests/fixtures/hltv/duplicated-labels/clipboard.txt"),
+  "utf8",
+);
 
 describe("parseHltvClipboard", () => {
   it("parses the real completed BO3 capture", () => {
@@ -32,6 +36,25 @@ describe("parseHltvClipboard", () => {
     expect(result.match?.players).toHaveLength(10);
     expect(result.match?.players[0]).toEqual(
       expect.objectContaining({ team: "100 Thieves", kills: 44, deaths: 42 }),
+    );
+  });
+
+  it("parses copied labels duplicated by the browser without treating countries as teams", () => {
+    const result = parseHltvClipboard({ plain: duplicatedLabelsPlain, html: "" });
+
+    expect(result.kind, JSON.stringify(result)).toBe("main-match");
+    expect(result.match?.team1.name).toBe("QuantumX");
+    expect(result.match?.team2.name).toBe("Alter Ego");
+    expect(result.match?.seriesScore).toEqual([0, 2]);
+    expect(result.match?.event).toBe("ESL Challenger League Season 52 Asia-Pacific Cup 1");
+    expect(result.match?.stage).toBe("Upper bracket round of 16");
+    expect(result.match?.maps).toEqual([
+      expect.objectContaining({ name: "Ancient", team1Score: 1, team2Score: 13 }),
+      expect.objectContaining({ name: "Dust2", team1Score: 6, team2Score: 13 }),
+    ]);
+    expect(result.match?.players).toHaveLength(10);
+    expect(result.match?.players[0]).toEqual(
+      expect.objectContaining({ team: "QuantumX", kills: 27, deaths: 28 }),
     );
   });
 
