@@ -9,6 +9,15 @@ A free, local-first thread creator for the r/GlobalOffensive Post-Match Team. It
 3. Paste into Match Desk.
 4. Resolve any highlighted issue, then copy the Reddit title and body separately.
 
+The match page carries everything except the per-map player tables — current
+HLTV pages load those on demand, so they are not part of the copy. To fill the
+MAP sections: click **Get stats** next to a map (it opens that map's HLTV stats
+page), press `Ctrl+A`, `Ctrl+C`, and paste into the same draft. Maps with
+loaded tables show **✓ stats**.
+
+A live match page works too: paste it to prepare the draft early, then paste
+the final page after the match to replace live numbers with final ones.
+
 The real completed-match regression fixture becomes copy-ready in roughly 0.2 seconds in automated Chromium runs. The executable timing protocol is part of the end-to-end test suite.
 
 ## What the MVP does

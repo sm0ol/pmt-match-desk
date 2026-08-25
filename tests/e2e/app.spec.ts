@@ -71,6 +71,7 @@ test("a real HLTV paste becomes a copy-ready Reddit preview well under 30 second
   await expect(page.getByText("🇬🇧 Gizmy ♛").first()).toBeVisible();
   await expect(page.getByText("Map Vetoes")).toBeVisible();
   await expect(page.getByText("MAP 1: Ancient")).toBeVisible();
+  await expect(page.getByText("✓ stats")).toHaveCount(3);
   const twoDigitMapScore = page.getByLabel("Ancient Eternal Fire score");
   await expect(twoDigitMapScore).toHaveValue("13");
   expect(await twoDigitMapScore.evaluate((input) => input.getBoundingClientRect().width)).toBeGreaterThanOrEqual(48);
@@ -233,6 +234,7 @@ test("a map-stat page can arrive before the main page and enriches one draft", a
 
   await expect(page.getByText("Review needed")).toBeVisible();
   await expect(page.getByLabel("Map 1 name")).toHaveValue("Ancient");
+  await expect(page.getByText("✓ stats")).toHaveCount(1);
   await pasteCapture(page);
 
   await expect(page.getByText("Ready to post")).toBeVisible();

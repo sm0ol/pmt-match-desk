@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -587,10 +587,16 @@ export default function App() {
           <Card>
             <CardHeader>
               <CardTitle>Maps ({match.maps.length})</CardTitle>
+              {match.maps.some((map) => !map.players?.length) && (
+                <CardDescription>
+                  The match-page copy has no per-map player tables. Use Get stats to open a
+                  map&apos;s HLTV stats page, copy it (Ctrl+A, Ctrl+C), and paste it here.
+                </CardDescription>
+              )}
             </CardHeader>
             <CardContent className="flex flex-col gap-2">
             {match.maps.map((map, index) => (
-              <div key={map.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
+              <div key={map.id} className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2">
                 <Input
                   aria-label={`Map ${index + 1} name`}
                   value={map.name}
@@ -615,8 +621,27 @@ export default function App() {
                     className="w-14 text-center tabular-nums"
                   />
                 </div>
+                {map.players?.length ? (
+                  <span className="w-16 text-right text-xs text-muted-foreground" title="Per-map player stats are loaded.">
+                    ✓ stats
+                  </span>
+                ) : map.statsUrl ? (
+                  <a
+                    href={map.statsUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="w-16 text-right text-xs text-primary underline underline-offset-2"
+                    title={`Open the ${map.name} stats page, then copy it and paste it here.`}
+                  >
+                    Get stats
+                  </a>
+                ) : (
+                  <span className="w-16 text-right text-xs text-muted-foreground" title={`No stats page link was found for ${map.name}. Open the map's STATS page on HLTV, copy it, and paste it here.`}>
+                    no stats
+                  </span>
+                )}
                 {ledger.manualMaps?.[map.id] && (
-                  <Button variant="ghost" size="sm" className="col-span-2 justify-self-start" onClick={() => void controller.restoreParserMap(map.id)}>
+                  <Button variant="ghost" size="sm" className="col-span-3 justify-self-start" onClick={() => void controller.restoreParserMap(map.id)}>
                     Use parsed
                   </Button>
                 )}
