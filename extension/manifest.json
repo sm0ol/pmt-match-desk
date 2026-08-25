@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "PMT Match Desk Capture",
+  "version": "0.1.0",
+  "description": "One click sends the current HLTV match page — and each finished map's stats page — to PMT Match Desk.",
+  "action": {
+    "default_title": "Send this HLTV page to PMT Match Desk"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["tabs"],
+  "host_permissions": ["https://www.hltv.org/*"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.hltv.org/matches/*",
+        "https://www.hltv.org/stats/matches/*"
+      ],
+      "js": ["capture.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://pmt-production-4bee.up.railway.app/*",
+        "http://localhost:5173/*",
+        "http://localhost:4173/*",
+        "http://127.0.0.1:5173/*",
+        "http://127.0.0.1:4173/*"
+      ],
+      "js": ["bridge.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

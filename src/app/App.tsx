@@ -447,6 +447,26 @@ export default function App() {
     return () => window.removeEventListener("paste", globalPaste);
   }, [importClipboard]);
 
+  // The browser extension forwards HLTV captures through window.postMessage.
+  // Imports run one at a time so a match page and its map-stats pages land in
+  // order on the same draft.
+  useEffect(() => {
+    let queue: Promise<unknown> = Promise.resolve();
+    const onMessage = (event: MessageEvent) => {
+      if (event.source !== window || event.origin !== window.location.origin) return;
+      const data = event.data as
+        | { source?: unknown; kind?: unknown; plain?: unknown; html?: unknown }
+        | null;
+      if (!data || data.source !== "pmt-match-desk-extension" || data.kind !== "hltv-capture") return;
+      const plain = typeof data.plain === "string" ? data.plain : "";
+      const html = typeof data.html === "string" ? data.html : "";
+      if (!plain && !html) return;
+      queue = queue.then(() => importClipboard({ plain, html })).catch(() => {});
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [importClipboard]);
+
   if (!controller.hydrated) {
     return <div className="grid min-h-screen place-items-center text-muted-foreground">Loading…</div>;
   }

@@ -53,6 +53,38 @@ describe("command center", () => {
     expect(screen.getByText(/ready to post/i)).toBeVisible();
   });
 
+  it("imports captures forwarded by the browser extension", async () => {
+    render(<App />);
+    await screen.findByLabelText(/paste copied hltv page/i);
+
+    window.dispatchEvent(
+      new MessageEvent("message", {
+        data: { source: "pmt-match-desk-extension", kind: "hltv-capture", plain, html },
+        origin: window.location.origin,
+        source: window,
+      }),
+    );
+
+    expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
+    expect(screen.getByText(/ready to post/i)).toBeVisible();
+  });
+
+  it("ignores window messages that are not extension captures", async () => {
+    render(<App />);
+    await screen.findByLabelText(/paste copied hltv page/i);
+
+    window.dispatchEvent(
+      new MessageEvent("message", {
+        data: { source: "someone-else", kind: "hltv-capture", plain, html },
+        origin: window.location.origin,
+        source: window,
+      }),
+    );
+
+    await new Promise((resolve) => window.setTimeout(resolve, 50));
+    expect(screen.queryByRole("button", { name: /copy title/i })).not.toBeInTheDocument();
+  });
+
   it("explains a missing source URL and lets the operator resolve it", async () => {
     render(<App />);
     const paste = await screen.findByLabelText(/paste copied hltv page/i);

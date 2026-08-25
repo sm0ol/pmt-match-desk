@@ -18,6 +18,13 @@ loaded tables show **✓ stats**.
 A live match page works too: paste it to prepare the draft early, then paste
 the final page after the match to replace live numbers with final ones.
 
+## The one-click workflow (browser extension)
+
+The `extension/` directory contains an unpacked Chrome extension that removes
+the copy gesture: on an HLTV match page, one click captures the page and each
+finished map's stats page, then feeds them all into Match Desk as one draft.
+See [extension/README.md](extension/README.md) for install steps.
+
 The real completed-match regression fixture becomes copy-ready in roughly 0.2 seconds in automated Chromium runs. The executable timing protocol is part of the end-to-end test suite.
 
 ## What the MVP does
