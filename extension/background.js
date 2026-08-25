@@ -72,20 +72,101 @@ async function tryDeliver(tabId, captures) {
   return null;
 }
 
-async function ensureAppTab(sourceWindowId) {
+// One-shot mode: capture invisibly, then open the prefilled Reddit submit
+// page instead of showing the desk. Toggled from the action button's
+// right-click menu.
+const ONE_SHOT_MENU_ID = "pmt-one-shot";
+
+async function isOneShot() {
+  try {
+    const data = await chrome.storage.sync.get("oneShotMode");
+    return Boolean(data.oneShotMode);
+  } catch {
+    return false;
+  }
+}
+
+async function applyModeUi(oneShot) {
+  await chrome.action
+    .setTitle({
+      title: oneShot
+        ? "Capture this HLTV page and open Reddit prefilled"
+        : "Send this HLTV page to PMT Match Desk",
+    })
+    .catch(() => {});
+}
+
+async function registerMenu() {
+  const oneShot = await isOneShot();
+  await chrome.contextMenus.removeAll().catch(() => {});
+  chrome.contextMenus.create({
+    id: ONE_SHOT_MENU_ID,
+    title: "One-shot mode: open Reddit prefilled after capture",
+    type: "checkbox",
+    checked: oneShot,
+    contexts: ["action"],
+  });
+  await applyModeUi(oneShot);
+}
+
+chrome.runtime.onInstalled.addListener(() => void registerMenu());
+chrome.runtime.onStartup.addListener(() => void registerMenu());
+chrome.contextMenus.onClicked.addListener((info) => {
+  if (info.menuItemId !== ONE_SHOT_MENU_ID) return;
+  const oneShot = Boolean(info.checked);
+  chrome.storage.sync.set({ oneShotMode: oneShot }).catch(() => {});
+  void applyModeUi(oneShot);
+});
+
+async function ensureAppTab(sourceWindowId, { background = false } = {}) {
   const openTabs = await chrome.tabs.query({ url: APP_URL_PATTERNS });
   // Prefer the production app over a local dev tab.
   let appTab =
     openTabs.find((candidate) => candidate.url && candidate.url.startsWith(APP_HOME)) ??
     openTabs[0];
   if (appTab) {
-    await chrome.tabs.update(appTab.id, { active: true });
-    await chrome.windows.update(appTab.windowId, { focused: true }).catch(() => {});
+    if (!background) {
+      await chrome.tabs.update(appTab.id, { active: true });
+      await chrome.windows.update(appTab.windowId, { focused: true }).catch(() => {});
+    }
   } else {
-    appTab = await chrome.tabs.create({ url: APP_HOME, active: true, windowId: sourceWindowId });
+    appTab = await chrome.tabs.create({
+      url: APP_HOME,
+      active: !background,
+      windowId: sourceWindowId,
+    });
     await waitForComplete(appTab.id, 30000);
   }
   return appTab;
+}
+
+async function focusTab(tab) {
+  await chrome.tabs.update(tab.id, { active: true }).catch(() => {});
+  await chrome.windows.update(tab.windowId, { focused: true }).catch(() => {});
+}
+
+async function requestPost(appTabId) {
+  try {
+    return await chrome.tabs.sendMessage(appTabId, { type: "pmt-request-post" });
+  } catch {
+    return null;
+  }
+}
+
+const MAX_SUBMIT_URL_CHARS = 7500;
+
+async function openRedditSubmit(post, sourceWindowId) {
+  const sub = (post.subreddit || "GlobalOffensive").replace(/^r\//i, "");
+  await chrome.storage.session.set({
+    pendingRedditPost: { subreddit: sub, title: post.title, body: post.body, at: Date.now() },
+  });
+  const base = `https://old.reddit.com/r/${encodeURIComponent(sub)}/submit?selftext=true&title=${encodeURIComponent(post.title)}`;
+  const withText = `${base}&text=${encodeURIComponent(post.body)}`;
+  await chrome.tabs.create({
+    url: withText.length <= MAX_SUBMIT_URL_CHARS ? withText : base,
+    active: true,
+    windowId: sourceWindowId,
+  });
 }
 
 async function deliverBatch(appTab, captures, allowRecovery) {
@@ -140,6 +221,12 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   return false;
 });
 
+function sendOverlayFinal(tabId, ok, message) {
+  chrome.tabs
+    .sendMessage(tabId, { type: "pmt-overlay-final", ok, message })
+    .catch(() => { /* the page navigated away */ });
+}
+
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id || !tab.url) return;
   if (!HLTV_PAGE.test(tab.url)) {
@@ -148,6 +235,7 @@ chrome.action.onClicked.addListener(async (tab) => {
     });
     return;
   }
+  const oneShot = await isOneShot();
   try {
     await setBadge("…", "#3b82f6");
     const main = await requestCapture(tab.id);
@@ -160,17 +248,22 @@ chrome.action.onClicked.addListener(async (tab) => {
           : { url: link.url, label: link.name ? `${link.name} stats` : `Map ${index + 1} stats` },
       );
 
-    // The desk opens immediately; the match page arrives first and the maps
-    // fill in one by one, with a progress panel narrating each step.
+    // Normally the desk opens immediately and narrates progress there. In
+    // one-shot mode the desk stays in the background and the HLTV page shows
+    // the progress overlay instead.
     const steps = [
       { label: isMatchPage ? "Match page" : "Map stats page", status: "active" },
       ...(isMatchPage ? statsLinks.map((link) => ({ label: link.label, status: "pending" })) : []),
     ];
-    const appTab = await ensureAppTab(tab.windowId);
-    sendProgress(appTab.id, steps);
+    const report = (appTabId) => {
+      sendProgress(appTabId, steps);
+      if (oneShot) sendProgress(tab.id, steps);
+    };
+    const appTab = await ensureAppTab(tab.windowId, { background: oneShot });
+    report(appTab.id);
     const mainResponse = await deliverBatch(appTab, [main], true);
     const mainImported = applyOutcome(steps[0], mainResponse);
-    sendProgress(appTab.id, steps);
+    report(appTab.id);
     if (!mainResponse) throw new Error("The Match Desk tab did not accept the capture.");
 
     let deliveredCount = mainImported ? 1 : 0;
@@ -178,7 +271,7 @@ chrome.action.onClicked.addListener(async (tab) => {
       for (const [index, link] of statsLinks.entries()) {
         const step = steps[index + 1];
         step.status = "active";
-        sendProgress(appTab.id, steps);
+        report(appTab.id);
         try {
           const capture = await captureStatsPage(link.url);
           // Stats captures carry the match page they belong to, so the desk
@@ -190,11 +283,24 @@ chrome.action.onClicked.addListener(async (tab) => {
           // shows which maps still need stats.
           step.status = "failed";
         }
-        sendProgress(appTab.id, steps);
+        report(appTab.id);
       }
     }
     await setBadge(String(deliveredCount), "#059669");
+
+    if (oneShot) {
+      const post = await requestPost(appTab.id);
+      if (post && post.ready && post.title) {
+        sendOverlayFinal(tab.id, true, "Draft ready — opening Reddit");
+        await openRedditSubmit(post, tab.windowId);
+      } else {
+        const reason = post && post.reason ? ` (${post.reason})` : "";
+        sendOverlayFinal(tab.id, false, `Needs review${reason} — opening Match Desk`);
+        await focusTab(appTab);
+      }
+    }
   } catch {
     await setBadge("!", "#dc2626");
+    if (oneShot) sendOverlayFinal(tab.id, false, "Capture failed — see the extension badge");
   }
 });

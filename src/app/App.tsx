@@ -610,6 +610,30 @@ export default function App() {
   useEffect(() => {
     importClipboardRef.current = importClipboard;
   }, [importClipboard]);
+  // One-shot mode: the extension asks for the finished post after its last
+  // capture imports. The listener answers from this ref, which mirrors the
+  // current draft output on every render.
+  const postStateRef = useRef({
+    ready: false,
+    title: "",
+    body: "",
+    subreddit: DEFAULT_SUBREDDIT,
+    reason: "",
+  });
+  useEffect(() => {
+    const currentConflicts = controller.projection.conflicts;
+    const reasons = [
+      ...controller.output.issues.map((issue) => ISSUE_COPY[issue].label),
+      ...currentConflicts.map((conflict) => `${FIELD_LABELS[conflict.field]} conflict`),
+    ];
+    postStateRef.current = {
+      ready: controller.output.ready && currentConflicts.length === 0,
+      title: controller.output.title,
+      body: controller.output.body,
+      subreddit: subreddit.trim().replace(/^r\//i, "") || DEFAULT_SUBREDDIT,
+      reason: reasons[0] ?? "",
+    };
+  });
   useEffect(() => {
     if (!hydrated) return;
     const processed = new Set<string>();
@@ -624,9 +648,22 @@ export default function App() {
     const onMessage = (event: MessageEvent) => {
       if (event.source !== window || event.origin !== window.location.origin) return;
       const data = event.data as
-        | { source?: unknown; kind?: unknown; batchId?: unknown; captures?: unknown }
+        | { source?: unknown; kind?: unknown; batchId?: unknown; captures?: unknown; requestId?: unknown }
         | null;
-      if (!data || data.source !== "pmt-match-desk-extension" || data.kind !== "capture-batch") return;
+      if (!data || data.source !== "pmt-match-desk-extension") return;
+      if (data.kind === "post-request" && typeof data.requestId === "string") {
+        window.postMessage(
+          {
+            source: "pmt-match-desk-app",
+            kind: "post-response",
+            requestId: data.requestId,
+            ...postStateRef.current,
+          },
+          window.location.origin,
+        );
+        return;
+      }
+      if (data.kind !== "capture-batch") return;
       const batchId = typeof data.batchId === "string" ? data.batchId : "";
       if (!batchId) return;
       window.postMessage(

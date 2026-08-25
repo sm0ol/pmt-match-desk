@@ -18,6 +18,12 @@ Live desk: https://pmt-production-4bee.up.railway.app
 If you do not have the extension: press `Ctrl+A`, then `Ctrl+C` on the HLTV
 page, and paste into the desk. The result is the same.
 
+**One-shot mode.** Right-click the extension button and check **One-shot
+mode**. One click then does the whole pipeline: the draft builds in a
+background tab, the HLTV page shows the progress, and the prefilled Reddit
+submit page opens. If the draft needs review, the desk opens instead. See
+[extension/README.md](extension/README.md).
+
 ## The thread lifecycle
 
 **Before the match ends.** Capture the live match page. The desk builds the

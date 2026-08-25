@@ -26,7 +26,40 @@ window.addEventListener("message", (event) => {
     });
 });
 
+let postRequestCounter = 0;
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  // One-shot mode asks the app for the finished post so the background
+  // worker can open the prefilled Reddit submit page.
+  if (message && message.type === "pmt-request-post") {
+    postRequestCounter += 1;
+    const requestId = `pmt-post-${Date.now()}-${postRequestCounter}`;
+    const onResponse = (event) => {
+      if (event.source !== window) return;
+      const data = event.data;
+      if (!data || data.source !== "pmt-match-desk-app" || data.kind !== "post-response") return;
+      if (data.requestId !== requestId) return;
+      clearTimeout(deadline);
+      window.removeEventListener("message", onResponse);
+      sendResponse({
+        ready: data.ready === true,
+        title: typeof data.title === "string" ? data.title : "",
+        body: typeof data.body === "string" ? data.body : "",
+        subreddit: typeof data.subreddit === "string" ? data.subreddit : "",
+        reason: typeof data.reason === "string" ? data.reason : "",
+      });
+    };
+    const deadline = setTimeout(() => {
+      window.removeEventListener("message", onResponse);
+      sendResponse(null);
+    }, 10000);
+    window.addEventListener("message", onResponse);
+    window.postMessage(
+      { source: "pmt-match-desk-extension", kind: "post-request", requestId },
+      window.location.origin,
+    );
+    return true; // sendResponse is called asynchronously
+  }
   if (message && message.type === "pmt-progress" && Array.isArray(message.steps)) {
     window.postMessage(
       { source: "pmt-match-desk-extension", kind: "capture-progress", steps: message.steps },

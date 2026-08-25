@@ -119,6 +119,70 @@ describe("command center", () => {
     expect(screen.getByText(/ready to post/i)).toBeVisible();
   });
 
+  it("answers a one-shot post request with the finished post", async () => {
+    render(<App />);
+    const paste = await screen.findByLabelText(/paste copied hltv page/i);
+    fireEvent.paste(paste, {
+      clipboardData: {
+        getData: (type: string) => (type === "text/html" ? html : plain),
+      },
+    });
+    expect(await screen.findByText(/ready to post/i)).toBeVisible();
+
+    const responses: Array<Record<string, unknown>> = [];
+    const onResponse = (event: MessageEvent) => {
+      const data = event.data as { source?: string; kind?: string } | null;
+      if (data?.source !== "pmt-match-desk-app" || data.kind !== "post-response") return;
+      responses.push(data as Record<string, unknown>);
+    };
+    window.addEventListener("message", onResponse);
+    try {
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: { source: "pmt-match-desk-extension", kind: "post-request", requestId: "req-1" },
+          origin: window.location.origin,
+          source: window,
+        }),
+      );
+      await waitFor(() => expect(responses).toHaveLength(1));
+      const response = responses[0];
+      expect(response.requestId).toBe("req-1");
+      expect(response.ready).toBe(true);
+      expect(response.subreddit).toBe("GlobalOffensive");
+      expect(String(response.title)).toContain("Post-Match Discussion");
+      expect(String(response.body)).toContain("100 Thieves");
+    } finally {
+      window.removeEventListener("message", onResponse);
+    }
+  });
+
+  it("answers a one-shot post request with a reason when the draft is not ready", async () => {
+    render(<App />);
+    await screen.findByLabelText(/paste copied hltv page/i);
+
+    const responses: Array<Record<string, unknown>> = [];
+    const onResponse = (event: MessageEvent) => {
+      const data = event.data as { source?: string; kind?: string } | null;
+      if (data?.source !== "pmt-match-desk-app" || data.kind !== "post-response") return;
+      responses.push(data as Record<string, unknown>);
+    };
+    window.addEventListener("message", onResponse);
+    try {
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: { source: "pmt-match-desk-extension", kind: "post-request", requestId: "req-2" },
+          origin: window.location.origin,
+          source: window,
+        }),
+      );
+      await waitFor(() => expect(responses).toHaveLength(1));
+      expect(responses[0].ready).toBe(false);
+      expect(String(responses[0].reason)).not.toBe("");
+    } finally {
+      window.removeEventListener("message", onResponse);
+    }
+  });
+
   it("opens the old Reddit submit page with the title prefilled", async () => {
     const open = vi.spyOn(window, "open").mockReturnValue(null);
     try {
