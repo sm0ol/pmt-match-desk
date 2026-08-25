@@ -8,6 +8,7 @@ const idSchema = z.string().min(1).max(200);
 const editValueSchema = z.union([z.string().max(5_000), z.number()]);
 
 const scalarFieldSchema = z.enum([
+  "sourceUrl",
   "team1Name",
   "team2Name",
   "team1Score",

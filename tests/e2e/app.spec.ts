@@ -63,6 +63,9 @@ test("a real HLTV paste becomes a copy-ready Reddit preview well under 30 second
   await expect(page.getByText("READY TO POST")).toBeVisible();
   await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
   await expect(page.getByText("Full Match Stats")).toBeVisible();
+  const twoDigitMapScore = page.getByLabel("Ancient Eternal Fire score");
+  await expect(twoDigitMapScore).toHaveValue("13");
+  expect(await twoDigitMapScore.evaluate((input) => input.getBoundingClientRect().width)).toBeGreaterThanOrEqual(48);
   expect(Date.now() - startedAt).toBeLessThan(30_000);
 
   await page.getByRole("button", { name: /copy title/i }).click();

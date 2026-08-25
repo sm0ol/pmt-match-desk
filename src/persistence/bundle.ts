@@ -57,6 +57,7 @@ const matchSchema = z.strictObject({
   state: sourceStateSchema.optional(),
 });
 const manualFieldsSchema = z.strictObject({
+  sourceUrl: z.string().max(500).optional(),
   team1Name: nameSchema.optional(),
   team2Name: nameSchema.optional(),
   team1Score: z.number().int().nonnegative().optional(),

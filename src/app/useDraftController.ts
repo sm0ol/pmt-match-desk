@@ -211,7 +211,7 @@ export function useDraftController() {
       setLastRejectedCapture(null);
       setPendingDecision(null);
       const message = proposal.diagnostics.length
-        ? `Imported with ${proposal.diagnostics.length} item${proposal.diagnostics.length === 1 ? "" : "s"} to review.`
+        ? `Imported with ${proposal.diagnostics.length} item${proposal.diagnostics.length === 1 ? "" : "s"} to review — see Fix before copying.`
         : `Imported ${proposal.match.maps.length} maps and ${proposal.match.players.length} player rows.`;
       setStatus({ tone: proposal.diagnostics.length ? "warning" : "success", message });
     },

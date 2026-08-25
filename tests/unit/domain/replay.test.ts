@@ -59,6 +59,23 @@ describe("replayDraft", () => {
     expect(projection.conflicts).toEqual([]);
   });
 
+  it("keeps a manually supplied source URL through later imports", () => {
+    const correctedUrl = "https://www.hltv.org/matches/2/one-vs-two-event";
+    const ledger: DraftLedger = {
+      id: "draft-1",
+      createdAt: "1",
+      updatedAt: "2",
+      imports: [
+        { id: "a", capturedAt: "1", active: true, fingerprint: "a", match: { ...match, sourceUrl: "" } },
+        { id: "b", capturedAt: "2", active: true, fingerprint: "b", match: { ...match, sourceUrl: "" } },
+      ],
+      manual: { sourceUrl: correctedUrl },
+      manualBaselines: { sourceUrl: "" },
+    };
+
+    expect(replayDraft(ledger).match?.sourceUrl).toBe(correctedUrl);
+  });
+
   it("keeps completed results when a stale live snapshot arrives later", () => {
     const live = { ...match, state: "live" as const, sourceKind: "main-match" as const, seriesScore: [1, 0] as [number, number] };
     const final = { ...match, state: "completed" as const, sourceKind: "main-match" as const, seriesScore: [1, 2] as [number, number] };
