@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-25T19:52:43.312Z",
+  "refreshedAt": "2026-08-25T20:08:54.258Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -624,6 +624,8 @@
       "name": "Alliance",
       "flagName": "🇸🇪 Alliance",
       "initials": "Alliance",
+      "logoFlag": "🇸🇪",
+      "logoCode": "lang-se",
       "logoWhite": false,
       "roster": [
         "🇸🇪 avid",
@@ -1365,7 +1367,7 @@
         "🇮🇱 HeavyGod",
         "🇸🇰 MATYS",
         "🇮🇱 NertZ",
-        "🇺🇦 r1nkle 𖦏"
+        "🇺🇦 r1nkle ⊕"
       ],
       "coach": "🇫🇮 sAw",
       "subs": [
@@ -1433,7 +1435,7 @@
       "roster": [
         "🇩🇰 Tauson",
         "🇸🇪 REZ",
-        "🇵🇱 hypex 𖦏",
+        "🇵🇱 hypex ⊕",
         "🇵🇱 Snax ♛",
         "🇷🇺 FL4MUS"
       ],
@@ -2662,14 +2664,13 @@
       "roster": [
         "🇨🇳 Summer ♛",
         "🇨🇳 L1haNg",
-        "🇨🇳 chengking",
+        "🇨🇳 ChildKing",
         "🇨🇳 3gl ⊕",
-        "🇨🇳 Trash"
+        "🇨🇳 Trash",
+        "🇨🇳 chengking"
       ],
       "coach": "🇹🇼 Marek",
-      "subs": [
-        "🇨🇳 ChildKing"
-      ],
+      "subs": [],
       "links": [
         {
           "label": "Liquipedia",

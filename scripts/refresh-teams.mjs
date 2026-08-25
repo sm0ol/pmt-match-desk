@@ -1,8 +1,9 @@
 // Builds our own team database from Liquipedia pages listed in
 // data/team-sources.json. Run with: npm run refresh-teams
-import { readFileSync, writeFileSync } from "node:fs";
+import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { countryCode, flagEmoji } from "../src/domain/countries.ts";
+import { loadSources } from "./sources.mjs";
 import {
   extractTemplate,
   fetchWikitext,
@@ -14,7 +15,6 @@ import {
 
 const IGL_MARK = "♛";
 
-const sourcesPath = resolve(import.meta.dirname, "../data/team-sources.json");
 const targetPath = resolve(import.meta.dirname, "../src/output/liquipediaTeams.json");
 
 const STAFF_ROLE = /coach|manager|analyst/i;
@@ -119,10 +119,8 @@ function buildTeam(source, wikitext) {
   };
 }
 
-const config = JSON.parse(readFileSync(sourcesPath, "utf8"));
 const teams = [];
-for (const entry of config.sources) {
-  const source = typeof entry === "string" ? { url: entry } : entry;
+for (const source of await loadSources("team")) {
   const pageName = pageNameFromUrl(source.url);
   process.stdout.write(`Fetching ${pageName}... `);
   try {

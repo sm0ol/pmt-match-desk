@@ -58,16 +58,24 @@ The Event Information and Team Information sections come from two sources:
    `npm run refresh-events` / `npm run refresh-teams` re-fetch everything
    listed. Pass an HLTV name as a second argument when HLTV names the event
    or team differently than Liquipedia.
-2. **The Post-Match Team's curated databases** in the original
+2. **The Post-Match Team's live Google Sheets** (the same sheets the PMT
+   lead edits — display names, logo codes, rosters, links). `npm run
+   refresh-data` pulls them directly, falling back to the CSV snapshot in
    [Post-Match-Thread-Creator](https://github.com/asbmeyers/Post-Match-Thread-Creator)
-   repository (team rosters, coaches, subs, links, and more events).
-   `npm run refresh-data` pulls the latest snapshot.
+   when the sheets are unreachable. Edits made in the sheets flow in on the
+   next refresh with no npm work on the editor's side.
+
+Our own source lists can also live in a Google Sheet: publish a tab to the
+web as CSV and paste its URL into `data/sources-config.json` (see the column
+notes there). Sheet rows merge over the local JSON lists, so team members
+manage sources — including display-name overrides — in the sheet.
 
 Our Liquipedia entries win on name collisions. A GitHub Actions cron
-(`.github/workflows/refresh-events.yml`) refreshes both weekly and commits
-changes; redeploy to publish them. A match whose event or team is in neither
-source simply renders without that block; team rosters fall back to the
-players parsed from the match page.
+(`.github/workflows/refresh-events.yml`) refreshes everything daily and
+commits changes; redeploy to publish them (connect the repo to Railway for
+automatic deploys). A match whose event or team is in neither source simply
+renders without that block; team rosters fall back to the players parsed
+from the match page.
 
 ## Run it locally
 

@@ -2,15 +2,15 @@
 // data/event-sources.json, per the Liquipedia API terms of use
 // (descriptive User-Agent, gzip, one parse request per two seconds).
 // Run with: npm run refresh-events
-import { readFileSync, writeFileSync } from "node:fs";
+import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
 import { countryCode, flagEmoji } from "../src/domain/countries.ts";
+import { loadSources } from "./sources.mjs";
 
 const USER_AGENT = "pmt-match-desk/0.1 (https://github.com/sm0ol/pmt-match-desk; sprobertson94@gmail.com)";
 const REQUEST_GAP_MS = 2100;
 
-const sourcesPath = resolve(import.meta.dirname, "../data/event-sources.json");
 const targetPath = resolve(import.meta.dirname, "../src/output/liquipediaEvents.json");
 
 function sleep(ms) {
@@ -122,10 +122,8 @@ function buildEvent(source, fields) {
   };
 }
 
-const config = JSON.parse(readFileSync(sourcesPath, "utf8"));
 const events = [];
-for (const entry of config.sources) {
-  const source = typeof entry === "string" ? { url: entry } : entry;
+for (const source of await loadSources("event")) {
   const pageName = pageNameFromUrl(source.url);
   process.stdout.write(`Fetching ${pageName}... `);
   try {

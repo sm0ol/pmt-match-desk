@@ -2,8 +2,8 @@ name: Refresh event database
 
 on:
   schedule:
-    # Mondays 06:00 UTC
-    - cron: "0 6 * * 1"
+    # Daily 06:00 UTC, so Google Sheet edits propagate within a day
+    - cron: "0 6 * * *"
   workflow_dispatch: {}
 
 permissions:

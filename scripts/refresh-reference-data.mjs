@@ -1,51 +1,30 @@
-// Snapshots the Post-Match Team's curated event and team databases
-// (github.com/asbmeyers/Post-Match-Thread-Creator) into
-// src/output/referenceData.json. Run with: npm run refresh-data
+// Snapshots the Post-Match Team's curated event and team databases into
+// src/output/referenceData.json. The live source is the team's published
+// Google Sheets (edited directly by the PMT team, no npm needed on their
+// side); the CSVs in github.com/asbmeyers/Post-Match-Thread-Creator are the
+// fallback when the sheets are unreachable. Run with: npm run refresh-data
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { fetchCsvUrl } from "./csv.mjs";
 
-const SOURCE = "https://raw.githubusercontent.com/asbmeyers/Post-Match-Thread-Creator/main/csgo/csv";
+const GITHUB_SOURCE = "https://raw.githubusercontent.com/asbmeyers/Post-Match-Thread-Creator/main/csgo/csv";
+// Published-to-web sheet URLs from the Post-Match-Thread-Creator README.
+const TEAM_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFFzItpu4lT2eE6ivgvZdA-rMkB_sYT5LSWicXXEnkt-2mdMwThMbmAj0z8e9JTzWawtZBsDCehNeJ/pub?output=csv";
+const EVENT_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTIZsUyfKpuANjFhteP8aJWSacnLBLTPCtD6Gc8ESy6Bphvd57VSCfB_xwvjw_RsY_mvoFffbDPe25d/pub?output=csv";
 
-function parseCsv(text) {
-  const rows = [];
-  let row = [];
-  let field = "";
-  let inQuotes = false;
-  for (let i = 0; i < text.length; i += 1) {
-    const char = text[i];
-    if (inQuotes) {
-      if (char === '"' && text[i + 1] === '"') { field += '"'; i += 1; }
-      else if (char === '"') inQuotes = false;
-      else field += char;
-    } else if (char === '"') inQuotes = true;
-    else if (char === ",") { row.push(field); field = ""; }
-    else if (char === "\n" || char === "\r") {
-      if (char === "\r" && text[i + 1] === "\n") i += 1;
-      row.push(field); field = "";
-      if (row.some((cell) => cell.trim() !== "")) rows.push(row);
-      row = [];
-    } else field += char;
+async function fetchWithFallback(sheetUrl, fallbackName) {
+  try {
+    const rows = await fetchCsvUrl(sheetUrl);
+    console.log(`${fallbackName}: ${rows.length} rows from the live sheet`);
+    return rows;
+  } catch (error) {
+    console.warn(`${fallbackName}: sheet fetch failed (${error.message}); using the GitHub snapshot`);
+    return fetchCsvUrl(`${GITHUB_SOURCE}/${fallbackName}`);
   }
-  row.push(field);
-  if (row.some((cell) => cell.trim() !== "")) rows.push(row);
-  return rows;
 }
 
-function toObjects(rows) {
-  const [header, ...rest] = rows;
-  return rest.map((row) =>
-    Object.fromEntries(header.map((key, index) => [key.trim(), (row[index] ?? "").trim()])),
-  );
-}
-
-async function fetchCsv(name) {
-  const response = await fetch(`${SOURCE}/${name}`);
-  if (!response.ok) throw new Error(`${name}: HTTP ${response.status}`);
-  return toObjects(parseCsv(await response.text()));
-}
-
-const eventRows = await fetchCsv("Events.csv");
-const teamRows = await fetchCsv("Full_Teams.csv");
+const eventRows = await fetchWithFallback(EVENT_SHEET, "Events.csv");
+const teamRows = await fetchWithFallback(TEAM_SHEET, "Full_Teams.csv");
 
 const events = eventRows
   .filter((row) => row.Name)
@@ -88,12 +67,15 @@ const LINK_ORDER = [
   ["Bilibili", "Bilibili"],
 ];
 
-// LOGO holds a partial markdown link like "[🇷🇺](#betboom"; the renderer
-// completes it into a subreddit stylesheet icon.
-function parseLogo(raw) {
-  const match = (raw || "").match(/^\[(.+)\]\(#([^)]+)\)?$/);
+// The live sheet has clean "Flag" and "LOGO CODE" columns; the older CSV
+// snapshot only has LOGO as a partial markdown link like "[🇷🇺](#betboom".
+function parseLogo(row) {
+  const flag = row.Flag || "";
+  const code = row["LOGO CODE"] || "";
+  if (code && code !== "lang-un") return { logoFlag: flag, logoCode: code };
+  const match = (row.LOGO || "").match(/^\[(.+)\]\(#([^)]+)\)?$/);
   if (!match || match[2] === "lang-un") return {};
-  return { logoFlag: match[1], logoCode: match[2] };
+  return { logoFlag: flag || match[1], logoCode: match[2] };
 }
 
 const teams = teamRows
@@ -103,7 +85,7 @@ const teams = teamRows
     name: row.Name || row["HLTV Name"],
     flagName: row["Flag Name"] || "",
     initials: row.Initials || "",
-    ...parseLogo(row.LOGO),
+    ...parseLogo(row),
     logoWhite: (row.LOGOW || "").toUpperCase() === "TRUE",
     roster: [row["PLAYER 1"], row["PLAYER 2"], row["PLAYER 3"], row["PLAYER 4"], row["PLAYER 5"], row["PLAYER 6"]]
       .filter(Boolean),

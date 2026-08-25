@@ -1,0 +1,5 @@
+{
+  "note": "Optional Google Sheet sources. Publish a sheet tab to the web as CSV and paste its URL here; rows are merged over the local JSON lists (matching by url), so the team can edit sources in the sheet without running npm scripts. Team columns: url, hltvName, name, initials, logoFlag, logoCode, logoWhite. Event columns: url, hltvName, hltv, reddit. Leave empty to use only the local JSON files.",
+  "teamSourcesCsv": "",
+  "eventSourcesCsv": ""
+}
