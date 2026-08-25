@@ -6,11 +6,14 @@ const MAX_OPERATIONS = 100;
 const MAX_JOURNAL_CHARS = 100_000;
 const idSchema = z.string().min(1).max(200);
 const editValueSchema = z.union([z.string().max(5_000), z.number()]);
+const playerValueSchema = z.union([z.string().max(5_000), z.number(), z.boolean()]);
 
 const scalarFieldSchema = z.enum([
   "sourceUrl",
   "team1Name",
   "team2Name",
+  "team1Country",
+  "team2Country",
   "team1Score",
   "team2Score",
   "event",
@@ -42,8 +45,8 @@ const operationSchema = z.discriminatedUnion("kind", [
     draftId: idSchema,
     operationId: idSchema,
     targetId: idSchema,
-    field: z.enum(["name", "team", "kills", "deaths", "adr", "swing", "rating"]),
-    value: editValueSchema,
+    field: z.enum(["name", "team", "country", "awper", "igl", "kills", "deaths", "adr", "swing", "rating"]),
+    value: playerValueSchema,
     teamSide: z.enum(["team1", "team2"]).optional(),
   }),
 ]);

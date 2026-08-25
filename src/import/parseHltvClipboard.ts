@@ -81,28 +81,91 @@ function canonicalMapName(value: string | undefined): string | null {
   return null;
 }
 
-function collectHrefs(html: string): string[] {
-  if (!html) return [];
-  const root = parseFragment(html) as NodeLike;
-  const hrefs: string[] = [];
-  let nodes = 0;
-  const stack: Array<{ node: NodeLike; depth: number }> = [{ node: root, depth: 0 }];
+interface PlayerFact {
+  country?: string;
+  awper?: boolean;
+  igl?: boolean;
+}
 
-  while (stack.length > 0) {
-    const current = stack.pop();
-    if (!current) break;
+interface HtmlFacts {
+  hrefs: string[];
+  teamCountries: { team1?: string; team2?: string };
+  playerFacts: Map<string, PlayerFact>;
+}
+
+interface SubtreeFacts {
+  playerIds: Set<string>;
+  flags: string[];
+  awper: boolean;
+  igl: boolean;
+}
+
+// HLTV flag images encode the country in their src:
+// /img/static/flags/30x20/DK.gif or /img/static/flags/300x200/EU.png
+const FLAG_SRC = /\/img\/static\/flags\/[^/]+\/([A-Za-z-]{2,7})\.(?:gif|png)/;
+
+function collectHtmlFacts(html: string): HtmlFacts {
+  const facts: HtmlFacts = { hrefs: [], teamCountries: {}, playerFacts: new Map() };
+  if (!html) return facts;
+  const root = parseFragment(html) as NodeLike;
+  let nodes = 0;
+
+  const attr = (node: NodeLike, name: string) =>
+    node.attrs?.find((attribute) => attribute.name === name)?.value;
+
+  const visit = (node: NodeLike, depth: number): SubtreeFacts => {
     nodes += 1;
-    if (nodes > MAX_NODES || current.depth > MAX_DEPTH) {
+    if (nodes > MAX_NODES || depth > MAX_DEPTH) {
       throw new Error("Copied HTML is too structurally complex.");
     }
-    const href = current.node.attrs?.find((attribute) => attribute.name === "href")?.value;
-    if (href) hrefs.push(href);
-    const children = current.node.childNodes ?? [];
-    for (let index = children.length - 1; index >= 0; index -= 1) {
-      stack.push({ node: children[index], depth: current.depth + 1 });
+    const href = attr(node, "href");
+    if (href) facts.hrefs.push(href);
+    const classes = attr(node, "class") ?? "";
+    const title = attr(node, "title") ?? "";
+    const flagCode = attr(node, "src")?.match(FLAG_SRC)?.[1]?.toUpperCase();
+
+    if (flagCode && /(?:^|\s)team1(?:\s|$)/.test(classes)) facts.teamCountries.team1 ??= flagCode;
+    if (flagCode && /(?:^|\s)team2(?:\s|$)/.test(classes)) facts.teamCountries.team2 ??= flagCode;
+
+    const subtree: SubtreeFacts = {
+      playerIds: new Set(),
+      flags: flagCode && classes.includes("flag") ? [flagCode] : [],
+      awper:
+        classes.includes("role-pill--awp") ||
+        classes.includes("fa-crosshairs") ||
+        title === "Main AWPer",
+      igl: classes.includes("role-pill--igl") || title === "In-game leader",
+    };
+    const playerId = href?.match(/^\/player\/(\d+)\//)?.[1];
+    if (playerId) subtree.playerIds.add(playerId);
+
+    for (const child of node.childNodes ?? []) {
+      const childFacts = visit(child, depth + 1);
+      for (const id of childFacts.playerIds) subtree.playerIds.add(id);
+      subtree.flags.push(...childFacts.flags);
+      subtree.awper ||= childFacts.awper;
+      subtree.igl ||= childFacts.igl;
     }
-  }
-  return hrefs;
+
+    // The smallest container holding exactly one player link owns any flag or
+    // role markers inside it. Consume them so a wider ancestor (a lineup row
+    // with five players, a section with stream flags) cannot mispair them.
+    if (subtree.playerIds.size === 1 && (subtree.flags.length > 0 || subtree.awper || subtree.igl)) {
+      const [id] = subtree.playerIds;
+      const fact = facts.playerFacts.get(id) ?? {};
+      if (subtree.flags.length === 1 && !fact.country) fact.country = subtree.flags[0];
+      if (subtree.awper) fact.awper = true;
+      if (subtree.igl) fact.igl = true;
+      facts.playerFacts.set(id, fact);
+      subtree.flags = [];
+      subtree.awper = false;
+      subtree.igl = false;
+    }
+    return subtree;
+  };
+
+  visit(root, 0);
+  return facts;
 }
 
 function findTeam(hrefs: string[], name: string): Team {
@@ -208,14 +271,14 @@ function parsePlayers(
   lines: string[],
   team1: Team,
   team2: Team,
-  hrefs: string[],
+  htmlFacts: HtmlFacts,
   sourceState: MatchData["state"],
 ): PlayerStat[] {
   const start = lines.indexOf("Match stats");
   const end = lines.indexOf("Lineups", start + 1);
   if (start < 0 || end < 0) return [];
   const playerLinks = new Map<string, string>();
-  for (const href of hrefs) {
+  for (const href of htmlFacts.hrefs) {
     const match = href.match(/^\/player\/(\d+)\/([^?#/]+)/);
     if (match && !playerLinks.has(match[2])) playerLinks.set(match[2], match[1]);
   }
@@ -231,11 +294,16 @@ function parsePlayers(
     if (!stats || !currentTeam || index === 0) continue;
     const name = lines[index - 1];
     const nickname = name.match(/'([^']+)'/)?.[1] ?? name;
+    const id = playerLinks.get(slug(nickname)) ?? `name:${slug(name)}`;
+    const fact = htmlFacts.playerFacts.get(id);
     players.push({
-      id: playerLinks.get(slug(nickname)) ?? `name:${slug(name)}`,
+      id,
       name,
       team: currentTeam,
       teamSide: currentTeam === team1.name ? "team1" : "team2",
+      ...(fact?.country ? { country: fact.country } : {}),
+      ...(fact?.awper ? { awper: true } : {}),
+      ...(fact?.igl ? { igl: true } : {}),
       kills: Number(stats[1]),
       deaths: Number(stats[2]),
       swing: stats[3],
@@ -266,7 +334,8 @@ function findSeriesTeam(
   return null;
 }
 
-function parseMain(lines: string[], hrefs: string[]): MatchData | null {
+function parseMain(lines: string[], htmlFacts: HtmlFacts): MatchData | null {
+  const hrefs = htmlFacts.hrefs;
   const mapsIndex = lines.indexOf("Maps");
   let statusIndex = -1;
   for (let index = mapsIndex - 1; index >= 0; index -= 1) {
@@ -285,6 +354,8 @@ function parseMain(lines: string[], hrefs: string[]): MatchData | null {
 
   const team1 = findTeam(hrefs, team1Name);
   const team2 = findTeam(hrefs, team2Name);
+  if (htmlFacts.teamCountries.team1) team1.country = htmlFacts.teamCountries.team1;
+  if (htmlFacts.teamCountries.team2) team2.country = htmlFacts.teamCountries.team2;
   const source = findSourceUrl(hrefs, team1Name, team2Name);
   const bestOfLine = lines.slice(mapsIndex, mapsIndex + 5).find((line) => /Best of \d+/i.test(line));
   const bestOf = Number(bestOfLine?.match(/Best of (\d+)/i)?.[1] ?? 1);
@@ -306,7 +377,7 @@ function parseMain(lines: string[], hrefs: string[]): MatchData | null {
     stage,
     bestOf,
     maps: parseMaps(lines, team1Name, team2Name, hrefs, state),
-    players: parsePlayers(lines, team1, team2, hrefs, state),
+    players: parsePlayers(lines, team1, team2, htmlFacts, state),
     context: stageLine?.split(".").slice(1).join(".").trim() ?? "",
     sourceKind: "main-match",
     state,
@@ -387,8 +458,9 @@ export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
 
   try {
     const lines = normalizedLines(capture.plain);
-    const hrefs = collectHrefs(capture.html);
-    const mainMatch = parseMain(lines, hrefs);
+    const htmlFacts = collectHtmlFacts(capture.html);
+    const hrefs = htmlFacts.hrefs;
+    const mainMatch = parseMain(lines, htmlFacts);
     const hasMapStatsBlock = lines.some(
       (line, index) => line === "Map" && MAP_NAMES.has((lines[index + 1] ?? "").toLowerCase()),
     );

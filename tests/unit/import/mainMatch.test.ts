@@ -39,6 +39,23 @@ describe("parseHltvClipboard", () => {
     );
   });
 
+  it("extracts team flags, player flags, and AWPer/IGL roles from the HTML", () => {
+    const result = parseHltvClipboard({ plain, html });
+    const players = result.match?.players ?? [];
+    const byNick = (nick: string) => players.find((player) => player.name.includes(`'${nick}'`));
+
+    expect(result.match?.team1.country).toBe("EU");
+    expect(result.match?.team2.country).toBe("EU");
+    expect(byNick("device")).toEqual(expect.objectContaining({ country: "DK", awper: true }));
+    expect(byNick("Gizmy")).toEqual(expect.objectContaining({ country: "GB", igl: true }));
+    expect(byNick("regali")).toEqual(expect.objectContaining({ country: "RO", awper: true }));
+    expect(byNick("MisteM")).toEqual(expect.objectContaining({ country: "ZA", igl: true }));
+    expect(byNick("rain")?.country).toBe("NO");
+    expect(byNick("rain")?.awper).toBeUndefined();
+    expect(byNick("rain")?.igl).toBeUndefined();
+    expect(players.every((player) => Boolean(player.country))).toBe(true);
+  });
+
   it("parses copied labels duplicated by the browser without treating countries as teams", () => {
     const result = parseHltvClipboard({ plain: duplicatedLabelsPlain, html: "" });
 

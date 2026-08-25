@@ -75,6 +75,8 @@ function scalarParserValues(match: MatchData): Required<ManualFields> {
     sourceUrl: match.sourceUrl,
     team1Name: match.team1.name,
     team2Name: match.team2.name,
+    team1Country: match.team1.country ?? "",
+    team2Country: match.team2.country ?? "",
     team1Score: match.seriesScore[0],
     team2Score: match.seriesScore[1],
     event: match.event,
@@ -107,6 +109,8 @@ export function replayDraft(ledger: DraftLedger): DraftProjection {
   if (ledger.manual.sourceUrl !== undefined) match.sourceUrl = ledger.manual.sourceUrl;
   if (ledger.manual.team1Name !== undefined) match.team1.name = ledger.manual.team1Name;
   if (ledger.manual.team2Name !== undefined) match.team2.name = ledger.manual.team2Name;
+  if (ledger.manual.team1Country !== undefined) match.team1.country = ledger.manual.team1Country;
+  if (ledger.manual.team2Country !== undefined) match.team2.country = ledger.manual.team2Country;
   if (ledger.manual.team1Score !== undefined) match.seriesScore[0] = ledger.manual.team1Score;
   if (ledger.manual.team2Score !== undefined) match.seriesScore[1] = ledger.manual.team2Score;
   if (ledger.manual.event !== undefined) match.event = ledger.manual.event;

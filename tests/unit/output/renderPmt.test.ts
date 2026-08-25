@@ -38,6 +38,72 @@ describe("renderPmt", () => {
     expect(output.ready).toBe(true);
   });
 
+  it("renders team flags, player flags, nicknames, and role marks", () => {
+    const output = renderPmt({
+      ...match,
+      team1: { ...match.team1, country: "BR" },
+      team2: { ...match.team2, country: "EU" },
+      players: [
+        {
+          id: "p1",
+          name: "Gabriel 'FalleN' Toledo",
+          team: "100 Thieves",
+          teamSide: "team1",
+          country: "BR",
+          igl: true,
+          kills: 45,
+          deaths: 44,
+          swing: "-0.15%",
+          adr: 64,
+          kast: "72.2%",
+          rating: 1.03,
+        },
+        {
+          id: "p2",
+          name: "Danil 'molodoy' Golubenko",
+          team: "100 Thieves",
+          teamSide: "team1",
+          country: "KZ",
+          awper: true,
+          kills: 55,
+          deaths: 50,
+          swing: "+0.35%",
+          adr: 80.8,
+          kast: "75.0%",
+          rating: 1.08,
+        },
+      ],
+    });
+
+    expect(output.body).toContain("# 100 Thieves 🇧🇷 [1-2](");
+    expect(output.body).toContain(") 🇪🇺 Eternal Fire");
+    expect(output.body).toContain("|**🇧🇷 100 Thieves**|||||");
+    expect(output.body).toContain("|🇧🇷 FalleN ♛|45-44|");
+    expect(output.body).toContain("|🇰🇿 molodoy ⊕|55-50|");
+  });
+
+  it("omits flags and marks when the data is missing", () => {
+    const output = renderPmt({
+      ...match,
+      players: [{
+        id: "p1",
+        name: "Ace",
+        team: "100 Thieves",
+        teamSide: "team1",
+        kills: 20,
+        deaths: 10,
+        swing: "+2%",
+        adr: 90,
+        kast: "80%",
+        rating: 1.25,
+      }],
+    });
+
+    expect(output.body).toContain("# 100 Thieves [1-2](");
+    expect(output.body).toContain("|**100 Thieves**|||||");
+    expect(output.body).toContain("|Ace|20-10|");
+  });
+
   it("blocks readiness when a core field is missing", () => {
     const output = renderPmt({ ...match, event: "" });
     expect(output.ready).toBe(false);

@@ -99,6 +99,8 @@ const FIELD_LABELS: Record<keyof ManualFields, string> = {
   sourceUrl: "HLTV match URL",
   team1Name: "Team one",
   team2Name: "Team two",
+  team1Country: "Team one flag code",
+  team2Country: "Team two flag code",
   team1Score: "Team one score",
   team2Score: "Team two score",
   event: "Event",
@@ -559,10 +561,12 @@ export default function App() {
               <CardTitle>Match</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              <div className="grid grid-cols-[minmax(0,1fr)_4.5rem] gap-3">
+              <div className="grid grid-cols-[minmax(0,1fr)_4rem_4.5rem] gap-3">
                 <EditField label="Team one" value={match.team1.name} onCommit={commit("team1Name")} />
+                <EditField label="Flag" value={match.team1.country ?? ""} onCommit={commit("team1Country")} />
                 <EditField label="Score" value={match.seriesScore[0]} type="number" onCommit={commit("team1Score")} />
                 <EditField label="Team two" value={match.team2.name} onCommit={commit("team2Name")} />
+                <EditField label="Flag" value={match.team2.country ?? ""} onCommit={commit("team2Country")} />
                 <EditField label="Score" value={match.seriesScore[1]} type="number" onCommit={commit("team2Score")} />
               </div>
               <EditField label="Event" value={match.event} onCommit={commit("event")} />
@@ -642,6 +646,36 @@ export default function App() {
                         <option value={match.team1.name}>{match.team1.name}</option>
                         <option value={match.team2.name}>{match.team2.name}</option>
                       </select>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Input
+                        aria-label={`${player.name} flag code`}
+                        value={player.country ?? ""}
+                        placeholder="Flag"
+                        maxLength={8}
+                        className="w-20 uppercase"
+                        onChange={(event) => void controller.updateManualPlayer(player.id, "country", event.target.value)}
+                      />
+                      <label className="flex items-center gap-1.5 text-xs">
+                        <input
+                          type="checkbox"
+                          aria-label={`${player.name} AWPer`}
+                          className="size-3.5 accent-primary"
+                          checked={Boolean(player.awper)}
+                          onChange={(event) => void controller.updateManualPlayer(player.id, "awper", event.target.checked)}
+                        />
+                        AWP ⊕
+                      </label>
+                      <label className="flex items-center gap-1.5 text-xs">
+                        <input
+                          type="checkbox"
+                          aria-label={`${player.name} in-game leader`}
+                          className="size-3.5 accent-primary"
+                          checked={Boolean(player.igl)}
+                          onChange={(event) => void controller.updateManualPlayer(player.id, "igl", event.target.checked)}
+                        />
+                        IGL ♛
+                      </label>
                     </div>
                     <div className="grid grid-cols-5 gap-2">
                       {(["kills", "deaths", "adr", "rating"] as const).map((field) => (

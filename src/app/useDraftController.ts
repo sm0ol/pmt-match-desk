@@ -356,8 +356,8 @@ export function useDraftController() {
   const updateManualPlayer = useCallback(
     async (
       playerId: string,
-      field: "name" | "team" | "kills" | "deaths" | "adr" | "swing" | "rating",
-      value: string | number,
+      field: "name" | "team" | "country" | "awper" | "igl" | "kills" | "deaths" | "adr" | "swing" | "rating",
+      value: string | number | boolean,
     ) => {
       if (!ledger) return;
       const operationId = makeId();

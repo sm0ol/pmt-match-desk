@@ -3,6 +3,8 @@ export type Confidence = "confident" | "review" | "missing";
 export interface Team {
   id: string;
   name: string;
+  /** HLTV flag code, e.g. "BR" or "EU". */
+  country?: string;
 }
 
 export interface MapResult {
@@ -21,6 +23,10 @@ export interface PlayerStat {
   name: string;
   team: string;
   teamSide?: "team1" | "team2";
+  /** HLTV flag code, e.g. "DK". */
+  country?: string;
+  awper?: boolean;
+  igl?: boolean;
   kills: number;
   deaths: number;
   swing: string;
@@ -51,6 +57,8 @@ export type ManualFields = Partial<{
   sourceUrl: string;
   team1Name: string;
   team2Name: string;
+  team1Country: string;
+  team2Country: string;
   team1Score: number;
   team2Score: number;
   event: string;
@@ -88,7 +96,12 @@ export interface DraftLedger {
   manualMaps?: Record<string, Partial<Pick<MapResult, "name" | "team1Score" | "team2Score">>>;
   manualPlayers?: Record<
     string,
-    Partial<Pick<PlayerStat, "name" | "team" | "teamSide" | "kills" | "deaths" | "adr" | "swing" | "rating">>
+    Partial<
+      Pick<
+        PlayerStat,
+        "name" | "team" | "teamSide" | "country" | "awper" | "igl" | "kills" | "deaths" | "adr" | "swing" | "rating"
+      >
+    >
   >;
 }
 

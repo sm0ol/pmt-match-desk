@@ -16,7 +16,12 @@ const sourceUrlSchema = z.string().max(500).refine(
   "HLTV source URL is not canonical.",
 );
 
-const teamSchema = z.strictObject({ id: idSchema, name: nameSchema });
+const countrySchema = z.string().max(16);
+const teamSchema = z.strictObject({
+  id: idSchema,
+  name: nameSchema,
+  country: countrySchema.optional(),
+});
 const mapSchema = z.strictObject({
   id: idSchema,
   name: z.string().max(80),
@@ -32,6 +37,9 @@ const playerSchema = z.strictObject({
   name: nameSchema,
   team: nameSchema,
   teamSide: z.enum(["team1", "team2"]).optional(),
+  country: countrySchema.optional(),
+  awper: z.boolean().optional(),
+  igl: z.boolean().optional(),
   kills: z.number().int().nonnegative(),
   deaths: z.number().int().nonnegative(),
   swing: z.string().max(40),
@@ -60,6 +68,8 @@ const manualFieldsSchema = z.strictObject({
   sourceUrl: z.string().max(500).optional(),
   team1Name: nameSchema.optional(),
   team2Name: nameSchema.optional(),
+  team1Country: countrySchema.optional(),
+  team2Country: countrySchema.optional(),
   team1Score: z.number().int().nonnegative().optional(),
   team2Score: z.number().int().nonnegative().optional(),
   event: z.string().max(240).optional(),
@@ -106,6 +116,9 @@ const ledgerSchema = z.strictObject({
       name: nameSchema.optional(),
       team: nameSchema.optional(),
       teamSide: z.enum(["team1", "team2"]).optional(),
+      country: countrySchema.optional(),
+      awper: z.boolean().optional(),
+      igl: z.boolean().optional(),
       kills: z.number().int().nonnegative().optional(),
       deaths: z.number().int().nonnegative().optional(),
       adr: z.number().nonnegative().optional(),
