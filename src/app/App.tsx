@@ -88,6 +88,10 @@ function StatusText({ status }: { status: WorkStatus }) {
 
 const ISSUE_COPY: Record<PmtIssue, { label: string; guidance: string }> = {
   match: { label: "Match data", guidance: "Paste a complete HLTV match page." },
+  "match live": {
+    label: "Match still live",
+    guidance: "Draft is prepared. Paste the final page once the match is over.",
+  },
   "team 1": { label: "Team one", guidance: "Enter the first team below." },
   "team 2": { label: "Team two", guidance: "Enter the second team below." },
   event: { label: "Event", guidance: "Enter the tournament name below." },

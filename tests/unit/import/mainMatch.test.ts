@@ -23,6 +23,10 @@ const furiaFutHtml = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/furia-fut-2026/clipboard.html"),
   "utf8",
 );
+const livePlain = readFileSync(
+  resolve(process.cwd(), "tests/fixtures/hltv/live-pain-peladona/clipboard.txt"),
+  "utf8",
+);
 
 describe("parseHltvClipboard", () => {
   it("parses the real completed BO3 capture", () => {
@@ -184,6 +188,30 @@ describe("parseHltvClipboard", () => {
     expect(result.match?.maps[0].statsUrl).toBe(
       "https://www.hltv.org/stats/matches/mapstatsid/235648/furia-vs-fut",
     );
+  });
+
+  it("starts a draft from a live match page with no series score yet", () => {
+    const result = parseHltvClipboard({ plain: livePlain, html: "" });
+
+    expect(result.kind).toBe("main-match");
+    expect(result.match?.state).toBe("live");
+    expect(result.match?.team1).toEqual(expect.objectContaining({ name: "paiN Academy", country: "BR" }));
+    expect(result.match?.team2).toEqual(expect.objectContaining({ name: "Peladona", country: "BR" }));
+    expect(result.match?.event).toBe("CCT 2026 South America Series 5");
+    expect(result.match?.stage).toBe("Swiss round 1");
+    // The finished map decides the series score; the live map's "-" block is skipped.
+    expect(result.match?.seriesScore).toEqual([0, 1]);
+    expect(result.match?.maps).toEqual([
+      expect.objectContaining({ name: "Dust2", team1Score: 3, team2Score: 13 }),
+    ]);
+    expect(result.match?.vetoes).toHaveLength(7);
+    expect(result.match?.players).toHaveLength(10);
+    expect(result.match?.players[0]).toEqual(
+      expect.objectContaining({ team: "paiN Academy", country: "BR" }),
+    );
+    // The live page shows a VRS forecast, not a result; it must not be picked up.
+    expect(result.match?.vrs).toBeUndefined();
+    expect(result.diagnostics.join(" ")).toMatch(/live/i);
   });
 
   it("rejects unrelated and over-budget input without guessing", () => {

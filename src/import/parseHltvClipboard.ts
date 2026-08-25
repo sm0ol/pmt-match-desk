@@ -600,8 +600,23 @@ function parseMain(
   }
   if (statusIndex < 5 || mapsIndex < statusIndex + 2) return null;
 
-  const team1Result = findSeriesTeam(lines, Math.max(0, statusIndex - 12), statusIndex, "backward");
-  const team2Result = findSeriesTeam(lines, statusIndex + 1, mapsIndex, "forward");
+  const isLive = /^LIVE$/i.test(lines[statusIndex]);
+  let team1Result = findSeriesTeam(lines, Math.max(0, statusIndex - 12), statusIndex, "backward");
+  let team2Result = findSeriesTeam(lines, statusIndex + 1, mapsIndex, "forward");
+  if ((!team1Result || !team2Result) && isLive) {
+    // A live match header has no series score numbers yet. Team one sits just
+    // above the start-time line; team two is the last line before "Maps".
+    // Scores are derived from the finished map blocks further down.
+    for (let index = statusIndex - 1; index >= Math.max(0, statusIndex - 12); index -= 1) {
+      if (/^\d{1,2}:\d{2}$/.test(lines[index]) && lines[index - 1]) {
+        team1Result = { name: lines[index - 1], score: -1, nameIndex: index - 1 };
+        break;
+      }
+    }
+    if (lines[mapsIndex - 1] && mapsIndex - 1 > statusIndex) {
+      team2Result = { name: lines[mapsIndex - 1], score: -1, nameIndex: mapsIndex - 1 };
+    }
+  }
   if (!team1Result || !team2Result) return null;
   const { name: team1Name, score: score1 } = team1Result;
   const { name: team2Name, score: score2 } = team2Result;
@@ -643,13 +658,19 @@ function parseMain(
   const vetoes = parseVetoes(lines, mapsIndex, team1Name, team2Name);
   const vrs = parseVrs(lines);
   const highlights = parseHighlights(lines);
+  const seriesScore: [number, number] = score1 >= 0 && score2 >= 0
+    ? [score1, score2]
+    : [
+        maps.filter((map) => map.team1Score > map.team2Score).length,
+        maps.filter((map) => map.team2Score > map.team1Score).length,
+      ];
 
   return {
     id: source.id,
     sourceUrl: source.url,
     team1,
     team2,
-    seriesScore: [score1, score2],
+    seriesScore,
     event: lines[statusIndex - 1] ?? "",
     stage,
     bestOf,
@@ -803,6 +824,9 @@ export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
       };
     }
     const diagnostics: string[] = [];
+    if (match.state === "live") {
+      diagnostics.push("Match is live — scores and stats are partial. Paste the final page after it ends.");
+    }
     if (!match.sourceUrl) diagnostics.push("The match URL could not be identified from copied links.");
     if (!match.stage) diagnostics.push("Event stage is missing and needs a quick edit.");
     return {

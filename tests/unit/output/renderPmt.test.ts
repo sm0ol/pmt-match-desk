@@ -146,6 +146,14 @@ describe("renderPmt", () => {
     expect(output.issues).toContain("event");
   });
 
+  it("blocks copying while the match is live but still builds the draft", () => {
+    const output = renderPmt({ ...match, state: "live" });
+    expect(output.ready).toBe(false);
+    expect(output.issues).toContain("match live");
+    expect(output.title).toContain("Post-Match Discussion");
+    expect(output.body).toContain("### Map Vetoes");
+  });
+
   it("puts a space after every Markdown heading marker", () => {
     const output = renderPmt({
       ...match,

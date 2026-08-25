@@ -14,6 +14,10 @@ const mapPlain = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/mapstats-ancient/clipboard.txt"),
   "utf8",
 );
+const livePlain = readFileSync(
+  resolve(process.cwd(), "tests/fixtures/hltv/live-pain-peladona/clipboard.txt"),
+  "utf8",
+);
 const mapHtml = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/mapstats-ancient/clipboard.html"),
   "utf8",
@@ -234,6 +238,18 @@ test("a map-stat page can arrive before the main page and enriches one draft", a
   await expect(page.getByText("Ready to post")).toBeVisible();
   await expect(page.getByTestId("import-history").locator("> li")).toHaveCount(2);
   await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
+});
+
+test("a live match paste prepares a draft but blocks copying until it ends", async ({ page }) => {
+  await page.goto("/");
+  await pasteCapture(page, { plain: livePlain, html: "" });
+
+  await expect(page.getByText("Review needed")).toBeVisible();
+  await expect(page.getByText("Match still live")).toBeVisible();
+  await expect(page.getByRole("heading", { name: /paiN Academy vs Peladona/ })).toBeVisible();
+  await expect(page.getByText("Map Vetoes")).toBeVisible();
+  await expect(page.getByRole("button", { name: /copy title/i })).toBeDisabled();
+  await expect(page.getByLabel("Event")).toHaveValue("CCT 2026 South America Series 5");
 });
 
 test("the command center remains usable at a narrow phone viewport", async ({ page }) => {

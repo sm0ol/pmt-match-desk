@@ -12,7 +12,7 @@ export interface PmtOutput {
   issues: PmtIssue[];
 }
 
-export type PmtIssue = "match" | "team 1" | "team 2" | "event" | "stage" | "HLTV URL";
+export type PmtIssue = "match" | "match live" | "team 1" | "team 2" | "event" | "stage" | "HLTV URL";
 
 function escapeMarkdown(value: string): string {
   const reserved = new Set("\\`*_{}[]()<>#+-.!|");
@@ -176,6 +176,7 @@ function mapSection(map: MapResult, match: MatchData, index: number): string {
 export function renderPmt(match: MatchData | null): PmtOutput {
   if (!match) return { title: "", body: "", ready: false, issues: ["match"] };
   const issues: PmtIssue[] = [];
+  if (match.state === "live") issues.push("match live");
   if (!match.team1.name) issues.push("team 1");
   if (!match.team2.name) issues.push("team 2");
   if (!match.event) issues.push("event");
