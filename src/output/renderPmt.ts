@@ -5,8 +5,10 @@ export interface PmtOutput {
   title: string;
   body: string;
   ready: boolean;
-  issues: string[];
+  issues: PmtIssue[];
 }
+
+export type PmtIssue = "match" | "team 1" | "team 2" | "event" | "stage" | "HLTV URL";
 
 function escapeMarkdown(value: string): string {
   const reserved = new Set("\\`*_{}[]()<>#+-.!|");
@@ -31,7 +33,7 @@ function mapVetoTable(match: MatchData): string {
       return `|${left}|**${escapeMarkdown(map.name)}**|${right}|`;
     })
     .join("\n");
-  return `###Map Vetoes\n\n|${left}|**MAP**|${right}|\n|:--:|:--:|:--:|\n${rows}`;
+  return `### Map Vetoes\n\n|${left}|**MAP**|${right}|\n|:--:|:--:|:--:|\n${rows}`;
 }
 
 function playerRows(
@@ -50,12 +52,12 @@ function playerRows(
 
 function statsTable(match: MatchData): string {
   if (match.players.length === 0) return "";
-  return `###Full Match Stats\n\n|**Team**|**K-D**|**ADR**|**Swing**|**Rating**|\n|:--|--:|--:|--:|--:|\n|**${escapeMarkdown(match.team1.name)}**|||||\n${playerRows(match.players, "team1", match.team1.name)}\n|**${escapeMarkdown(match.team2.name)}**|||||\n${playerRows(match.players, "team2", match.team2.name)}\n\n### [HLTV Match Page](${match.sourceUrl})`;
+  return `### Full Match Stats\n\n|**Team**|**K-D**|**ADR**|**Swing**|**Rating**|\n|:--|--:|--:|--:|--:|\n|**${escapeMarkdown(match.team1.name)}**|||||\n${playerRows(match.players, "team1", match.team1.name)}\n|**${escapeMarkdown(match.team2.name)}**|||||\n${playerRows(match.players, "team2", match.team2.name)}\n\n### [HLTV Match Page](${match.sourceUrl})`;
 }
 
 export function renderPmt(match: MatchData | null): PmtOutput {
   if (!match) return { title: "", body: "", ready: false, issues: ["match"] };
-  const issues: string[] = [];
+  const issues: PmtIssue[] = [];
   if (!match.team1.name) issues.push("team 1");
   if (!match.team2.name) issues.push("team 2");
   if (!match.event) issues.push("event");
@@ -66,7 +68,7 @@ export function renderPmt(match: MatchData | null): PmtOutput {
   const title = `${match.team1.name} vs ${match.team2.name} / ${match.event} - ${match.stage} / Post-Match Discussion`;
   const maps = match.maps.map((map) => `**${escapeMarkdown(map.name)}:** ${map.team1Score}-${map.team2Score}  `).join("\n");
   const sections = [
-    `#${escapeMarkdown(match.team1.name)} [${match.seriesScore[0]}-${match.seriesScore[1]}](${sourceUrl}) ${escapeMarkdown(match.team2.name)}  `,
+    `# ${escapeMarkdown(match.team1.name)} [${match.seriesScore[0]}-${match.seriesScore[1]}](${sourceUrl}) ${escapeMarkdown(match.team2.name)}`,
     maps,
     match.context ? `**${escapeMarkdown(match.context)}**  ` : "",
     "&nbsp;\n\n-----",

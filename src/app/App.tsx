@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ClipboardEvent, type ReactNode } from
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { DraftLedger, ManualFields } from "../domain/types";
+import type { PmtIssue } from "../output/renderPmt";
 import { useDraftController, type WorkStatus } from "./useDraftController";
 import "./styles.css";
 
@@ -46,8 +47,29 @@ function PasteTarget({
 }
 
 function StatusPill({ tone, children }: { tone: WorkStatus["tone"]; children: ReactNode }) {
-  return <span className={`status-pill status-${tone}`} role="status" aria-live="polite">{children}</span>;
+  const title = typeof children === "string" ? children : undefined;
+  return <span className={`status-pill status-${tone}`} role="status" aria-live="polite" title={title}>{children}</span>;
 }
+
+const ISSUE_COPY: Record<PmtIssue, { label: string; guidance: string }> = {
+  match: { label: "Match data", guidance: "Paste a complete HLTV match page." },
+  "team 1": { label: "Team one", guidance: "Enter the first team in Quick fixes." },
+  "team 2": { label: "Team two", guidance: "Enter the second team in Quick fixes." },
+  event: { label: "Event", guidance: "Enter the tournament name in Quick fixes." },
+  stage: { label: "Stage", guidance: "Enter the event stage in Quick fixes." },
+  "HLTV URL": { label: "HLTV match URL", guidance: "Paste the match page URL in Quick fixes." },
+};
+
+const FIELD_LABELS: Record<keyof ManualFields, string> = {
+  sourceUrl: "HLTV match URL",
+  team1Name: "Team one",
+  team2Name: "Team two",
+  team1Score: "Team one score",
+  team2Score: "Team two score",
+  event: "Event",
+  stage: "Stage",
+  context: "Context line",
+};
 
 function ChangeSummary({ changes = [] }: { changes?: NonNullable<import("../domain/types").ImportRecord["changes"]> }) {
   const meaningful = changes.filter((change) => change.kind !== "unchanged");
@@ -374,6 +396,11 @@ export default function App() {
 
   const commit = (field: keyof ManualFields) => (value: string | number) => void controller.updateManual(field, value);
   const ready = controller.output.ready && controller.projection.conflicts.length === 0;
+  const activeDiagnostics = ready
+    ? []
+    : ledger.imports
+      .filter((entry) => entry.active)
+      .flatMap((entry) => entry.diagnostics ?? []);
   const cancelMatchDecision = () => {
     void controller.resolveMatchDecision("cancel");
     window.requestAnimationFrame(() => {
@@ -405,6 +432,31 @@ export default function App() {
             <span className="readiness-dot" />
             <div><strong>{ready ? "READY TO POST" : "REVIEW NEEDED"}</strong><small>{ready ? "Core fields are complete" : `${controller.output.issues.length + controller.projection.conflicts.length} blocking item${controller.output.issues.length + controller.projection.conflicts.length === 1 ? "" : "s"}`}</small></div>
           </div>
+          {!ready && (
+            <section className="review-checklist" aria-labelledby="review-checklist-heading">
+              <h3 id="review-checklist-heading">Fix before copying</h3>
+              <ul>
+                {controller.output.issues.map((issue) => {
+                  const copy = ISSUE_COPY[issue];
+                  const diagnostic = activeDiagnostics.find((item) => (
+                    issue === "HLTV URL" ? /URL/i.test(item) : item.toLowerCase().includes(issue.toLowerCase())
+                  ));
+                  return (
+                    <li key={issue}>
+                      <span>Missing</span>
+                      <div><strong>{copy.label}</strong><small>{diagnostic ?? copy.guidance}</small></div>
+                    </li>
+                  );
+                })}
+                {controller.projection.conflicts.map((conflict) => (
+                  <li key={`conflict:${conflict.field}`}>
+                    <span>Conflict</span>
+                    <div><strong>{FIELD_LABELS[conflict.field]}</strong><small>Choose your edit or the imported value in Quick fixes.</small></div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           {controller.lastRejectedCapture && (
             <button onClick={() => void controller.retryLastRejected()}>Retry last recognized paste</button>
           )}
@@ -475,6 +527,7 @@ export default function App() {
           </div>
           <Field label="Event" value={match.event} onCommit={commit("event")} />
           <Field label="Stage" value={match.stage} onCommit={commit("stage")} />
+          <Field label="HLTV match URL" value={match.sourceUrl} onCommit={commit("sourceUrl")} />
           <label className="field"><span>Context line</span><textarea value={match.context} rows={3} onChange={(event) => commit("context")(event.target.value)} /></label>
           <section className="parsed-data">
             <h3>Parsed maps <span>{match.maps.length}</span></h3>

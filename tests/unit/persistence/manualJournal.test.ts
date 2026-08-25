@@ -67,4 +67,20 @@ describe("manual recovery journal", () => {
     expect(recovered.manualPlayers?.["player:1"]).toMatchObject({ team: "Two", teamSide: "team2" });
     expect(applyManualOperation({ ...ledger, id: "another" }, mapOperation).manualMaps).toBeUndefined();
   });
+
+  it("recovers a manually supplied HLTV source URL", () => {
+    const operation = {
+      version: 1 as const,
+      kind: "scalar" as const,
+      draftId: ledger.id,
+      operationId: "source-url-1",
+      field: "sourceUrl" as const,
+      value: "https://www.hltv.org/matches/2/one-vs-two-event",
+      baseline: "",
+    };
+
+    appendManualOperation(operation);
+    const recovered = applyManualOperation(ledger, loadManualJournal()[0]);
+    expect(recovered.manual.sourceUrl).toBe(operation.value);
+  });
 });

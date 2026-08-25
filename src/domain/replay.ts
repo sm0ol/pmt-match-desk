@@ -72,6 +72,7 @@ function mergeMatch(previous: MatchData, next: MatchData): MatchData {
 
 function scalarParserValues(match: MatchData): Required<ManualFields> {
   return {
+    sourceUrl: match.sourceUrl,
     team1Name: match.team1.name,
     team2Name: match.team2.name,
     team1Score: match.seriesScore[0],
@@ -103,6 +104,7 @@ export function replayDraft(ledger: DraftLedger): DraftProjection {
   }
 
   const match = structuredClone(parserMatch);
+  if (ledger.manual.sourceUrl !== undefined) match.sourceUrl = ledger.manual.sourceUrl;
   if (ledger.manual.team1Name !== undefined) match.team1.name = ledger.manual.team1Name;
   if (ledger.manual.team2Name !== undefined) match.team2.name = ledger.manual.team2Name;
   if (ledger.manual.team1Score !== undefined) match.seriesScore[0] = ledger.manual.team1Score;

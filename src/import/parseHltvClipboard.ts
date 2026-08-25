@@ -65,6 +65,22 @@ function normalizedLines(plain: string): string[] {
     .filter(Boolean);
 }
 
+function integerLine(value: string | undefined): number | null {
+  if (!value || !/^\d+$/.test(value)) return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function canonicalMapName(value: string | undefined): string | null {
+  const normalized = value?.toLowerCase() ?? "";
+  for (const mapName of MAP_NAMES) {
+    if (normalized === mapName || normalized === `${mapName}${mapName}`) {
+      return `${mapName[0].toUpperCase()}${mapName.slice(1)}`;
+    }
+  }
+  return null;
+}
+
 function collectHrefs(html: string): string[] {
   if (!html) return [];
   const root = parseFragment(html) as NodeLike;
@@ -143,18 +159,34 @@ function parseMaps(
   const seen = new Set<string>();
 
   for (let index = 0; index < lines.length - 5; index += 1) {
-    const name = lines[index];
-    if (!MAP_NAMES.has(name.toLowerCase()) || lines[index + 1] !== team1) continue;
-    const team1Score = Number(lines[index + 2]);
-    if (!Number.isFinite(team1Score)) continue;
-    const statsIndex = lines.slice(index + 3, index + 6).findIndex((line) => line === "STATS");
-    if (statsIndex < 0) continue;
-    const absoluteStats = index + 3 + statsIndex;
-    const team2Index = lines.slice(absoluteStats + 1, absoluteStats + 5).findIndex((line) => line === team2);
-    if (team2Index < 0) continue;
-    const absoluteTeam2 = absoluteStats + 1 + team2Index;
-    const team2Score = Number(lines[absoluteTeam2 + 1]);
-    if (!Number.isFinite(team2Score) || seen.has(name.toLowerCase())) continue;
+    const name = canonicalMapName(lines[index]);
+    if (!name) continue;
+    let blockEnd = Math.min(lines.length, index + 14);
+    for (let candidateIndex = index + 1; candidateIndex < blockEnd; candidateIndex += 1) {
+      if (canonicalMapName(lines[candidateIndex])) {
+        blockEnd = candidateIndex;
+        break;
+      }
+    }
+    const absoluteStats = lines.slice(index + 1, Math.min(blockEnd, index + 10))
+      .findIndex((line) => line === "STATS") + index + 1;
+    if (absoluteStats <= index || !lines.slice(index + 1, absoluteStats).includes(team1)) continue;
+
+    let team1Score: number | null = null;
+    for (let candidateIndex = absoluteStats - 1; candidateIndex > index; candidateIndex -= 1) {
+      team1Score = integerLine(lines[candidateIndex]);
+      if (team1Score !== null) break;
+    }
+    const absoluteTeam2 = lines.slice(absoluteStats + 1, blockEnd).findIndex((line) => line === team2)
+      + absoluteStats + 1;
+    if (team1Score === null || absoluteTeam2 <= absoluteStats) continue;
+
+    let team2Score: number | null = null;
+    for (let candidateIndex = absoluteTeam2 + 1; candidateIndex < blockEnd; candidateIndex += 1) {
+      team2Score = integerLine(lines[candidateIndex]);
+      if (team2Score !== null) break;
+    }
+    if (team2Score === null || seen.has(name.toLowerCase())) continue;
     const link = mapLinks[maps.length];
     const mapId = link?.match(/mapstatsid\/(\d+)/)?.[1] ?? `map:${slug(name)}`;
     maps.push({
@@ -217,6 +249,23 @@ function parsePlayers(
   return players;
 }
 
+function findSeriesTeam(
+  lines: string[],
+  start: number,
+  end: number,
+  direction: "forward" | "backward",
+): { name: string; score: number } | null {
+  const step = direction === "forward" ? 1 : -1;
+  let index = direction === "forward" ? start : end - 1;
+  while (index >= start && index < end) {
+    const score = integerLine(lines[index]);
+    const name = lines[index - 1];
+    if (score !== null && name) return { name, score };
+    index += step;
+  }
+  return null;
+}
+
 function parseMain(lines: string[], hrefs: string[]): MatchData | null {
   const mapsIndex = lines.indexOf("Maps");
   let statusIndex = -1;
@@ -228,11 +277,11 @@ function parseMain(lines: string[], hrefs: string[]): MatchData | null {
   }
   if (statusIndex < 5 || mapsIndex < statusIndex + 2) return null;
 
-  const team1Name = lines[statusIndex - 5];
-  const team2Name = lines[statusIndex + 1];
-  const score1 = Number(lines[statusIndex - 4]);
-  const score2 = Number(lines[statusIndex + 2]);
-  if (!team1Name || !team2Name || !Number.isFinite(score1) || !Number.isFinite(score2)) return null;
+  const team1Result = findSeriesTeam(lines, Math.max(0, statusIndex - 12), statusIndex, "backward");
+  const team2Result = findSeriesTeam(lines, statusIndex + 1, mapsIndex, "forward");
+  if (!team1Result || !team2Result) return null;
+  const { name: team1Name, score: score1 } = team1Result;
+  const { name: team2Name, score: score2 } = team2Result;
 
   const team1 = findTeam(hrefs, team1Name);
   const team2 = findTeam(hrefs, team2Name);

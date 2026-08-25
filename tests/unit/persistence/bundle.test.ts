@@ -6,7 +6,7 @@ const ledger: DraftLedger = {
   id: "draft",
   createdAt: "1",
   updatedAt: "2",
-  manual: {},
+  manual: { sourceUrl: "https://www.hltv.org/matches/2/one-vs-two-event" },
   imports: [],
 };
 

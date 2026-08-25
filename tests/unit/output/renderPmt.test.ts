@@ -28,9 +28,10 @@ describe("renderPmt", () => {
     const output = renderPmt(match);
     expect(output.title).toBe(readFileSync(resolve(process.cwd(), "tests/golden/pmt/completed-bo3.title.txt"), "utf8").trimEnd());
     expect(output.body).toBe(readFileSync(resolve(process.cwd(), "tests/golden/pmt/completed-bo3.body.txt"), "utf8").trimEnd());
-    expect(output.body).toContain("#100 Thieves [1-2](https://www.hltv.org/matches/");
+    expect(output.body).toContain("# 100 Thieves [1-2](https://www.hltv.org/matches/");
     expect(output.body).toContain("**Ancient:** 9-13");
-    expect(output.body).toContain("###Map Vetoes");
+    expect(output.body).toContain("### Map Vetoes");
+    expect(output.body).not.toContain("###Map Vetoes");
     expect(output.body).toContain("|9|**Ancient**|**13**|");
     expect(output.body).toContain("|**13**|**Dust2**|7|");
     expect(output.body).toContain("This thread was created by the Post-Match Team");
@@ -41,6 +42,27 @@ describe("renderPmt", () => {
     const output = renderPmt({ ...match, event: "" });
     expect(output.ready).toBe(false);
     expect(output.issues).toContain("event");
+  });
+
+  it("puts a space after every Markdown heading marker", () => {
+    const output = renderPmt({
+      ...match,
+      players: [{
+        id: "player-1",
+        name: "Ace",
+        team: "100 Thieves",
+        teamSide: "team1",
+        kills: 20,
+        deaths: 10,
+        swing: "+2%",
+        adr: 90,
+        kast: "80%",
+        rating: 1.25,
+      }],
+    });
+
+    expect(output.body).toContain("### Full Match Stats");
+    expect(output.body).not.toMatch(/^#{1,6}[^#\s]/m);
   });
 
   it("rejects non-canonical source URLs before building Markdown", () => {

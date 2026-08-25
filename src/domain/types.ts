@@ -48,6 +48,7 @@ export interface MatchData {
 }
 
 export type ManualFields = Partial<{
+  sourceUrl: string;
   team1Name: string;
   team2Name: string;
   team1Score: number;

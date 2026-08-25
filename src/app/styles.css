@@ -83,6 +83,14 @@ kbd { min-width: 1.45rem; padding: .2rem .35rem; border: 1px solid #505747; back
 .readiness strong, .readiness small { display: block; }
 .readiness strong { font: 600 .92rem "Barlow Condensed", sans-serif; letter-spacing: .06em; }
 .readiness small { color: var(--muted); font-size: .72rem; margin-top: .15rem; }
+.review-checklist { margin: -.25rem 0 1rem; padding: .8rem; border: 1px solid #6d582f; background: #211d14; }
+.review-checklist h3 { margin: 0 0 .6rem; color: #ffcf72; font: 600 .72rem "Barlow Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.review-checklist ul { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+.review-checklist li { display: grid; grid-template-columns: auto 1fr; gap: .55rem; align-items: start; padding-top: .55rem; border-top: 1px solid #4a3e25; }
+.review-checklist li > span { padding: .15rem .3rem; color: #241b0d; background: #ffc857; font: 700 .56rem "Barlow Condensed", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.review-checklist strong, .review-checklist small { display: block; }
+.review-checklist strong { color: #f3e8ce; font-size: .76rem; }
+.review-checklist small { margin-top: .12rem; color: #c5b895; font-size: .68rem; line-height: 1.25; }
 .signal-list { margin: 0; }
 .signal-list div { display: flex; align-items: baseline; justify-content: space-between; padding: .58rem 0; border-bottom: 1px solid var(--line); }
 .signal-list dt { color: var(--muted); font: 600 .72rem "Barlow Condensed", sans-serif; letter-spacing: .14em; }
@@ -160,15 +168,15 @@ kbd { min-width: 1.45rem; padding: .2rem .35rem; border: 1px solid #505747; back
 .field input, .field textarea { width: 100%; border: 1px solid #3f453a; background: #11130f; padding: .62rem .65rem; outline: 0; }
 .field input:focus, .field textarea:focus { border-color: var(--acid); }
 .field textarea { resize: vertical; min-height: 70px; }
-.parsed-data { margin-top: 1.5rem; }
+.parsed-data { min-width: 0; margin-top: 1.5rem; }
 .parsed-data h3 { display: flex; justify-content: space-between; }
-.map-row { display: grid; grid-template-columns: 1.4rem 1fr auto; gap: .5rem; align-items: center; padding: .65rem 0; border-bottom: 1px solid var(--line); }
+.map-row { min-width: 0; display: grid; grid-template-columns: 1.4rem minmax(0, 1fr) auto; gap: .5rem; align-items: center; padding: .65rem 0; border-bottom: 1px solid var(--line); }
 .map-row span { color: var(--acid); font: 600 .65rem "Barlow Condensed", sans-serif; }
 .map-row > input { min-width: 0; width: 100%; border: 0; border-bottom: 1px solid transparent; background: transparent; padding: .3rem 0; font-weight: 600; }
 .map-row > input:hover, .map-row > input:focus { border-color: var(--line); outline: 0; }
 .map-row b { font: 600 1rem "Barlow Condensed", sans-serif; }
-.map-score-edit { display: flex; align-items: center; gap: .25rem; }
-.map-score-edit input { width: 2.25rem; border: 1px solid var(--line); background: #11130f; padding: .25rem; text-align: center; }
+.map-score-edit { min-width: 0; display: flex; align-items: center; gap: .25rem; }
+.map-score-edit input { width: 3rem; flex: 0 0 3rem; border: 1px solid var(--line); background: #11130f; padding: .25rem .2rem; text-align: center; font-variant-numeric: tabular-nums; }
 .map-row > button { grid-column: 2 / -1; width: fit-content; border: 0; background: transparent; color: var(--cyan); padding: 0; font-size: .65rem; }
 .player-editors { margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: .9rem; }
 .player-editors > summary { display: flex; justify-content: space-between; cursor: pointer; color: #aeb3a6; font: 600 .72rem "Barlow Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase; }
