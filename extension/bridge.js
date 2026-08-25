@@ -27,6 +27,14 @@ window.addEventListener("message", (event) => {
 });
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message && message.type === "pmt-progress" && Array.isArray(message.steps)) {
+    window.postMessage(
+      { source: "pmt-match-desk-extension", kind: "capture-progress", steps: message.steps },
+      window.location.origin,
+    );
+    sendResponse({ ok: true });
+    return false;
+  }
   if (!message || message.type !== "pmt-deliver" || !Array.isArray(message.captures)) {
     return false;
   }

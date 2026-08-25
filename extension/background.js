@@ -71,7 +71,7 @@ async function tryDeliver(tabId, captures) {
   return false;
 }
 
-async function deliverToApp(captures, sourceWindowId) {
+async function ensureAppTab(sourceWindowId) {
   const openTabs = await chrome.tabs.query({ url: APP_URL_PATTERNS });
   // Prefer the production app over a local dev tab.
   let appTab =
@@ -84,14 +84,24 @@ async function deliverToApp(captures, sourceWindowId) {
     appTab = await chrome.tabs.create({ url: APP_HOME, active: true, windowId: sourceWindowId });
     await waitForComplete(appTab.id, 30000);
   }
-  if (await tryDeliver(appTab.id, captures)) return;
+  return appTab;
+}
+
+async function deliverBatch(appTab, captures, allowRecovery) {
+  if (await tryDeliver(appTab.id, captures)) return true;
+  if (!allowRecovery) return false;
   // No acknowledgment: the tab predates the extension install or runs an old
   // app bundle without the listener. Reload it and try once more.
   await chrome.tabs.reload(appTab.id);
   await waitForComplete(appTab.id, 30000);
   await sleep(500);
-  if (await tryDeliver(appTab.id, captures)) return;
-  throw new Error("The Match Desk tab did not accept the captures.");
+  return tryDeliver(appTab.id, captures);
+}
+
+function sendProgress(tabId, steps) {
+  chrome.tabs
+    .sendMessage(tabId, { type: "pmt-progress", steps: steps.map((step) => ({ ...step })) })
+    .catch(() => { /* the desk is not listening yet; later updates will land */ });
 }
 
 async function setBadge(text, color) {
@@ -121,7 +131,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id || !tab.url) return;
   if (!HLTV_PAGE.test(tab.url)) {
-    await deliverToApp([], tab.windowId).catch(() => {
+    await ensureAppTab(tab.windowId).catch(() => {
       chrome.tabs.create({ url: APP_HOME, active: true });
     });
     return;
@@ -129,20 +139,47 @@ chrome.action.onClicked.addListener(async (tab) => {
   try {
     await setBadge("…", "#3b82f6");
     const main = await requestCapture(tab.id);
-    const captures = [main];
     const isMatchPage = /^https:\/\/www\.hltv\.org\/matches\/\d+\//.test(tab.url);
+    const statsLinks = (main.statsLinks || [])
+      .slice(0, MAX_STATS_PAGES)
+      .map((link, index) =>
+        typeof link === "string"
+          ? { url: link, label: `Map ${index + 1} stats` }
+          : { url: link.url, label: link.name ? `${link.name} stats` : `Map ${index + 1} stats` },
+      );
+
+    // The desk opens immediately; the match page arrives first and the maps
+    // fill in one by one, with a progress panel narrating each step.
+    const steps = [
+      { label: isMatchPage ? "Match page" : "Map stats page", status: "active" },
+      ...(isMatchPage ? statsLinks.map((link) => ({ label: link.label, status: "pending" })) : []),
+    ];
+    const appTab = await ensureAppTab(tab.windowId);
+    sendProgress(appTab.id, steps);
+    const delivered = await deliverBatch(appTab, [main], true);
+    steps[0].status = delivered ? "done" : "failed";
+    sendProgress(appTab.id, steps);
+    if (!delivered) throw new Error("The Match Desk tab did not accept the capture.");
+
+    let deliveredCount = 1;
     if (isMatchPage) {
-      for (const link of (main.statsLinks || []).slice(0, MAX_STATS_PAGES)) {
+      for (const [index, link] of statsLinks.entries()) {
+        const step = steps[index + 1];
+        step.status = "active";
+        sendProgress(appTab.id, steps);
         try {
-          captures.push(await captureStatsPage(link));
+          const capture = await captureStatsPage(link.url);
+          step.status = (await deliverBatch(appTab, [capture], false)) ? "done" : "failed";
+          if (step.status === "done") deliveredCount += 1;
         } catch {
-          // A stats page that fails to load or answer is skipped; the app
+          // A stats page that fails to load or answer is skipped; the desk
           // shows which maps still need stats.
+          step.status = "failed";
         }
+        sendProgress(appTab.id, steps);
       }
     }
-    await deliverToApp(captures, tab.windowId);
-    await setBadge(String(captures.length), "#059669");
+    await setBadge(String(deliveredCount), "#059669");
   } catch {
     await setBadge("!", "#dc2626");
   }

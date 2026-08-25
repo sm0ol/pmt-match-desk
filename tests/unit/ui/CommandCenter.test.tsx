@@ -142,6 +142,35 @@ describe("command center", () => {
     }
   });
 
+  it("shows the extension capture progress panel", async () => {
+    render(<App />);
+    await screen.findByLabelText(/paste copied hltv page/i);
+
+    const send = (steps: Array<{ label: string; status: string }>) =>
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: { source: "pmt-match-desk-extension", kind: "capture-progress", steps },
+          origin: window.location.origin,
+          source: window,
+        }),
+      );
+    send([
+      { label: "Match page", status: "done" },
+      { label: "Mirage stats", status: "active" },
+      { label: "Nuke stats", status: "pending" },
+    ]);
+
+    expect(await screen.findByText("Importing from HLTV")).toBeVisible();
+    expect(screen.getByText("Mirage stats")).toBeVisible();
+
+    send([
+      { label: "Match page", status: "done" },
+      { label: "Mirage stats", status: "done" },
+      { label: "Nuke stats", status: "failed" },
+    ]);
+    expect(await screen.findByText("Nuke stats — skipped")).toBeVisible();
+  });
+
   it("ignores window messages that are not extension capture batches", async () => {
     render(<App />);
     await screen.findByLabelText(/paste copied hltv page/i);

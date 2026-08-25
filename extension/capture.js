@@ -18,13 +18,15 @@ function buildCapture() {
     for (const element of clone.querySelectorAll("[style]")) element.removeAttribute("style");
     html = clone.outerHTML.slice(0, MAX_HTML_CHARS);
   }
-  const statsLinks = [
-    ...new Set(
-      [...document.querySelectorAll('a[href*="/stats/matches/mapstatsid/"]')].map(
-        (anchor) => anchor.href,
-      ),
-    ),
-  ];
+  const statsLinks = [];
+  const seen = new Set();
+  for (const anchor of document.querySelectorAll('a[href*="/stats/matches/mapstatsid/"]')) {
+    if (seen.has(anchor.href)) continue;
+    seen.add(anchor.href);
+    const holder = anchor.closest("[class*='mapholder']");
+    const nameNode = holder ? holder.querySelector("[class*='mapname']") : null;
+    statsLinks.push({ url: anchor.href, name: (nameNode ? nameNode.textContent : "").trim() });
+  }
   return {
     plain: document.body.innerText.slice(0, MAX_PLAIN_CHARS),
     html,

@@ -22,6 +22,44 @@ import { useDraftController, type WorkStatus } from "./useDraftController";
 
 const PASTE_LABEL = "Paste copied HLTV page";
 
+interface CaptureStep {
+  label: string;
+  status: "pending" | "active" | "done" | "failed";
+}
+
+function CaptureProgressPanel({ steps }: { steps: CaptureStep[] }) {
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="fixed bottom-4 right-4 z-40 w-72 rounded-lg border bg-background p-3 shadow-lg"
+    >
+      <div className="mb-2 text-sm font-medium">Importing from HLTV</div>
+      <ol className="flex flex-col gap-1.5">
+        {steps.map((step, index) => (
+          <li key={index} className="flex items-center gap-2 text-sm">
+            <span className="flex w-4 justify-center" aria-hidden="true">
+              {step.status === "done" ? (
+                <span className="text-emerald-600">✓</span>
+              ) : step.status === "failed" ? (
+                <span className="text-destructive">✕</span>
+              ) : step.status === "active" ? (
+                <span className="size-3 animate-spin rounded-full border-2 border-muted-foreground/60 border-t-transparent" />
+              ) : (
+                <span className="text-muted-foreground">•</span>
+              )}
+            </span>
+            <span className={step.status === "pending" ? "text-muted-foreground" : ""}>
+              {step.label}
+              {step.status === "failed" ? " — skipped" : ""}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 function focusPasteTarget() {
   document.querySelector<HTMLTextAreaElement>(`textarea[aria-label='${PASTE_LABEL}']`)?.focus();
 }
@@ -474,6 +512,7 @@ export default function App() {
   const { importClipboard } = controller;
   const [showExport, setShowExport] = useState(false);
   const [showClear, setShowClear] = useState(false);
+  const [captureSteps, setCaptureSteps] = useState<CaptureStep[] | null>(null);
   const [subreddit, setSubreddit] = useState(() => {
     try {
       return localStorage.getItem(SUBREDDIT_STORAGE_KEY) ?? DEFAULT_SUBREDDIT;
@@ -505,6 +544,41 @@ export default function App() {
     window.addEventListener("paste", globalPaste);
     return () => window.removeEventListener("paste", globalPaste);
   }, [importClipboard]);
+
+  // The extension streams capture progress; the panel hides itself a few
+  // seconds after every step finished.
+  useEffect(() => {
+    let hideTimer: number | null = null;
+    const onMessage = (event: MessageEvent) => {
+      if (event.source !== window || event.origin !== window.location.origin) return;
+      const data = event.data as { source?: unknown; kind?: unknown; steps?: unknown } | null;
+      if (!data || data.source !== "pmt-match-desk-extension" || data.kind !== "capture-progress") return;
+      const steps = (Array.isArray(data.steps) ? data.steps : [])
+        .filter(
+          (step): step is { label: string; status: string } =>
+            Boolean(step) && typeof step.label === "string" && typeof step.status === "string",
+        )
+        .map((step) => ({
+          label: step.label.slice(0, 60),
+          status: (["pending", "active", "done", "failed"].includes(step.status)
+            ? step.status
+            : "pending") as CaptureStep["status"],
+        }))
+        .slice(0, 8);
+      if (steps.length === 0) return;
+      setCaptureSteps(steps);
+      if (hideTimer !== null) window.clearTimeout(hideTimer);
+      hideTimer = null;
+      if (steps.every((step) => step.status === "done" || step.status === "failed")) {
+        hideTimer = window.setTimeout(() => setCaptureSteps(null), 4000);
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => {
+      window.removeEventListener("message", onMessage);
+      if (hideTimer !== null) window.clearTimeout(hideTimer);
+    };
+  }, []);
 
   // The browser extension forwards capture batches through window.postMessage
   // and re-posts until the app acknowledges. The listener only exists once the
@@ -560,30 +634,38 @@ export default function App() {
     };
   }, [hydrated, hasPendingDecision, importClipboard]);
 
+  const progressPanel = captureSteps ? <CaptureProgressPanel steps={captureSteps} /> : null;
+
   if (!controller.hydrated) {
     return <div className="grid min-h-screen place-items-center text-muted-foreground">Loading…</div>;
   }
   if (!ledger) {
     return (
-      <EmptyState
-        onCapture={(capture) => void controller.importClipboard(capture)}
-        onImportBundle={(file) => void controller.readBundle(file)}
-        status={controller.status}
-        canRetry={Boolean(controller.lastRejectedCapture)}
-        onRetry={() => void controller.retryLastRejected()}
-      />
+      <>
+        <EmptyState
+          onCapture={(capture) => void controller.importClipboard(capture)}
+          onImportBundle={(file) => void controller.readBundle(file)}
+          status={controller.status}
+          canRetry={Boolean(controller.lastRejectedCapture)}
+          onRetry={() => void controller.retryLastRejected()}
+        />
+        {progressPanel}
+      </>
     );
   }
   if (!match) {
     return (
-      <RevertedDraft
-        ledger={ledger}
-        drafts={controller.drafts}
-        status={controller.status}
-        onCapture={(capture) => void controller.importClipboard(capture)}
-        onToggleImport={(id) => void controller.toggleImport(id)}
-        onSwitchDraft={(id) => void controller.switchDraft(id)}
-      />
+      <>
+        <RevertedDraft
+          ledger={ledger}
+          drafts={controller.drafts}
+          status={controller.status}
+          onCapture={(capture) => void controller.importClipboard(capture)}
+          onToggleImport={(id) => void controller.toggleImport(id)}
+          onSwitchDraft={(id) => void controller.switchDraft(id)}
+        />
+        {progressPanel}
+      </>
     );
   }
 
@@ -1018,6 +1100,8 @@ export default function App() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {progressPanel}
     </div>
   );
 }
