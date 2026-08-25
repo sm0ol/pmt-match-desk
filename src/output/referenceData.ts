@@ -1,7 +1,10 @@
-// Curated event and team reference data maintained by the Post-Match Team
-// (github.com/asbmeyers/Post-Match-Thread-Creator). Refresh the snapshot with
-// `npm run refresh-data`.
+// Event and team reference data from two sources: the Post-Match Team's
+// curated databases (github.com/asbmeyers/Post-Match-Thread-Creator, refresh
+// with `npm run refresh-data`) and our own Liquipedia-built event database
+// (data/event-sources.json, refresh with `npm run refresh-events`). Our own
+// entries win on name collisions.
 import data from "./referenceData.json";
+import liquipediaData from "./liquipediaEvents.json";
 
 export interface EventReference {
   name: string;
@@ -12,6 +15,9 @@ export interface EventReference {
   hltv: string;
   reddit: string;
   streams: Array<{ label: string; url: string }>;
+  /** Known directly for Liquipedia-built entries; derived from city otherwise. */
+  kind?: "LAN" | "Online";
+  aliases?: string[];
 }
 
 export interface TeamReference {
@@ -29,9 +35,11 @@ function normalize(value: string): string {
   return value.trim().toLocaleLowerCase();
 }
 
-const eventsByName = new Map<string, EventReference>(
-  (data.events as EventReference[]).map((event) => [normalize(event.name), event]),
-);
+const eventsByName = new Map<string, EventReference>();
+for (const event of [...(data.events as EventReference[]), ...(liquipediaData.events as EventReference[])]) {
+  eventsByName.set(normalize(event.name), event);
+  for (const alias of event.aliases ?? []) eventsByName.set(normalize(alias), event);
+}
 const teamsByHltvName = new Map<string, TeamReference>(
   (data.teams as TeamReference[]).map((team) => [normalize(team.hltvName), team]),
 );

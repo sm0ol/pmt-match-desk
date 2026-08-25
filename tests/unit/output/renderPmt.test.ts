@@ -110,6 +110,15 @@ describe("renderPmt", () => {
     expect(output.body).toContain("^Note: ^Above ^rosters");
   });
 
+  it("renders event information from the Liquipedia-built event database", () => {
+    const output = renderPmt({ ...match, event: "BLAST Open Fall 2026" });
+
+    expect(output.body).toContain("### Event Information");
+    expect(output.body).toContain("**BLAST Open Fall 2026** | 🇵🇹 Porto / Copenhagen ($1.1m LAN)");
+    expect(output.body).toContain("[Liquipedia](https://liquipedia.net/counterstrike/BLAST/Open/2026/Fall)");
+    expect(output.body).toContain("**Streams** | [Twitch](https://www.twitch.tv/BLASTPremier) | [YouTube](https://www.youtube.com/@BLASTPremier)");
+  });
+
   it("falls back to parsed players for a team missing from the reference data", () => {
     const output = renderPmt({
       ...match,

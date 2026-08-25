@@ -1,0 +1,6 @@
+{
+  "note": "Liquipedia event pages for our own event database. Add a URL (npm run add-event <url>), then npm run refresh-events. Use hltvName when HLTV names the event differently than Liquipedia.",
+  "sources": [
+    { "url": "https://liquipedia.net/counterstrike/BLAST/Open/2026/Fall" }
+  ]
+}

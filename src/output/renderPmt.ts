@@ -30,7 +30,7 @@ const SECTION_BREAK = "&nbsp;\n\n---";
 function eventInfoSection(match: MatchData): string {
   const event = findEventReference(match.event);
   if (!event) return "";
-  const kind = eventLocationKind(event.city);
+  const kind = event.kind ?? eventLocationKind(event.city);
   const place = [event.flag, event.city].filter(Boolean).join(" ");
   const links = [
     event.liquipedia ? `[Liquipedia](${event.liquipedia})` : "",

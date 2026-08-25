@@ -1,0 +1,34 @@
+name: Refresh event database
+
+on:
+  schedule:
+    # Mondays 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Refresh Liquipedia event database
+        run: node scripts/refresh-events.mjs
+      - name: Refresh Post-Match Team reference data
+        run: node scripts/refresh-reference-data.mjs
+      - name: Commit changes
+        run: |
+          git config user.name "pmt-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/output/liquipediaEvents.json src/output/referenceData.json
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "chore: refresh event and team reference data"
+            git push
+          fi

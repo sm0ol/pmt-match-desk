@@ -44,14 +44,25 @@ When HLTV changes a layout, the importer fails conservatively and leaves the las
 
 ## Event and team reference data
 
-The Event Information and Team Information sections come from the Post-Match
-Team's curated databases in the original
-[Post-Match-Thread-Creator](https://github.com/asbmeyers/Post-Match-Thread-Creator)
-repository (event links, streams, rosters, coaches, subs, and team links). A
-snapshot lives in `src/output/referenceData.json`. To pull the latest data,
-run `npm run refresh-data`, then rebuild and redeploy. A match whose event or
-team is not in the snapshot simply renders without that block; team rosters
-fall back to the players parsed from the match page.
+The Event Information and Team Information sections come from two sources:
+
+1. **Our own event database, built from Liquipedia.** Humans only enter URLs:
+   `npm run add-event -- https://liquipedia.net/counterstrike/<event-page>`
+   adds a page to `data/event-sources.json` and fetches its infobox (name,
+   location, prize pool, LAN/Online, official streams) through the Liquipedia
+   API, within their API terms of use. `npm run refresh-events` re-fetches
+   all listed events. Pass an HLTV event name as a second argument when HLTV
+   names the event differently than Liquipedia.
+2. **The Post-Match Team's curated databases** in the original
+   [Post-Match-Thread-Creator](https://github.com/asbmeyers/Post-Match-Thread-Creator)
+   repository (team rosters, coaches, subs, links, and more events).
+   `npm run refresh-data` pulls the latest snapshot.
+
+Our Liquipedia entries win on name collisions. A GitHub Actions cron
+(`.github/workflows/refresh-events.yml`) refreshes both weekly and commits
+changes; redeploy to publish them. A match whose event or team is in neither
+source simply renders without that block; team rosters fall back to the
+players parsed from the match page.
 
 ## Run it locally
 

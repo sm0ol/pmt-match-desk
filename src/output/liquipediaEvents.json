@@ -1,0 +1,29 @@
+{
+  "source": "https://liquipedia.net (see data/event-sources.json)",
+  "refreshedAt": "2026-08-25T19:31:47.307Z",
+  "events": [
+    {
+      "name": "BLAST Open Fall 2026",
+      "aliases": [],
+      "flag": "🇵🇹",
+      "city": "Porto / Copenhagen",
+      "prize": "$1.1m",
+      "kind": "LAN",
+      "liquipedia": "https://liquipedia.net/counterstrike/BLAST/Open/2026/Fall",
+      "hltv": "",
+      "reddit": "",
+      "startDate": "2026-08-26",
+      "endDate": "2026-09-06",
+      "streams": [
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/BLASTPremier"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@BLASTPremier"
+        }
+      ]
+    }
+  ]
+}
