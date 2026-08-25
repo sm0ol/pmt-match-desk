@@ -88,10 +88,6 @@ function StatusText({ status }: { status: WorkStatus }) {
 
 const ISSUE_COPY: Record<PmtIssue, { label: string; guidance: string }> = {
   match: { label: "Match data", guidance: "Paste a complete HLTV match page." },
-  "match live": {
-    label: "Match still live",
-    guidance: "Draft is prepared. Paste the final page once the match is over.",
-  },
   "team 1": { label: "Team one", guidance: "Enter the first team below." },
   "team 2": { label: "Team two", guidance: "Enter the second team below." },
   event: { label: "Event", guidance: "Enter the tournament name below." },
@@ -740,12 +736,17 @@ export default function App() {
 
         <main className="flex min-w-0 flex-col gap-3">
           <div className="sticky top-14 z-10 flex flex-wrap items-center justify-between gap-2 rounded-lg border bg-background px-3 py-2 shadow-sm">
-            <span className="flex items-center gap-2 text-sm font-medium">
+            <span className="flex flex-wrap items-center gap-2 text-sm font-medium">
               <span
                 aria-hidden="true"
                 className={`size-2 rounded-full ${ready ? "bg-emerald-500" : "bg-amber-500"}`}
               />
               {ready ? "Ready to post" : "Review needed"}
+              {match.state === "live" && (
+                <span className="font-normal text-muted-foreground">
+                  Match is live — paste the final page for final stats
+                </span>
+              )}
             </span>
             <div className="flex gap-2">
               <CopyButton label="Copy title" value={controller.output.title} disabled={!ready} />

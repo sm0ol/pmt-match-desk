@@ -240,16 +240,21 @@ test("a map-stat page can arrive before the main page and enriches one draft", a
   await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
 });
 
-test("a live match paste prepares a draft but blocks copying until it ends", async ({ page }) => {
+test("a live match paste prepares a copyable draft before the match ends", async ({ page }) => {
   await page.goto("/");
   await pasteCapture(page, { plain: livePlain, html: "" });
 
-  await expect(page.getByText("Review needed")).toBeVisible();
-  await expect(page.getByText("Match still live")).toBeVisible();
+  await expect(page.getByText(/Match is live/)).toBeVisible();
   await expect(page.getByRole("heading", { name: /paiN Academy vs Peladona/ })).toBeVisible();
   await expect(page.getByText("Map Vetoes")).toBeVisible();
-  await expect(page.getByRole("button", { name: /copy title/i })).toBeDisabled();
   await expect(page.getByLabel("Event")).toHaveValue("CCT 2026 South America Series 5");
+
+  // The plain-only capture has no match URL; supplying it makes the draft copyable mid-match.
+  await expect(page.getByText("Review needed")).toBeVisible();
+  await page.getByLabel("HLTV match URL").fill("https://www.hltv.org/matches/2400123/pain-academy-vs-peladona-cct-2026-south-america-series-5");
+  await expect(page.getByText("Ready to post")).toBeVisible();
+  await expect(page.getByRole("button", { name: /copy title/i })).toBeEnabled();
+  await expect(page.getByRole("button", { name: /copy body/i })).toBeEnabled();
 });
 
 test("the command center remains usable at a narrow phone viewport", async ({ page }) => {

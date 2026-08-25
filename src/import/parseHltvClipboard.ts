@@ -824,9 +824,6 @@ export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
       };
     }
     const diagnostics: string[] = [];
-    if (match.state === "live") {
-      diagnostics.push("Match is live — scores and stats are partial. Paste the final page after it ends.");
-    }
     if (!match.sourceUrl) diagnostics.push("The match URL could not be identified from copied links.");
     if (!match.stage) diagnostics.push("Event stage is missing and needs a quick edit.");
     return {

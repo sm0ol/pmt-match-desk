@@ -211,7 +211,6 @@ describe("parseHltvClipboard", () => {
     );
     // The live page shows a VRS forecast, not a result; it must not be picked up.
     expect(result.match?.vrs).toBeUndefined();
-    expect(result.diagnostics.join(" ")).toMatch(/live/i);
   });
 
   it("rejects unrelated and over-budget input without guessing", () => {

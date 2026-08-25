@@ -146,10 +146,9 @@ describe("renderPmt", () => {
     expect(output.issues).toContain("event");
   });
 
-  it("blocks copying while the match is live but still builds the draft", () => {
+  it("stays ready during a live match so the thread can be posted early", () => {
     const output = renderPmt({ ...match, state: "live" });
-    expect(output.ready).toBe(false);
-    expect(output.issues).toContain("match live");
+    expect(output.ready).toBe(true);
     expect(output.title).toContain("Post-Match Discussion");
     expect(output.body).toContain("### Map Vetoes");
   });
