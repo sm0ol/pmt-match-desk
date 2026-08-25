@@ -72,6 +72,23 @@ describe("HLTV map-stat import", () => {
     ]);
   });
 
+  it("anchors a stats capture to its match through the extension's URL hint", () => {
+    const withoutHint = parseHltvClipboard({
+      plain: otFixture("clipboard.txt"),
+      html: otFixture("clipboard.html"),
+    });
+    expect(withoutHint.match?.id).toMatch(/^composite:/);
+
+    const withHint = parseHltvClipboard(
+      { plain: otFixture("clipboard.txt"), html: otFixture("clipboard.html") },
+      { matchUrlHint: "https://www.hltv.org/matches/2396532/sinners-vs-eyeballers-esports-world-cup-2026-open-qualifier" },
+    );
+    expect(withHint.match?.id).toBe("2396532");
+    expect(withHint.match?.sourceUrl).toBe(
+      "https://www.hltv.org/matches/2396532/sinners-vs-eyeballers-esports-world-cup-2026-open-qualifier",
+    );
+  });
+
   it("parses a plain-text-only map capture conservatively with composite identities", () => {
     const proposal = parseHltvClipboard({ plain: fixture("clipboard.txt"), html: "" });
     expect(proposal.kind).toBe("map-stats");

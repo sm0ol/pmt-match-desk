@@ -47,32 +47,41 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     captures: message.captures.map((capture) => ({
       plain: capture && typeof capture.plain === "string" ? capture.plain : "",
       html: capture && typeof capture.html === "string" ? capture.html : "",
+      matchUrl: capture && typeof capture.matchUrl === "string" ? capture.matchUrl : "",
     })),
   };
 
   let attempts = 0;
+  let received = false;
   const MAX_ATTEMPTS = 30;
-  const finish = (ok) => {
+  const RESULT_TIMEOUT_MS = 45000;
+  const finish = (result) => {
     clearInterval(timer);
+    clearTimeout(deadline);
     window.removeEventListener("message", onAck);
-    sendResponse({ ok, batchId });
+    sendResponse({ batchId, ...result });
   };
   const onAck = (event) => {
     if (event.source !== window) return;
     const data = event.data;
-    if (
-      data &&
-      data.source === "pmt-match-desk-app" &&
-      data.kind === "batch-received" &&
-      data.batchId === batchId
-    ) {
-      finish(true);
+    if (!data || data.source !== "pmt-match-desk-app" || data.batchId !== batchId) return;
+    if (data.kind === "batch-received") {
+      received = true;
+      clearInterval(timer);
+      return;
+    }
+    if (data.kind === "batch-imported") {
+      finish({
+        ok: true,
+        imported: data.ok !== false,
+        message: typeof data.message === "string" ? data.message : "",
+      });
     }
   };
   const post = () => {
     attempts += 1;
     if (attempts > MAX_ATTEMPTS) {
-      finish(false);
+      finish({ ok: false, imported: false, message: "" });
       return;
     }
     window.postMessage(payload, window.location.origin);
@@ -80,6 +89,11 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
   window.addEventListener("message", onAck);
   const timer = setInterval(post, 700);
+  // If the import result never arrives (for example an open dialog is
+  // blocking the queue), report delivery without an outcome.
+  const deadline = setTimeout(() => {
+    finish(received ? { ok: true, imported: null, message: "" } : { ok: false, imported: false, message: "" });
+  }, RESULT_TIMEOUT_MS);
   post();
   return true; // sendResponse is called asynchronously
 });

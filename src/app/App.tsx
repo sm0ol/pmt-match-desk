@@ -25,6 +25,7 @@ const PASTE_LABEL = "Paste copied HLTV page";
 interface CaptureStep {
   label: string;
   status: "pending" | "active" | "done" | "failed";
+  detail?: string;
 }
 
 function CaptureStepIcon({ status }: { status: CaptureStep["status"] }) {
@@ -51,7 +52,7 @@ function CaptureStepsRow({ steps }: { steps: CaptureStep[] }) {
           <CaptureStepIcon status={step.status} />
           <span className={step.status === "pending" ? "text-muted-foreground" : ""}>
             {step.label}
-            {step.status === "failed" ? " — skipped" : ""}
+            {step.status === "failed" ? ` — ${step.detail || "skipped"}` : ""}
           </span>
         </span>
       ))}
@@ -570,7 +571,7 @@ export default function App() {
       if (!data || data.source !== "pmt-match-desk-extension" || data.kind !== "capture-progress") return;
       const steps = (Array.isArray(data.steps) ? data.steps : [])
         .filter(
-          (step): step is { label: string; status: string } =>
+          (step): step is { label: string; status: string; detail?: unknown } =>
             Boolean(step) && typeof step.label === "string" && typeof step.status === "string",
         )
         .map((step) => ({
@@ -578,6 +579,7 @@ export default function App() {
           status: (["pending", "active", "done", "failed"].includes(step.status)
             ? step.status
             : "pending") as CaptureStep["status"],
+          detail: typeof step.detail === "string" ? step.detail.slice(0, 80) : undefined,
         }))
         .slice(0, 8);
       if (steps.length === 0) return;
@@ -602,6 +604,12 @@ export default function App() {
   // switches to or creates that match's draft instead of asking, and the
   // queue waits while a manual paste's decision dialog is open.
   const { hydrated, hasPendingDecision } = controller;
+  // The listener registers once; importClipboard's identity changes with
+  // draft state, so the queue reads it through a ref.
+  const importClipboardRef = useRef(importClipboard);
+  useEffect(() => {
+    importClipboardRef.current = importClipboard;
+  }, [importClipboard]);
   useEffect(() => {
     if (!hydrated) return;
     const processed = new Set<string>();
@@ -628,26 +636,46 @@ export default function App() {
       if (processed.has(batchId)) return;
       processed.add(batchId);
       const captures = Array.isArray(data.captures) ? data.captures : [];
-      for (const entry of captures as Array<{ plain?: unknown; html?: unknown }>) {
+      let batchOk = true;
+      let batchMessage = "";
+      for (const entry of captures as Array<{ plain?: unknown; html?: unknown; matchUrl?: unknown }>) {
         const plain = typeof entry?.plain === "string" ? entry.plain : "";
         const html = typeof entry?.html === "string" ? entry.html : "";
+        const matchUrlHint = typeof entry?.matchUrl === "string" ? entry.matchUrl : undefined;
         if (!plain && !html) continue;
         queue = queue
           .then(waitForDecision)
-          .then(() =>
-            stopped
-              ? undefined
-              : importClipboard({ plain, html }, { onDifferentMatch: "switch-or-create" }),
-          )
-          .catch(() => {});
+          .then(async () => {
+            if (stopped) return;
+            const result = await importClipboardRef.current(
+              { plain, html },
+              { onDifferentMatch: "switch-or-create", matchUrlHint },
+            );
+            if (!result.ok) {
+              batchOk = false;
+              batchMessage = result.message ?? "";
+            }
+          })
+          .catch(() => {
+            batchOk = false;
+          });
       }
+      // The bridge reports the outcome back to the extension so the
+      // progress step reflects the import, not just the delivery.
+      queue = queue.then(() => {
+        if (stopped) return;
+        window.postMessage(
+          { source: "pmt-match-desk-app", kind: "batch-imported", batchId, ok: batchOk, message: batchMessage },
+          window.location.origin,
+        );
+      });
     };
     window.addEventListener("message", onMessage);
     return () => {
       stopped = true;
       window.removeEventListener("message", onMessage);
     };
-  }, [hydrated, hasPendingDecision, importClipboard]);
+  }, [hydrated, hasPendingDecision]);
 
   const progressPanel = captureSteps ? <CaptureProgressBanner steps={captureSteps} /> : null;
 
@@ -687,6 +715,13 @@ export default function App() {
   const commit = (field: keyof ManualFields) => (value: string | number) => void controller.updateManual(field, value);
   const conflicts = controller.projection.conflicts;
   const ready = controller.output.ready && conflicts.length === 0;
+  const reviewLabels = [
+    ...controller.output.issues.map((issue) => ISSUE_COPY[issue].label),
+    ...conflicts.map((conflict) => `${FIELD_LABELS[conflict.field]} conflict`),
+  ];
+  const reviewSummary = reviewLabels.length
+    ? `${reviewLabels[0]}${reviewLabels.length > 1 ? ` · ${reviewLabels.length - 1} more` : ""}`
+    : "";
   const activeDiagnostics = ready
     ? []
     : ledger.imports
@@ -990,6 +1025,9 @@ export default function App() {
                   className={`size-2 rounded-full ${ready ? "bg-emerald-500" : "bg-amber-500"}`}
                 />
                 {ready ? "Ready to post" : "Review needed"}
+                {!ready && reviewSummary && (
+                  <span className="font-normal text-muted-foreground">— {reviewSummary}</span>
+                )}
                 {match.state === "live" && (
                   <span className="font-normal text-muted-foreground">
                     Match is live — paste the final page for final stats

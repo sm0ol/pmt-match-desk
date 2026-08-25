@@ -347,12 +347,17 @@ function findTeam(hrefs: string[], name: string): Team {
   return { id, name };
 }
 
+// HLTV drops punctuation from team slugs where ours keeps a dash
+// ("BC.Game" becomes "bcgame", not "bc-game"), so compare dash-free.
+function slugMatches(candidateSlug: string, teamName: string): boolean {
+  return candidateSlug.replaceAll("-", "").includes(slug(teamName).replaceAll("-", ""));
+}
+
 function findSourceUrl(hrefs: string[], team1: string, team2: string): { id: string; url: string } {
-  const teamSlugs = [slug(team1), slug(team2)];
   const candidate = hrefs.find((href) => {
     const path = href.replace(/^https:\/\/www\.hltv\.org/, "");
     const match = path.match(/^\/matches\/(\d+)\/([^?#/]+)/);
-    return match && teamSlugs.every((teamSlug) => match[2].includes(teamSlug));
+    return match && slugMatches(match[2], team1) && slugMatches(match[2], team2);
   });
   const path = candidate?.replace(/^https:\/\/www\.hltv\.org/, "");
   const match = path?.match(/^\/matches\/(\d+)\/([^?#/]+)/);
@@ -367,11 +372,10 @@ function findSourceUrl(hrefs: string[], team1: string, team2: string): { id: str
 }
 
 function findMatchUrl(hrefs: string[], team1: string, team2: string): { id: string; url: string } | null {
-  const teamSlugs = [slug(team1), slug(team2)];
   const candidate = hrefs.find((href) => {
     const path = href.replace(/^https:\/\/www\.hltv\.org/, "");
     const match = path.match(/^\/matches\/\d+\/([^?#/]+)/);
-    return match && teamSlugs.every((teamSlug) => match[1].includes(teamSlug));
+    return match && slugMatches(match[1], team1) && slugMatches(match[1], team2);
   });
   const path = candidate?.replace(/^https:\/\/www\.hltv\.org/, "");
   const match = path?.match(/^\/matches\/(\d+)\/[^?#/]+/);
@@ -851,7 +855,12 @@ function parseMapStatsPlayers(
   return players;
 }
 
-function parseMapStats(lines: string[], hrefs: string[], root: NodeLike | null): MatchData | null {
+function parseMapStats(
+  lines: string[],
+  hrefs: string[],
+  root: NodeLike | null,
+  matchUrlHint?: string,
+): MatchData | null {
   const mapStatsLink = hrefs.find((href) => /^\/stats\/matches\/mapstatsid\/\d+\//.test(href));
   const linkedMapId = mapStatsLink?.match(/mapstatsid\/(\d+)/)?.[1];
   const mapIndex = lines.findIndex(
@@ -867,7 +876,13 @@ function parseMapStats(lines: string[], hrefs: string[], root: NodeLike | null):
   if (!team1Name || !team2Name || !Number.isFinite(team1Score) || !Number.isFinite(team2Score)) {
     return null;
   }
-  const source = findMatchUrl(hrefs, team1Name, team2Name);
+  // The extension knows which match page a stats capture came from; that
+  // hint anchors the capture when the page itself has no usable match link.
+  const hintUrl = matchUrlHint ? canonicalHltvMatchUrl(matchUrlHint) : null;
+  const hintId = hintUrl?.match(/\/matches\/(\d+)\//)?.[1];
+  const source =
+    findMatchUrl(hrefs, team1Name, team2Name) ??
+    (hintUrl && hintId ? { id: hintId, url: hintUrl } : null);
 
   const bestOfIndex = lines.findIndex((line) => /^Best of \d+$/i.test(line));
   const scoreLine = bestOfIndex > 0 ? lines[bestOfIndex - 1] : "";
@@ -907,7 +922,10 @@ function parseMapStats(lines: string[], hrefs: string[], root: NodeLike | null):
   };
 }
 
-export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
+export function parseHltvClipboard(
+  capture: ClipboardCapture,
+  options?: { matchUrlHint?: string },
+): ImportProposal {
   if (capture.plain.length > MAX_PLAIN_CHARS || capture.html.length > MAX_HTML_CHARS) {
     return {
       kind: "rejected",
@@ -938,7 +956,7 @@ export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
       (line, index) => line === "Map" && MAP_NAMES.has((lines[index + 1] ?? "").toLowerCase()),
     );
     const mapStats = !mainMatch && (hasMapStatsBlock || hrefs.some((href) => /\/stats\/matches\/mapstatsid\//.test(href)));
-    const match = mainMatch ?? (mapStats ? parseMapStats(lines, hrefs, root) : null);
+    const match = mainMatch ?? (mapStats ? parseMapStats(lines, hrefs, root, options?.matchUrlHint) : null);
     if (!match) {
       return {
         kind: "unrecognized",

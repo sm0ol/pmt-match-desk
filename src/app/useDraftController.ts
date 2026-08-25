@@ -139,8 +139,12 @@ export function useDraftController() {
   );
 
   const acceptProposal = useCallback(
-    async (proposal: ImportProposal, raw: { plain: string; html: string }, target?: DraftLedger | null) => {
-      if (!proposal.match) return;
+    async (
+      proposal: ImportProposal,
+      raw: { plain: string; html: string },
+      target?: DraftLedger | null,
+    ): Promise<boolean> => {
+      if (!proposal.match) return false;
       const base = target === undefined ? ledger : target;
       const duplicate = base?.imports.find(
         (entry) => entry.active && entry.fingerprint === proposal.fingerprint,
@@ -152,13 +156,13 @@ export function useDraftController() {
             setLedger(base);
           } catch {
             setStatus({ tone: "warning", message: "The matching draft could not be reopened. Your active draft was unchanged." });
-            return;
+            return false;
           }
         }
         setLastRejectedCapture(null);
         setPendingDecision(null);
         setStatus({ tone: "success", message: "No Changes — this snapshot is already active." });
-        return;
+        return true;
       }
       const rawChars = raw.plain.length + raw.html.length;
       const retainedRawChars = base?.imports.reduce(
@@ -170,7 +174,7 @@ export function useDraftController() {
           tone: "error",
           message: "This draft has reached its local history limit. Export it, then start a fresh draft.",
         });
-        return;
+        return false;
       }
       const timestamp = now();
       const changes = summarizeMatchChanges(base ? replayDraft(base).match : null, proposal.match);
@@ -215,13 +219,14 @@ export function useDraftController() {
             manualMaps: {},
             manualPlayers: {},
           };
-      if (!(await persist(next))) return;
+      if (!(await persist(next))) return false;
       setLastRejectedCapture(null);
       setPendingDecision(null);
       const message = proposal.diagnostics.length
         ? `Imported with ${proposal.diagnostics.length} item${proposal.diagnostics.length === 1 ? "" : "s"} to review — see Fix before copying.`
         : `Imported ${proposal.match.maps.length} maps and ${proposal.match.players.length} player rows.`;
       setStatus({ tone: proposal.diagnostics.length ? "warning" : "success", message });
+      return true;
     },
     [drafts, ledger, persist, setPendingDecision],
   );
@@ -229,17 +234,15 @@ export function useDraftController() {
   const importClipboard = useCallback(
     async (
       raw: { plain: string; html: string },
-      options?: { onDifferentMatch?: "ask" | "switch-or-create" },
-    ) => {
+      options?: { onDifferentMatch?: "ask" | "switch-or-create"; matchUrlHint?: string },
+    ): Promise<{ ok: boolean; message?: string }> => {
       setStatus({ tone: "working", message: "Reading copied HLTV data…" });
-      const proposal = parseHltvClipboard(raw);
+      const proposal = parseHltvClipboard(raw, { matchUrlHint: options?.matchUrlHint });
       if (!proposal.match) {
         if (proposal.kind !== "rejected") setLastRejectedCapture(raw);
-        setStatus({
-          tone: proposal.kind === "rejected" ? "error" : "warning",
-          message: proposal.diagnostics[0] ?? "No usable match data was found.",
-        });
-        return;
+        const message = proposal.diagnostics[0] ?? "No usable match data was found.";
+        setStatus({ tone: proposal.kind === "rejected" ? "error" : "warning", message });
+        return { ok: false, message };
       }
       const activeMatch = ledger ? replayDraft(ledger).match : null;
       if (activeMatch && activeMatch.id !== proposal.match.id) {
@@ -248,8 +251,7 @@ export function useDraftController() {
           // An extension capture names its match explicitly, so switch to the
           // matching draft or create one instead of asking.
           const target = matching ? (await repositoryRef.current.get(matching.id)) ?? matching : null;
-          await acceptProposal(proposal, raw, target);
-          return;
+          return { ok: await acceptProposal(proposal, raw, target) };
         }
         setPendingDecision({
           proposal,
@@ -258,9 +260,9 @@ export function useDraftController() {
           compatibleActive: hasCompatibleDisplayIdentity(activeMatch, proposal.match),
         });
         setStatus({ tone: "warning", message: "This looks like a different match. Choose its destination." });
-        return;
+        return { ok: true };
       }
-      await acceptProposal(proposal, raw);
+      return { ok: await acceptProposal(proposal, raw) };
     },
     [acceptProposal, drafts, ledger, setPendingDecision],
   );

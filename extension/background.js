@@ -59,16 +59,17 @@ async function captureStatsPage(url) {
 
 async function tryDeliver(tabId, captures) {
   // The bridge content script may not be ready yet; retry until it answers.
-  // The bridge itself only reports ok once the app acknowledged the batch.
+  // The bridge resolves with the import outcome once the app reports it.
   for (let attempt = 0; attempt < 20; attempt += 1) {
     try {
       const response = await chrome.tabs.sendMessage(tabId, { type: "pmt-deliver", captures });
-      return Boolean(response && response.ok);
+      if (response && response.ok) return response;
+      return null;
     } catch {
       await sleep(500);
     }
   }
-  return false;
+  return null;
 }
 
 async function ensureAppTab(sourceWindowId) {
@@ -88,14 +89,25 @@ async function ensureAppTab(sourceWindowId) {
 }
 
 async function deliverBatch(appTab, captures, allowRecovery) {
-  if (await tryDeliver(appTab.id, captures)) return true;
-  if (!allowRecovery) return false;
+  const response = await tryDeliver(appTab.id, captures);
+  if (response) return response;
+  if (!allowRecovery) return null;
   // No acknowledgment: the tab predates the extension install or runs an old
   // app bundle without the listener. Reload it and try once more.
   await chrome.tabs.reload(appTab.id);
   await waitForComplete(appTab.id, 30000);
   await sleep(500);
   return tryDeliver(appTab.id, captures);
+}
+
+function applyOutcome(step, response) {
+  if (response && response.imported !== false) {
+    step.status = "done";
+    return true;
+  }
+  step.status = "failed";
+  if (response && response.message) step.detail = String(response.message).slice(0, 80);
+  return false;
 }
 
 function sendProgress(tabId, steps) {
@@ -156,12 +168,12 @@ chrome.action.onClicked.addListener(async (tab) => {
     ];
     const appTab = await ensureAppTab(tab.windowId);
     sendProgress(appTab.id, steps);
-    const delivered = await deliverBatch(appTab, [main], true);
-    steps[0].status = delivered ? "done" : "failed";
+    const mainResponse = await deliverBatch(appTab, [main], true);
+    const mainImported = applyOutcome(steps[0], mainResponse);
     sendProgress(appTab.id, steps);
-    if (!delivered) throw new Error("The Match Desk tab did not accept the capture.");
+    if (!mainResponse) throw new Error("The Match Desk tab did not accept the capture.");
 
-    let deliveredCount = 1;
+    let deliveredCount = mainImported ? 1 : 0;
     if (isMatchPage) {
       for (const [index, link] of statsLinks.entries()) {
         const step = steps[index + 1];
@@ -169,8 +181,10 @@ chrome.action.onClicked.addListener(async (tab) => {
         sendProgress(appTab.id, steps);
         try {
           const capture = await captureStatsPage(link.url);
-          step.status = (await deliverBatch(appTab, [capture], false)) ? "done" : "failed";
-          if (step.status === "done") deliveredCount += 1;
+          // Stats captures carry the match page they belong to, so the desk
+          // can anchor them even when the stats page has no match link.
+          capture.matchUrl = tab.url;
+          if (applyOutcome(step, await deliverBatch(appTab, [capture], false))) deliveredCount += 1;
         } catch {
           // A stats page that fails to load or answer is skipped; the desk
           // shows which maps still need stats.

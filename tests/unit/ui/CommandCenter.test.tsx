@@ -53,16 +53,17 @@ describe("command center", () => {
     expect(screen.getByText(/ready to post/i)).toBeVisible();
   });
 
-  it("imports extension capture batches and acknowledges them", async () => {
+  it("imports extension capture batches, acknowledges, and reports the outcome", async () => {
     render(<App />);
     await screen.findByLabelText(/paste copied hltv page/i);
 
     const acks: string[] = [];
+    const outcomes: Array<{ batchId?: string; ok?: boolean }> = [];
     const onAck = (event: MessageEvent) => {
-      const data = event.data as { source?: string; kind?: string; batchId?: string } | null;
-      if (data?.source === "pmt-match-desk-app" && data.kind === "batch-received" && data.batchId) {
-        acks.push(data.batchId);
-      }
+      const data = event.data as { source?: string; kind?: string; batchId?: string; ok?: boolean } | null;
+      if (data?.source !== "pmt-match-desk-app") return;
+      if (data.kind === "batch-received" && data.batchId) acks.push(data.batchId);
+      if (data.kind === "batch-imported") outcomes.push({ batchId: data.batchId, ok: data.ok });
     };
     window.addEventListener("message", onAck);
     try {
@@ -82,6 +83,7 @@ describe("command center", () => {
       expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
       expect(screen.getByText(/ready to post/i)).toBeVisible();
       await waitFor(() => expect(acks).toContain("batch-1"));
+      await waitFor(() => expect(outcomes).toContainEqual({ batchId: "batch-1", ok: true }));
       const historyItems = screen.getByTestId("import-history").querySelectorAll(":scope > li");
       expect(historyItems).toHaveLength(1);
     } finally {
@@ -216,6 +218,8 @@ describe("command center", () => {
 
     expect(await screen.findByRole("heading", { name: /QuantumX vs Alter Ego/ })).toBeVisible();
     expect(screen.getByText("Fix before copying")).toBeVisible();
+    // The action bar names the first blocking item next to "Review needed".
+    expect(screen.getByText("— HLTV match URL")).toBeVisible();
     expect(screen.getByText(/match URL could not be identified/i)).toBeVisible();
     const sourceUrl = screen.getByLabelText(/HLTV match URL/i);
     expect(screen.getByRole("button", { name: /copy body/i })).toBeDisabled();
