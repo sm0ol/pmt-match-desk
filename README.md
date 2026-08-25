@@ -42,6 +42,17 @@ The real completed-match regression fixture becomes copy-ready in roughly 0.2 se
 
 When HLTV changes a layout, the importer fails conservatively and leaves the last good draft alone. The checked-in capture fixtures make parser drift reproducible.
 
+## Event and team reference data
+
+The Event Information and Team Information sections come from the Post-Match
+Team's curated databases in the original
+[Post-Match-Thread-Creator](https://github.com/asbmeyers/Post-Match-Thread-Creator)
+repository (event links, streams, rosters, coaches, subs, and team links). A
+snapshot lives in `src/output/referenceData.json`. To pull the latest data,
+run `npm run refresh-data`, then rebuild and redeploy. A match whose event or
+team is not in the snapshot simply renders without that block; team rosters
+fall back to the players parsed from the match page.
+
 ## Run it locally
 
 Requirements: a current Node.js release and a modern Chromium browser.

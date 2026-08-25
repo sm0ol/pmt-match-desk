@@ -1,6 +1,7 @@
 import type { MapResult, MatchData, PlayerStat, Team, VrsTeamImpact } from "../domain/types";
 import { canonicalHltvMatchUrl } from "../domain/hltvUrl";
 import { flagEmoji } from "../domain/countries";
+import { eventLocationKind, findEventReference, findTeamReference } from "./referenceData";
 
 const AWPER_MARK = "⊕";
 const IGL_MARK = "♛";
@@ -19,6 +20,70 @@ function escapeMarkdown(value: string): string {
   return [...value].map((character) => (reserved.has(character) ? `\\${character}` : character)).join("");
 }
 
+/** Renders a note in the Post-Match Team's small superscript style. */
+function superNote(text: string): string {
+  return text.split(/\s+/).map((word) => `^${word}`).join(" ");
+}
+
+const SECTION_BREAK = "&nbsp;\n\n---";
+
+function eventInfoSection(match: MatchData): string {
+  const event = findEventReference(match.event);
+  if (!event) return "";
+  const kind = eventLocationKind(event.city);
+  const place = [event.flag, event.city].filter(Boolean).join(" ");
+  const links = [
+    event.liquipedia ? `[Liquipedia](${event.liquipedia})` : "",
+    event.hltv ? `[HLTV](${event.hltv})` : "",
+    event.reddit ? `[Reddit](${event.reddit})` : "",
+  ].filter(Boolean);
+  const headline = [
+    `**${escapeMarkdown(event.name)}**`,
+    `${place} (${event.prize || "$0"} ${kind})`.trim(),
+    ...links,
+  ].join(" | ");
+  const streams = event.streams.map((stream) => `[${stream.label}](${stream.url})`).join(" | ");
+  return `### Event Information\n\n${headline}${streams ? `\n\n**Streams** | ${streams}` : ""}`;
+}
+
+function fallbackRoster(match: MatchData, teamSide: "team1" | "team2", teamName: string): string[] {
+  return match.players
+    .filter((player) => (player.teamSide ? player.teamSide === teamSide : player.team === teamName))
+    .map((player) => {
+      const marks = `${player.awper ? ` ${AWPER_MARK}` : ""}${player.igl ? ` ${IGL_MARK}` : ""}`;
+      return `${withFlag(escapeMarkdown(nicknameOf(player.name)), player.country)}${marks}`;
+    });
+}
+
+function teamInfoBlock(match: MatchData, team: Team, teamSide: "team1" | "team2"): string {
+  const reference = findTeamReference(team.name);
+  const displayName = reference?.name || team.name;
+  // Fall back to the leading emoji of the curated flag name when the parsed
+  // team has no country.
+  const flag = flagEmoji(team.country) ?? reference?.flagName.split(" ")[0] ?? "";
+  const header = [
+    `${flag ? `${flag} ` : ""}**${escapeMarkdown(displayName)}**`,
+    ...(reference?.links ?? []).map((link) => `[${link.label}](${link.url})`),
+  ].join(" | ");
+  const roster = reference?.roster.length ? reference.roster : fallbackRoster(match, teamSide, team.name);
+  if (roster.length === 0 && !reference) return "";
+  const lines = [header, `**Roster**: ${roster.join(" | ")}  `];
+  if (reference?.coach) lines.push(`**Coach**: ${reference.coach}  `);
+  if (reference?.subs.length) lines.push(`**Subs/Benched**: ${reference.subs.join(" | ")}  `);
+  return lines.join("  \n");
+}
+
+function teamInfoSection(match: MatchData): string {
+  const blocks = [
+    teamInfoBlock(match, match.team1, "team1"),
+    teamInfoBlock(match, match.team2, "team2"),
+  ].filter(Boolean);
+  if (blocks.length === 0) return "";
+  return `### Team Information\n\n${blocks.join("\n\n")}\n\n${superNote(
+    "Note: Above rosters do not reflect temporary subs and may be out of date if recent changes were made",
+  )}`;
+}
+
 function vrsSection(match: MatchData): string {
   const vrs = match.vrs;
   if (!vrs) return "";
@@ -28,7 +93,9 @@ function vrsSection(match: MatchData): string {
     const total = `${impact.beforePoints + impact.diffPoints} pts`;
     return `|${withFlag(escapeMarkdown(team.name), team.country)}|${rank}|${diff}|${total}|`;
   };
-  return `### Predicted VRS Impact\n\n|**Team**|**Rank**|**Diff**|**Total**|\n|:--|:--:|--:|--:|\n${row(match.team1, vrs.team1)}\n${row(match.team2, vrs.team2)}\n\nNote: VRS officially updates once per month. This is simply a prediction that might not take into account all factors that go into VRS calculations.`;
+  return `### Predicted VRS Impact\n\n|**Team**|**Rank**|**Diff**|**Total**|\n|:--|:--:|--:|--:|\n${row(match.team1, vrs.team1)}\n${row(match.team2, vrs.team2)}\n\n${superNote(
+    "Note: VRS officially updates once per month. This is simply a prediction that might not take into account all factors that go into VRS calculations.",
+  )}`;
 }
 
 function highlightsSection(match: MatchData): string {
@@ -192,7 +259,9 @@ export function renderPmt(match: MatchData | null): PmtOutput {
     maps,
     match.context ? `**${escapeMarkdown(match.context)}**  ` : "",
     "&nbsp;\n\n-----",
-    vrsSection(match),
+    ...[vrsSection(match), eventInfoSection(match), teamInfoSection(match)]
+      .filter(Boolean)
+      .flatMap((section) => [section, SECTION_BREAK]),
     mapVetoTable(match),
     statsTable({ ...match, sourceUrl }),
     ...match.maps.map((map, index) => mapSection(map, match, index)),

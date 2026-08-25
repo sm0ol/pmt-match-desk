@@ -93,6 +93,47 @@ describe("renderPmt", () => {
     expect(output.body).toContain("|🇰🇿 molodoy ⊕|55-50|");
   });
 
+  it("renders event and team information from the reference data", () => {
+    const output = renderPmt({
+      ...match,
+      event: "Esports World Cup 2026",
+      team1: { id: "8297", name: "FURIA", country: "BR" },
+      team2: { id: "7969", name: "Nemiga", country: "RU" },
+    });
+
+    expect(output.body).toContain("### Event Information");
+    expect(output.body).toContain("**Esports World Cup 2026** | 🇫🇷 Paris ($2m LAN)");
+    expect(output.body).toContain("### Team Information");
+    expect(output.body).toContain("🇧🇷 **FURIA Esports** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
+    expect(output.body).toContain("**Roster**: 🇧🇷 yuurih | 🇧🇷 KSCERATO | 🇧🇷 FalleN ♛ | 🇰🇿 molodoy ⊕ | 🇱🇻 YEKINDAR");
+    expect(output.body).toContain("**Coach**: 🇧🇷 sidde");
+    expect(output.body).toContain("^Note: ^Above ^rosters");
+  });
+
+  it("falls back to parsed players for a team missing from the reference data", () => {
+    const output = renderPmt({
+      ...match,
+      team1: { id: "x", name: "Unknown Org", country: "SE" },
+      players: [{
+        id: "p1",
+        name: "Some 'ace' Player",
+        team: "Unknown Org",
+        teamSide: "team1",
+        country: "SE",
+        awper: true,
+        kills: 20,
+        deaths: 10,
+        swing: "+2%",
+        adr: 90,
+        kast: "80%",
+        rating: 1.25,
+      }],
+    });
+
+    expect(output.body).toContain("🇸🇪 **Unknown Org**");
+    expect(output.body).toContain("**Roster**: 🇸🇪 ace ⊕");
+  });
+
   it("renders the VRS impact table and the highlights list", () => {
     const output = renderPmt({
       ...match,
@@ -107,7 +148,7 @@ describe("renderPmt", () => {
     expect(output.body).toContain("### Predicted VRS Impact");
     expect(output.body).toContain("|🇧🇷 100 Thieves|\\#5 → \\#5|\\-13 pts|1831 pts|");
     expect(output.body).toContain("|Eternal Fire|\\#4 → \\#3|\\+45 pts|1904 pts|");
-    expect(output.body).toContain("Note: VRS officially updates once per month.");
+    expect(output.body).toContain("^Note: ^VRS ^officially ^updates ^once ^per ^month.");
     expect(output.body).toContain("### Highlights");
     expect(output.body).toContain("M1R7 \\| cmtry \\- 4 AK kills \\- Part 1 \\- observer");
   });
