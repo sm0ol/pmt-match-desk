@@ -21,6 +21,14 @@ export interface HalfScore {
   team1Side?: "CT" | "T";
 }
 
+export interface OvertimeScore {
+  /** Rounds won per overtime half: [first half, second half]. */
+  team1: [number, number];
+  team2: [number, number];
+  /** Side team1 played the first half of this overtime. */
+  team1FirstSide?: "CT" | "T";
+}
+
 export interface MapPlayerStat {
   id: string;
   name: string;
@@ -40,6 +48,7 @@ export interface MapResult {
   team2Score: number;
   halfScore?: string;
   halves?: HalfScore[];
+  overtimes?: OvertimeScore[];
   players?: MapPlayerStat[];
   statsUrl?: string;
   sourceKind?: "main-match" | "map-stats";

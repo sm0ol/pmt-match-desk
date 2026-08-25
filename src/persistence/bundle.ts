@@ -27,6 +27,12 @@ const halfScoreSchema = z.strictObject({
   team2: z.number().int().nonnegative(),
   team1Side: z.enum(["CT", "T"]).optional(),
 });
+const roundPairSchema = z.tuple([z.number().int().nonnegative(), z.number().int().nonnegative()]);
+const overtimeSchema = z.strictObject({
+  team1: roundPairSchema,
+  team2: roundPairSchema,
+  team1FirstSide: z.enum(["CT", "T"]).optional(),
+});
 const mapPlayerSchema = z.strictObject({
   id: idSchema,
   name: nameSchema,
@@ -45,6 +51,7 @@ const mapSchema = z.strictObject({
   team2Score: z.number().int().nonnegative(),
   halfScore: z.string().max(80).optional(),
   halves: z.array(halfScoreSchema).max(9).optional(),
+  overtimes: z.array(overtimeSchema).max(9).optional(),
   players: z.array(mapPlayerSchema).max(24).optional(),
   statsUrl: z.string().max(500).optional(),
   sourceKind: sourceKindSchema.optional(),

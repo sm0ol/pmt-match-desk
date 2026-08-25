@@ -36,6 +36,7 @@ function enrichMap(winner: MapResult, loser: MapResult | undefined): MapResult {
     ...winner,
     halfScore: winner.halfScore ?? loser?.halfScore,
     halves: winner.halves ?? loser?.halves,
+    overtimes: winner.overtimes ?? loser?.overtimes,
     players: winner.players ?? loser?.players,
     statsUrl: winner.statsUrl ?? loser?.statsUrl,
   };
@@ -92,6 +93,13 @@ function orientMatch(next: MatchData, reference: MatchData): MatchData {
         team1: half.team2,
         team2: half.team1,
         team1Side: half.team1Side ? (half.team1Side === "CT" ? "T" as const : "CT" as const) : undefined,
+      })),
+      overtimes: map.overtimes?.map((overtime) => ({
+        team1: overtime.team2,
+        team2: overtime.team1,
+        team1FirstSide: overtime.team1FirstSide
+          ? (overtime.team1FirstSide === "CT" ? "T" as const : "CT" as const)
+          : undefined,
       })),
       players: map.players?.map((player) => ({ ...player, teamSide: flipSide(player.teamSide) })),
     })),

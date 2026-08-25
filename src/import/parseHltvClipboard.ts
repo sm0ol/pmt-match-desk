@@ -690,6 +690,123 @@ function parseMain(
   };
 }
 
+interface HistorySegment {
+  wins: number;
+  side?: "CT" | "T";
+}
+
+interface HistoryRow {
+  name: string;
+  segments: HistorySegment[];
+}
+
+function flipHalfSide(side: "CT" | "T" | undefined): "CT" | "T" | undefined {
+  if (!side) return undefined;
+  return side === "CT" ? "T" : "CT";
+}
+
+/**
+ * Reads one round-history team row: the team image, then round outcome
+ * images grouped into half segments by bar dividers. A won round has a
+ * running score in its title; the icon file names carry the side it was won
+ * on.
+ */
+function historyRow(row: NodeLike): HistoryRow {
+  let name = "";
+  const segments: HistorySegment[] = [];
+  let current: HistorySegment | null = null;
+  for (const child of row.childNodes ?? []) {
+    const classes = nodeAttr(child, "class") ?? "";
+    if (classes.includes("round-history-team")) {
+      name = nodeAttr(child, "title") ?? nodeAttr(child, "alt") ?? "";
+      continue;
+    }
+    if (classes.includes("round-history-bar")) {
+      current = { wins: 0 };
+      segments.push(current);
+      continue;
+    }
+    if (classes.includes("round-history-outcome")) {
+      if (!current) {
+        current = { wins: 0 };
+        segments.push(current);
+      }
+      if (!(nodeAttr(child, "title") ?? "").trim()) continue;
+      current.wins += 1;
+      const src = nodeAttr(child, "src") ?? "";
+      if (/\/(t_win|bomb_exploded)\.svg/.test(src)) current.side = "T";
+      else if (/\/(ct_win|bomb_defused|stopwatch)\.svg/.test(src)) current.side = "CT";
+    }
+  }
+  return { name, segments };
+}
+
+function orientHistoryRows(
+  rows: HistoryRow[],
+  team1Name: string,
+  team2Name: string,
+): [HistoryRow, HistoryRow] | null {
+  if (rows.length !== 2) return null;
+  const matches = (row: HistoryRow, name: string) =>
+    row.name.trim().toLocaleLowerCase() === name.trim().toLocaleLowerCase();
+  if (matches(rows[0], team2Name) || matches(rows[1], team1Name)) return [rows[1], rows[0]];
+  return [rows[0], rows[1]];
+}
+
+/** Extracts regulation halves and per-overtime half splits from the round history boxes. */
+function parseRoundHistory(
+  root: NodeLike,
+  team1Name: string,
+  team2Name: string,
+): Pick<MapResult, "halves" | "overtimes"> {
+  let regulationBox: NodeLike | undefined;
+  let overtimeBox: NodeLike | undefined;
+  for (const box of findNodes(root, (node) =>
+    (nodeAttr(node, "class") ?? "").includes("round-history-con"),
+  )) {
+    if ((nodeAttr(box, "class") ?? "").includes("round-history-overtime")) overtimeBox ??= box;
+    else regulationBox ??= box;
+  }
+  const result: Pick<MapResult, "halves" | "overtimes"> = {};
+
+  const rowsOf = (box: NodeLike) =>
+    orientHistoryRows(
+      findNodes(box, (node) => (nodeAttr(node, "class") ?? "").includes("round-history-team-row"))
+        .map(historyRow),
+      team1Name,
+      team2Name,
+    );
+
+  if (regulationBox) {
+    const rows = rowsOf(regulationBox);
+    if (rows && rows[0].segments.length === 2 && rows[1].segments.length === 2) {
+      result.halves = [0, 1].map((half) => ({
+        team1: rows[0].segments[half].wins,
+        team2: rows[1].segments[half].wins,
+        team1Side: rows[0].segments[half].side ?? flipHalfSide(rows[1].segments[half].side),
+      }));
+    }
+  }
+  if (overtimeBox) {
+    const rows = rowsOf(overtimeBox);
+    if (rows && rows[0].segments.length === rows[1].segments.length && rows[0].segments.length > 0) {
+      const overtimes: NonNullable<MapResult["overtimes"]> = [];
+      for (let index = 0; index < rows[0].segments.length; index += 2) {
+        const first = index;
+        const second = index + 1;
+        overtimes.push({
+          team1: [rows[0].segments[first].wins, rows[0].segments[second]?.wins ?? 0],
+          team2: [rows[1].segments[first].wins, rows[1].segments[second]?.wins ?? 0],
+          team1FirstSide:
+            rows[0].segments[first].side ?? flipHalfSide(rows[1].segments[first].side),
+        });
+      }
+      if (overtimes.length > 0) result.overtimes = overtimes;
+    }
+  }
+  return result;
+}
+
 function parseMapStatsPlayers(
   lines: string[],
   team1Name: string,
@@ -734,7 +851,7 @@ function parseMapStatsPlayers(
   return players;
 }
 
-function parseMapStats(lines: string[], hrefs: string[]): MatchData | null {
+function parseMapStats(lines: string[], hrefs: string[], root: NodeLike | null): MatchData | null {
   const mapStatsLink = hrefs.find((href) => /^\/stats\/matches\/mapstatsid\/\d+\//.test(href));
   const linkedMapId = mapStatsLink?.match(/mapstatsid\/(\d+)/)?.[1];
   const mapIndex = lines.findIndex(
@@ -757,6 +874,7 @@ function parseMapStats(lines: string[], hrefs: string[]): MatchData | null {
   const score = scoreLine.match(/^(\d+)\s*-\s*(\d+)$/);
   const event = lines[lines.indexOf("Overview") - 1] ?? "";
   const mapPlayers = parseMapStatsPlayers(lines, team1Name, team2Name, hrefs);
+  const history = root ? parseRoundHistory(root, team1Name, team2Name) : {};
   const compositeId = `composite:${fingerprint(`${team1Name}|${team2Name}|${event}`)}`;
   const teamContextIds = hrefs
     .map((href) => href.match(/[?&]contextIds=(\d+)&contextTypes=team/)?.[1])
@@ -776,6 +894,8 @@ function parseMapStats(lines: string[], hrefs: string[]): MatchData | null {
       name: mapName,
       team1Score,
       team2Score,
+      ...(history.halves ? { halves: history.halves } : {}),
+      ...(history.overtimes ? { overtimes: history.overtimes } : {}),
       ...(mapPlayers.length > 0 ? { players: mapPlayers } : {}),
       sourceKind: "map-stats",
       sourceState: "completed",
@@ -818,7 +938,7 @@ export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
       (line, index) => line === "Map" && MAP_NAMES.has((lines[index + 1] ?? "").toLowerCase()),
     );
     const mapStats = !mainMatch && (hasMapStatsBlock || hrefs.some((href) => /\/stats\/matches\/mapstatsid\//.test(href)));
-    const match = mainMatch ?? (mapStats ? parseMapStats(lines, hrefs) : null);
+    const match = mainMatch ?? (mapStats ? parseMapStats(lines, hrefs, root) : null);
     if (!match) {
       return {
         kind: "unrecognized",

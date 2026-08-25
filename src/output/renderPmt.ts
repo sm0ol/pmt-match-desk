@@ -232,18 +232,28 @@ function oppositeSide(side: "CT" | "T"): "CT" | "T" {
   return side === "CT" ? "T" : "CT";
 }
 
+/** "OT1^(CT:T)" — the superscript is the side order for that row's team. */
+function overtimeHeading(index: number, firstSide: "CT" | "T" | undefined, bold: boolean): string {
+  const sides = firstSide ? `^(${firstSide}:${oppositeSide(firstSide)})` : "";
+  const label = `OT${index + 1}${sides}`;
+  return bold ? `**${label}**` : label;
+}
+
 function halvesTable(map: MapResult, match: MatchData): string {
   const halves = map.halves ?? [];
   if (halves.length < 2) return "";
   const [first, second] = halves;
-  const overtime = halves.slice(2);
+  const structured = map.overtimes ?? [];
+  // Without per-half overtime detail, fall back to one column per overtime
+  // with each team's round total.
+  const flatOvertime = structured.length > 0 ? [] : halves.slice(2);
   const sidesKnown = Boolean(first.team1Side && second.team1Side);
-  const otHeaders = overtime.map((_, index) => `**OT${overtime.length > 1 ? index + 1 : ""}**`);
   const header = [
     "**Team**",
     sidesKnown ? `**${first.team1Side}**` : "**1st**",
     sidesKnown ? `**${second.team1Side}**` : "**2nd**",
-    ...otHeaders,
+    ...structured.map((overtime, index) => overtimeHeading(index, overtime.team1FirstSide, true)),
+    ...flatOvertime.map((_, index) => `**OT${flatOvertime.length > 1 ? index + 1 : ""}**`),
     "**Total**",
   ];
   const align = ["|:--", ...header.slice(1).map(() => "--:"), ""].join("|");
@@ -251,18 +261,29 @@ function halvesTable(map: MapResult, match: MatchData): string {
     teamLabel(match.team1),
     first.team1,
     second.team1,
-    ...overtime.map((half) => half.team1),
+    ...structured.map((overtime) => `${overtime.team1[0]}:${overtime.team1[1]}`),
+    ...flatOvertime.map((half) => half.team1),
     `**${map.team1Score}**`,
   ];
   const team2Row = [
     teamLabel(match.team2),
     first.team2,
     second.team2,
-    ...overtime.map((half) => half.team2),
+    ...structured.map((overtime) => `${overtime.team2[0]}:${overtime.team2[1]}`),
+    ...flatOvertime.map((half) => half.team2),
     `**${map.team2Score}**`,
   ];
   const sideLabelRow = sidesKnown
-    ? ["", oppositeSide(first.team1Side!), oppositeSide(second.team1Side!), ...overtime.map(() => ""), ""]
+    ? [
+        "",
+        oppositeSide(first.team1Side!),
+        oppositeSide(second.team1Side!),
+        ...structured.map((overtime, index) =>
+          overtimeHeading(index, flipOvertimeSide(overtime.team1FirstSide), false),
+        ),
+        ...flatOvertime.map(() => ""),
+        "",
+      ]
     : null;
   const row = (cells: Array<string | number>) => `|${cells.join("|")}|`;
   return [
@@ -272,6 +293,10 @@ function halvesTable(map: MapResult, match: MatchData): string {
     sideLabelRow ? row(sideLabelRow) : "",
     row(team2Row),
   ].filter(Boolean).join("\n");
+}
+
+function flipOvertimeSide(side: "CT" | "T" | undefined): "CT" | "T" | undefined {
+  return side ? oppositeSide(side) : undefined;
 }
 
 const MAP_STATS_URL = /^https:\/\/www\.hltv\.org\/stats\/matches\/mapstatsid\/\d+\/[A-Za-z0-9-]+$/;

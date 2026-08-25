@@ -185,6 +185,31 @@ describe("renderPmt", () => {
     expect(output.body).toContain("**Roster**: 🇸🇪 ace ⊕");
   });
 
+  it("renders per-half overtime columns with side superscripts", () => {
+    const output = renderPmt({
+      ...match,
+      maps: [{
+        id: "m1",
+        name: "Mirage",
+        team1Score: 19,
+        team2Score: 17,
+        halves: [
+          { team1: 8, team2: 4, team1Side: "T" },
+          { team1: 4, team2: 8, team1Side: "CT" },
+        ],
+        overtimes: [
+          { team1: [2, 1], team2: [1, 2], team1FirstSide: "CT" },
+          { team1: [2, 2], team2: [1, 1], team1FirstSide: "T" },
+        ],
+      }],
+    });
+
+    expect(output.body).toContain("|**Team**|**T**|**CT**|**OT1^(CT:T)**|**OT2^(T:CT)**|**Total**|");
+    expect(output.body).toContain("|8|4|2:1|2:2|**19**|");
+    expect(output.body).toContain("||CT|T|OT1^(T:CT)|OT2^(CT:T)||");
+    expect(output.body).toContain("|4|8|1:2|1:1|**17**|");
+  });
+
   it("renders the VRS impact table and the highlights list", () => {
     const output = renderPmt({
       ...match,

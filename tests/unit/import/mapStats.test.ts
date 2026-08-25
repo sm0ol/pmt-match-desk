@@ -5,6 +5,8 @@ import { parseHltvClipboard } from "../../../src/import/parseHltvClipboard";
 
 const fixture = (name: string) =>
   readFileSync(resolve(process.cwd(), `tests/fixtures/hltv/mapstats-ancient/${name}`), "utf8");
+const otFixture = (name: string) =>
+  readFileSync(resolve(process.cwd(), `tests/fixtures/hltv/mapstats-ot-mirage/${name}`), "utf8");
 
 describe("HLTV map-stat import", () => {
   it("associates a protected map-stat page to the stable match and map identities", () => {
@@ -48,6 +50,26 @@ describe("HLTV map-stat import", () => {
     expect(players.find((player) => player.name === "jottAAA")).toEqual(
       expect.objectContaining({ teamSide: "team2", kills: 19, deaths: 14, rating: 1.61 }),
     );
+  });
+
+  it("extracts regulation halves and overtime splits from the round history", () => {
+    const proposal = parseHltvClipboard({
+      plain: otFixture("clipboard.txt"),
+      html: otFixture("clipboard.html"),
+    });
+
+    const map = proposal.match?.maps[0];
+    expect(proposal.match?.team1.name).toBe("SINNERS");
+    expect(proposal.match?.team2.name).toBe("EYEBALLERS");
+    expect(map).toMatchObject({ name: "Mirage", team1Score: 19, team2Score: 17 });
+    expect(map?.halves).toEqual([
+      { team1: 8, team2: 4, team1Side: "T" },
+      { team1: 4, team2: 8, team1Side: "CT" },
+    ]);
+    expect(map?.overtimes).toEqual([
+      { team1: [2, 1], team2: [1, 2], team1FirstSide: "CT" },
+      { team1: [2, 2], team2: [1, 1], team1FirstSide: "T" },
+    ]);
   });
 
   it("parses a plain-text-only map capture conservatively with composite identities", () => {
