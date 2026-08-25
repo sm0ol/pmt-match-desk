@@ -49,6 +49,17 @@ function nodeAttr(node: NodeLike, name: string): string | undefined {
   return node.attrs?.find((attribute) => attribute.name === name)?.value;
 }
 
+// Current HLTV copies serialize absolute links; older captures used relative
+// paths. All href handling works on the normalized path form.
+function hltvPath(href: string): string {
+  return href.replace(/^https?:\/\/(?:www\.)?hltv\.org(?=\/)/, "");
+}
+
+function nodeHref(node: NodeLike): string | undefined {
+  const href = nodeAttr(node, "href");
+  return href ? hltvPath(href) : undefined;
+}
+
 function fingerprint(value: string): string {
   let hash = 2166136261;
   for (let index = 0; index < value.length; index += 1) {
@@ -99,6 +110,8 @@ interface PlayerFact {
 
 interface HtmlFacts {
   hrefs: string[];
+  /** Canonical paths of the page itself, e.g. from data-original-overlay-location. */
+  selfMatchPaths: string[];
   teamCountries: { team1?: string; team2?: string };
   playerFacts: Map<string, PlayerFact>;
 }
@@ -115,7 +128,7 @@ interface SubtreeFacts {
 const FLAG_SRC = /\/img\/static\/flags\/[^/]+\/([A-Za-z-]{2,7})\.(?:gif|png)/;
 
 function collectHtmlFacts(root: NodeLike | null): HtmlFacts {
-  const facts: HtmlFacts = { hrefs: [], teamCountries: {}, playerFacts: new Map() };
+  const facts: HtmlFacts = { hrefs: [], selfMatchPaths: [], teamCountries: {}, playerFacts: new Map() };
   if (!root) return facts;
   let nodes = 0;
 
@@ -126,8 +139,12 @@ function collectHtmlFacts(root: NodeLike | null): HtmlFacts {
     if (nodes > MAX_NODES || depth > MAX_DEPTH) {
       throw new Error("Copied HTML is too structurally complex.");
     }
-    const href = attr(node, "href");
+    const href = nodeHref(node);
     if (href) facts.hrefs.push(href);
+    const overlayLocation = attr(node, "data-original-overlay-location");
+    if (overlayLocation && /^\/matches\/\d+\/[^?#]+$/.test(hltvPath(overlayLocation))) {
+      facts.selfMatchPaths.push(hltvPath(overlayLocation));
+    }
     const classes = attr(node, "class") ?? "";
     const title = attr(node, "title") ?? "";
     // Older HLTV markup carries the code in the image src; newer markup can
@@ -238,8 +255,8 @@ function parseMapStatsTables(container: NodeLike): MapDetail["players"] {
     node.nodeName === "table" && (nodeAttr(node, "class") ?? "").includes("totalstats"),
   );
   for (const table of tables) {
-    const teamId = findNodes(table, (node) => Boolean(nodeAttr(node, "href")?.match(/^\/team\/\d+\//)))
-      .map((node) => nodeAttr(node, "href")?.match(/^\/team\/(\d+)\//)?.[1])
+    const teamId = findNodes(table, (node) => Boolean(nodeHref(node)?.match(/^\/team\/\d+\//)))
+      .map((node) => nodeHref(node)?.match(/^\/team\/(\d+)\//)?.[1])
       .find(Boolean);
     if (!teamId) continue;
     for (const row of findNodes(table, (node) => node.nodeName === "tr")) {
@@ -254,9 +271,9 @@ function parseMapStatsTables(container: NodeLike): MapDetail["players"] {
       const playerCell = cells.find((cell) => (nodeAttr(cell, "class") ?? "").includes("players"));
       if (!playerCell) continue;
       const playerHref = findNodes(playerCell, (node) =>
-        Boolean(nodeAttr(node, "href")?.match(/^\/player\/\d+\//)),
+        Boolean(nodeHref(node)?.match(/^\/player\/\d+\//)),
       )[0];
-      const id = playerHref ? nodeAttr(playerHref, "href")?.match(/^\/player\/(\d+)\//)?.[1] : undefined;
+      const id = playerHref ? nodeHref(playerHref)?.match(/^\/player\/(\d+)\//)?.[1] : undefined;
       const name = findNodes(playerCell, (node) =>
         (nodeAttr(node, "class") ?? "").includes("statsPlayerName") &&
         (nodeAttr(node, "class") ?? "").includes("gtSmartphone-only"),
@@ -290,9 +307,9 @@ function collectMapDetails(root: NodeLike | null): Map<string, MapDetail> {
     (nodeAttr(node, "class") ?? "").includes("results-center"),
   )) {
     const link = findNodes(holder, (node) =>
-      Boolean(nodeAttr(node, "href")?.match(/\/stats\/matches\/mapstatsid\/\d+\//)),
+      Boolean(nodeHref(node)?.match(/\/stats\/matches\/mapstatsid\/\d+\//)),
     )[0];
-    const mapId = link ? nodeAttr(link, "href")?.match(/mapstatsid\/(\d+)/)?.[1] : undefined;
+    const mapId = link ? nodeHref(link)?.match(/mapstatsid\/(\d+)/)?.[1] : undefined;
     const scoreBox = findNodes(holder, (node) =>
       (nodeAttr(node, "class") ?? "").includes("half-score"),
     )[0];
@@ -595,7 +612,9 @@ function parseMain(
   const team2Country = htmlFacts.teamCountries.team2 ?? countryAbove(lines, team2Result.nameIndex);
   if (team1Country) team1.country = team1Country;
   if (team2Country) team2.country = team2Country;
-  const source = findSourceUrl(hrefs, team1Name, team2Name);
+  // The page's own canonical path is authoritative; href scanning can hit a
+  // head-to-head link between the same teams.
+  const source = findSourceUrl([...htmlFacts.selfMatchPaths, ...hrefs], team1Name, team2Name);
   const bestOfLine = lines.slice(mapsIndex, mapsIndex + 5).find((line) => /Best of \d+/i.test(line));
   const bestOf = Number(bestOfLine?.match(/Best of (\d+)/i)?.[1] ?? 1);
   const stageLine = lines.slice(mapsIndex, mapsIndex + 8).find((line) => line.startsWith("*"));
@@ -645,6 +664,50 @@ function parseMain(
   };
 }
 
+function parseMapStatsPlayers(
+  lines: string[],
+  team1Name: string,
+  team2Name: string,
+  hrefs: string[],
+): MapPlayerStat[] {
+  const playerLinks = new Map<string, string>();
+  for (const href of hrefs) {
+    const match = href.match(/^\/(?:stats\/players|player)\/(\d+)\/([^?#/]+)/);
+    if (match && !playerLinks.has(match[2])) playerLinks.set(match[2], match[1]);
+  }
+  const players: MapPlayerStat[] = [];
+  let side: "team1" | "team2" | "" = "";
+  for (let index = 1; index < lines.length; index += 1) {
+    if (lines[index] === team1Name) { side = "team1"; continue; }
+    if (lines[index] === team2Name) { side = "team2"; continue; }
+    // A stat row is tab-separated: "2 : 4  6  50.0%  0  20 (9)  1 (0)  18 (4)  79.4  +0.36%  1.04"
+    const fields = lines[index].split("\t").map((field) => field.trim()).filter(Boolean);
+    if (fields.length !== 10 || !side) continue;
+    const opening = fields[0].match(/^\d+ : \d+$/);
+    const kills = fields[4].match(/^(\d+) \(\d+\)$/);
+    const deaths = fields[6].match(/^(\d+) \(\d+\)$/);
+    const adr = Number(fields[7]);
+    const swing = fields[8].match(/^[+-][\d.]+%$/) ? fields[8] : null;
+    const rating = Number(fields[9]);
+    const nickname = lines[index - 1];
+    if (!opening || !kills || !deaths || !swing || !nickname || !Number.isFinite(adr) || !Number.isFinite(rating)) {
+      continue;
+    }
+    players.push({
+      id: playerLinks.get(slug(nickname)) ?? `name:${slug(nickname)}`,
+      name: nickname,
+      teamSide: side,
+      kills: Number(kills[1]),
+      deaths: Number(deaths[1]),
+      swing,
+      adr,
+      kast: fields[2],
+      rating,
+    });
+  }
+  return players;
+}
+
 function parseMapStats(lines: string[], hrefs: string[]): MatchData | null {
   const mapStatsLink = hrefs.find((href) => /^\/stats\/matches\/mapstatsid\/\d+\//.test(href));
   const linkedMapId = mapStatsLink?.match(/mapstatsid\/(\d+)/)?.[1];
@@ -667,6 +730,7 @@ function parseMapStats(lines: string[], hrefs: string[]): MatchData | null {
   const scoreLine = bestOfIndex > 0 ? lines[bestOfIndex - 1] : "";
   const score = scoreLine.match(/^(\d+)\s*-\s*(\d+)$/);
   const event = lines[lines.indexOf("Overview") - 1] ?? "";
+  const mapPlayers = parseMapStatsPlayers(lines, team1Name, team2Name, hrefs);
   const compositeId = `composite:${fingerprint(`${team1Name}|${team2Name}|${event}`)}`;
   const teamContextIds = hrefs
     .map((href) => href.match(/[?&]contextIds=(\d+)&contextTypes=team/)?.[1])
@@ -686,6 +750,7 @@ function parseMapStats(lines: string[], hrefs: string[]): MatchData | null {
       name: mapName,
       team1Score,
       team2Score,
+      ...(mapPlayers.length > 0 ? { players: mapPlayers } : {}),
       sourceKind: "map-stats",
       sourceState: "completed",
     }],

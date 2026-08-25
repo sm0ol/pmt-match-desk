@@ -140,11 +140,16 @@ function mapStatsTable(map: MapResult, match: MatchData): string {
   const players = map.players ?? [];
   if (players.length === 0) return "";
   const matchPlayerById = new Map(match.players.map((player) => [player.id, player]));
+  const matchPlayerByNick = new Map(
+    match.players.map((player) => [nicknameOf(player.name).toLowerCase(), player]),
+  );
   const rows = (teamSide: "team1" | "team2") =>
     players
       .filter((player) => player.teamSide === teamSide)
       .map((player) => {
-        const matchPlayer = matchPlayerById.get(player.id);
+        const matchPlayer =
+          matchPlayerById.get(player.id) ??
+          matchPlayerByNick.get(nicknameOf(player.name).toLowerCase());
         const marks = `${matchPlayer?.awper ? ` ${AWPER_MARK}` : ""}${matchPlayer?.igl ? ` ${IGL_MARK}` : ""}`;
         const cell = `${withFlag(escapeMarkdown(nicknameOf(player.name)), matchPlayer?.country)}${marks}`;
         return `|${cell}|${player.kills}-${player.deaths}|${player.adr.toFixed(1)}|${escapeMarkdown(player.swing)}|${player.rating.toFixed(2)}|`;

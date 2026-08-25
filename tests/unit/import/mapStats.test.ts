@@ -25,6 +25,31 @@ describe("HLTV map-stat import", () => {
     });
   });
 
+  it("extracts the per-map player stats table", () => {
+    const proposal = parseHltvClipboard({
+      plain: fixture("clipboard.txt"),
+      html: fixture("clipboard.html"),
+    });
+
+    const players = proposal.match?.maps[0].players ?? [];
+    expect(players).toHaveLength(10);
+    expect(players[0]).toEqual(
+      expect.objectContaining({
+        name: "device",
+        teamSide: "team1",
+        kills: 20,
+        deaths: 18,
+        adr: 79.4,
+        swing: "+0.36%",
+        rating: 1.04,
+      }),
+    );
+    expect(players.filter((player) => player.teamSide === "team2")).toHaveLength(5);
+    expect(players.find((player) => player.name === "jottAAA")).toEqual(
+      expect.objectContaining({ teamSide: "team2", kills: 19, deaths: 14, rating: 1.61 }),
+    );
+  });
+
   it("parses a plain-text-only map capture conservatively with composite identities", () => {
     const proposal = parseHltvClipboard({ plain: fixture("clipboard.txt"), html: "" });
     expect(proposal.kind).toBe("map-stats");

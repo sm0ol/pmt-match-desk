@@ -44,6 +44,51 @@ describe("replayDraft", () => {
     ]);
   });
 
+  it("flips a map-stat snapshot whose teams are listed in the opposite order", () => {
+    const flippedMapStats: MatchData = {
+      ...match,
+      team1: { id: "two", name: "Two" },
+      team2: { id: "one", name: "One" },
+      seriesScore: [0, 2],
+      sourceKind: "map-stats",
+      state: "completed",
+      maps: [{
+        id: "m1",
+        name: "Nuke",
+        team1Score: 13,
+        team2Score: 7,
+        halves: [{ team1: 8, team2: 4, team1Side: "CT" }, { team1: 5, team2: 3, team1Side: "T" }],
+        players: [{
+          id: "p1", name: "ace", teamSide: "team1",
+          kills: 20, deaths: 10, swing: "+2%", adr: 90, kast: "80%", rating: 1.4,
+        }],
+        sourceKind: "map-stats",
+        sourceState: "completed",
+      }],
+    };
+    const ledger: DraftLedger = {
+      id: "draft-1",
+      createdAt: "1",
+      updatedAt: "2",
+      imports: [
+        { id: "a", capturedAt: "1", active: true, fingerprint: "a", match },
+        { id: "b", capturedAt: "2", active: true, fingerprint: "b", match: flippedMapStats },
+      ],
+      manual: {},
+    };
+
+    const projection = replayDraft(ledger);
+    expect(projection.match?.team1.name).toBe("One");
+    expect(projection.match?.seriesScore).toEqual([2, 0]);
+    const map = projection.match?.maps[0];
+    expect(map).toMatchObject({ name: "Nuke", team1Score: 7, team2Score: 13 });
+    expect(map?.halves).toEqual([
+      { team1: 4, team2: 8, team1Side: "T" },
+      { team1: 3, team2: 5, team1Side: "CT" },
+    ]);
+    expect(map?.players?.[0]).toMatchObject({ name: "ace", teamSide: "team2" });
+  });
+
   it("treats a fresh manual correction as owned rather than conflicted", () => {
     const ledger: DraftLedger = {
       id: "draft-1",

@@ -1,3 +1,5 @@
+
+HLTV.org
 News
 Matches
 Results
@@ -10,7 +12,6 @@ Media
 Betting
 Live
 Major
-Search...
 Sign in
 
 
@@ -22,7 +23,7 @@ FURIA
 08:00
 22nd of August 2026
 Esports World Cup 2026
-
+ 
 Match over
 Europe
 FUT
@@ -93,42 +94,42 @@ Dust2
 Detailed stats
 FURIA
 FURIA
-K-D    Swing    ADR    KAST    Rating
+K-D	Swing	ADR	KAST	Rating
 3.0
 Brazil
 Kaike 'KSCERATO' Cerato
-54-50    +2.56%    82.8    70.8%    1.20
+54-50	+2.56%	82.8	70.8%	1.20
 Latvia
 Mareks 'YEKINDAR' Gaļinskis
-52-50    +2.40%    84.4    76.4%    1.19
+52-50	+2.40%	84.4	76.4%	1.19
 Kazakhstan
 Danil 'molodoy' Golubenko
-55-50    +0.35%    80.8    75.0%    1.08
+55-50	+0.35%	80.8	75.0%	1.08
 Brazil
 Gabriel 'FalleN' Toledo
-45-44    -0.15%    64.0    72.2%    1.03
+45-44	-0.15%	64.0	72.2%	1.03
 Brazil
 Yuri 'yuurih' Santos
-33-46    -3.39%    51.8    70.8%    0.77
+33-46	-3.39%	51.8	70.8%	0.77
 FUT
 FUT
-K-D    Swing    ADR    KAST    Rating
+K-D	Swing	ADR	KAST	Rating
 3.0
 Ukraine
 Nikita 'cmtry' Samolotov
-55-41    +1.12%    66.9    76.4%    1.16
+55-41	+1.12%	66.9	76.4%	1.16
 Türkiye
 Yasin 'xfl0ud' Koç
-52-52    +0.05%    86.3    69.4%    1.15
+52-52	+0.05%	86.3	69.4%	1.15
 Ukraine
 Dmytro 'dem0n' Myroshnychenko
-50-46    +0.50%    81.5    76.4%    1.11
+50-46	+0.50%	81.5	76.4%	1.11
 Kosovo
 Aulon 'Krabeni' Fazlija
-48-54    -2.14%    76.3    70.8%    0.92
+48-54	-2.14%	76.3	70.8%	0.92
 Lithuania
 Džiugas 'dziugss' Steponavičius
-35-46    -1.31%    58.9    70.8%    0.85
+35-46	-1.31%	58.9	70.8%	0.85
 
 Lineups
 FURIA
@@ -200,6 +201,27 @@ bo3
 North AmericaWildcard
 inf
 13 - 10
+BrazilDENDELE
+bo3
+1 - 2
+EuropeFalcons
+bo5
+0 - 3
+TürkiyeAurora
+bo3
+2 - 0
+South America9z
+bo3
+2 - 1
+RussiaBetBoom
+bo3
+2 - 0
+EuropeMOUZ
+bo3
+2 - 1
+UkraineB8
+bo3
+2 - 0
 EuropeFUT
 4 match win streak
 EuropeMOUZ
@@ -208,6 +230,42 @@ bo3
 Europemagic
 bo3
 2 - 1
+EuropeMOUZ
+bo3
+2 - 1
+ChinaTYLOO
+mrg
+13 - 10
+France3DMAX
+bo3
+0 - 2
+EuropeSINNERS
+bo3
+2 - 1
+RussiaBetBoom
+bo3
+0 - 2
+EuropeMOUZ
+bo3
+2 - 1
+UkraineB8
+bo3
+2 - 1
+EuropeG2
+bo3
+1 - 2
+EuropeVitality
+bo3
+1 - 2
+EuropeG2
+bo3
+2 - 1
+ChinaTYLOO
+ovp
+13 - 9
+UkraineB8
+anc
+13 - 11
 Head to head
 FURIA
 FURIA
@@ -219,14 +277,70 @@ Overtimes
 Wins
 FUT
 FUT
-15/2 26
+15/2 26	
 Brazil
 FURIA
 Europe
 FUT
-PGL Cluj-Napoca 2026
+PGL Cluj-Napoca 2026	
 Anubis
 13 - 9
+15/2 26	
+Brazil
+FURIA
+Europe
+FUT
+PGL Cluj-Napoca 2026	
+Overpass
+22 - 18
+15/2 26	
+Brazil
+FURIA
+Europe
+FUT
+PGL Cluj-Napoca 2026	
+Mirage
+9 - 13
+31/1 26	
+Brazil
+FURIA
+Europe
+FUT
+IEM Kraków 2026	
+Dust2
+6 - 13
+31/1 26	
+Brazil
+FURIA
+Europe
+FUT
+IEM Kraków 2026	
+Mirage
+11 - 13
+18/1 26	
+Brazil
+FURIA
+Europe
+FUT
+BLAST Bounty 2026 Season 1	
+Dust2
+13 - 11
+18/1 26	
+Brazil
+FURIA
+Europe
+FUT
+BLAST Bounty 2026 Season 1	
+Overpass
+5 - 13
+18/1 26	
+Brazil
+FURIA
+Europe
+FUT
+BLAST Bounty 2026 Season 1	
+Anubis
+13 - 10
 VRS result ?
 Teamlogo
 FURIA
@@ -243,13 +357,278 @@ result
 +45pt
 #3
 +1
- Magnojez |
-Australia
+ Magnojez | 
+Australia 
 sasy2026
 EZ for Monesy
 2026-08-11 20:32
-Spirit |
-Finland
+Faceit level 10  | 
+Spirit Academy | 
+Faroe Islands 
+yaopp
+ez4dem0n
+2026-08-19 22:22
+FURIA | 
+Colombia 
+futurehndrx
+lol
+2026-08-21 21:10
+ JewCeps | 
+Bhutan 
+AQora
+Bro if fut used their brains theyd leave inf as last… on d2 they gonna get rekt gg😕😕
+2026-08-22 09:57
+ woxic | 
+Finland 
+jubi8
+xd
+2026-08-22 11:13
+ JewCeps | 
+Bhutan 
+AQora
+Holy F they won. Finally🔥
+2026-08-22 11:32
+FUT | 
+Ukraine 
+NightSoul1703
+R u sure about that?
+2026-08-22 11:20
+United Kingdom 
+Franczyn
+whoops
+2026-08-22 10:18
+Faceit plus user Faceit level 10  | 
+Spirit | 
+Russia 
+panda67
+SPIRIT 2-0 FALCONS | EZZ FOR DONK
+2026-08-13 10:33
+ jL | 
+Serbia 
+sanxch
+Your username is panda67. Judging by that, its obvious you're just a lil schoolkid.
+2026-08-21 13:20
+ ropz | 
+Finland 
+subway_surfer
+schizo much?
+2026-08-21 13:24
+ Gizmy | 
+Switzerland 
+chromoh
+Tell em, subway_surfer
+2026-08-22 08:03
+ ropz | 
+Finland 
+subway_surfer
+nah bro just got so ragebaited by that neutral comment it looked really weird
+2026-08-22 13:10
+ Mokuj1n | 
+Scotland 
+CEMEN
+HAHAHA you cannot be speaking with that flair
+2026-08-22 10:29
+Faceit level 10  | 
+Spirit Academy | 
+Faroe Islands 
+yaopp
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+2026-08-15 08:09
+FUT | 
+Czech Republic 
+i_hate_weird_formats
+I am equally as excited as you are
+2026-08-22 05:57
+FaZe | 
+Singapore 
+CR4BW0OD
+Furia 2-1 MOUZ
+
+molodoy whiffs 67 shots and ends on a 0.83 rating. FalleN takes up AWPing and drills the IDF soldiers & friends into the ground with a 1.99 rating.
+
+YEKINDAR retires shortly afterwards and is substituted by fer for the Grand Final.
+2026-08-16 21:14
+ TeSeS | 
+Hungary 
+Cheese448844
+with both teams current form a furia 26-0 is more probable than a mouz win (saying this as a mouz fan)
+2026-08-20 13:02
+MOUZ | 
+Italy 
+PavIusha
+The good old four Israelis on the server. The MOUZ ones win.
+2026-08-17 07:35
+ GeT_RiGhT | 
+Palestine 
+JoeyApricot
+This aged well xD not a cult member to be seen!
+2026-08-22 08:31
+MOUZ | 
+Germany 
+V4der2
+Mouz Furia would be Fire 🔥
+2026-08-18 09:30
+ woxic | 
+Türkiye 
+CHOKER0606
+Aurora x Fut
+2026-08-19 07:00
+ Ethan | 
+Russia 
+Bl0ssom
+ez4Furia
+2026-08-20 00:17
+ Krabeni | 
+Korea 
+kallamoq
+hope to see cmtry in better shape.. and humble molody..
+2026-08-20 12:56
+BLAST Dream Team | 
+Ukraine 
+sDe4th
+Furia 2:0 Mouz, Kscerato and Molodoy 1.90 rating
+2026-08-20 13:40
+ olofmeister | 
+Germany 
+Vinylshark
+Furia getting another free walk into a Grand Final, just to lose 0:3 against Falcons/Spirit/Vitality.
+2026-08-20 14:08
+FURIA | 
+China 
+Furia_N1_LOVHATER
+german always gelous of brazil since almost 100 years ago
+2026-08-20 14:23
+ olofmeister | 
+Germany 
+Vinylshark
+I must have missed at lot in the last 100 years.
+Would you mind telling me what we're jealous about exactly?
+2026-08-20 16:35
+FURIA | 
+China 
+Furia_N1_LOVHATER
+I can't tell exactly tell u what happend in almsot 100 years ago, since i'l lget muted, but brazillians helped a lot to save the world
+2026-08-20 17:31
+ olofmeister | 
+Germany 
+Vinylshark
+"I'll get muted" by the CCP? Cause HLTV mods will only remove your comment and move on. Unless all your comments are only about the World Wars, or other wars, or overall political shit.
+2026-08-21 13:57
+ dziugss | 
+Lithuania 
+augustenas1
+yes
+
+2026-08-22 11:14
+SPORT | 
+Brazil 
+MrLucas
+Legacy vs Furia grand final will break Hltv
+2026-08-20 14:36
+BLAST Dream Team | 
+Ukraine 
+sDe4th
+Furia lost 3:0 only once son, pls stop crying
+2026-08-20 22:49
+ zeRRoFIX | 
+Kazakhstan 
+esic_enjoyer
+ez matchfix for flukia
+they will lose their pick once again
+just like they did 3 games in a row before this match <3
+2026-08-20 14:25
+ Luken | 
+Sweden 
+hitAQN
+dude, I swear... this forum...
+2026-08-21 16:12
+FUT | 
+Türkiye 
+Bedirhan_10
+FUTWIN 2-0
+2026-08-21 07:04
+BLAST Dream Team | 
+Ukraine 
+sDe4th
+Bye bye Aurora XD
+2026-08-21 07:27
+FUT | 
+Türkiye 
+Bedirhan_10
+Ukrainian
+2026-08-21 07:44
+BLAST Dream Team | 
+Ukraine 
+sDe4th
+What is the problem? Being offended due to the lost it is okay son. U will never beat Furia anymore XD
+2026-08-21 22:21
+FUT | 
+Türkiye 
+Bedirhan_10
+I would answer you, but I'm staying silent because I know I'd get banned from the app.
+2026-08-22 05:46
+Old school: User been here for more than 10 years  | 
+Brazil 
+BrOoKs
+Lucky Furia!
+
+Because the luck is always with the bests!
+2026-08-21 07:06
+ izaa | 
+Switzerland 
+washedgoatswya
+FUT
+2026-08-21 07:09
+ xfl0ud | 
+Türkiye 
+Cherub
+GOOD LUCK FUT
+2026-08-21 07:09
+ NiKo | 
+United States 
+f1nessd
+COME ON FUT
+2026-08-21 07:13
+ tikuak | 
+North America 
+tre3333333
+cinema
+2026-08-21 07:14
+Faceit level 4  | 
+ Wicadia | 
+Türkiye 
+Solzen
+FUT
+2026-08-21 07:17
+FUT | 
+Philippines 
+Winaboldz
+Furia win
+2026-08-21 07:24
+ FalleN | 
+Brazil 
+drinkwaterrnow
+VAMOS PROFESSOR!!!!
+2026-08-21 07:24
+Morningstar | 
+Russia 
+kurt1c
+fut wins here, first finalist inc letsgooooooooooooooooooooooooooooo fut
+2026-08-21 07:26
+Faceit level 10  | 
+ nqz | 
+United Kingdom 
+nqz_enjoyer
+kaike vamosssssss
+2026-08-21 08:15
+Faceit level 8  | 
+ kyousuke | 
+Russia 
+Fallanor
+Krabeni shall school thoose lucky easy-bracket getting losers insh'alla
+2026-08-21 08:35
+Spirit | 
+Finland 
 happycrankk
 1. FUT removed Inferno
 2. FURIA removed Ancient
@@ -261,11 +640,1442 @@ happycrankk
 
 2-1 FURIA
 2026-08-21 09:10
-FUT |
-Türkiye
+Faceit level 10  | 
+FaZe | 
+Russia 
+QAUGOD
+Fut anubis?
+2026-08-21 14:29
+FaZe | 
+Estonia 
+Trentlouis
+FURIA will ban Anubis to play Ancient.
+And will not ban Cache
+2026-08-21 17:20
+FUT | 
+Ukraine 
+AlexMusic_yoshi!
+Not enough furious to stop FUT train!
+2026-08-21 09:47
+Aurora | 
+Türkiye 
+Qtinhio
+fut for revenge
+2026-08-21 11:11
+BLAST Dream Team | 
+Ukraine 
+sDe4th
+Aurora and Fut, huh? Both of them will play de_airport. No chances against the professor
+2026-08-21 22:23
+Aurora | 
+Türkiye 
+Qtinhio
+Hahaha, where's the professor? Oh, he's at the airport.
+2026-08-22 11:11
+ XANTARES | 
+Türkiye 
+Flyss
+sit
+2026-08-22 11:15
+FUT | 
+Philippines 
+Winaboldz
+This will be furia
+2026-08-21 11:45
+Congo, Democratic Republic of 
+KongyDonk
+very interesting match up, let's see how FUT will perform against the real t1 team
+2026-08-21 11:56
+FURIA | 
+China 
+Furia_N1_LOVHATER
+fr
+2026-08-21 19:32
+ MAJ3R | 
+Türkiye 
+Dedemdeyinededem
+sexfl0ud
+2026-08-21 13:15
+ Xyp9x | 
+Europe 
+cry_iz_free
+ez for FUT, I predict 2-0
+2026-08-21 13:17
+ Xyp9x | 
+Europe 
+cry_iz_free
+close enough
+2026-08-22 11:49
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Furia probably win because they have the better teamwork
+2026-08-21 14:12
+Ninjas in Pyjamas | 
+India 
+innocent_killer
+You mean better individuals?
+2026-08-21 23:11
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Fut have the better individuals
+2026-08-22 09:01
+ENCE | 
+Finland 
+team_Hange
+FUT!
+2026-08-21 14:14
+ woxic | 
+Türkiye 
+CHOKER0606
+xFloud will school these frauds
+2026-08-21 14:16
+Congo, Democratic Republic of 
+KongyDonk
+funny how the upper bracket ends up by a stronger semi-final
+2026-08-21 14:15
+Faceit level 10  | 
+FaZe | 
+Russia 
+QAUGOD
+FUT better form 2:1
+2026-08-21 14:39
+ devoduvek | 
+Philippines 
+trixiwnl
+the youngsters in FUT will teach El Professor's team a lesson!
+
+FUT 2:1 FURIA
+2026-08-21 15:14
+ woxic | 
+Türkiye 
+XKRNN
+you got this yasin
+2026-08-21 15:22
+FUT | 
+Portugal 
+l1ghtoff
+Navi junior clears
+2026-08-21 16:15
+Liquid | 
+Chile 
+1cristiaan
+boring
+2026-08-21 16:46
+ slaxejezzz | 
+Russia 
+i0n1x
+how is it boring? should be a good match
+2026-08-21 18:48
+ Wicadia | 
+Türkiye 
+Rakn
+ez 4 sexfl0ud FUTWIN
+2026-08-21 16:54
+Virtus.pro | 
+United States 
+sandra1st
+ez 4 FURIA
+2026-08-21 20:10
+Faceit premium user Faceit level 10  | 
+Aurora | 
+Türkiye 
+Roddiers
+easiest prediction of my life. 2-0 furia
+2026-08-21 20:25
+Faceit level 4  | 
+ CNm0NESY | 
+Canada 
+mcnamaras_EEEdiots
+kinda worried for fut, beating mouz (3dmax level playoff demons) will instill some false confidence in the futball boys
+2026-08-21 22:20
+FUT | 
+Netherlands 
+MartV
+Fut play their best when they are hyper confident though
+2026-08-22 01:42
+FaZe Up Next | 
+United States 
+bndr1
+Fut boutta go off I fear
+
+Sopp + Floudx & Demon masterclass coming.
+2026-08-21 22:58
+9z | 
+Argentina 
+_mat1
+fut better win ancient or insta 0-2
+2026-08-22 00:30
+Philippines 
+whosiejl
+fym ancient, they are the better team at mirage
+2026-08-22 02:54
+Faceit level 4  | 
+Spirit | 
+Türkiye 
+Ertyup
+FUT gg
+2026-08-22 02:23
+Croatia 
+MB1
+furia wins map 2 dust 2 or nuke
+2026-08-22 02:27
+Philippines 
+whosiejl
+furia not winning mirage at fut so better they ban that map, its risky that ancient and mirage gonna get pick, they need to gamble it.
+2026-08-22 02:54
+ cyx | 
+Germany 
+FreeKrimbo
+Please mologoat i need this
+2026-08-22 03:19
+ NiKo | 
+United States 
+f1nessd
+FUT WAY MORE EXCITING no?
+2026-08-22 06:09
+Austria 
+ilikemens
+I WANT FURIA TO WIN EWC!!!!
+2026-08-22 04:25
+FaZe | 
+United States 
+Echozz
+FUT 2-1 furia.
+2026-08-22 04:40
+Betclic | 
+Poland 
+viscabarcax
+first pick map win fut
+2026-08-22 04:49
+ NiKo | 
+United States 
+f1nessd
+FUTTTTTR
+2026-08-22 06:07
+Lithuania 
+Ideaspicks
+With a decent Igl FUT would take it. However it is going to be one more tournament where Fut reaches the game where in case they would win it would might be a breaking point and everyone consider them as a real team. However it will be one more game where they choke because of Krabeni incapability to perform in games which matters. Fallen will outcall him and “going through smokes “ each round will not work there. Furia 2:0 or 2:1 depending on wheter FUT plays ancient or anubis
+2026-08-22 06:21
+MOUZ | 
+Hungary 
+incosy
+Come on FUT, make it happen
+2026-08-22 06:32
+ zont1x | 
+United Kingdom 
+dylettucly
+Feet
+2026-08-22 06:55
+Real Betis | 
+Canada 
+STICKERS_SAVANT
+furia -anubis
+fut -inferno
+furia +d2
+fut +cache
+furia -ancient
+fut -nuke
+decider mirage
+2026-08-22 07:02
+GenOne | 
+France 
+PapyManioc
+0/3
+2026-08-22 08:02
+Real Betis | 
+Canada 
+STICKERS_SAVANT
+fuck.
+2026-08-22 08:03
+Faceit level 5  | 
+ soulfly | 
+Türkiye 
+SadFrog22
+sexfloud will school these frauds
+2026-08-22 07:29
+M80 | 
+Türkiye 
+slovslov
+Ancient
+Nuke
+Dust2
+2026-08-22 07:38
+Spirit | 
+Switzerland 
+bunagi
+Match starts at 16:25, we have intros that are important!
+2026-08-22 07:50
+Eritrea 
+nekehp
+50 gambling sites promoted on this matchpage.
+How big is the gamba 🤑 industry omg
+2026-08-22 07:55
+ Choco | 
+Palestine 
+Jame_0ne_Major_Niko_Nada
+All in furia
+2026-08-22 07:56
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+FURIA picked 3 maps again, great!
+2026-08-22 08:00
+Old school: User been here for more than 10 years  | 
+ luchov | 
+Brazil 
+mth^
+sheeesh ancient
+2026-08-22 08:01
+Real Betis | 
+Canada 
+STICKERS_SAVANT
+furia picking nuke is a mistake
+2026-08-22 08:02
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+do you think d2 would be better?
+2026-08-22 08:13
+Sweden 
+Tifiego
+10min timeout from Twitch for saying that the analyzers are clueless.
+
+Never change, ESL, never change.
+2026-08-22 08:03
+Congo, Democratic Republic of 
+KongyDonk
+looks like 2-1 for Furia, but let's see
+2026-08-22 08:04
+Spirit | 
+Finland 
+happycrankk
+FURIA Ancient meme went too far
+2026-08-22 08:05
+Spirit | 
+Türkiye 
+kakazont1x
+Furia not banning ancient?
+2026-08-22 08:08
+Congo, Democratic Republic of 
+KongyDonk
+I really want to bet on FUT here at least on the 1st map, but the odds were too low. Can't fool bookies, they adapt quickly
+2026-08-22 08:14
+Congo, Democratic Republic of 
+KongyDonk
+I'm remembering getting x3 on the first Mouz game, now it was 2.5 against Furia
+2026-08-22 08:17
+BIG | 
+Israel 
+BIG_wins_eventually
+Are FUT playing for some kind of dare of not planting bomb?
+2026-08-22 08:18
+Constant Motion | 
+Afghanistan 
+KushFromAfghanistan
+Let's go furia bois
+2026-08-22 08:18
+Old school: User been here for more than 10 years  | 
+Spirit Academy | 
+Taiwan 
+iloviz
+cmtry GOAT
+2026-08-22 08:21
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+That clutch by cmtry might be a gamechanger
+2026-08-22 08:21
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+what a banger!
+2026-08-22 08:24
+Ukraine 
+VitaliiKH
+fut 2:1
+2026-08-22 08:26
+FaZe Up Next | 
+United States 
+bndr1
+Fut are locked
+
+Fut2:0
+
+Let's go grand finals
+2026-08-22 08:32
+Belgium 
+cctenjoyer322
+0 rounds ct side incoming
+2026-08-22 08:34
+ gabs | 
+United States 
+rushawn3x
+KAIKE
+2026-08-22 08:34
+BIG | 
+Israel 
+BIG_wins_eventually
+Furia actually has plotarmor.
+2026-08-22 08:36
+Norway 
+KISSDADDYRAINGOODNIGHT
+cmtry with his daily dumb powerplay that just fails miserably lol
+2026-08-22 08:43
+FaZe | 
+Poland 
+ringopapi
+Low tabbing bums always scream the most
+2026-08-22 08:45
+ JamYoung | 
+Brazil 
+MoloGod26
+thats crazy, furia doesnt even play ancient and fut is almost losing it
+2026-08-22 08:45
+Denmark 
+Apik512
+Furia already home bro
+2026-08-22 11:53
+BIG | 
+Israel 
+BIG_wins_eventually
+Uh USP defense on full buy round? Hello?
+2026-08-22 08:48
+Faceit level 10  | 
+ insani | 
+Poland 
+Nienormalny
+fallen luck is insane
+2026-08-22 08:48
+Faceit plus user Faceit level 10  | 
+FaZe | 
+Norway 
+FazeEnjoyer
+5v3 10-8 10-13
+2026-08-22 08:50
+Spirit | 
+Russia 
+YseraAwakens
+12iq krab0ni lost this by himself
+2026-08-22 08:50
+Faceit level 8 Old school: User been here for more than 10 years  | 
+Vitality | 
+Hungary 
+heroicknight
+Furia on their worst map still kick fut ass
+2026-08-22 08:51
+Faceit level 8  | 
+ m0NESY | 
+Sweden 
+m0NKESY
+Check stats again. Not their worst, even if they dont play it often.
+2 times played, two times won - against Mouz and Aurora.
+2026-08-22 08:53
+Old school: User been here for more than 10 years  | 
+ cogu | 
+Brazil 
+Machine_sx
+Fallen said that was their worst map indeed
+2026-08-22 08:58
+FUT | 
+Netherlands 
+MartV
+used to be their worst, but they have worked to improve it. Anubis is probably the worst right now
+2026-08-22 09:01
+Denmark 
+Apik512
+Furia already flying home lil bro
+2026-08-22 12:07
+ Staehr | 
+Germany 
+boccaraton
+What an enjoyable game so far. Love the aggression.
+2026-08-22 08:52
+Belgium 
+cctenjoyer322
+Nice push dolbaeb v last rounde
+Blya chto eti dauni delayut na servere?
+2026-08-22 08:55
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+Such a risky moves in last round, gg's!
+
+True semi-final game!
+2026-08-22 08:55
+The MongolZ | 
+Turkmenistan 
+peepeepoopoo47
+ez 4 fut
+2026-08-22 08:55
+MOUZ | 
+Italy 
+PavIusha
+FURIA 2-1 now
+2026-08-22 08:55
+Romania 
+Winar
+They have info 1 cave and kekindar decided to push the smoke, wtf is that individual decision making of a toddler?
+2026-08-22 08:55
+GenOne | 
+France 
+PapyManioc
+let's dem0n! let's go fut ! you have good reason too not join back NAVI you are better
+2026-08-22 08:56
+Old school: User been here for more than 10 years  | 
+ cogu | 
+Brazil 
+Machine_sx
+Wtf yekindar is doing?
+2026-08-22 08:56
+Faceit level 4  | 
+ CNm0NESY | 
+Canada 
+mcnamaras_EEEdiots
+coulda been OT right there
+2026-08-22 08:57
+ FURIOUSS | 
+Türkiye 
+Cliksy27
+SEXFLOUD
+2026-08-22 08:56
+Belgium 
+cctenjoyer322
+10 9 - I sell fut bet and bet on furia
+13 11
+Sure
+2026-08-22 08:57
+ Bymas | 
+Denmark 
+gassss
+name tells everything
+2026-08-22 08:57
+Old school: User been here for more than 10 years  | 
+Ukraine 
+Wr3cker
+Are you trying to show off to the community that you're an idiot? Or why did you write that?
+2026-08-22 09:01
+Russia 
+Sanya_donk
+so dumb move no balls
+2026-08-22 09:03
+Congo, Democratic Republic of 
+KongyDonk
+so what? What was strange here? Literally nothing, it was just a bad move from your side.
+2026-08-22 09:08
+ xfl0ud | 
+Türkiye 
+Cherub
+let's go fut
+2026-08-22 08:59
+ Jab Jabich | 
+Serbia 
+DexterMorganMentality
+FURIA will disband after Major
+Yuurih full bot
+Fallen retire
+2 cis boys don't want to waste career in dead team
+Mark my words
+2026-08-22 09:00
+ xfl0ud | 
+Türkiye 
+TiksavLee
+Yes yes yes yes xfl0ud is a downgrade HLTV masters knows the game better than everyone else
+2026-08-22 09:09
+Venezuela 
+KappaVT
+Banger map 1 ngl, inject this straight to my veins map 2 and map 3
+2026-08-22 09:16
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+THEY WERE ALMOST SAVING LOL
+2026-08-22 09:19
+Türkiye 
+ATA1919
+Lets go fut!
+Lets go xfloud!!
+TURKS ARE COMING
+2026-08-22 09:21
+FaZe | 
+Poland 
+ringopapi
+Perfect scenario to bet FURIA live while down 0-1. No chance FUT will win Nuke and dust, they cant play both of these maps. Yekingod 2-1 win
+2026-08-22 09:25
+Congo, Democratic Republic of 
+KongyDonk
+who knows, the prize doesn't feel justify the risk
+2026-08-22 09:32
+FaZe | 
+Poland 
+ringopapi
+easy high odds
+2026-08-22 09:33
+Congo, Democratic Republic of 
+KongyDonk
+hope so for you, also I will not get butthurt because didn't bet on FUT at the beginning as I wanted on odds 250.
+2026-08-22 09:36
+FaZe | 
+Poland 
+ringopapi
+I had dziugs over 13.5 map 1 1.85 odds -> he got 14 with getting last kill on the map so very lucky, thought it would be easier on Ancient
+
+Yekindar over 13.5 map 2 1.85 odds -> easy
+
+And furia to win bo3 2.40 odds while down 0-1 live
+2026-08-22 09:55
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+Bro, yekindar sometimes sometimes does absolute garbage moves...
+2026-08-22 09:25
+Spirit | 
+Switzerland 
+bunagi
+WHAT A THROW FUT
+2026-08-22 09:29
+Faceit premium user Faceit level 3  | 
+FUT | 
+United Kingdom 
+bl4z31ng
+holy hell nuke is weak for this team
+2026-08-22 09:29
+Lithuania 
+VadikRaketa
+Holy sell by xfloud there.. Didn't cover properly his teammate defusing and then whiffed 20/20 bullets..
+2026-08-22 09:29
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+xfl0ud was the one defusing, and dziugs was holding the cover. That was just a bad play. Why would they let xfl0ud defuse with 100hp instead of dziugs on 25hp
+2026-08-22 09:41
+ dwushka | 
+British Virgin Islands 
+donothingcunt
+because they selling the game and follow the script, its can be 2:0, but the need to make 3 maps anyway.
+2026-08-22 09:42
+Lithuania 
+VadikRaketa
+No, I am talking about 7th round, it was 1v3 for yekindar, xfloud was covering hut and he allowed yeki from hut to spam defuser and then whiffed 20 bullets trying to trade yekindar and didn't kill him.
+2026-08-22 09:54
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+10/10 entertaining match!
+2026-08-22 09:31
+GenOne | 
+France 
+PapyManioc
+fut get destroy....
+2026-08-22 09:37
+Faceit level 4  | 
+ CNm0NESY | 
+Canada 
+mcnamaras_EEEdiots
+watching cmtry play at this level like that makes my eyes hurt
+2026-08-22 09:39
+GenOne | 
+France 
+PapyManioc
+can fut win dust 2 ?
+2026-08-22 09:42
+ broky | 
+Poland 
+Mrozu08
+Yes
+2026-08-22 09:58
+GenOne | 
+France 
+PapyManioc
+but it's seems bad
+2026-08-22 10:06
+ broky | 
+Poland 
+Mrozu08
+they just bad on nuke
+2026-08-22 10:09
+Old school: User been here for more than 10 years  | 
+ steel | 
+Canada 
+steell
+Where can I sign up to be one of those paid fans?
+2026-08-22 09:43
+FaZe | 
+Poland 
+ringopapi
+Why would you think there are paid fans for Brazil? Lmao falcons already out, Legacy also has crowd on their side.
+2026-08-22 09:56
+Old school: User been here for more than 10 years  | 
+ steel | 
+Canada 
+steell
+Oh sweet summer child..
+2026-08-22 10:12
+Israel | 
+Brazil 
+uNtouchabLebr
+You just need to be one of the bros of Akkari
+2026-08-22 10:03
+ kike | 
+Ukraine 
+PjKBD28kQTWbN98dr8
+You need to contact Mohammed bin Salman and ask him nicely for a job.
+2026-08-22 10:10
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+Chill mode 11:3 disaster?
+2026-08-22 09:46
+ dwushka | 
+British Virgin Islands 
+donothingcunt
+nice actors, very entertaining!
+2026-08-22 09:52
+Netherlands 
+PRPAGANDA
+Am I the only one who thinks Furia is so lucky always? They have no tactics, bit always 2 lurks and fake a lot...
+2026-08-22 09:54
+9z | 
+Argentina 
+_mat1
+poor fut bro, they gonna L 13-6 another map
+2026-08-22 09:54
+ broky | 
+Poland 
+Mrozu08
+Wym free d2 for youngsters
+2026-08-22 09:58
+9z | 
+Argentina 
+_mat1
+nice joke, furia plays insane on d2 and fut well... they lose to sinners lol
+2026-08-22 10:01
+ broky | 
+Poland 
+Mrozu08
+1 month ago
+2026-08-22 10:10
+ zweih | 
+Afghanistan 
+Araya111
+aim 100% iq 10% goat fut
+2026-08-22 09:55
+ donk | 
+Belarus 
+donkinho
+d2 easy for yuuria
+2026-08-22 10:06
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Bot furia 2 rounds in already throwing man advantage rounds
+2026-08-22 10:13
+Faceit level 10 Old school: User been here for more than 10 years  | 
+ ewjerkz | 
+Portugal 
+MUTIRIS_VAC_SHOT
+Uh? What???????
+2026-08-22 10:15
+ donk | 
+Sweden 
+ViKz
+Ahahaha fallen lucky but i take it
+2026-08-22 10:15
+Alcohol and Bitches | 
+Poland 
+sell_mace_40_gp
+The fuck was that
+2026-08-22 10:15
+ donk | 
+Belarus 
+donkinho
+vamos fallen
+2026-08-22 10:16
+Spirit | 
+United States Virgin Islands 
+donkgod
+i’ve never seen that in my life lol the aim punch made fallen kill the guy on short
+2026-08-22 10:16
+Lithuania 
+VadikRaketa
+Fut will lose for sure..
+They look so confused on the map, they don't know what to do except for some pushes..
+And that 5v4 thrown away cause xfloud rushes mid for no reason with bomb dropped on short just shows it..
+2026-08-22 10:17
+ broky | 
+Poland 
+Mrozu08
+classic furia winning cuz of lotto
+2026-08-22 10:18
+Real Betis | 
+Canada 
+STICKERS_SAVANT
+been watching cs for 10 years and never seen an aim punch assist lmaoooo
+
+round 3 on dust2 Fallen 2k to finish the round was INSANE
+2026-08-22 10:20
+ m0NESY | 
+Indonesia 
+hack5aven
+thanks to FUT at round 3 for braindead gameplay LMAO
+2026-08-22 10:22
+Cayman Islands 
+______777______
+FUT u guys are just braindead
+2026-08-22 10:22
+Faceit level 9 Old school: User been here for more than 10 years  | 
+ flamie | 
+Russia 
+MELKOR
+What happened to fut map pool, from 7 maps they can play only 3
+2026-08-22 10:26
+China 
+mironisonfire
+2;0 , choke 5v4 = choke all game XD
+2026-08-22 10:26
+Lithuania 
+VadikRaketa
+The 5v4 thrown away was lowkey on xfloud.. I've never seen someone push mid like that at 5v4 advantage with no info..
+2026-08-22 10:35
+Afghanistan 
+kinggamba33
+nice Troll from fut
+2026-08-22 10:27
+Faceit level 9 Old school: User been here for more than 10 years  | 
+ flamie | 
+Russia 
+MELKOR
+Why also don't play cache, the easiest tactically, heavy aim dependent map.
+2026-08-22 10:28
+ Choco | 
+Palestine 
+Jame_0ne_Major_Niko_Nada
+BB fut bots
+2026-08-22 10:32
+ donk | 
+Belarus 
+donkinho
+another lose vs donk for molodoy
+2026-08-22 10:34
+South America 
+Phren
+I legit dont know if furia is peaking hard as fuck or every other team is straight up horrible, because they win most rounds so easily that it doesn't make any real sense
+2026-08-22 10:35
+ FalleN | 
+Brazil 
+NegoX
+Fallen is a Genius bro, Just accept that.
+2026-08-22 10:38
+Switzerland 
+life2
+but it anywa leads them to losing a game. you are not rewarded for being brave at any game nowadays sadly
+2026-08-22 10:51
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Furia time to troll again, 5v3 pistol round and u only have one player holding short
+2026-08-22 10:37
+ dem0n | 
+Netherlands 
+pulvr
+yuurih is a bot guys confirmed
+2026-08-22 10:38
+Faceit level 8  | 
+ m0NESY | 
+Sweden 
+m0NKESY
+xfloud MIA = no chance
+2026-08-22 10:45
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+5v3 and throw again HAHA F
+2026-08-22 10:45
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Go furia go throw you really want to throw no problem it will happen now
+2026-08-22 10:47
+BC.Game | 
+Czech Republic 
+MelmaNn
+yurihs gf broke up with him yesterday after the game or what? XD
+2026-08-22 10:50
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Lets go fut!! lets go fut! Furia want to throw no problemoo!!
+2026-08-22 10:50
+Belgium 
+cctenjoyer322
+Nice throw
+5v3 a side hold nothing
+2026-08-22 10:50
+Black Phoenix | 
+Fiji 
+AbrahamChehov
+that 5 v 3 was crucial
+2026-08-22 10:51
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+BR BR B BRRRR BRRRONZILLL BRONZIL BRONZIL!
+2026-08-22 10:53
+Indonesia 
+Wiliam2166
+HWA T A THROE
+2026-08-22 10:53
+Spirit | 
+United States Virgin Islands 
+donkgod
+molodog choking again
+2026-08-22 10:53
+ woxic | 
+Türkiye 
+CHOKER0606
+MOLOBOT HAHAH GO HOME BRONZIL
+2026-08-22 10:53
+Indonesia 
+Wiliam2166
+Good 2v4
+2026-08-22 10:53
+Switzerland 
+life2
+furia just straight pathetic ggs
+2026-08-22 10:53
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+You troll my bet you go home :) BYE BYE LETS GO FUT LETS GO FUT TAKE MY ENERGY TAKE MY LUCK
+2026-08-22 10:54
+Vitality | 
+Estonia 
+LfLion
+Lose 5v3 , lose 4v2 , bruh just whole furia should disband with fallen lmao , garbage team fr
+2026-08-22 10:54
+ nut nut | 
+Finland 
+demchugdongrub
+Say it aint so furia
+2026-08-22 10:54
+HOTU | 
+North America 
+@^^
+yeki please
+2026-08-22 10:55
+ woxic | 
+Türkiye 
+CHOKER0606
+SEND THEM HOME SEND THEM HOME SEND THEM HOME SEND THEM HOME SEND THEM HOME
+2026-08-22 10:55
+United States 
+Brad_Bait
+FUT luckiest team ever?
+2026-08-22 10:55
+Switzerland 
+life2
+yekindar and yurih are just awful
+2026-08-22 10:55
+Falcons | 
+Finland 
+never_won_a_bet
+Top kek
+2026-08-22 10:55
+ Jab Jabich | 
+United States 
+TheGr8One
+how did these FUT bots make it to the final? cs pro scene is cooked
+2026-08-22 10:55
+Belgium 
+cctenjoyer322
+Blya Im voobshe pohui tipa?
+5v3 10 7
+Prosto smotrite tochki kak mojno eto proebat
+2026-08-22 10:55
+ device | 
+Denmark 
+Skilo
+Why molodoy has to be so unaware? That costs the entire series
+2026-08-22 10:56
+ dem0n | 
+Netherlands 
+pulvr
+praying for fut win, would be a good lesson to those brazilian cheaters
+2026-08-22 10:56
+ masq | 
+United Kingdom 
+h4m
+furia so unlucky
+2026-08-22 10:56
+ gabs | 
+United States 
+rushawn3x
+GODFATHER
+2026-08-22 10:57
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+LETS GO FUT!! SEND THESE CHOKERS HOME
+2026-08-22 10:58
+ karrigan | 
+Germany 
+Luemmel
+Will age well my friend
+2026-08-22 11:00
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+I know :P
+2026-08-22 11:14
+ ZywOo | 
+Canada 
+dev1cruise
+molobot always plays so dumb in clutch situations
+2026-08-22 10:58
+ woxic | 
+Türkiye 
+CHOKER0606
+Losing to 37 yrs unc lol
+2026-08-22 10:58
+ karrigan | 
+Germany 
+Luemmel
+What is fut doing???
+2026-08-22 11:00
+ kike | 
+Ukraine 
+PjKBD28kQTWbN98dr8
+Choking.
+2026-08-22 11:01
+Belgium 
+cctenjoyer322
+What is furia doing bro?
+We are watching when same game?
+2026-08-22 11:02
+ huyak | 
+Europe 
+Iafleur
+lifting the trophy
+2026-08-22 11:12
+ karrigan | 
+Germany 
+Luemmel
+Good
+2026-08-22 11:12
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+HAHAHA TROLL AGAIN FURIA
+2026-08-22 11:02
+ nut nut | 
+Finland 
+demchugdongrub
+Omega throwfiesta
+2026-08-22 11:02
+MOUZ | 
+Ukraine 
+Avg_Mouz_Enjoyer
+pls furia stop losing all advantages
+2026-08-22 11:02
+Belgium 
+cctenjoyer322
+They will stop after loosing this game
+Fucking retarded monkeys
+2026-08-22 11:04
+ Jab Jabich | 
+Poland 
+exaylo
+i just enjoy watching how FUT can turn the tide of rounds
+2026-08-22 11:02
+ donk | 
+Sweden 
+ViKz
+furia and losing with man advantage xd
+2026-08-22 11:03
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Its gg xfl0ud woke up and yuurih still sleeping
+2026-08-22 11:05
+ gabs | 
+United States 
+rushawn3x
+yo cmtry get ready for the pee test buddy
+2026-08-22 11:05
+9z | 
+Argentina 
+_mat1
+lucky fut 3v5 at 6-10
+2026-08-22 11:05
+FaZe Up Next | 
+United States 
+bndr1
+good shit from Cemtry
+
+Used to think he was a mini sunpayus
+
+Now he is gapping Molodoy on the biggest stage of his career
+
+Respect to them boys
+2026-08-22 11:06
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Brrr brr bronzil airport is that way! That way!!!
+2026-08-22 11:06
+ Cooper | 
+Europe 
+kuu1
+They will play in the 3rd-4th match tomorrow.
+2026-08-22 11:22
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Smh battle of losers tomorrow
+2026-08-22 11:22
+ ZywOo | 
+Canada 
+dev1cruise
+dogwater bots just can't use their brain when they have advantage
+2026-08-22 11:06
+Belgium 
+cctenjoyer322
+Bro I wish the worst for furia and their families for this choke
+It's straight throw
+What a fuck r they doing
+2026-08-22 11:06
+Constant Motion | 
+Afghanistan 
+KushFromAfghanistan
+Fooria back to the tier
+2026-08-22 11:06
+ ZywOo | 
+Belgium 
+Ch333
+MONSTER CMTRY
+2026-08-22 11:06
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Deserved asf for trolling multiple 5v3 rounds, you choke you go home! As simple as that
+2026-08-22 11:08
+GenOne | 
+France 
+PapyManioc
+LETS GO FUT AHHAHAHAH FURIA TRASH
+2026-08-22 11:08
+ karrigan | 
+Germany 
+Luemmel
+Yeah lets go choke this again
+2026-08-22 11:09
+ karrigan | 
+Germany 
+Luemmel
+Nevermind
+2026-08-22 11:10
+Old school: User been here for more than 10 years  | 
+XDM | 
+Finland 
+RamboAAA
+YEKINDAR forgot how to aim
+2026-08-22 11:08
+BIG | 
+Israel 
+BIG_wins_eventually
+3v5 on B? not possible wtf
+2026-08-22 11:08
+ xfl0ud | 
+Türkiye 
+Cherub
+COME ON FUT COME ON
+2026-08-22 11:09
+Faceit level 3  | 
+ pashaBiceps | 
+African Union 
+Metal01
+No way it's another Upset
+2026-08-22 11:09
+Türkiye 
+Getsmart
+BOT FURİA HAHAHAHAHAHHA
+2026-08-22 11:10
+ gabs | 
+United States 
+rushawn3x
+demon is scary bro
+2026-08-22 11:10
+Europe 
+sikos5
+bye molobot
+2026-08-22 11:10
+ woxic | 
+Türkiye 
+CHOKER0606
+Go to home cheaters arrogant bronzil
+2026-08-22 11:10
+ karrigan | 
+Germany 
+Luemmel
+GG
+
+Thanks fut for getting rid of brazil
+2026-08-22 11:10
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Haha BYE BYE FURIA!!! YOU CHOKE YOU GO HOME BYEEEE
+2026-08-22 11:10
+Türkiye 
+ATA1919
+Fut is a better team. G2 lost to this
+2026-08-22 11:10
+Belgium 
+cctenjoyer322
+10 7 5v3 ct side 3 buys economy 80% wr map it's not enough
+They got paid for playing this game btw
+2026-08-22 11:11
+ xfl0ud | 
+Türkiye 
+Cherub
+LETS FIUCSKI GGOKOO LETS GOOOOOOOOOOOOOOOOOOOOOOOOOOO
+2026-08-22 11:11
+ ropz | 
+Other 
+Stepbro_Iam_Stuck
+Yuurih is so mega trash, i hope they kick this idiot and get insani
+2026-08-22 11:11
+BC.Game | 
+Czech Republic 
+MelmaNn
+XDDDDDDD
+2026-08-22 11:11
+ donk | 
+Belarus 
+donkinho
+xaxaxax
+2026-08-22 11:11
+Vitality | 
+Germany 
+de_airport_enjoyer
+Alright yuurih, OT and 11kills. Go uninstall this game thanks
+2026-08-22 11:11
+ xfl0ud | 
+Türkiye 
+Cherub
+LETS GOO XFL0UD LETS GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+2026-08-22 11:11
+ ZywOo | 
+Belgium 
+Ch333
+GG FUT, i hope you win ESWC 2026 !!!
+2026-08-22 11:11
+Parallax | 
+New Zealand 
+GeneralSNAFU
+Furia are nothing more than easy side of the bracket merchants
+2026-08-22 11:11
+Faceit level 9  | 
+ ropz | 
+Türkiye 
+Floxiada
+bye bye Furıa
+2026-08-22 11:11
+ dem0n | 
+Netherlands 
+pulvr
+dem0n is a demon man, he singlehandedly won some of those rounds wow
+2026-08-22 11:11
+ shox | 
+Germany 
+maxrcx
+donk will absolutely destroy them tomorrow, 1.80 rating confirmed.
+2026-08-22 11:12
+ Jab Jabich | 
+Serbia 
+DexterMorganMentality
+One player difference
+Hope everything goes bad for yuurih
+2026-08-22 11:12
+Germany 
+Dome_2504
+Brazil trash as allways
+2026-08-22 11:12
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Great choke job from furia 8-4 to 10-12 :D
+2026-08-22 11:12
+fnatic | 
+United States 
+blargCS
+big day for fut lovers
+2026-08-22 11:12
+FURIA | 
+Brazil 
+dimasMaluco
+YURI OUT RIGHT NOW......... COMMON......... INSANI ARRIVES.....
+2026-08-22 11:12
+ onliner | 
+Europe 
+niko_1_major_xantares_0_major
+Furia trying to take an easy route to another final beating nobody
+2026-08-22 11:13
+Old school: User been here for more than 10 years  | 
+ cogu | 
+Brazil 
+Machine_sx
+How tf they tried the easy route? Its not their fault if Vitality lost to b8 and spirit lost to jijihao.
+2026-08-22 11:34
+Estonia 
+Switte
+Crowd should have tried harder.
+2026-08-22 11:13
+Faceit level 5  | 
+ Choco | 
+Netherlands 
+Faze_1_Major_Niko_0_Majors_
+Very happy for FUT, they deserve this for their continuous hard grind from navi junior all the way to grand finals EWC
+2026-08-22 11:13
+Old school: User been here for more than 10 years  | 
+ cogu | 
+Brazil 
+Machine_sx
+As much I like yuurih, horrible series by him.
+2026-08-22 11:13
+FUT | 
+Türkiye 
+ColdZer00
+sexfloud saved TR CS
+2026-08-22 11:13
+Czech Republic 
+m1c0nic
+honestly i am just happy for spirit
+2026-08-22 11:14
+Faceit level 10  | 
+ Twistzz | 
+Europe 
+Pin3Appl3
+yeah rip fut, lame final as always
+2026-08-22 11:21
+ xfl0ud | 
+Türkiye 
+Cherub
+LETS GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO FUT LETS GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+2026-08-22 11:14
+Windigo | 
+South America 
+withsn
+just like falcon script have lead and full economy suddenly dont know how to win man advantage round push with 4v2 5v3 hahahahaha
+2026-08-22 11:14
+Türkiye 
+Getsmart
+Furia when there's no audience info baybrazilbot xdHAHAHAHHAHAHA
+2026-08-22 11:15
+Faceit plus user Faceit level 8  | 
+FUT | 
+Korea 
+sham31ess
+good team fut good team, probably the hardest shooting team right now
+2026-08-22 11:17
+Faceit level 9 Old school: User been here for more than 10 years  | 
+fnatic | 
+Ukraine 
+Lud0_
+Ye either them or legacy, mechanically both are on top of the game right now
+2026-08-22 11:36
+The MongolZ | 
+Norway 
+blueyoshiii
+predictable. im dumb i didnt bet more on fut. very good team
+2026-08-22 11:17
+ w0nderful | 
+Türkiye 
+meltdown1
+THIS IS PEAK
+2026-08-22 11:19
+FaZe Up Next | 
+United States 
+bndr1
+These guys don't give up
+
+Very refreshing to see
+2026-08-22 11:19
+ zont1x | 
+Japan 
+p1dmet)
+EZ 4 CMMETRICAL GOAT
+2026-08-22 11:20
+Faceit level 10  | 
+ Twistzz | 
+Europe 
+Pin3Appl3
+nice fut now you can be proud of yourself and throw the final 0-3, cs classic
+2026-08-22 11:21
+Disabled | 
+Greenland 
+ncmuggets
+EZ FOR KRABGOD AULON
+🦀🦀🦀🦀🦀🦀🦀🦀🦀
+2026-08-22 11:21
+Cloud9 | 
+Iceland 
+Namaste56
+Cant win a free bracket
+2026-08-22 11:22
+ try | 
+Argentina 
+papugomez
+HAHAHAHAJAHAHAJHAHAHAHAHA
+
+LETS GO FUT
+2026-08-22 12:16
+ kyousuke | 
+Other 
+Insight69
+Ahahahaahahahhahahahabababababababahahaahhaah Bronzilllll. Kscerato, Fallen needs to go, u wasting your prime on Brazil jail. Bye bye Brasilvers
+2026-08-22 12:24
+Old school: User been here for more than 10 years  | 
+Other 
+FGsouL
+You make comeback against turk players but got eliminated by turkish org. Deserved lmao.
+2026-08-22 12:40
+Faceit level 7  | 
+ xfl0ud | 
+Türkiye 
+M4jorKnight
+sexfloud
+2026-08-22 12:51
+FUT | 
+Türkiye 
 Sekolelele
 awper diff  twitch.tv/eslcs/clip/LovelyAnimatedPidge..
 2026-08-23 01:48
+FUT | 
+Türkiye 
+dorothysaint
+FURIA legends
+2026-08-23 09:50
 
 Login or register to add your comment to the discussion.
 
@@ -278,10 +2088,380 @@ FURIA
 +29
 Prizepool
 $2,000,000
+Previous in event
+Europe
+Vitality
+Russia
+Spirit
+3(1)
+13(2)
+Next in event
+Brazil
+Legacy
+Russia
+Spirit
+9(0)
+13(2)
+Other upcoming
+Russia ex-RUBY
+Russia BET-M
+5(1)
+4(0)
+Brazil paiN Academy
+Brazil Peladona
+2(0)
+10(0)
+Europe Drip Too Hard
+Russia Just Players
+11:00
+Russia K27
+Russia SPARTA
+12:00
+United Kingdom Privateer
+United Kingdom Ryvex
+12:00
+Argentina Procyon
+Brazil Mansão Maromba
+13:00
+Brazil Fluxo
+Brazil PEAK
+15:00
+Brazil Yawara
+Brazil Keyd Stars
+15:00
+Brazil Bounty Hunters
+Brazil MEIA NOITE
+15:00
+Brazil BORRACHEIROS
+Brazil Galorys
+15:00
+RECENT ACTIVITY
+they try to stop us
+15
+Your greatest CS mystery
+39
+"Bc game lost to tier 99999999"
+64
+FaZe Up Next
+7
+s1mple zywoo
+126
+ex-RUBY vs BET-M
+10
+spirit nonchalant gimmick
+11
+Spirit vs DENDELE
+39
+lauNX
+25
+Blast Fantasy
+9
+better call jL
+10
+MIBR bench brnz4n
+24
+PGL Major 720hz monitors
+18
+S1mple goat falloff?
+5
+XDM vs 5star
+1
+BLAST Open Porto
+42
+GROUPSUKE
+8
+Falcons strats
+10
+which pros read hltv forums
+87
+donk 12 MVPs
+38
+MINIGAME
+Timeline
+Play
+TOP 30 TRANSFERS
+All transfers
+Now playing
+Thumbnail for stream
+Russia
+strogo
+17204 viewers
+Top streams
+All
+(81)
+
+Casters
+(46)
+
+Streamers
+(25)
+
+Organizers
+(10)
+CasterRussia
+strogo
+(17204)
+Top playerBelgium
+ScreaM
+(2776)
+Top playerBrazil
+nak
+(2155)
+Top playerPortugal
+hdstr
+(1716)
+Top playerRussia
+hooch
+(1608)
+Top playerBrazil
+nak
+(1115)
+Top playerRussia
+Bandurka
+(1074)
+CasterBrazil
+Liminha
+(1022)
+CasterBrazil
+wastzera
+(972)
+CasterPoland
+IzakOOO
+(907)
+Top playerBrazil
+nak
+(836)
+CasterBrazil
+bt0
+(690)
+Top playerCanada
+jasonR
+(673)
+Top playerPoland
+Goofy
+(662)
+CasterOther
+VanFanTV
+(636)
+CasterRussia
+BreeL
+(596)
+OrganizerCzech Republic
+PLAYzoneTV
+(571)
+CasterBrazil
+Liminha
+(554)
+OrganizerUnited Kingdom
+ESL TV
+(489)
+CasterUkraine
+Sergiz
+(471)
+Top playerCzech Republic
+oskar
+(434)
+CasterUkraine
+Maincast
+(394)
+OrganizerOther
+CCT 3
+(365)
+CasterPoland
+Angelka
+(358)
+Top playerArgentina
+reversive
+(356)
+CasterArgentina
+imicaelax
+(263)
+CasterIran
+iMaN MorisoN
+(245)
+CasterUkraine
+Petrovich_cast
+(243)
+Top playerUkraine
+1mpala
+(235)
+OrganizerRussia
+GLuck
+(183)
+Top playerFinland
+p3kko
+(173)
+Top playerBrazil
+steel
+(159)
+OrganizerUnited Kingdom
+ESL TV
+(157)
+Top playerPoland
+dycha
+(155)
+CasterSweden
+Luddiie
+(152)
+CasterHungary
+KODIAK
+(147)
+CasterArgentina
+GordoReally
+(141)
+CasterRussia
+NarodCast
+(132)
+CasterRussia
+floppya
+(129)
+OrganizerKazakhstan
+BRO
+(123)
+OrganizerRussia
+GLuck
+(122)
+Top playerUnited States
+CoJoMo
+(121)
+OrganizerOther
+CCT
+(114)
+CasterRussia
+BAC9CKOPOCTb
+(114)
+CasterBrazil
+Tris_Mara
+(113)
+Top playerBrazil
+yeL
+(110)
+Top playerSpain
+NaOw
+(109)
+CasterOther
+ClutchZone
+(109)
+CasterRussia
+BetBoom 5
+(100)
+CasterBulgaria
+Niku
+(96)
+CasterOther
+MissRage
+(89)
+CasterBrazil
+mwhs
+(65)
+CasterRussia
+BetBoom 3
+(63)
+CasterDenmark
+Dust2 TV
+(63)
+CasterRussia
+pa111nnnjkee
+(60)
+Top playerPoland
+tudsoN
+(57)
+OrganizerOther
+Exort 2
+(53)
+CasterUkraine
+PETR1K
+(41)
+Top playerAustralia
+viridian
+(38)
+CasterGermany
+Albi1985
+(31)
+Top playerBelgium
+Nivera
+(27)
+CasterUkraine
+Enkanis
+(26)
+CasterBrazil
+mch
+(26)
+CasterGermany
+Albi1985
+(24)
+CasterRussia
+GoYareGo
+(24)
+CasterRussia
+untalentedkid785
+(24)
+CasterHungary
+Esport1 TV
+(23)
+CasterPoland
+Majki
+(23)
+Top playerIsrael
+anarkez
+(22)
+CasterBrazil
+Tris_Mara
+(21)
+CasterOther
+FlubyTV
+(19)
+CasterRussia
+BOLT
+(17)
+CasterArgentina
+SV_TheUnknown
+(14)
+CasterRomania
+HEAVENACHE
+(14)
+OrganizerOther
+Exort Fiesta
+(14)
+CasterSlovenia
+MevliN
+(4)
+Top playerArgentina
+NikoM
+(4)
+CasterOther
+AnalyticVictor
+(3)
+Top playerRussia
+Bandurka
+(2)
+Top playerSlovakia
+benq1
+(1)
+CasterOther
+AnalyticVictor
+(1)
 HLTV merchandise
+HLTV Community t-shirt and sweatshirt available now
+Download the HLTV app
+Optimized to keep you up to date on the go
 Jobs
 Contact
 About
 Terms
 Privacy policy
+Cookie policy
+Disclosures
+RSS
+Skins
+Cologne Major
+
+
 © HLTV.org
+Gamcare logo18+ Bet Responsibly | Be Gamble Aware logo
+21+
+Gambling problem? Call or TEXT 1-800-GAMBLER.
+Colorado Self-Exclusion
+
+A part of Better Collective
+Update privacy preferences

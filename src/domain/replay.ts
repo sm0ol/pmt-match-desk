@@ -29,6 +29,18 @@ function detailAuthority(value: {
   return (value.sourceKind === "map-stats" ? 10 : 0) + stateAuthority(value.sourceState);
 }
 
+function enrichMap(winner: MapResult, loser: MapResult | undefined): MapResult {
+  // The winning source owns the scores, but enrichments the winner lacks
+  // (half breakdowns, per-map stats, stat links) survive from the loser.
+  return {
+    ...winner,
+    halfScore: winner.halfScore ?? loser?.halfScore,
+    halves: winner.halves ?? loser?.halves,
+    players: winner.players ?? loser?.players,
+    statsUrl: winner.statsUrl ?? loser?.statsUrl,
+  };
+}
+
 function mergeMaps(previous: MapResult[], next: MapResult[]): MapResult[] {
   const merged = new Map<string, MapResult>();
   for (const map of previous) merged.set(map.id || map.name.toLowerCase(), map);
@@ -36,18 +48,62 @@ function mergeMaps(previous: MapResult[], next: MapResult[]): MapResult[] {
     const key = map.id || map.name.toLowerCase();
     const current = merged.get(key);
     if (!current || detailAuthority(map) >= detailAuthority(current)) {
-      // The winning source owns the scores, but enrichments the winner lacks
-      // (half breakdowns, per-map stats, stat links) survive from the loser.
-      merged.set(key, {
-        ...map,
-        halfScore: map.halfScore ?? current?.halfScore,
-        halves: map.halves ?? current?.halves,
-        players: map.players ?? current?.players,
-        statsUrl: map.statsUrl ?? current?.statsUrl,
-      });
+      merged.set(key, enrichMap(map, current));
+    } else {
+      merged.set(key, enrichMap(current, map));
     }
   }
   return [...merged.values()];
+}
+
+function teamIdentity(team: MatchData["team1"]): string {
+  return team.id && !team.id.startsWith("name:") ? `id:${team.id}` : `name:${team.name.trim().toLocaleLowerCase()}`;
+}
+
+function flipSide(side: "team1" | "team2"): "team1" | "team2" {
+  return side === "team1" ? "team2" : "team1";
+}
+
+/**
+ * A map-stats page can list the teams in the opposite order from the main
+ * match page. When the incoming snapshot's teams are crosswise to the
+ * reference, every side-relative value is flipped before merging.
+ */
+function orientMatch(next: MatchData, reference: MatchData): MatchData {
+  const straight =
+    teamIdentity(next.team1) === teamIdentity(reference.team1) ||
+    teamIdentity(next.team2) === teamIdentity(reference.team2);
+  const crosswise =
+    teamIdentity(next.team1) === teamIdentity(reference.team2) &&
+    teamIdentity(next.team2) === teamIdentity(reference.team1);
+  if (straight || !crosswise) return next;
+  return {
+    ...next,
+    team1: next.team2,
+    team2: next.team1,
+    seriesScore: [next.seriesScore[1], next.seriesScore[0]],
+    maps: next.maps.map((map) => ({
+      ...map,
+      team1Score: map.team2Score,
+      team2Score: map.team1Score,
+      // The textual half score is orientation-specific and cannot be flipped.
+      halfScore: undefined,
+      halves: map.halves?.map((half) => ({
+        team1: half.team2,
+        team2: half.team1,
+        team1Side: half.team1Side ? (half.team1Side === "CT" ? "T" as const : "CT" as const) : undefined,
+      })),
+      players: map.players?.map((player) => ({ ...player, teamSide: flipSide(player.teamSide) })),
+    })),
+    ...(next.vetoes
+      ? { vetoes: next.vetoes.map((veto) => ({ ...veto, teamSide: veto.teamSide ? flipSide(veto.teamSide) : undefined })) }
+      : {}),
+    ...(next.vrs ? { vrs: { team1: next.vrs.team2, team2: next.vrs.team1 } } : {}),
+    players: next.players.map((player) => ({
+      ...player,
+      teamSide: player.teamSide ? flipSide(player.teamSide) : undefined,
+    })),
+  };
 }
 
 function mergePlayers(previous: PlayerStat[], next: PlayerStat[]): PlayerStat[] {
@@ -62,7 +118,8 @@ function mergePlayers(previous: PlayerStat[], next: PlayerStat[]): PlayerStat[] 
   return [...merged.values()];
 }
 
-function mergeMatch(previous: MatchData, next: MatchData): MatchData {
+function mergeMatch(previous: MatchData, incoming: MatchData): MatchData {
+  const next = orientMatch(incoming, previous);
   const nextOwnsCore = coreAuthority(next) >= coreAuthority(previous);
   const primary = nextOwnsCore ? next : previous;
   const fallback = nextOwnsCore ? previous : next;

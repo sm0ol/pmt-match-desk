@@ -19,6 +19,10 @@ const furiaFutPlain = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/furia-fut-2026/clipboard.txt"),
   "utf8",
 );
+const furiaFutHtml = readFileSync(
+  resolve(process.cwd(), "tests/fixtures/hltv/furia-fut-2026/clipboard.html"),
+  "utf8",
+);
 
 describe("parseHltvClipboard", () => {
   it("parses the real completed BO3 capture", () => {
@@ -155,6 +159,31 @@ describe("parseHltvClipboard", () => {
     expect(result.match?.highlights).toHaveLength(6);
     expect(result.match?.highlights?.[0]).toMatch(/^M1R7 \| cmtry/);
     expect(result.match?.highlights?.[5]).toMatch(/^M3R3 \| FalleN/);
+  });
+
+  it("parses a current-format capture with absolute links: roles, ids, halves, canonical URL", () => {
+    const result = parseHltvClipboard({ plain: furiaFutPlain, html: furiaFutHtml });
+    const players = result.match?.players ?? [];
+    const byNick = (nick: string) => players.find((player) => player.name.includes(`'${nick}'`));
+
+    expect(result.diagnostics).toEqual([]);
+    expect(result.match?.sourceUrl).toBe(
+      "https://www.hltv.org/matches/2396611/furia-vs-fut-esports-world-cup-2026",
+    );
+    expect(result.match?.team1).toEqual({ id: "8297", name: "FURIA", country: "BR" });
+    expect(result.match?.team2).toEqual({ id: "13286", name: "FUT", country: "EU" });
+    expect(byNick("molodoy")).toEqual(expect.objectContaining({ country: "KZ", awper: true }));
+    expect(byNick("FalleN")).toEqual(expect.objectContaining({ country: "BR", igl: true }));
+    expect(byNick("cmtry")).toEqual(expect.objectContaining({ country: "UA", awper: true }));
+    expect(byNick("Krabeni")).toEqual(expect.objectContaining({ country: "XK", igl: true }));
+    expect(result.match?.maps[0].halves).toEqual([
+      { team1: 5, team2: 7, team1Side: "CT" },
+      { team1: 6, team2: 6, team1Side: "T" },
+    ]);
+    expect(result.match?.maps[2].halves).toHaveLength(3);
+    expect(result.match?.maps[0].statsUrl).toBe(
+      "https://www.hltv.org/stats/matches/mapstatsid/235648/furia-vs-fut",
+    );
   });
 
   it("rejects unrelated and over-budget input without guessing", () => {
