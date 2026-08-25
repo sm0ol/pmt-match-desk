@@ -1,0 +1,8 @@
+{
+  "note": "Liquipedia team pages for our own team database. Add a URL (npm run add-team <url>), then npm run refresh-teams. Use hltvName when HLTV names the team differently than the Liquipedia infobox.",
+  "sources": [
+    { "url": "https://liquipedia.net/counterstrike/FURIA_Esports" },
+    { "url": "https://liquipedia.net/counterstrike/Nemiga_Gaming", "hltvName": "Nemiga" },
+    { "url": "https://liquipedia.net/counterstrike/1win", "hltvName": "1win" }
+  ]
+}

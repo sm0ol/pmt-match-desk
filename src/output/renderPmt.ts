@@ -55,17 +55,53 @@ function fallbackRoster(match: MatchData, teamSide: "team1" | "team2", teamName:
     });
 }
 
+/**
+ * Adds role marks the reference roster lacks, using what this match's page
+ * says. Liquipedia knows the IGL but not the AWPer; HLTV marks both.
+ */
+function enrichRosterEntry(entry: string, players: PlayerStat[]): string {
+  const player = players.find((candidate) => {
+    const nickname = nicknameOf(candidate.name).toLocaleLowerCase();
+    return entry
+      .toLocaleLowerCase()
+      .split(/\s+/)
+      .some((word) => word === nickname);
+  });
+  if (!player) return entry;
+  let enriched = entry;
+  if (player.awper && !enriched.includes(AWPER_MARK)) enriched += ` ${AWPER_MARK}`;
+  if (player.igl && !enriched.includes(IGL_MARK)) enriched += ` ${IGL_MARK}`;
+  return enriched;
+}
+
+function hltvTeamUrl(team: Team): string {
+  if (!/^\d+$/.test(team.id)) return "";
+  const slug = team.name.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return slug ? `https://www.hltv.org/team/${team.id}/${slug}` : "";
+}
+
 function teamInfoBlock(match: MatchData, team: Team, teamSide: "team1" | "team2"): string {
   const reference = findTeamReference(team.name);
   const displayName = reference?.name || team.name;
   // Fall back to the leading emoji of the curated flag name when the parsed
   // team has no country.
   const flag = flagEmoji(team.country) ?? reference?.flagName.split(" ")[0] ?? "";
+  const links = [...(reference?.links ?? [])];
+  const hltv = hltvTeamUrl(team);
+  if (hltv && !links.some((link) => link.label === "HLTV")) {
+    const insertAt = links.findIndex((link) => link.label === "Liquipedia") + 1;
+    links.splice(insertAt, 0, { label: "HLTV", url: hltv });
+  }
   const header = [
     `${flag ? `${flag} ` : ""}**${escapeMarkdown(displayName)}**`,
-    ...(reference?.links ?? []).map((link) => `[${link.label}](${link.url})`),
+    ...links.map((link) => `[${link.label}](${link.url})`),
   ].join(" | ");
-  const roster = reference?.roster.length ? reference.roster : fallbackRoster(match, teamSide, team.name);
+  const teamPlayers = match.players.filter((player) =>
+    player.teamSide ? player.teamSide === teamSide : player.team === team.name,
+  );
+  const roster = (reference?.roster.length
+    ? reference.roster.map((entry) => enrichRosterEntry(entry, teamPlayers))
+    : fallbackRoster(match, teamSide, team.name));
   if (roster.length === 0 && !reference) return "";
   const lines = [header, `**Roster**: ${roster.join(" | ")}  `];
   if (reference?.coach) lines.push(`**Coach**: ${reference.coach}  `);

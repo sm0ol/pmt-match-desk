@@ -5,6 +5,7 @@
 // entries win on name collisions.
 import data from "./referenceData.json";
 import liquipediaData from "./liquipediaEvents.json";
+import liquipediaTeams from "./liquipediaTeams.json";
 
 export interface EventReference {
   name: string;
@@ -29,6 +30,7 @@ export interface TeamReference {
   coach: string;
   subs: string[];
   links: Array<{ label: string; url: string }>;
+  aliases?: string[];
 }
 
 function normalize(value: string): string {
@@ -40,9 +42,11 @@ for (const event of [...(data.events as EventReference[]), ...(liquipediaData.ev
   eventsByName.set(normalize(event.name), event);
   for (const alias of event.aliases ?? []) eventsByName.set(normalize(alias), event);
 }
-const teamsByHltvName = new Map<string, TeamReference>(
-  (data.teams as TeamReference[]).map((team) => [normalize(team.hltvName), team]),
-);
+const teamsByHltvName = new Map<string, TeamReference>();
+for (const team of [...(data.teams as TeamReference[]), ...(liquipediaTeams.teams as TeamReference[])]) {
+  teamsByHltvName.set(normalize(team.hltvName), team);
+  for (const alias of team.aliases ?? []) teamsByHltvName.set(normalize(alias), team);
+}
 
 export function findEventReference(name: string): EventReference | undefined {
   return eventsByName.get(normalize(name));

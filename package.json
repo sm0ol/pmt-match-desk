@@ -14,6 +14,8 @@
     "refresh-data": "node scripts/refresh-reference-data.mjs",
     "refresh-events": "node scripts/refresh-events.mjs",
     "add-event": "node scripts/add-event.mjs",
+    "refresh-teams": "node scripts/refresh-teams.mjs",
+    "add-team": "node scripts/add-team.mjs",
     "validate": "npm run lint && npm run typecheck && npm run test && npm run build && npm run test:e2e"
   },
   "dependencies": {

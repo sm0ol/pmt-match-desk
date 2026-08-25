@@ -46,13 +46,18 @@ When HLTV changes a layout, the importer fails conservatively and leaves the las
 
 The Event Information and Team Information sections come from two sources:
 
-1. **Our own event database, built from Liquipedia.** Humans only enter URLs:
+1. **Our own databases, built from Liquipedia.** Humans only enter URLs:
    `npm run add-event -- https://liquipedia.net/counterstrike/<event-page>`
-   adds a page to `data/event-sources.json` and fetches its infobox (name,
-   location, prize pool, LAN/Online, official streams) through the Liquipedia
-   API, within their API terms of use. `npm run refresh-events` re-fetches
-   all listed events. Pass an HLTV event name as a second argument when HLTV
-   names the event differently than Liquipedia.
+   and `npm run add-team -- https://liquipedia.net/counterstrike/<team-page>`
+   add pages to `data/event-sources.json` / `data/team-sources.json` and
+   fetch them through the Liquipedia API, within their API terms of use.
+   Events carry name, location, prize pool, LAN/Online, and official streams.
+   Teams carry the active roster with flags, the IGL mark, loan/trial notes,
+   coach, benched players, and profile links; the AWPer mark and the HLTV
+   team link are filled in from each match's own page at render time.
+   `npm run refresh-events` / `npm run refresh-teams` re-fetch everything
+   listed. Pass an HLTV name as a second argument when HLTV names the event
+   or team differently than Liquipedia.
 2. **The Post-Match Team's curated databases** in the original
    [Post-Match-Thread-Creator](https://github.com/asbmeyers/Post-Match-Thread-Creator)
    repository (team rosters, coaches, subs, links, and more events).

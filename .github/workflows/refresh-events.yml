@@ -19,13 +19,15 @@ jobs:
           node-version: 24
       - name: Refresh Liquipedia event database
         run: node scripts/refresh-events.mjs
+      - name: Refresh Liquipedia team database
+        run: node scripts/refresh-teams.mjs
       - name: Refresh Post-Match Team reference data
         run: node scripts/refresh-reference-data.mjs
       - name: Commit changes
         run: |
           git config user.name "pmt-data-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add src/output/liquipediaEvents.json src/output/referenceData.json
+          git add src/output/liquipediaEvents.json src/output/liquipediaTeams.json src/output/referenceData.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else

@@ -104,10 +104,37 @@ describe("renderPmt", () => {
     expect(output.body).toContain("### Event Information");
     expect(output.body).toContain("**Esports World Cup 2026** | 🇫🇷 Paris ($2m LAN)");
     expect(output.body).toContain("### Team Information");
-    expect(output.body).toContain("🇧🇷 **FURIA Esports** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
-    expect(output.body).toContain("**Roster**: 🇧🇷 yuurih | 🇧🇷 KSCERATO | 🇧🇷 FalleN ♛ | 🇰🇿 molodoy ⊕ | 🇱🇻 YEKINDAR");
+    expect(output.body).toContain("🇧🇷 **FURIA** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
+    // The HLTV link is built from the team id parsed off the match page.
+    expect(output.body).toContain("[HLTV](https://www.hltv.org/team/8297/furia)");
+    expect(output.body).toContain("**Roster**: 🇧🇷 yuurih | 🇧🇷 KSCERATO | 🇧🇷 FalleN ♛ | 🇰🇿 molodoy | 🇱🇻 YEKINDAR");
     expect(output.body).toContain("**Coach**: 🇧🇷 sidde");
     expect(output.body).toContain("^Note: ^Above ^rosters");
+  });
+
+  it("enriches a reference roster with role marks from the match players", () => {
+    const output = renderPmt({
+      ...match,
+      team1: { id: "8297", name: "FURIA", country: "BR" },
+      players: [{
+        id: "24144",
+        name: "Danil 'molodoy' Golubenko",
+        team: "FURIA",
+        teamSide: "team1",
+        country: "KZ",
+        awper: true,
+        kills: 55,
+        deaths: 50,
+        swing: "+0.35%",
+        adr: 80.8,
+        kast: "75.0%",
+        rating: 1.08,
+      }],
+    });
+
+    // Liquipedia knows FalleN is the IGL; the AWPer comes from this match.
+    expect(output.body).toContain("🇰🇿 molodoy ⊕");
+    expect(output.body).toContain("🇧🇷 FalleN ♛");
   });
 
   it("renders event information from the Liquipedia-built event database", () => {

@@ -1,0 +1,161 @@
+{
+  "source": "https://liquipedia.net (see data/team-sources.json)",
+  "refreshedAt": "2026-08-25T19:40:22.188Z",
+  "teams": [
+    {
+      "hltvName": "FURIA",
+      "name": "FURIA",
+      "flagName": "🇧🇷 FURIA",
+      "country": "BR",
+      "initials": "",
+      "roster": [
+        "🇧🇷 yuurih",
+        "🇧🇷 KSCERATO",
+        "🇧🇷 FalleN ♛",
+        "🇰🇿 molodoy",
+        "🇱🇻 YEKINDAR"
+      ],
+      "coach": "🇧🇷 sidde",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/FURIA_Esports"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://furia.gg"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/06024b78-e887-4b93-af82-7376adf42bb8"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/furia"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/furiagg"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/furiagg"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://tiktok.com/@furiagg"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCT1F3iuRk0j7owMzNC09q1w"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/furiatv"
+        },
+        {
+          "label": "Steam",
+          "url": "https://steamcommunity.com/groups/furiagg"
+        }
+      ],
+      "aliases": [
+        "FURIA"
+      ]
+    },
+    {
+      "hltvName": "Nemiga",
+      "name": "Nemiga Gaming",
+      "flagName": "🇨🇾 Nemiga Gaming",
+      "country": "CY",
+      "initials": "",
+      "roster": [
+        "🇰🇿 khaN",
+        "🇰🇿 SYPH0 (loan)",
+        "🇷🇺 KaiR0N-",
+        "🇷🇺 robo ♛ (trial)",
+        "🇷🇺 Xant3r"
+      ],
+      "coach": "🇧🇾 boX",
+      "subs": [
+        "🇷🇺 Sowalio"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Nemiga_Gaming"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://nemiga.gg"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/f8be94a6-beab-4ee9-aa3c-1145bf66fc85"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/nemigagg"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/nemigagg"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/nemigagg"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCJrtGWcV2QmBPGk_BKIb-DQ"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/nemigagg"
+        },
+        {
+          "label": "Steam",
+          "url": "https://steamcommunity.com/groups/nemiga"
+        }
+      ],
+      "aliases": [
+        "Nemiga Gaming",
+        "Nemiga"
+      ]
+    },
+    {
+      "hltvName": "1win",
+      "name": "1w Team",
+      "flagName": "🇷🇺 1w Team",
+      "country": "RU",
+      "initials": "",
+      "roster": [
+        "🇷🇺 nafany ♛",
+        "🇷🇺 Ax1Le",
+        "🇷🇺 ArtFr0st (loan)",
+        "🇷🇺 fame",
+        "🇷🇺 BELCHONOKK (loan)"
+      ],
+      "coach": "🇷🇺 groove | 🇰🇿 cau",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/1win"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/1win_cs2"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UC1RJg9vZUkzlpgQgx5wjmng"
+        }
+      ],
+      "aliases": [
+        "1w Team",
+        "1win"
+      ]
+    }
+  ]
+}
