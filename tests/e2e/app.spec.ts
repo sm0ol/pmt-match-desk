@@ -63,8 +63,10 @@ test("a real HLTV paste becomes a copy-ready Reddit preview well under 30 second
   await expect(page.getByText("Ready to post")).toBeVisible();
   await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
   await expect(page.getByText("Full Match Stats")).toBeVisible();
-  await expect(page.getByText("🇩🇰 device ⊕")).toBeVisible();
-  await expect(page.getByText("🇬🇧 Gizmy ♛")).toBeVisible();
+  await expect(page.getByText("🇩🇰 device ⊕").first()).toBeVisible();
+  await expect(page.getByText("🇬🇧 Gizmy ♛").first()).toBeVisible();
+  await expect(page.getByText("Map Vetoes")).toBeVisible();
+  await expect(page.getByText("MAP 1: Ancient")).toBeVisible();
   const twoDigitMapScore = page.getByLabel("Ancient Eternal Fire score");
   await expect(twoDigitMapScore).toHaveValue("13");
   expect(await twoDigitMapScore.evaluate((input) => input.getBoundingClientRect().width)).toBeGreaterThanOrEqual(48);

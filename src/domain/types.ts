@@ -7,12 +7,40 @@ export interface Team {
   country?: string;
 }
 
+export interface VetoStep {
+  /** Absent for the leftover map. */
+  teamSide?: "team1" | "team2";
+  action: "removed" | "picked" | "leftover";
+  map: string;
+}
+
+export interface HalfScore {
+  team1: number;
+  team2: number;
+  /** Side team1 played this half; unknown for overtime halves. */
+  team1Side?: "CT" | "T";
+}
+
+export interface MapPlayerStat {
+  id: string;
+  name: string;
+  teamSide: "team1" | "team2";
+  kills: number;
+  deaths: number;
+  swing: string;
+  adr: number;
+  kast: string;
+  rating: number;
+}
+
 export interface MapResult {
   id: string;
   name: string;
   team1Score: number;
   team2Score: number;
   halfScore?: string;
+  halves?: HalfScore[];
+  players?: MapPlayerStat[];
   statsUrl?: string;
   sourceKind?: "main-match" | "map-stats";
   sourceState?: "live" | "completed" | "unknown";
@@ -47,6 +75,7 @@ export interface MatchData {
   stage: string;
   bestOf: number;
   maps: MapResult[];
+  vetoes?: VetoStep[];
   players: PlayerStat[];
   context: string;
   sourceKind?: "main-match" | "map-stats";

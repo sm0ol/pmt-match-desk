@@ -12,11 +12,15 @@
 
 ### Map Vetoes
 
-|1T|**MAP**|EF|
+|100 Thieves|**MAP**|Eternal Fire|
 |:--:|:--:|:--:|
-|9|**Ancient**|**13**|
-|**13**|**Dust2**|7|
-|10|**Mirage**|**13**|
+||nuke|X|
+|X|cache||
+||ancient|✔|
+|✔|dust2||
+||inferno|X|
+|X|anubis||
+||mirage||
 
 ---
 

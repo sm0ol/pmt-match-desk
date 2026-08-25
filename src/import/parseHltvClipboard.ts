@@ -1,12 +1,16 @@
 import { parseFragment } from "parse5";
 import type {
+  HalfScore,
   ImportProposal,
+  MapPlayerStat,
   MapResult,
   MatchData,
   PlayerStat,
   Team,
+  VetoStep,
 } from "../domain/types";
 import { canonicalHltvMatchUrl } from "../domain/hltvUrl";
+import { countryCode } from "../domain/countries";
 
 const MAX_PLAIN_CHARS = 120_000;
 // Current HLTV copies can include a large live-stream/sidebar payload even
@@ -35,8 +39,14 @@ interface ClipboardCapture {
 }
 
 interface NodeLike {
+  nodeName?: string;
+  value?: string;
   attrs?: Array<{ name: string; value: string }>;
   childNodes?: NodeLike[];
+}
+
+function nodeAttr(node: NodeLike, name: string): string | undefined {
+  return node.attrs?.find((attribute) => attribute.name === name)?.value;
 }
 
 function fingerprint(value: string): string {
@@ -104,14 +114,12 @@ interface SubtreeFacts {
 // /img/static/flags/30x20/DK.gif or /img/static/flags/300x200/EU.png
 const FLAG_SRC = /\/img\/static\/flags\/[^/]+\/([A-Za-z-]{2,7})\.(?:gif|png)/;
 
-function collectHtmlFacts(html: string): HtmlFacts {
+function collectHtmlFacts(root: NodeLike | null): HtmlFacts {
   const facts: HtmlFacts = { hrefs: [], teamCountries: {}, playerFacts: new Map() };
-  if (!html) return facts;
-  const root = parseFragment(html) as NodeLike;
+  if (!root) return facts;
   let nodes = 0;
 
-  const attr = (node: NodeLike, name: string) =>
-    node.attrs?.find((attribute) => attribute.name === name)?.value;
+  const attr = nodeAttr;
 
   const visit = (node: NodeLike, depth: number): SubtreeFacts => {
     nodes += 1;
@@ -122,7 +130,13 @@ function collectHtmlFacts(html: string): HtmlFacts {
     if (href) facts.hrefs.push(href);
     const classes = attr(node, "class") ?? "";
     const title = attr(node, "title") ?? "";
-    const flagCode = attr(node, "src")?.match(FLAG_SRC)?.[1]?.toUpperCase();
+    // Older HLTV markup carries the code in the image src; newer markup can
+    // drop the src, but the title still holds the country name.
+    const flagCode =
+      attr(node, "src")?.match(FLAG_SRC)?.[1]?.toUpperCase() ??
+      (classes.includes("flag") || /(?:^|\s)team[12](?:\s|$)/.test(classes)
+        ? countryCode(title) ?? undefined
+        : undefined);
 
     if (flagCode && /(?:^|\s)team1(?:\s|$)/.test(classes)) facts.teamCountries.team1 ??= flagCode;
     if (flagCode && /(?:^|\s)team2(?:\s|$)/.test(classes)) facts.teamCountries.team2 ??= flagCode;
@@ -168,6 +182,139 @@ function collectHtmlFacts(html: string): HtmlFacts {
   return facts;
 }
 
+interface MapDetail {
+  halves?: HalfScore[];
+  players?: Array<Omit<MapPlayerStat, "teamSide"> & { teamId: string }>;
+}
+
+function nodeText(node: NodeLike): string {
+  if (node.nodeName === "#text") return node.value ?? "";
+  return (node.childNodes ?? []).map(nodeText).join("");
+}
+
+function findNodes(root: NodeLike, matches: (node: NodeLike) => boolean): NodeLike[] {
+  const found: NodeLike[] = [];
+  const stack: NodeLike[] = [root];
+  while (stack.length > 0) {
+    const node = stack.pop();
+    if (!node) break;
+    if (matches(node)) found.push(node);
+    const children = node.childNodes ?? [];
+    // Push in reverse so nodes are visited in document order.
+    for (let index = children.length - 1; index >= 0; index -= 1) stack.push(children[index]);
+  }
+  return found;
+}
+
+function parseHalfScores(container: NodeLike): HalfScore[] {
+  // Half scores render as span pairs: (<span class="ct">6</span>:<span
+  // class="t">6</span>; ...). Overtime numbers have no side class.
+  const scores: Array<{ value: number; side?: "CT" | "T" }> = [];
+  for (const span of findNodes(container, (node) => node.nodeName === "span")) {
+    const text = nodeText(span).trim();
+    if (!/^\d+$/.test(text)) continue;
+    const classes = nodeAttr(span, "class") ?? "";
+    const side = /(?:^|\s)ct(?:\s|$)/.test(classes)
+      ? ("CT" as const)
+      : /(?:^|\s)t(?:\s|$)/.test(classes)
+        ? ("T" as const)
+        : undefined;
+    scores.push({ value: Number(text), side });
+  }
+  const halves: HalfScore[] = [];
+  for (let index = 0; index + 1 < scores.length; index += 2) {
+    halves.push({
+      team1: scores[index].value,
+      team2: scores[index + 1].value,
+      team1Side: scores[index].side,
+    });
+  }
+  return halves;
+}
+
+function parseMapStatsTables(container: NodeLike): MapDetail["players"] {
+  const players: NonNullable<MapDetail["players"]> = [];
+  const tables = findNodes(container, (node) =>
+    node.nodeName === "table" && (nodeAttr(node, "class") ?? "").includes("totalstats"),
+  );
+  for (const table of tables) {
+    const teamId = findNodes(table, (node) => Boolean(nodeAttr(node, "href")?.match(/^\/team\/\d+\//)))
+      .map((node) => nodeAttr(node, "href")?.match(/^\/team\/(\d+)\//)?.[1])
+      .find(Boolean);
+    if (!teamId) continue;
+    for (const row of findNodes(table, (node) => node.nodeName === "tr")) {
+      const cells = (row.childNodes ?? []).filter((node) => node.nodeName === "td");
+      const cellText = (kind: string) => {
+        const cell = cells.find((candidate) => {
+          const classes = nodeAttr(candidate, "class") ?? "";
+          return classes.includes(kind) && !classes.includes("hidden");
+        });
+        return cell ? nodeText(cell).trim() : "";
+      };
+      const playerCell = cells.find((cell) => (nodeAttr(cell, "class") ?? "").includes("players"));
+      if (!playerCell) continue;
+      const playerHref = findNodes(playerCell, (node) =>
+        Boolean(nodeAttr(node, "href")?.match(/^\/player\/\d+\//)),
+      )[0];
+      const id = playerHref ? nodeAttr(playerHref, "href")?.match(/^\/player\/(\d+)\//)?.[1] : undefined;
+      const name = findNodes(playerCell, (node) =>
+        (nodeAttr(node, "class") ?? "").includes("statsPlayerName") &&
+        (nodeAttr(node, "class") ?? "").includes("gtSmartphone-only"),
+      ).map((node) => nodeText(node).trim())[0];
+      const kd = cellText("kd").match(/^(\d+)-(\d+)$/);
+      const adr = Number(cellText("adr"));
+      const rating = Number(cellText("rating").match(/\d+\.\d+/)?.[0]);
+      if (!id || !name || !kd || !Number.isFinite(adr) || !Number.isFinite(rating)) continue;
+      players.push({
+        id,
+        name,
+        teamId,
+        kills: Number(kd[1]),
+        deaths: Number(kd[2]),
+        swing: cellText("roundSwing"),
+        adr,
+        kast: cellText("kast"),
+        rating,
+      });
+    }
+  }
+  return players.length > 0 ? players : undefined;
+}
+
+function collectMapDetails(root: NodeLike | null): Map<string, MapDetail> {
+  const details = new Map<string, MapDetail>();
+  if (!root) return details;
+
+  // Per-map half scores live next to each map's STATS link.
+  for (const holder of findNodes(root, (node) =>
+    (nodeAttr(node, "class") ?? "").includes("results-center"),
+  )) {
+    const link = findNodes(holder, (node) =>
+      Boolean(nodeAttr(node, "href")?.match(/\/stats\/matches\/mapstatsid\/\d+\//)),
+    )[0];
+    const mapId = link ? nodeAttr(link, "href")?.match(/mapstatsid\/(\d+)/)?.[1] : undefined;
+    const scoreBox = findNodes(holder, (node) =>
+      (nodeAttr(node, "class") ?? "").includes("half-score"),
+    )[0];
+    if (!mapId || !scoreBox) continue;
+    const halves = parseHalfScores(scoreBox);
+    if (halves.length > 0) {
+      details.set(mapId, { ...details.get(mapId), halves });
+    }
+  }
+
+  // Per-map player stats live in containers with id "{mapstatsid}-content".
+  for (const container of findNodes(root, (node) =>
+    Boolean(nodeAttr(node, "id")?.match(/^\d+-content$/)),
+  )) {
+    const mapId = nodeAttr(container, "id")?.match(/^(\d+)-content$/)?.[1];
+    if (!mapId) continue;
+    const players = parseMapStatsTables(container);
+    if (players) details.set(mapId, { ...details.get(mapId), players });
+  }
+  return details;
+}
+
 function findTeam(hrefs: string[], name: string): Team {
   const expectedSlug = slug(name);
   const href = hrefs.find((candidate) => {
@@ -208,6 +355,41 @@ function findMatchUrl(hrefs: string[], team1: string, team2: string): { id: stri
   const match = path?.match(/^\/matches\/(\d+)\/[^?#/]+/);
   const url = path ? canonicalHltvMatchUrl(`https://www.hltv.org${path}`) : null;
   return match && url ? { id: match[1], url } : null;
+}
+
+function parseVetoes(
+  lines: string[],
+  mapsIndex: number,
+  team1Name: string,
+  team2Name: string,
+): VetoStep[] {
+  // The veto list is a numbered block just below the "Maps" header. Only the
+  // first contiguous block that starts with "1." counts, so a veto prediction
+  // quoted in the comment section cannot be mistaken for the real list.
+  const vetoes: VetoStep[] = [];
+  let expected = 1;
+  for (let index = mapsIndex; index < Math.min(lines.length, mapsIndex + 40); index += 1) {
+    const numbered = lines[index].match(/^(\d+)\.\s+(.*)$/);
+    if (!numbered) {
+      if (expected > 1) break;
+      continue;
+    }
+    if (Number(numbered[1]) !== expected) break;
+    const rest = numbered[2];
+    const step = rest.match(/^(.+?)\s+(removed|picked)\s+(.+)$/);
+    const leftover = rest.match(/^(.+?) was left over$/);
+    const mapName = canonicalMapName(step?.[3] ?? leftover?.[1]);
+    if (!mapName) break;
+    if (step) {
+      const teamSide = step[1] === team1Name ? "team1" : step[1] === team2Name ? "team2" : undefined;
+      if (!teamSide) break;
+      vetoes.push({ teamSide, action: step[2] as "removed" | "picked", map: mapName });
+    } else {
+      vetoes.push({ action: "leftover", map: mapName });
+    }
+    expected += 1;
+  }
+  return vetoes;
 }
 
 function parseMaps(
@@ -296,12 +478,14 @@ function parsePlayers(
     const nickname = name.match(/'([^']+)'/)?.[1] ?? name;
     const id = playerLinks.get(slug(nickname)) ?? `name:${slug(name)}`;
     const fact = htmlFacts.playerFacts.get(id);
+    // Newer HLTV copies print the country name on the line above the player.
+    const country = fact?.country ?? countryCode(lines[index - 2]) ?? undefined;
     players.push({
       id,
       name,
       team: currentTeam,
       teamSide: currentTeam === team1.name ? "team1" : "team2",
-      ...(fact?.country ? { country: fact.country } : {}),
+      ...(country ? { country } : {}),
       ...(fact?.awper ? { awper: true } : {}),
       ...(fact?.igl ? { igl: true } : {}),
       kills: Number(stats[1]),
@@ -322,19 +506,33 @@ function findSeriesTeam(
   start: number,
   end: number,
   direction: "forward" | "backward",
-): { name: string; score: number } | null {
+): { name: string; score: number; nameIndex: number } | null {
   const step = direction === "forward" ? 1 : -1;
   let index = direction === "forward" ? start : end - 1;
   while (index >= start && index < end) {
     const score = integerLine(lines[index]);
     const name = lines[index - 1];
-    if (score !== null && name) return { name, score };
+    if (score !== null && name) return { name, score, nameIndex: index - 1 };
     index += step;
   }
   return null;
 }
 
-function parseMain(lines: string[], htmlFacts: HtmlFacts): MatchData | null {
+function countryAbove(lines: string[], nameIndex: number): string | undefined {
+  // The team's country name sits within a few lines above the team name
+  // (logo and name lines may repeat between them).
+  for (let index = nameIndex - 1; index >= Math.max(0, nameIndex - 3); index -= 1) {
+    const code = countryCode(lines[index]);
+    if (code) return code;
+  }
+  return undefined;
+}
+
+function parseMain(
+  lines: string[],
+  htmlFacts: HtmlFacts,
+  mapDetails: Map<string, MapDetail>,
+): MatchData | null {
   const hrefs = htmlFacts.hrefs;
   const mapsIndex = lines.indexOf("Maps");
   let statusIndex = -1;
@@ -354,8 +552,10 @@ function parseMain(lines: string[], htmlFacts: HtmlFacts): MatchData | null {
 
   const team1 = findTeam(hrefs, team1Name);
   const team2 = findTeam(hrefs, team2Name);
-  if (htmlFacts.teamCountries.team1) team1.country = htmlFacts.teamCountries.team1;
-  if (htmlFacts.teamCountries.team2) team2.country = htmlFacts.teamCountries.team2;
+  const team1Country = htmlFacts.teamCountries.team1 ?? countryAbove(lines, team1Result.nameIndex);
+  const team2Country = htmlFacts.teamCountries.team2 ?? countryAbove(lines, team2Result.nameIndex);
+  if (team1Country) team1.country = team1Country;
+  if (team2Country) team2.country = team2Country;
   const source = findSourceUrl(hrefs, team1Name, team2Name);
   const bestOfLine = lines.slice(mapsIndex, mapsIndex + 5).find((line) => /Best of \d+/i.test(line));
   const bestOf = Number(bestOfLine?.match(/Best of (\d+)/i)?.[1] ?? 1);
@@ -367,6 +567,23 @@ function parseMain(lines: string[], htmlFacts: HtmlFacts): MatchData | null {
       ? "live"
       : "unknown";
 
+  const maps = parseMaps(lines, team1Name, team2Name, hrefs, state).map((map) => {
+    const detail = mapDetails.get(map.id);
+    if (!detail) return map;
+    const players = detail.players
+      ?.filter((player) => player.teamId === team1.id || player.teamId === team2.id)
+      .map(({ teamId, ...player }): NonNullable<MapResult["players"]>[number] => ({
+        ...player,
+        teamSide: teamId === team1.id ? "team1" : "team2",
+      }));
+    return {
+      ...map,
+      ...(detail.halves ? { halves: detail.halves } : {}),
+      ...(players && players.length > 0 ? { players } : {}),
+    };
+  });
+  const vetoes = parseVetoes(lines, mapsIndex, team1Name, team2Name);
+
   return {
     id: source.id,
     sourceUrl: source.url,
@@ -376,7 +593,8 @@ function parseMain(lines: string[], htmlFacts: HtmlFacts): MatchData | null {
     event: lines[statusIndex - 1] ?? "",
     stage,
     bestOf,
-    maps: parseMaps(lines, team1Name, team2Name, hrefs, state),
+    maps,
+    ...(vetoes.length > 0 ? { vetoes } : {}),
     players: parsePlayers(lines, team1, team2, htmlFacts, state),
     context: stageLine?.split(".").slice(1).join(".").trim() ?? "",
     sourceKind: "main-match",
@@ -458,9 +676,10 @@ export function parseHltvClipboard(capture: ClipboardCapture): ImportProposal {
 
   try {
     const lines = normalizedLines(capture.plain);
-    const htmlFacts = collectHtmlFacts(capture.html);
+    const root = capture.html ? (parseFragment(capture.html) as NodeLike) : null;
+    const htmlFacts = collectHtmlFacts(root);
     const hrefs = htmlFacts.hrefs;
-    const mainMatch = parseMain(lines, htmlFacts);
+    const mainMatch = parseMain(lines, htmlFacts, collectMapDetails(root));
     const hasMapStatsBlock = lines.some(
       (line, index) => line === "Map" && MAP_NAMES.has((lines[index + 1] ?? "").toLowerCase()),
     );

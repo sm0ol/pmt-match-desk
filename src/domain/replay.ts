@@ -35,7 +35,17 @@ function mergeMaps(previous: MapResult[], next: MapResult[]): MapResult[] {
   for (const map of next) {
     const key = map.id || map.name.toLowerCase();
     const current = merged.get(key);
-    if (!current || detailAuthority(map) >= detailAuthority(current)) merged.set(key, map);
+    if (!current || detailAuthority(map) >= detailAuthority(current)) {
+      // The winning source owns the scores, but enrichments the winner lacks
+      // (half breakdowns, per-map stats, stat links) survive from the loser.
+      merged.set(key, {
+        ...map,
+        halfScore: map.halfScore ?? current?.halfScore,
+        halves: map.halves ?? current?.halves,
+        players: map.players ?? current?.players,
+        statsUrl: map.statsUrl ?? current?.statsUrl,
+      });
+    }
   }
   return [...merged.values()];
 }
@@ -66,6 +76,9 @@ function mergeMatch(previous: MatchData, next: MatchData): MatchData {
     team1: hasText(primary.team1.name) ? primary.team1 : fallback.team1,
     team2: hasText(primary.team2.name) ? primary.team2 : fallback.team2,
     maps: mergeMaps(previous.maps, next.maps),
+    ...(primary.vetoes?.length || fallback.vetoes?.length
+      ? { vetoes: primary.vetoes?.length ? primary.vetoes : fallback.vetoes }
+      : {}),
     players: mergePlayers(previous.players, next.players),
   };
 }

@@ -20,6 +20,15 @@ const match: MatchData = {
     { id: "235812", name: "Dust2", team1Score: 13, team2Score: 7 },
     { id: "235818", name: "Mirage", team1Score: 10, team2Score: 13 },
   ],
+  vetoes: [
+    { teamSide: "team2", action: "removed", map: "Nuke" },
+    { teamSide: "team1", action: "removed", map: "Cache" },
+    { teamSide: "team2", action: "picked", map: "Ancient" },
+    { teamSide: "team1", action: "picked", map: "Dust2" },
+    { teamSide: "team2", action: "removed", map: "Inferno" },
+    { teamSide: "team1", action: "removed", map: "Anubis" },
+    { action: "leftover", map: "Mirage" },
+  ],
   players: [],
 };
 
@@ -32,8 +41,10 @@ describe("renderPmt", () => {
     expect(output.body).toContain("**Ancient:** 9-13");
     expect(output.body).toContain("### Map Vetoes");
     expect(output.body).not.toContain("###Map Vetoes");
-    expect(output.body).toContain("|9|**Ancient**|**13**|");
-    expect(output.body).toContain("|**13**|**Dust2**|7|");
+    expect(output.body).toContain("|100 Thieves|**MAP**|Eternal Fire|");
+    expect(output.body).toContain("||nuke|X|");
+    expect(output.body).toContain("|✔|dust2||");
+    expect(output.body).toContain("||mirage||");
     expect(output.body).toContain("This thread was created by the Post-Match Team");
     expect(output.ready).toBe(true);
   });

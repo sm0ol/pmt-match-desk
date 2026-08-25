@@ -22,15 +22,38 @@ const teamSchema = z.strictObject({
   name: nameSchema,
   country: countrySchema.optional(),
 });
+const halfScoreSchema = z.strictObject({
+  team1: z.number().int().nonnegative(),
+  team2: z.number().int().nonnegative(),
+  team1Side: z.enum(["CT", "T"]).optional(),
+});
+const mapPlayerSchema = z.strictObject({
+  id: idSchema,
+  name: nameSchema,
+  teamSide: z.enum(["team1", "team2"]),
+  kills: z.number().int().nonnegative(),
+  deaths: z.number().int().nonnegative(),
+  swing: z.string().max(40),
+  adr: z.number().nonnegative(),
+  kast: z.string().max(40),
+  rating: z.number().nonnegative(),
+});
 const mapSchema = z.strictObject({
   id: idSchema,
   name: z.string().max(80),
   team1Score: z.number().int().nonnegative(),
   team2Score: z.number().int().nonnegative(),
   halfScore: z.string().max(80).optional(),
+  halves: z.array(halfScoreSchema).max(9).optional(),
+  players: z.array(mapPlayerSchema).max(24).optional(),
   statsUrl: z.string().max(500).optional(),
   sourceKind: sourceKindSchema.optional(),
   sourceState: sourceStateSchema.optional(),
+});
+const vetoSchema = z.strictObject({
+  teamSide: z.enum(["team1", "team2"]).optional(),
+  action: z.enum(["removed", "picked", "leftover"]),
+  map: z.string().max(80),
 });
 const playerSchema = z.strictObject({
   id: idSchema,
@@ -59,6 +82,7 @@ const matchSchema = z.strictObject({
   stage: z.string().max(240),
   bestOf: z.number().int().positive(),
   maps: z.array(mapSchema).max(7),
+  vetoes: z.array(vetoSchema).max(20).optional(),
   players: z.array(playerSchema).max(24),
   context: noteSchema,
   sourceKind: sourceKindSchema.optional(),

@@ -15,6 +15,10 @@ const duplicatedLabelsPlain = readFileSync(
   resolve(process.cwd(), "tests/fixtures/hltv/duplicated-labels/clipboard.txt"),
   "utf8",
 );
+const furiaFutPlain = readFileSync(
+  resolve(process.cwd(), "tests/fixtures/hltv/furia-fut-2026/clipboard.txt"),
+  "utf8",
+);
 
 describe("parseHltvClipboard", () => {
   it("parses the real completed BO3 capture", () => {
@@ -36,6 +40,36 @@ describe("parseHltvClipboard", () => {
     expect(result.match?.players).toHaveLength(10);
     expect(result.match?.players[0]).toEqual(
       expect.objectContaining({ team: "100 Thieves", kills: 44, deaths: 42 }),
+    );
+  });
+
+  it("extracts vetoes, half scores with sides, and per-map player stats", () => {
+    const result = parseHltvClipboard({ plain, html });
+
+    expect(result.match?.vetoes).toEqual([
+      { teamSide: "team2", action: "removed", map: "Nuke" },
+      { teamSide: "team1", action: "removed", map: "Cache" },
+      { teamSide: "team2", action: "picked", map: "Ancient" },
+      { teamSide: "team1", action: "picked", map: "Dust2" },
+      { teamSide: "team2", action: "removed", map: "Inferno" },
+      { teamSide: "team1", action: "removed", map: "Anubis" },
+      { action: "leftover", map: "Mirage" },
+    ]);
+
+    const ancient = result.match?.maps[0];
+    expect(ancient?.halves).toEqual([
+      { team1: 6, team2: 6, team1Side: "CT" },
+      { team1: 3, team2: 7, team1Side: "T" },
+    ]);
+    expect(ancient?.players).toHaveLength(10);
+    expect(ancient?.players?.[0]).toEqual(
+      expect.objectContaining({
+        name: "Nicolai 'device' Reedtz",
+        teamSide: "team1",
+        kills: 20,
+        deaths: 18,
+        rating: 1.04,
+      }),
     );
   });
 
@@ -73,6 +107,42 @@ describe("parseHltvClipboard", () => {
     expect(result.match?.players[0]).toEqual(
       expect.objectContaining({ team: "QuantumX", kills: 27, deaths: 28 }),
     );
+  });
+
+  it("reads countries from plain text when the copied HTML has no flag images", () => {
+    const result = parseHltvClipboard({ plain: furiaFutPlain, html: "" });
+    const players = result.match?.players ?? [];
+    const countryOf = (nick: string) =>
+      players.find((player) => player.name.includes(`'${nick}'`))?.country;
+
+    expect(result.kind).toBe("main-match");
+    expect(result.match?.team1.name).toBe("FURIA");
+    expect(result.match?.team1.country).toBe("BR");
+    expect(result.match?.team2.name).toBe("FUT");
+    expect(result.match?.team2.country).toBe("EU");
+    expect(countryOf("KSCERATO")).toBe("BR");
+    expect(countryOf("YEKINDAR")).toBe("LV");
+    expect(countryOf("molodoy")).toBe("KZ");
+    expect(countryOf("xfl0ud")).toBe("TR");
+    expect(countryOf("Krabeni")).toBe("XK");
+    expect(countryOf("dziugss")).toBe("LT");
+    expect(countryOf("cmtry")).toBe("UA");
+
+    // The real veto list is used, not the prediction quoted in a comment.
+    expect(result.match?.vetoes).toEqual([
+      { teamSide: "team2", action: "removed", map: "Inferno" },
+      { teamSide: "team1", action: "removed", map: "Anubis" },
+      { teamSide: "team2", action: "picked", map: "Ancient" },
+      { teamSide: "team1", action: "picked", map: "Nuke" },
+      { teamSide: "team2", action: "removed", map: "Cache" },
+      { teamSide: "team1", action: "removed", map: "Mirage" },
+      { action: "leftover", map: "Dust2" },
+    ]);
+    expect(result.match?.maps.map((map) => `${map.name} ${map.team1Score}-${map.team2Score}`)).toEqual([
+      "Ancient 11-13",
+      "Nuke 13-6",
+      "Dust2 13-16",
+    ]);
   });
 
   it("rejects unrelated and over-budget input without guessing", () => {
