@@ -142,9 +142,9 @@ describe("command center", () => {
     }
   });
 
-  it("shows the extension capture progress panel", async () => {
+  it("shows capture progress in place of the readiness state while importing", async () => {
     render(<App />);
-    await screen.findByLabelText(/paste copied hltv page/i);
+    const paste = await screen.findByLabelText(/paste copied hltv page/i);
 
     const send = (steps: Array<{ label: string; status: string }>) =>
       window.dispatchEvent(
@@ -154,14 +154,27 @@ describe("command center", () => {
           source: window,
         }),
       );
+
+    // On the empty screen the progress shows as a floating banner.
+    send([{ label: "Match page", status: "active" }]);
+    expect(await screen.findByText("Importing from HLTV")).toBeVisible();
+
+    fireEvent.paste(paste, {
+      clipboardData: {
+        getData: (type: string) => (type === "text/html" ? html : plain),
+      },
+    });
+    await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ });
+
+    // On the dashboard it replaces the readiness state in the action bar.
     send([
       { label: "Match page", status: "done" },
       { label: "Mirage stats", status: "active" },
       { label: "Nuke stats", status: "pending" },
     ]);
-
-    expect(await screen.findByText("Importing from HLTV")).toBeVisible();
-    expect(screen.getByText("Mirage stats")).toBeVisible();
+    expect(await screen.findByText("Mirage stats")).toBeVisible();
+    expect(screen.getByText("Importing from HLTV")).toBeVisible();
+    expect(screen.queryByText("Ready to post")).not.toBeInTheDocument();
 
     send([
       { label: "Match page", status: "done" },

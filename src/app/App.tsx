@@ -27,35 +27,50 @@ interface CaptureStep {
   status: "pending" | "active" | "done" | "failed";
 }
 
-function CaptureProgressPanel({ steps }: { steps: CaptureStep[] }) {
+function CaptureStepIcon({ status }: { status: CaptureStep["status"] }) {
+  return (
+    <span className="flex w-4 justify-center" aria-hidden="true">
+      {status === "done" ? (
+        <span className="text-emerald-600">✓</span>
+      ) : status === "failed" ? (
+        <span className="text-destructive">✕</span>
+      ) : status === "active" ? (
+        <span className="size-3 animate-spin rounded-full border-2 border-muted-foreground/60 border-t-transparent" />
+      ) : (
+        <span className="text-muted-foreground">•</span>
+      )}
+    </span>
+  );
+}
+
+function CaptureStepsRow({ steps }: { steps: CaptureStep[] }) {
+  return (
+    <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      {steps.map((step, index) => (
+        <span key={index} className="flex items-center gap-1.5 text-sm font-normal">
+          <CaptureStepIcon status={step.status} />
+          <span className={step.status === "pending" ? "text-muted-foreground" : ""}>
+            {step.label}
+            {step.status === "failed" ? " — skipped" : ""}
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/** Floating banner for screens without the action bar. */
+function CaptureProgressBanner({ steps }: { steps: CaptureStep[] }) {
   return (
     <div
       role="status"
       aria-live="polite"
-      className="fixed bottom-4 right-4 z-40 w-72 rounded-lg border bg-background p-3 shadow-lg"
+      className="fixed left-1/2 top-16 z-40 max-w-[92vw] -translate-x-1/2 rounded-lg border border-primary/40 bg-background px-4 py-2.5 shadow-lg"
     >
-      <div className="mb-2 text-sm font-medium">Importing from HLTV</div>
-      <ol className="flex flex-col gap-1.5">
-        {steps.map((step, index) => (
-          <li key={index} className="flex items-center gap-2 text-sm">
-            <span className="flex w-4 justify-center" aria-hidden="true">
-              {step.status === "done" ? (
-                <span className="text-emerald-600">✓</span>
-              ) : step.status === "failed" ? (
-                <span className="text-destructive">✕</span>
-              ) : step.status === "active" ? (
-                <span className="size-3 animate-spin rounded-full border-2 border-muted-foreground/60 border-t-transparent" />
-              ) : (
-                <span className="text-muted-foreground">•</span>
-              )}
-            </span>
-            <span className={step.status === "pending" ? "text-muted-foreground" : ""}>
-              {step.label}
-              {step.status === "failed" ? " — skipped" : ""}
-            </span>
-          </li>
-        ))}
-      </ol>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <span className="text-sm font-medium">Importing from HLTV</span>
+        <CaptureStepsRow steps={steps} />
+      </div>
     </div>
   );
 }
@@ -634,7 +649,7 @@ export default function App() {
     };
   }, [hydrated, hasPendingDecision, importClipboard]);
 
-  const progressPanel = captureSteps ? <CaptureProgressPanel steps={captureSteps} /> : null;
+  const progressPanel = captureSteps ? <CaptureProgressBanner steps={captureSteps} /> : null;
 
   if (!controller.hydrated) {
     return <div className="grid min-h-screen place-items-center text-muted-foreground">Loading…</div>;
@@ -956,18 +971,32 @@ export default function App() {
 
         <main className="flex min-w-0 flex-col gap-3">
           <div className="sticky top-14 z-10 flex flex-wrap items-center justify-between gap-2 rounded-lg border bg-background px-3 py-2 shadow-sm">
-            <span className="flex flex-wrap items-center gap-2 text-sm font-medium">
+            {captureSteps ? (
               <span
-                aria-hidden="true"
-                className={`size-2 rounded-full ${ready ? "bg-emerald-500" : "bg-amber-500"}`}
-              />
-              {ready ? "Ready to post" : "Review needed"}
-              {match.state === "live" && (
-                <span className="font-normal text-muted-foreground">
-                  Match is live — paste the final page for final stats
+                role="status"
+                aria-live="polite"
+                className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium"
+              >
+                <span className="flex items-center gap-2">
+                  <span aria-hidden="true" className="size-2 animate-pulse rounded-full bg-primary" />
+                  Importing from HLTV
                 </span>
-              )}
-            </span>
+                <CaptureStepsRow steps={captureSteps} />
+              </span>
+            ) : (
+              <span className="flex flex-wrap items-center gap-2 text-sm font-medium">
+                <span
+                  aria-hidden="true"
+                  className={`size-2 rounded-full ${ready ? "bg-emerald-500" : "bg-amber-500"}`}
+                />
+                {ready ? "Ready to post" : "Review needed"}
+                {match.state === "live" && (
+                  <span className="font-normal text-muted-foreground">
+                    Match is live — paste the final page for final stats
+                  </span>
+                )}
+              </span>
+            )}
             <div className="flex flex-wrap items-center gap-2">
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <span>r/</span>
@@ -1100,8 +1129,6 @@ export default function App() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
-      {progressPanel}
     </div>
   );
 }
