@@ -6,6 +6,7 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fetchCsvUrl } from "./csv.mjs";
+import { isSafeRedditLink } from "../src/output/linkSafety.ts";
 
 const GITHUB_SOURCE = "https://raw.githubusercontent.com/asbmeyers/Post-Match-Thread-Creator/main/csgo/csv";
 // Published-to-web sheet URLs from the Post-Match-Thread-Creator README.
@@ -46,7 +47,9 @@ const events = eventRows
       ["Kick B", row["Kick B"]],
       ["Kick C", row["Kick C"]],
       ["Kick D", row["Kick D"]],
-    ].filter(([, url]) => url).map(([label, url]) => ({ label, url })),
+    ]
+      .filter(([, url]) => url && isSafeRedditLink(url))
+      .map(([label, url]) => ({ label, url })),
   }));
 
 const LINK_ORDER = [
@@ -93,7 +96,8 @@ const teams = teamRows
     subs: [row["SUB 1"], row["SUB 2"], row["SUB 3"], row["SUB 4"], row["SUB 5"], row["SUB 6"]].filter(Boolean),
     links: LINK_ORDER
       .filter(([, column]) => row[column])
-      .map(([label, column]) => ({ label, url: row[column] })),
+      .map(([label, column]) => ({ label, url: row[column] }))
+      .filter((link) => isSafeRedditLink(link.url)),
   }));
 
 const output = {

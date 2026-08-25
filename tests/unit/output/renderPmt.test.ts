@@ -104,9 +104,10 @@ describe("renderPmt", () => {
     expect(output.body).toContain("### Event Information");
     expect(output.body).toContain("**Esports World Cup 2026** | 🇫🇷 Paris ($2m LAN)");
     expect(output.body).toContain("### Team Information");
-    expect(output.body).toContain("[🇧🇷](#furia-logo) **FURIA** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
+    // The sheet's display name wins over the Liquipedia infobox name.
+    expect(output.body).toContain("[🇧🇷](#furia-logo) **FURIA Esports** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
     // The HLTV link is built from the team id parsed off the match page.
-    expect(output.body).toContain("[HLTV](https://www.hltv.org/team/8297/furia)");
+    expect(output.body).toContain("[HLTV](https://www.hltv.org/team/8297/");
     expect(output.body).toContain("**Roster**: 🇧🇷 yuurih | 🇧🇷 KSCERATO | 🇧🇷 FalleN ♛ | 🇰🇿 molodoy | 🇱🇻 YEKINDAR");
     expect(output.body).toContain("**Coach**: 🇧🇷 sidde");
     expect(output.body).toContain("^Note: ^Above ^rosters");
@@ -150,6 +151,9 @@ describe("renderPmt", () => {
     expect(output.body).not.toContain("BC\\.Game");
     expect(output.body).toContain("# BB Team [🇷🇺](#betboom-logo) [1-2](");
     expect(output.body).toContain("[🇪🇺](#lang-eu) BC");
+    // A blocked-brand team gets no links at all, not even the HLTV one.
+    expect(output.body).not.toMatch(/\*\*BC\*\* \| \[/);
+    expect(output.body).not.toContain("bcgame");
   });
 
   it("renders event information from the Liquipedia-built event database", () => {

@@ -2,6 +2,7 @@ import type { MapResult, MatchData, PlayerStat, Team, VrsTeamImpact } from "../d
 import { canonicalHltvMatchUrl } from "../domain/hltvUrl";
 import { flagEmoji } from "../domain/countries";
 import { eventLocationKind, findEventReference, findTeamReference } from "./referenceData";
+import { containsBlockedTerm, isSafeRedditLink } from "./linkSafety";
 
 const AWPER_MARK = "⊕";
 const IGL_MARK = "♛";
@@ -36,13 +37,16 @@ function eventInfoSection(match: MatchData): string {
     event.liquipedia ? `[Liquipedia](${event.liquipedia})` : "",
     event.hltv ? `[HLTV](${event.hltv})` : "",
     event.reddit ? `[Reddit](${event.reddit})` : "",
-  ].filter(Boolean);
+  ].filter((link) => link && isSafeRedditLink(link.match(/\((.+)\)$/)?.[1] ?? ""));
   const headline = [
     `**${escapeMarkdown(event.name)}**`,
     `${place} (${event.prize || "$0"} ${kind})`.trim(),
     ...links,
   ].join(" | ");
-  const streams = event.streams.map((stream) => `[${stream.label}](${stream.url})`).join(" | ");
+  const streams = event.streams
+    .filter((stream) => isSafeRedditLink(stream.url))
+    .map((stream) => `[${stream.label}](${stream.url})`)
+    .join(" | ");
   return `### Event Information\n\n${headline}${streams ? `\n\n**Streams** | ${streams}` : ""}`;
 }
 
@@ -84,9 +88,15 @@ function teamInfoBlock(match: MatchData, team: Team, teamSide: "team1" | "team2"
   const reference = findTeamReference(team.name);
   const displayName = reference?.name || team.name;
   const icon = teamIcon(team) || reference?.flagName.split(" ")[0] || "";
-  const links = [...(reference?.links ?? [])];
+  // A team whose identity contains a blocked brand term gets no links at
+  // all; even its profile URLs risk auto-removal.
+  const blockedTeam =
+    containsBlockedTerm(reference?.hltvName ?? "") || containsBlockedTerm(team.name);
+  const links = blockedTeam
+    ? []
+    : (reference?.links ?? []).filter((link) => isSafeRedditLink(link.url));
   const hltv = hltvTeamUrl(team);
-  if (hltv && !links.some((link) => link.label === "HLTV")) {
+  if (!blockedTeam && hltv && isSafeRedditLink(hltv) && !links.some((link) => link.label === "HLTV")) {
     const insertAt = links.findIndex((link) => link.label === "Liquipedia") + 1;
     links.splice(insertAt, 0, { label: "HLTV", url: hltv });
   }

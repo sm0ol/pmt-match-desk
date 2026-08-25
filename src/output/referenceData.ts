@@ -24,6 +24,8 @@ export interface EventReference {
 export interface TeamReference {
   hltvName: string;
   name: string;
+  /** True when the name is an explicit source override (--name). */
+  hasNameOverride?: boolean;
   flagName: string;
   initials: string;
   roster: string[];
@@ -54,10 +56,16 @@ function indexTeam(team: TeamReference) {
 }
 for (const team of data.teams as TeamReference[]) indexTeam(team);
 for (const liquipediaTeam of liquipediaTeams.teams as TeamReference[]) {
-  // Liquipedia has no subreddit icon codes; keep them from the curated data.
   const existing = teamsByHltvName.get(normalize(liquipediaTeam.hltvName));
+  // The Post-Match Team sheet curates display names (gambling org renames);
+  // it wins over the Liquipedia infobox name unless the source has an
+  // explicit --name override. Icon codes also come from the curated data.
+  const name = liquipediaTeam.hasNameOverride
+    ? liquipediaTeam.name
+    : existing?.name ?? liquipediaTeam.name;
   const merged: TeamReference = {
     ...liquipediaTeam,
+    name,
     logoFlag: liquipediaTeam.logoFlag ?? existing?.logoFlag,
     logoCode: liquipediaTeam.logoCode ?? existing?.logoCode,
     logoWhite: liquipediaTeam.logoWhite ?? existing?.logoWhite,

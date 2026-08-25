@@ -1,10 +1,11 @@
 {
   "source": "https://liquipedia.net (see data/team-sources.json)",
-  "refreshedAt": "2026-08-25T20:08:52.514Z",
+  "refreshedAt": "2026-08-25T21:14:59.600Z",
   "teams": [
     {
       "hltvName": "FURIA",
       "name": "FURIA",
+      "hasNameOverride": false,
       "flagName": "🇧🇷 FURIA",
       "country": "BR",
       "initials": "",
@@ -66,6 +67,7 @@
     {
       "hltvName": "Nemiga",
       "name": "Nemiga Gaming",
+      "hasNameOverride": false,
       "flagName": "🇨🇾 Nemiga Gaming",
       "country": "CY",
       "initials": "",
@@ -126,6 +128,7 @@
     {
       "hltvName": "1win",
       "name": "1w Team",
+      "hasNameOverride": false,
       "flagName": "🇷🇺 1w Team",
       "country": "RU",
       "initials": "",

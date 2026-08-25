@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-25T20:08:54.258Z",
+  "refreshedAt": "2026-08-25T21:14:52.236Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -691,6 +691,65 @@
         {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCu3Oq_wEChEPaV7abgY688g"
+        }
+      ]
+    },
+    {
+      "hltvName": "Betclic",
+      "name": "Apogee Esports",
+      "flagName": "🇵🇱 Apogee Esports",
+      "initials": "Apogee",
+      "logoFlag": "🇵🇱",
+      "logoCode": "lang-pl",
+      "logoWhite": false,
+      "roster": [
+        "🇵🇱 Prism ♛",
+        "🇵🇱 Demho",
+        "🇵🇱 Qlocuu",
+        "🇵🇱 Ex1st",
+        "🇵🇱 ultimate ⊕"
+      ],
+      "coach": "🇵🇱 SZPERO",
+      "subs": [
+        "🇵🇱 Dr3nquu",
+        "🇵🇱 Melavi"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Betclic_Apogee_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12916/betclic"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://betclicapogee.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/132479cb-5134-4b58-a36c-7c7c8c4aed56"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/BetclicApogee"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/BetclicApogee"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/BetclicApogee"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCSCQf9O0vpNDRCgiYf2Rh0A"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/betclicapogee"
         }
       ]
     },
@@ -2511,6 +2570,36 @@
       ]
     },
     {
+      "hltvName": "NRG",
+      "name": "NRG",
+      "flagName": "🇺🇸 NRG",
+      "initials": "NRG",
+      "logoFlag": "🇺🇸",
+      "logoCode": "nrg",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 nitr0 ♛",
+        "🇿🇦 Sonic",
+        "🇺🇸 Grim",
+        "🇺🇸 Jeorge",
+        "🇳🇴 hallzerk ⊕"
+      ],
+      "coach": "🇨🇦 daps",
+      "subs": [
+        "🇺🇸 oSee"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/NRG"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/6673/nrg"
+        }
+      ]
+    },
+    {
       "hltvName": "OG",
       "name": "OG",
       "flagName": "🇪🇺 OG",
@@ -3059,6 +3148,58 @@
         {
           "label": "Bilibili",
           "url": "https://space.bilibili.com/3546778047613811"
+        }
+      ]
+    },
+    {
+      "hltvName": "Wildcard",
+      "name": "Wildcard",
+      "flagName": "🌎 Wildcard",
+      "initials": "Wildcard",
+      "logoFlag": "🌎",
+      "logoCode": "wildcard",
+      "logoWhite": true,
+      "roster": [
+        "🇺🇸 reck",
+        "🇵🇱 mhL ⊕",
+        "🇨🇦 HexT",
+        "🇷🇸 nEMANHA ♛",
+        "🇺🇸 Cxzi"
+      ],
+      "coach": "🇵🇱 splawik",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Wildcard"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12257/wildcard"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.wildcard.gg/"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/Wildcard_GG"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/WildcardGG"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/wildcardgamingofficial"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCMXEiY8GK3Sr8kV2W4Q4CCw"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/wildcardgamingtv"
         }
       ]
     }

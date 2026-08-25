@@ -3,6 +3,7 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { countryCode, flagEmoji } from "../src/domain/countries.ts";
+import { isSafeRedditLink } from "../src/output/linkSafety.ts";
 import { loadSources } from "./sources.mjs";
 import {
   extractTemplate,
@@ -94,17 +95,20 @@ function buildTeam(source, wikitext) {
     .map((member) => member.text);
   const subs = inactive ? squadMembers(inactive.body).map((member) => member.text) : [];
 
+  // Reddit-unsafe links (VK, Telegram, .ru hosts, gambling brand strings)
+  // never enter the database. The renderer filters again as a second guard.
   const links = [
     { label: "Liquipedia", url: source.url },
     ...TEAM_LINKS.filter(([, key]) => fields[key]).map(([label, key, toUrl]) => ({
       label,
       url: /^https?:\/\//.test(fields[key]) && key !== "website" ? fields[key] : toUrl(fields[key]),
     })),
-  ];
+  ].filter((link) => isSafeRedditLink(link.url));
 
   return {
     hltvName: source.hltvName || infoboxName,
     name,
+    hasNameOverride: Boolean(source.name),
     flagName: `${flag ? `${flag} ` : ""}${name}`,
     country,
     initials: source.initials || "",

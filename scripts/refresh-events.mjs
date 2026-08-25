@@ -6,6 +6,7 @@ import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
 import { countryCode, flagEmoji } from "../src/domain/countries.ts";
+import { isSafeRedditLink } from "../src/output/linkSafety.ts";
 import { loadSources } from "./sources.mjs";
 
 const USER_AGENT = "pmt-match-desk/0.1 (https://github.com/sm0ol/pmt-match-desk; sprobertson94@gmail.com)";
@@ -103,6 +104,7 @@ function buildEvent(source, fields) {
       const url = streamUrl(platform, fields[key]);
       if (!url) return;
       const label = PLATFORM_LABELS[platform];
+      if (!isSafeRedditLink(url)) return;
       streams.push({ label: keys.length > 1 ? `${label} ${String.fromCharCode(65 + index)}` : label, url });
     });
   }
