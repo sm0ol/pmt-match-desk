@@ -55,7 +55,7 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
+    --primary: oklch(0.58 0.195 35);
     --primary-foreground: oklch(0.985 0 0);
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
@@ -66,7 +66,7 @@
     --destructive: oklch(0.577 0.245 27.325);
     --border: oklch(0.922 0 0);
     --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
+    --ring: oklch(0.72 0.06 40);
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);
@@ -154,7 +154,10 @@
     @apply border px-2 py-1 text-xs;
   }
   .markdown-preview th {
-    @apply bg-muted;
+    @apply bg-muted/60;
+  }
+  .markdown-preview td {
+    @apply tabular-nums;
   }
   .markdown-preview hr {
     @apply my-5 border-t;

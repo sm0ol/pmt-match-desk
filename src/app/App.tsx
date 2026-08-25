@@ -2,9 +2,8 @@ import { useEffect, useId, useRef, useState, type ClipboardEvent, type ReactNode
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +15,6 @@ import {
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import type { DraftLedger, ImportRecord, ManualFields } from "../domain/types";
 import type { PmtIssue } from "../output/renderPmt";
@@ -56,8 +54,22 @@ function PasteTarget({
       onPaste={paste}
       placeholder="Paste the copied HLTV match page here (Ctrl+V)"
       rows={2}
-      className="resize-none"
+      className="resize-none border-dashed bg-background"
     />
+  );
+}
+
+function BrandMark() {
+  return (
+    <span className="flex items-center gap-2">
+      <span
+        aria-hidden="true"
+        className="flex size-5 items-center justify-center rounded-sm bg-primary text-[11px] font-bold leading-none text-primary-foreground"
+      >
+        P
+      </span>
+      <span className="text-sm font-semibold tracking-tight">PMT Thread Creator</span>
+    </span>
   );
 }
 
@@ -199,9 +211,11 @@ function DraftSelect({
 
 function TopBar({ children }: { children?: ReactNode }) {
   return (
-    <header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b px-4 py-2">
-      <span className="text-sm font-semibold">PMT Thread Creator</span>
-      <div className="flex flex-wrap items-center gap-3">{children}</div>
+    <header className="sticky top-0 z-20 border-b bg-background/90 backdrop-blur">
+      <div className="mx-auto flex min-h-12 w-full max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-1.5">
+        <BrandMark />
+        <div className="flex min-w-0 flex-wrap items-center gap-3">{children}</div>
+      </div>
     </header>
   );
 }
@@ -220,35 +234,44 @@ function EmptyState({
   onRetry?: () => void;
 }) {
   return (
-    <main className="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 py-16">
-      <h1 className="text-lg font-semibold">Paste an HLTV match page</h1>
-      <ol className="list-decimal pl-5 text-sm text-muted-foreground">
-        <li>Open the finished match on HLTV</li>
-        <li>Select the whole page and copy it (Ctrl+A, Ctrl+C)</li>
-        <li>Paste it below</li>
-      </ol>
-      <PasteTarget onCapture={onCapture} autoFocus />
-      {status.tone !== "idle" && (
-        <p
-          role="status"
-          aria-live="polite"
-          className={`text-sm ${status.tone === "error" ? "text-destructive" : "text-muted-foreground"}`}
-        >
-          {status.message}
+    <main className="flex min-h-screen flex-col items-center justify-center bg-muted/40 px-4 py-16">
+      <div className="flex w-full max-w-lg flex-col gap-4">
+        <BrandMark />
+        <Card>
+          <CardHeader>
+            <h1 className="text-base font-semibold leading-none">Paste an HLTV match page</h1>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <ol className="list-decimal pl-5 text-sm text-muted-foreground">
+              <li>Open the finished match on HLTV</li>
+              <li>Select the whole page and copy it (Ctrl+A, Ctrl+C)</li>
+              <li>Paste it below</li>
+            </ol>
+            <PasteTarget onCapture={onCapture} autoFocus />
+            {status.tone !== "idle" && (
+              <p
+                role="status"
+                aria-live="polite"
+                className={`text-sm ${status.tone === "error" ? "text-destructive" : "text-muted-foreground"}`}
+              >
+                {status.message}
+              </p>
+            )}
+            {canRetry && (
+              <Button variant="outline" size="sm" className="self-start" onClick={onRetry}>
+                Retry last recognized paste
+              </Button>
+            )}
+            <div className="flex items-center gap-2">
+              <BundleImportButton onImportBundle={onImportBundle} />
+              <span className="text-xs text-muted-foreground">Restores a previously exported draft.</span>
+            </div>
+          </CardContent>
+        </Card>
+        <p className="text-center text-xs text-muted-foreground">
+          Nothing leaves this browser. Drafts are stored locally.
         </p>
-      )}
-      {canRetry && (
-        <Button variant="outline" size="sm" className="self-start" onClick={onRetry}>
-          Retry last recognized paste
-        </Button>
-      )}
-      <div className="flex items-center gap-2">
-        <BundleImportButton onImportBundle={onImportBundle} />
-        <span className="text-xs text-muted-foreground">Restores a previously exported draft.</span>
       </div>
-      <p className="text-xs text-muted-foreground">
-        Nothing leaves this browser. Drafts are stored locally.
-      </p>
     </main>
   );
 }
@@ -269,28 +292,34 @@ function RevertedDraft({
   onSwitchDraft: (id: string) => void;
 }) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-muted/40">
       <TopBar>
         <StatusText status={status} />
         <DraftSelect value={ledger.id} drafts={drafts} onChange={onSwitchDraft} />
       </TopBar>
       <main className="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 py-16">
-        <h1 className="text-lg font-semibold">This draft is fully reverted</h1>
-        <p className="text-sm text-muted-foreground">
-          Restore an import below or paste a new snapshot.
-        </p>
-        <PasteTarget onCapture={onCapture} autoFocus />
-        <h2 className="mt-2 text-sm font-medium">Import history</h2>
-        <ol data-testid="import-history" className="flex flex-col gap-1">
-          {[...ledger.imports].reverse().map((entry) => (
-            <li key={entry.id} className="flex items-center justify-between gap-2 border-b py-2 text-sm last:border-b-0">
-              <span>{entry.match.team1.name} vs {entry.match.team2.name}</span>
-              <Button variant="ghost" size="sm" onClick={() => onToggleImport(entry.id)}>
-                Restore
-              </Button>
-            </li>
-          ))}
-        </ol>
+        <Card>
+          <CardHeader>
+            <h1 className="text-base font-semibold leading-none">This draft is fully reverted</h1>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <p className="text-sm text-muted-foreground">
+              Restore an import below or paste a new snapshot.
+            </p>
+            <PasteTarget onCapture={onCapture} autoFocus />
+            <h2 className="text-sm font-medium">Import history</h2>
+            <ol data-testid="import-history" className="flex flex-col gap-1">
+              {[...ledger.imports].reverse().map((entry) => (
+                <li key={entry.id} className="flex items-center justify-between gap-2 border-b py-2 text-sm last:border-b-0">
+                  <span>{entry.match.team1.name} vs {entry.match.team2.name}</span>
+                  <Button variant="ghost" size="sm" onClick={() => onToggleImport(entry.id)}>
+                    Restore
+                  </Button>
+                </li>
+              ))}
+            </ol>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
@@ -316,6 +345,7 @@ function EditField({
         type={type}
         value={value}
         min={type === "number" ? 0 : undefined}
+        className={type === "number" ? "tabular-nums" : undefined}
         onChange={(event) => onCommit(type === "number" ? Number(event.target.value) : event.target.value)}
       />
     </Field>
@@ -325,8 +355,8 @@ function EditField({
 function PostPreview({ title, body }: { title: string; body: string }) {
   return (
     <Card aria-label="Post preview" className="gap-4">
-      <CardHeader>
-        <h2 className="text-lg font-semibold">{title}</h2>
+      <CardHeader className="border-b">
+        <h2 className="text-lg font-semibold leading-snug tracking-tight">{title}</h2>
       </CardHeader>
       <CardContent className="markdown-preview">
         <Markdown
@@ -452,7 +482,7 @@ export default function App() {
       .flatMap((entry) => entry.diagnostics ?? []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-muted/40">
       <TopBar>
         <StatusText status={controller.status} />
         <DraftSelect
@@ -462,7 +492,7 @@ export default function App() {
         />
       </TopBar>
 
-      <div className="mx-auto grid w-full max-w-6xl gap-6 p-4 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)]">
+      <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-6 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)]">
         <section aria-label="Quick edits" className="flex min-w-0 flex-col gap-4">
           <PasteTarget onCapture={(capture) => void controller.importClipboard(capture)} />
           {controller.lastRejectedCapture && (
@@ -524,28 +554,37 @@ export default function App() {
             </Alert>
           )}
 
-          <div className="grid grid-cols-[minmax(0,1fr)_4.5rem] gap-3">
-            <EditField label="Team one" value={match.team1.name} onCommit={commit("team1Name")} />
-            <EditField label="Score" value={match.seriesScore[0]} type="number" onCommit={commit("team1Score")} />
-            <EditField label="Team two" value={match.team2.name} onCommit={commit("team2Name")} />
-            <EditField label="Score" value={match.seriesScore[1]} type="number" onCommit={commit("team2Score")} />
-          </div>
-          <EditField label="Event" value={match.event} onCommit={commit("event")} />
-          <EditField label="Stage" value={match.stage} onCommit={commit("stage")} />
-          <EditField label="HLTV match URL" value={match.sourceUrl} onCommit={commit("sourceUrl")} />
-          <Field>
-            <FieldLabel htmlFor="context-line">Context line</FieldLabel>
-            <Textarea
-              id="context-line"
-              value={match.context}
-              rows={3}
-              onChange={(event) => commit("context")(event.target.value)}
-            />
-          </Field>
+          <Card>
+            <CardHeader>
+              <CardTitle>Match</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <div className="grid grid-cols-[minmax(0,1fr)_4.5rem] gap-3">
+                <EditField label="Team one" value={match.team1.name} onCommit={commit("team1Name")} />
+                <EditField label="Score" value={match.seriesScore[0]} type="number" onCommit={commit("team1Score")} />
+                <EditField label="Team two" value={match.team2.name} onCommit={commit("team2Name")} />
+                <EditField label="Score" value={match.seriesScore[1]} type="number" onCommit={commit("team2Score")} />
+              </div>
+              <EditField label="Event" value={match.event} onCommit={commit("event")} />
+              <EditField label="Stage" value={match.stage} onCommit={commit("stage")} />
+              <EditField label="HLTV match URL" value={match.sourceUrl} onCommit={commit("sourceUrl")} />
+              <Field>
+                <FieldLabel htmlFor="context-line">Context line</FieldLabel>
+                <Textarea
+                  id="context-line"
+                  value={match.context}
+                  rows={3}
+                  onChange={(event) => commit("context")(event.target.value)}
+                />
+              </Field>
+            </CardContent>
+          </Card>
 
-          <Separator />
-          <h2 className="text-sm font-medium">Maps ({match.maps.length})</h2>
-          <div className="flex flex-col gap-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Maps ({match.maps.length})</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-2">
             {match.maps.map((map, index) => (
               <div key={map.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
                 <Input
@@ -560,7 +599,7 @@ export default function App() {
                     min={0}
                     value={map.team1Score}
                     onChange={(event) => void controller.updateManualMap(map.id, "team1Score", Number(event.target.value))}
-                    className="w-14 text-center"
+                    className="w-14 text-center tabular-nums"
                   />
                   <span aria-hidden="true">–</span>
                   <Input
@@ -569,7 +608,7 @@ export default function App() {
                     min={0}
                     value={map.team2Score}
                     onChange={(event) => void controller.updateManualMap(map.id, "team2Score", Number(event.target.value))}
-                    className="w-14 text-center"
+                    className="w-14 text-center tabular-nums"
                   />
                 </div>
                 {ledger.manualMaps?.[map.id] && (
@@ -579,13 +618,12 @@ export default function App() {
                 )}
               </div>
             ))}
-          </div>
 
-          {match.players.length > 0 && (
-            <details>
-              <summary className="cursor-pointer text-sm font-medium">
-                Player stats ({match.players.length})
-              </summary>
+            {match.players.length > 0 && (
+              <details className="pt-2">
+                <summary className="cursor-pointer text-sm font-medium">
+                  Player stats ({match.players.length})
+                </summary>
               <div className="mt-2 flex flex-col gap-3">
                 {match.players.map((player) => (
                   <div key={player.id} className="flex flex-col gap-2 border-b pb-3 last:border-b-0">
@@ -638,29 +676,39 @@ export default function App() {
                   </div>
                 ))}
               </div>
-            </details>
-          )}
+              </details>
+            )}
+            </CardContent>
+          </Card>
 
-          <Separator />
-          <h2 className="text-sm font-medium">Imports ({ledger.imports.length})</h2>
-          <ImportHistory imports={ledger.imports} onToggleImport={(id) => void controller.toggleImport(id)} />
-
-          <div className="flex flex-wrap items-center gap-2">
-            <Button variant="outline" size="sm" onClick={() => setShowExport(true)}>
-              Export bundle
-            </Button>
-            <BundleImportButton onImportBundle={(file) => void controller.readBundle(file)} />
-            <Button variant="outline" size="sm" className="text-destructive" onClick={() => setShowClear(true)}>
-              Clear this draft
-            </Button>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Imports ({ledger.imports.length})</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ImportHistory imports={ledger.imports} onToggleImport={(id) => void controller.toggleImport(id)} />
+            </CardContent>
+            <CardFooter className="flex-wrap gap-2">
+              <Button variant="outline" size="sm" onClick={() => setShowExport(true)}>
+                Export bundle
+              </Button>
+              <BundleImportButton onImportBundle={(file) => void controller.readBundle(file)} />
+              <Button variant="outline" size="sm" className="text-destructive" onClick={() => setShowClear(true)}>
+                Clear this draft
+              </Button>
+            </CardFooter>
+          </Card>
         </section>
 
         <main className="flex min-w-0 flex-col gap-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <Badge variant={ready ? "default" : "secondary"}>
+          <div className="sticky top-14 z-10 flex flex-wrap items-center justify-between gap-2 rounded-lg border bg-background px-3 py-2 shadow-sm">
+            <span className="flex items-center gap-2 text-sm font-medium">
+              <span
+                aria-hidden="true"
+                className={`size-2 rounded-full ${ready ? "bg-emerald-500" : "bg-amber-500"}`}
+              />
               {ready ? "Ready to post" : "Review needed"}
-            </Badge>
+            </span>
             <div className="flex gap-2">
               <CopyButton label="Copy title" value={controller.output.title} disabled={!ready} />
               <CopyButton label="Copy body" value={controller.output.body} disabled={!ready} />

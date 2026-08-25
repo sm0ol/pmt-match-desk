@@ -63,7 +63,7 @@ describe("command center", () => {
     });
 
     expect(await screen.findByRole("heading", { name: /QuantumX vs Alter Ego/ })).toBeVisible();
-    expect(screen.getByText(/fix before copying/i)).toBeVisible();
+    expect(screen.getByText("Fix before copying")).toBeVisible();
     expect(screen.getByText(/match URL could not be identified/i)).toBeVisible();
     const sourceUrl = screen.getByLabelText(/HLTV match URL/i);
     expect(screen.getByRole("button", { name: /copy body/i })).toBeDisabled();
