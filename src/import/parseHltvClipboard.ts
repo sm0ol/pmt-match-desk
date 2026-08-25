@@ -392,6 +392,45 @@ function parseVetoes(
   return vetoes;
 }
 
+function parseVrs(lines: string[]): MatchData["vrs"] {
+  // The VRS box lists, in page order: team1 points and rank, a "before"
+  // label, team2 points and rank, team1 diff and new rank, a "result" label,
+  // and team2 diff and new rank. Rank-movement lines like "+2" are noise.
+  const anchor = lines.findIndex((line) => /^VRS result/i.test(line));
+  if (anchor < 0) return undefined;
+  const beforePoints: number[] = [];
+  const beforeRanks: number[] = [];
+  const diffs: number[] = [];
+  const afterRanks: number[] = [];
+  for (const line of lines.slice(anchor + 1, anchor + 20)) {
+    const points = line.match(/^(\d+)pt$/);
+    const diff = line.match(/^([+-]\d+)pt$/);
+    const rank = line.match(/^#(\d+)$/);
+    if (points && beforePoints.length < 2) beforePoints.push(Number(points[1]));
+    else if (diff && diffs.length < 2) diffs.push(Number(diff[1]));
+    else if (rank && beforeRanks.length < beforePoints.length) beforeRanks.push(Number(rank[1]));
+    else if (rank && afterRanks.length < diffs.length) afterRanks.push(Number(rank[1]));
+  }
+  if (beforePoints.length < 2 || beforeRanks.length < 2 || diffs.length < 2 || afterRanks.length < 2) {
+    return undefined;
+  }
+  return {
+    team1: { beforePoints: beforePoints[0], beforeRank: beforeRanks[0], diffPoints: diffs[0], afterRank: afterRanks[0] },
+    team2: { beforePoints: beforePoints[1], beforeRank: beforeRanks[1], diffPoints: diffs[1], afterRank: afterRanks[1] },
+  };
+}
+
+function parseHighlights(lines: string[]): string[] {
+  const start = lines.indexOf("Highlights");
+  if (start < 0) return [];
+  const highlights: string[] = [];
+  for (let index = start + 1; index < lines.length && highlights.length < 20; index += 1) {
+    if (!/^M\d+R\d+\s*\|/.test(lines[index])) break;
+    highlights.push(lines[index].slice(0, 300));
+  }
+  return highlights;
+}
+
 function parseMaps(
   lines: string[],
   team1: string,
@@ -583,6 +622,8 @@ function parseMain(
     };
   });
   const vetoes = parseVetoes(lines, mapsIndex, team1Name, team2Name);
+  const vrs = parseVrs(lines);
+  const highlights = parseHighlights(lines);
 
   return {
     id: source.id,
@@ -595,6 +636,8 @@ function parseMain(
     bestOf,
     maps,
     ...(vetoes.length > 0 ? { vetoes } : {}),
+    ...(vrs ? { vrs } : {}),
+    ...(highlights.length > 0 ? { highlights } : {}),
     players: parsePlayers(lines, team1, team2, htmlFacts, state),
     context: stageLine?.split(".").slice(1).join(".").trim() ?? "",
     sourceKind: "main-match",

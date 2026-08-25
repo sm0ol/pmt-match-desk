@@ -56,6 +56,11 @@ describe("parseHltvClipboard", () => {
       { action: "leftover", map: "Mirage" },
     ]);
 
+    expect(result.match?.vrs).toEqual({
+      team1: { beforePoints: 1408, beforeRank: 28, diffPoints: -28, afterRank: 30 },
+      team2: { beforePoints: 1018, beforeRank: 83, diffPoints: 30, afterRank: 81 },
+    });
+
     const ancient = result.match?.maps[0];
     expect(ancient?.halves).toEqual([
       { team1: 6, team2: 6, team1Side: "CT" },
@@ -143,6 +148,13 @@ describe("parseHltvClipboard", () => {
       "Nuke 13-6",
       "Dust2 13-16",
     ]);
+    expect(result.match?.vrs).toEqual({
+      team1: { beforePoints: 1844, beforeRank: 5, diffPoints: -13, afterRank: 5 },
+      team2: { beforePoints: 1859, beforeRank: 4, diffPoints: 45, afterRank: 3 },
+    });
+    expect(result.match?.highlights).toHaveLength(6);
+    expect(result.match?.highlights?.[0]).toMatch(/^M1R7 \| cmtry/);
+    expect(result.match?.highlights?.[5]).toMatch(/^M3R3 \| FalleN/);
   });
 
   it("rejects unrelated and over-budget input without guessing", () => {

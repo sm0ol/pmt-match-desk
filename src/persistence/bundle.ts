@@ -55,6 +55,12 @@ const vetoSchema = z.strictObject({
   action: z.enum(["removed", "picked", "leftover"]),
   map: z.string().max(80),
 });
+const vrsTeamSchema = z.strictObject({
+  beforePoints: z.number().int().nonnegative(),
+  beforeRank: z.number().int().positive(),
+  diffPoints: z.number().int(),
+  afterRank: z.number().int().positive(),
+});
 const playerSchema = z.strictObject({
   id: idSchema,
   name: nameSchema,
@@ -83,6 +89,8 @@ const matchSchema = z.strictObject({
   bestOf: z.number().int().positive(),
   maps: z.array(mapSchema).max(7),
   vetoes: z.array(vetoSchema).max(20).optional(),
+  vrs: z.strictObject({ team1: vrsTeamSchema, team2: vrsTeamSchema }).optional(),
+  highlights: z.array(z.string().max(300)).max(20).optional(),
   players: z.array(playerSchema).max(24),
   context: noteSchema,
   sourceKind: sourceKindSchema.optional(),

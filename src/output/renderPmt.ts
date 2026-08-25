@@ -1,4 +1,4 @@
-import type { MapResult, MatchData, PlayerStat } from "../domain/types";
+import type { MapResult, MatchData, PlayerStat, Team, VrsTeamImpact } from "../domain/types";
 import { canonicalHltvMatchUrl } from "../domain/hltvUrl";
 import { flagEmoji } from "../domain/countries";
 
@@ -17,6 +17,24 @@ export type PmtIssue = "match" | "team 1" | "team 2" | "event" | "stage" | "HLTV
 function escapeMarkdown(value: string): string {
   const reserved = new Set("\\`*_{}[]()<>#+-.!|");
   return [...value].map((character) => (reserved.has(character) ? `\\${character}` : character)).join("");
+}
+
+function vrsSection(match: MatchData): string {
+  const vrs = match.vrs;
+  if (!vrs) return "";
+  const row = (team: Team, impact: VrsTeamImpact) => {
+    const rank = escapeMarkdown(`#${impact.beforeRank} → #${impact.afterRank}`);
+    const diff = escapeMarkdown(`${impact.diffPoints >= 0 ? "+" : ""}${impact.diffPoints} pts`);
+    const total = `${impact.beforePoints + impact.diffPoints} pts`;
+    return `|${withFlag(escapeMarkdown(team.name), team.country)}|${rank}|${diff}|${total}|`;
+  };
+  return `### Predicted VRS Impact\n\n|**Team**|**Rank**|**Diff**|**Total**|\n|:--|:--:|--:|--:|\n${row(match.team1, vrs.team1)}\n${row(match.team2, vrs.team2)}\n\nNote: VRS officially updates once per month. This is simply a prediction that might not take into account all factors that go into VRS calculations.`;
+}
+
+function highlightsSection(match: MatchData): string {
+  const highlights = match.highlights ?? [];
+  if (highlights.length === 0) return "";
+  return `### Highlights\n\n${highlights.map((line) => `${escapeMarkdown(line)}  `).join("\n")}`;
 }
 
 function mapVetoTable(match: MatchData): string {
@@ -169,9 +187,11 @@ export function renderPmt(match: MatchData | null): PmtOutput {
     maps,
     match.context ? `**${escapeMarkdown(match.context)}**  ` : "",
     "&nbsp;\n\n-----",
+    vrsSection(match),
     mapVetoTable(match),
     statsTable({ ...match, sourceUrl }),
     ...match.maps.map((map, index) => mapSection(map, match, index)),
+    highlightsSection(match),
     "---\n\n[**This thread was created by the Post-Match Team.**](https://docs.google.com/spreadsheets/d/1k5TiV7VuDKLa41MfcDgP1XiBkPvAo_HInRmNlKKEIBM/edit?usp=sharing)  \nWant to help post these threads? Message /u/Undercover-Cactus to join the Post-Match Team.",
   ].filter(Boolean);
 

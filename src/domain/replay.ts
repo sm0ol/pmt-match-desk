@@ -79,6 +79,10 @@ function mergeMatch(previous: MatchData, next: MatchData): MatchData {
     ...(primary.vetoes?.length || fallback.vetoes?.length
       ? { vetoes: primary.vetoes?.length ? primary.vetoes : fallback.vetoes }
       : {}),
+    ...(primary.vrs ?? fallback.vrs ? { vrs: primary.vrs ?? fallback.vrs } : {}),
+    ...(primary.highlights?.length || fallback.highlights?.length
+      ? { highlights: primary.highlights?.length ? primary.highlights : fallback.highlights }
+      : {}),
     players: mergePlayers(previous.players, next.players),
   };
 }

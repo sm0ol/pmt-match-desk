@@ -93,6 +93,31 @@ describe("renderPmt", () => {
     expect(output.body).toContain("|🇰🇿 molodoy ⊕|55-50|");
   });
 
+  it("renders the VRS impact table and the highlights list", () => {
+    const output = renderPmt({
+      ...match,
+      team1: { ...match.team1, country: "BR" },
+      vrs: {
+        team1: { beforePoints: 1844, beforeRank: 5, diffPoints: -13, afterRank: 5 },
+        team2: { beforePoints: 1859, beforeRank: 4, diffPoints: 45, afterRank: 3 },
+      },
+      highlights: ["M1R7 | cmtry - 4 AK kills - Part 1 - observer"],
+    });
+
+    expect(output.body).toContain("### Predicted VRS Impact");
+    expect(output.body).toContain("|🇧🇷 100 Thieves|\\#5 → \\#5|\\-13 pts|1831 pts|");
+    expect(output.body).toContain("|Eternal Fire|\\#4 → \\#3|\\+45 pts|1904 pts|");
+    expect(output.body).toContain("Note: VRS officially updates once per month.");
+    expect(output.body).toContain("### Highlights");
+    expect(output.body).toContain("M1R7 \\| cmtry \\- 4 AK kills \\- Part 1 \\- observer");
+  });
+
+  it("omits the VRS and highlights sections when the data is missing", () => {
+    const output = renderPmt(match);
+    expect(output.body).not.toContain("Predicted VRS Impact");
+    expect(output.body).not.toContain("### Highlights");
+  });
+
   it("omits flags and marks when the data is missing", () => {
     const output = renderPmt({
       ...match,

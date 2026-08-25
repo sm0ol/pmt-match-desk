@@ -65,6 +65,13 @@ export interface PlayerStat {
   sourceState?: "live" | "completed" | "unknown";
 }
 
+export interface VrsTeamImpact {
+  beforePoints: number;
+  beforeRank: number;
+  diffPoints: number;
+  afterRank: number;
+}
+
 export interface MatchData {
   id: string;
   sourceUrl: string;
@@ -76,6 +83,8 @@ export interface MatchData {
   bestOf: number;
   maps: MapResult[];
   vetoes?: VetoStep[];
+  vrs?: { team1: VrsTeamImpact; team2: VrsTeamImpact };
+  highlights?: string[];
   players: PlayerStat[];
   context: string;
   sourceKind?: "main-match" | "map-stats";
