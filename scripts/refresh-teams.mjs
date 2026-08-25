@@ -76,7 +76,10 @@ function buildTeam(source, wikitext) {
   const infoboxTemplate = extractTemplate(wikitext, /\{\{Infobox team/i);
   if (!infoboxTemplate) throw new Error("No team infobox on this page.");
   const { fields } = splitTemplateFields(infoboxTemplate.body);
-  const name = fields.name || pageNameFromUrl(source.url).replaceAll("_", " ");
+  const infoboxName = fields.name || pageNameFromUrl(source.url).replaceAll("_", " ");
+  // A source-level name wins: it is how the post displays the team, e.g. a
+  // substitute for gambling org names Reddit may auto-remove.
+  const name = source.name || infoboxName;
   const country = countryCode(fields.location ?? "") ?? "";
   const flag = flagEmoji(country) ?? "";
 
@@ -100,16 +103,19 @@ function buildTeam(source, wikitext) {
   ];
 
   return {
-    hltvName: source.hltvName || name,
+    hltvName: source.hltvName || infoboxName,
     name,
     flagName: `${flag ? `${flag} ` : ""}${name}`,
     country,
-    initials: "",
+    initials: source.initials || "",
     roster,
     coach: coaches.join(" | "),
     subs,
     links,
-    aliases: [name, source.hltvName].filter(Boolean),
+    ...(source.logoFlag && source.logoCode
+      ? { logoFlag: source.logoFlag, logoCode: source.logoCode, logoWhite: Boolean(source.logoWhite) }
+      : {}),
+    aliases: [...new Set([infoboxName, source.hltvName, source.name].filter(Boolean))],
   };
 }
 

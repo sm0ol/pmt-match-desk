@@ -88,6 +88,14 @@ const LINK_ORDER = [
   ["Bilibili", "Bilibili"],
 ];
 
+// LOGO holds a partial markdown link like "[🇷🇺](#betboom"; the renderer
+// completes it into a subreddit stylesheet icon.
+function parseLogo(raw) {
+  const match = (raw || "").match(/^\[(.+)\]\(#([^)]+)\)?$/);
+  if (!match || match[2] === "lang-un") return {};
+  return { logoFlag: match[1], logoCode: match[2] };
+}
+
 const teams = teamRows
   .filter((row) => row["HLTV Name"])
   .map((row) => ({
@@ -95,6 +103,8 @@ const teams = teamRows
     name: row.Name || row["HLTV Name"],
     flagName: row["Flag Name"] || "",
     initials: row.Initials || "",
+    ...parseLogo(row.LOGO),
+    logoWhite: (row.LOGOW || "").toUpperCase() === "TRUE",
     roster: [row["PLAYER 1"], row["PLAYER 2"], row["PLAYER 3"], row["PLAYER 4"], row["PLAYER 5"], row["PLAYER 6"]]
       .filter(Boolean),
     coach: row.COACH || "",

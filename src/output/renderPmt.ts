@@ -83,9 +83,7 @@ function hltvTeamUrl(team: Team): string {
 function teamInfoBlock(match: MatchData, team: Team, teamSide: "team1" | "team2"): string {
   const reference = findTeamReference(team.name);
   const displayName = reference?.name || team.name;
-  // Fall back to the leading emoji of the curated flag name when the parsed
-  // team has no country.
-  const flag = flagEmoji(team.country) ?? reference?.flagName.split(" ")[0] ?? "";
+  const icon = teamIcon(team) || reference?.flagName.split(" ")[0] || "";
   const links = [...(reference?.links ?? [])];
   const hltv = hltvTeamUrl(team);
   if (hltv && !links.some((link) => link.label === "HLTV")) {
@@ -93,7 +91,7 @@ function teamInfoBlock(match: MatchData, team: Team, teamSide: "team1" | "team2"
     links.splice(insertAt, 0, { label: "HLTV", url: hltv });
   }
   const header = [
-    `${flag ? `${flag} ` : ""}**${escapeMarkdown(displayName)}**`,
+    `${icon ? `${icon} ` : ""}**${escapeMarkdown(displayName)}**`,
     ...links.map((link) => `[${link.label}](${link.url})`),
   ].join(" | ");
   const teamPlayers = match.players.filter((player) =>
@@ -127,7 +125,7 @@ function vrsSection(match: MatchData): string {
     const rank = escapeMarkdown(`#${impact.beforeRank} → #${impact.afterRank}`);
     const diff = escapeMarkdown(`${impact.diffPoints >= 0 ? "+" : ""}${impact.diffPoints} pts`);
     const total = `${impact.beforePoints + impact.diffPoints} pts`;
-    return `|${withFlag(escapeMarkdown(team.name), team.country)}|${rank}|${diff}|${total}|`;
+    return `|${teamLabel(team)}|${rank}|${diff}|${total}|`;
   };
   return `### Predicted VRS Impact\n\n|**Team**|**Rank**|**Diff**|**Total**|\n|:--|:--:|--:|--:|\n${row(match.team1, vrs.team1)}\n${row(match.team2, vrs.team2)}\n\n${superNote(
     "Note: VRS officially updates once per month. This is simply a prediction that might not take into account all factors that go into VRS calculations.",
@@ -159,6 +157,45 @@ function withFlag(name: string, country: string | undefined): string {
   return flag ? `${flag} ${name}` : name;
 }
 
+/**
+ * Prefers the reference database's display names over HLTV's, everywhere in
+ * the post — including cases like gambling org names Reddit may auto-remove.
+ */
+function applyDisplayNames(match: MatchData): MatchData {
+  const name1 = findTeamReference(match.team1.name)?.name ?? match.team1.name;
+  const name2 = findTeamReference(match.team2.name)?.name ?? match.team2.name;
+  if (name1 === match.team1.name && name2 === match.team2.name) return match;
+  return {
+    ...match,
+    team1: { ...match.team1, name: name1 },
+    team2: { ...match.team2, name: name2 },
+    players: match.players.map((player) => ({
+      ...player,
+      team: player.team === match.team1.name ? name1 : player.team === match.team2.name ? name2 : player.team,
+    })),
+  };
+}
+
+/**
+ * A team's flag as a subreddit stylesheet icon when a logo code is known
+ * ("[🇷🇺](#betboom-logo)" renders the logo on r/GlobalOffensive and degrades
+ * to the flag elsewhere), else the plain emoji flag.
+ */
+function teamIcon(team: Team): string {
+  const reference = findTeamReference(team.name);
+  const flag = flagEmoji(team.country) ?? reference?.logoFlag ?? "";
+  if (reference?.logoCode) {
+    const suffix = reference.logoCode.startsWith("lang-") ? "" : "-logo";
+    return `[${flag || reference.logoFlag || "🏳️"}](#${reference.logoCode}${suffix})`;
+  }
+  return flag;
+}
+
+function teamLabel(team: Team): string {
+  const icon = teamIcon(team);
+  return `${icon ? `${icon} ` : ""}${escapeMarkdown(team.name)}`;
+}
+
 function nicknameOf(name: string): string {
   return name.match(/'([^']+)'/)?.[1] ?? name;
 }
@@ -186,8 +223,8 @@ const STATS_HEADER = "|**Team**|**K-D**|**ADR**|**Swing**|**Rating**|\n|:--|--:|
 
 function statsTable(match: MatchData): string {
   if (match.players.length === 0) return "";
-  const team1 = withFlag(escapeMarkdown(match.team1.name), match.team1.country);
-  const team2 = withFlag(escapeMarkdown(match.team2.name), match.team2.country);
+  const team1 = teamLabel(match.team1);
+  const team2 = teamLabel(match.team2);
   return `### Full Match Stats\n\n${STATS_HEADER}\n|**${team1}**|||||\n${playerRows(match.players, "team1", match.team1.name)}\n|**${team2}**|||||\n${playerRows(match.players, "team2", match.team2.name)}\n\n### [HLTV Match Page](${match.sourceUrl})`;
 }
 
@@ -211,14 +248,14 @@ function halvesTable(map: MapResult, match: MatchData): string {
   ];
   const align = ["|:--", ...header.slice(1).map(() => "--:"), ""].join("|");
   const team1Row = [
-    withFlag(escapeMarkdown(match.team1.name), match.team1.country),
+    teamLabel(match.team1),
     first.team1,
     second.team1,
     ...overtime.map((half) => half.team1),
     `**${map.team1Score}**`,
   ];
   const team2Row = [
-    withFlag(escapeMarkdown(match.team2.name), match.team2.country),
+    teamLabel(match.team2),
     first.team2,
     second.team2,
     ...overtime.map((half) => half.team2),
@@ -258,8 +295,8 @@ function mapStatsTable(map: MapResult, match: MatchData): string {
         return `|${cell}|${player.kills}-${player.deaths}|${player.adr.toFixed(1)}|${escapeMarkdown(player.swing)}|${player.rating.toFixed(2)}|`;
       })
       .join("\n");
-  const team1 = withFlag(escapeMarkdown(match.team1.name), match.team1.country);
-  const team2 = withFlag(escapeMarkdown(match.team2.name), match.team2.country);
+  const team1 = teamLabel(match.team1);
+  const team2 = teamLabel(match.team2);
   return `${STATS_HEADER}\n|**${team1}**|||||\n${rows("team1")}\n|**${team2}**|||||\n${rows("team2")}`;
 }
 
@@ -276,8 +313,9 @@ function mapSection(map: MapResult, match: MatchData, index: number): string {
   return parts.length > 1 ? parts.join("\n\n") : "";
 }
 
-export function renderPmt(match: MatchData | null): PmtOutput {
-  if (!match) return { title: "", body: "", ready: false, issues: ["match"] };
+export function renderPmt(input: MatchData | null): PmtOutput {
+  if (!input) return { title: "", body: "", ready: false, issues: ["match"] };
+  const match = applyDisplayNames(input);
   const issues: PmtIssue[] = [];
   if (!match.team1.name) issues.push("team 1");
   if (!match.team2.name) issues.push("team 2");
@@ -288,8 +326,8 @@ export function renderPmt(match: MatchData | null): PmtOutput {
 
   const title = `${match.team1.name} vs ${match.team2.name} / ${match.event} - ${match.stage} / Post-Match Discussion`;
   const maps = match.maps.map((map) => `**${escapeMarkdown(map.name)}:** ${map.team1Score}-${map.team2Score}  `).join("\n");
-  const flag1 = flagEmoji(match.team1.country);
-  const flag2 = flagEmoji(match.team2.country);
+  const flag1 = teamIcon(match.team1);
+  const flag2 = teamIcon(match.team2);
   const sections = [
     `# ${escapeMarkdown(match.team1.name)}${flag1 ? ` ${flag1}` : ""} [${match.seriesScore[0]}-${match.seriesScore[1]}](${sourceUrl})${flag2 ? ` ${flag2}` : ""} ${escapeMarkdown(match.team2.name)}`,
     maps,

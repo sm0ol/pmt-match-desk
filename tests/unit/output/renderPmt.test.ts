@@ -37,7 +37,7 @@ describe("renderPmt", () => {
     const output = renderPmt(match);
     expect(output.title).toBe(readFileSync(resolve(process.cwd(), "tests/golden/pmt/completed-bo3.title.txt"), "utf8").trimEnd());
     expect(output.body).toBe(readFileSync(resolve(process.cwd(), "tests/golden/pmt/completed-bo3.body.txt"), "utf8").trimEnd());
-    expect(output.body).toContain("# 100 Thieves [1-2](https://www.hltv.org/matches/");
+    expect(output.body).toContain("# 100 Thieves [🇪🇺](#100t-logo) [1-2](https://www.hltv.org/matches/");
     expect(output.body).toContain("**Ancient:** 9-13");
     expect(output.body).toContain("### Map Vetoes");
     expect(output.body).not.toContain("###Map Vetoes");
@@ -86,9 +86,9 @@ describe("renderPmt", () => {
       ],
     });
 
-    expect(output.body).toContain("# 100 Thieves 🇧🇷 [1-2](");
+    expect(output.body).toContain("# 100 Thieves [🇧🇷](#100t-logo) [1-2](");
     expect(output.body).toContain(") 🇪🇺 Eternal Fire");
-    expect(output.body).toContain("|**🇧🇷 100 Thieves**|||||");
+    expect(output.body).toContain("|**[🇧🇷](#100t-logo) 100 Thieves**|||||");
     expect(output.body).toContain("|🇧🇷 FalleN ♛|45-44|");
     expect(output.body).toContain("|🇰🇿 molodoy ⊕|55-50|");
   });
@@ -104,7 +104,7 @@ describe("renderPmt", () => {
     expect(output.body).toContain("### Event Information");
     expect(output.body).toContain("**Esports World Cup 2026** | 🇫🇷 Paris ($2m LAN)");
     expect(output.body).toContain("### Team Information");
-    expect(output.body).toContain("🇧🇷 **FURIA** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
+    expect(output.body).toContain("[🇧🇷](#furia-logo) **FURIA** | [Liquipedia](https://liquipedia.net/counterstrike/FURIA_Esports)");
     // The HLTV link is built from the team id parsed off the match page.
     expect(output.body).toContain("[HLTV](https://www.hltv.org/team/8297/furia)");
     expect(output.body).toContain("**Roster**: 🇧🇷 yuurih | 🇧🇷 KSCERATO | 🇧🇷 FalleN ♛ | 🇰🇿 molodoy | 🇱🇻 YEKINDAR");
@@ -135,6 +135,21 @@ describe("renderPmt", () => {
     // Liquipedia knows FalleN is the IGL; the AWPer comes from this match.
     expect(output.body).toContain("🇰🇿 molodoy ⊕");
     expect(output.body).toContain("🇧🇷 FalleN ♛");
+  });
+
+  it("prefers database display names, protecting against Reddit auto-removal", () => {
+    const output = renderPmt({
+      ...match,
+      team1: { id: "12394", name: "BetBoom", country: "RU" },
+      team2: { id: "13x", name: "BC.Game", country: "EU" },
+    });
+
+    expect(output.title).toContain("BB Team vs BC /");
+    expect(output.title).not.toContain("BetBoom");
+    expect(output.title).not.toContain("BC.Game");
+    expect(output.body).not.toContain("BC\\.Game");
+    expect(output.body).toContain("# BB Team [🇷🇺](#betboom-logo) [1-2](");
+    expect(output.body).toContain("[🇪🇺](#lang-eu) BC");
   });
 
   it("renders event information from the Liquipedia-built event database", () => {
@@ -182,7 +197,7 @@ describe("renderPmt", () => {
     });
 
     expect(output.body).toContain("### Predicted VRS Impact");
-    expect(output.body).toContain("|🇧🇷 100 Thieves|\\#5 → \\#5|\\-13 pts|1831 pts|");
+    expect(output.body).toContain("|[🇧🇷](#100t-logo) 100 Thieves|\\#5 → \\#5|\\-13 pts|1831 pts|");
     expect(output.body).toContain("|Eternal Fire|\\#4 → \\#3|\\+45 pts|1904 pts|");
     expect(output.body).toContain("^Note: ^VRS ^officially ^updates ^once ^per ^month.");
     expect(output.body).toContain("### Highlights");
@@ -198,10 +213,12 @@ describe("renderPmt", () => {
   it("omits flags and marks when the data is missing", () => {
     const output = renderPmt({
       ...match,
+      team1: { id: "x1", name: "Alpha Squad" },
+      team2: { id: "x2", name: "Beta Crew" },
       players: [{
         id: "p1",
         name: "Ace",
-        team: "100 Thieves",
+        team: "Alpha Squad",
         teamSide: "team1",
         kills: 20,
         deaths: 10,
@@ -212,8 +229,8 @@ describe("renderPmt", () => {
       }],
     });
 
-    expect(output.body).toContain("# 100 Thieves [1-2](");
-    expect(output.body).toContain("|**100 Thieves**|||||");
+    expect(output.body).toContain("# Alpha Squad [1-2](");
+    expect(output.body).toContain("|**Alpha Squad**|||||");
     expect(output.body).toContain("|Ace|20-10|");
   });
 

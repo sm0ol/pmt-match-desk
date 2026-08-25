@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-25T19:02:14.926Z",
+  "refreshedAt": "2026-08-25T19:52:43.312Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -406,6 +406,9 @@
       "name": "100 Thieves",
       "flagName": "🇪🇺 100 Thieves",
       "initials": "100T",
+      "logoFlag": "🇪🇺",
+      "logoCode": "100t",
+      "logoWhite": true,
       "roster": [
         "🇳🇴 rain",
         "🇸🇪 poiii",
@@ -429,6 +432,9 @@
       "name": "1w Team",
       "flagName": "🇷🇺 1w Team",
       "initials": "1w",
+      "logoFlag": "🇷🇺",
+      "logoCode": "lang-ru",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 nafany ♛",
         "🇷🇺 Ax1Le",
@@ -462,6 +468,9 @@
       "name": "5star eSports",
       "flagName": "🇲🇳 5star eSports",
       "initials": "5star",
+      "logoFlag": "🇲🇳",
+      "logoCode": "lang-mn",
+      "logoWhite": false,
       "roster": [
         "🇲🇳 hoolig4n ⊕",
         "🇲🇳 clouden",
@@ -495,6 +504,9 @@
       "name": "9INE",
       "flagName": "🇪🇺 9INE",
       "initials": "9INE",
+      "logoFlag": "🇪🇺",
+      "logoCode": "9ine",
+      "logoWhite": false,
       "roster": [
         "🇩🇰 raalz ♛",
         "🇩🇰 kraghen",
@@ -548,6 +560,9 @@
       "name": "9z Team",
       "flagName": "🌎 9z Team",
       "initials": "9z",
+      "logoFlag": "🌎",
+      "logoCode": "9z",
+      "logoWhite": false,
       "roster": [
         "🇺🇾 max ♛",
         "🇨🇱 HUASOPEEK",
@@ -609,6 +624,7 @@
       "name": "Alliance",
       "flagName": "🇸🇪 Alliance",
       "initials": "Alliance",
+      "logoWhite": false,
       "roster": [
         "🇸🇪 avid",
         "🇸🇪 twist ♛",
@@ -634,6 +650,9 @@
       "name": "Alter Ego",
       "flagName": "🌏 Alter Ego",
       "initials": "AE",
+      "logoFlag": "🌏",
+      "logoCode": "lang-earth",
+      "logoWhite": false,
       "roster": [
         "🇱🇧 b1lal ♛",
         "🇮🇩 BnTeT"
@@ -678,6 +697,9 @@
       "name": "Astralis",
       "flagName": "🇩🇰 Astralis",
       "initials": "Astralis",
+      "logoFlag": "🇩🇰",
+      "logoCode": "astralis",
+      "logoWhite": false,
       "roster": [
         "🇩🇰 Staehr",
         "🇩🇰 jabbi",
@@ -703,6 +725,9 @@
       "name": "Aurora Gaming",
       "flagName": "🇹🇷 Aurora Gaming",
       "initials": "Aurora",
+      "logoFlag": "🇹🇷",
+      "logoCode": "aurora",
+      "logoWhite": false,
       "roster": [
         "🇹🇷 XANTARES",
         "🇹🇷 Wicadia",
@@ -752,6 +777,9 @@
       "name": "B8",
       "flagName": "🇺🇦 B8",
       "initials": "B8",
+      "logoFlag": "🇺🇦",
+      "logoCode": "b8",
+      "logoWhite": true,
       "roster": [
         "🇺🇦 npl",
         "🇺🇦 esenthial ⊕",
@@ -777,6 +805,9 @@
       "name": "BB Team",
       "flagName": "🇷🇺 BB Team",
       "initials": "BB",
+      "logoFlag": "🇷🇺",
+      "logoCode": "betboom",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 S1ren",
         "🇷🇺 zorte ⊕",
@@ -802,6 +833,9 @@
       "name": "BC",
       "flagName": "🇪🇺 BC",
       "initials": "BC",
+      "logoFlag": "🇪🇺",
+      "logoCode": "lang-eu",
+      "logoWhite": false,
       "roster": [
         "🇺🇦 s1mple ⊕",
         "🇷🇺 electroNic",
@@ -820,6 +854,9 @@
       "name": "BIG",
       "flagName": "🇩🇪 BIG",
       "initials": "BIG",
+      "logoFlag": "🇩🇪",
+      "logoCode": "big",
+      "logoWhite": true,
       "roster": [
         "🇩🇪 tabseN",
         "🇩🇪 JDC",
@@ -845,6 +882,9 @@
       "name": "DENDELE CS",
       "flagName": "🇧🇷 DENDELE CS",
       "initials": "DENDELE",
+      "logoFlag": "🇧🇷",
+      "logoCode": "lang-br",
+      "logoWhite": false,
       "roster": [
         "🇧🇷 gafolo ♛",
         "🇧🇷 rdnzao",
@@ -890,6 +930,9 @@
       "name": "ENCE",
       "flagName": "🇫🇮 ENCE",
       "initials": "ENCE",
+      "logoFlag": "🇫🇮",
+      "logoCode": "ence",
+      "logoWhite": false,
       "roster": [
         "🇫🇮 teme",
         "🇫🇮 millert ⊕",
@@ -915,6 +958,9 @@
       "name": "EYEBALLERS",
       "flagName": "🇸🇪 EYEBALLERS",
       "initials": "EYEBALLERS",
+      "logoFlag": "🇸🇪",
+      "logoCode": "lang-se",
+      "logoWhite": false,
       "roster": [
         "🇸🇪 JW ♛⊕",
         "🇸🇪 dex",
@@ -940,6 +986,9 @@
       "name": "Team Falcons",
       "flagName": "🇪🇺 Team Falcons",
       "initials": "Falcons",
+      "logoFlag": "🇪🇺",
+      "logoCode": "falcons",
+      "logoWhite": false,
       "roster": [
         "🇧🇦 NiKo",
         "🇩🇰 TeSeS",
@@ -993,6 +1042,9 @@
       "name": "FaZe Clan",
       "flagName": "🇪🇺 FaZe Clan",
       "initials": "FaZe",
+      "logoFlag": "🇪🇺",
+      "logoCode": "faze",
+      "logoWhite": true,
       "roster": [
         "🇸🇰 frozen",
         "🇵🇱 jcobbb",
@@ -1056,6 +1108,9 @@
       "name": "Fluxo W7M",
       "flagName": "🇧🇷 Fluxo W7M",
       "initials": "Fluxo",
+      "logoFlag": "🇧🇷",
+      "logoCode": "lang-br",
+      "logoWhite": false,
       "roster": [
         "🇧🇷 zevy ⊕",
         "🇧🇷 kye",
@@ -1081,6 +1136,9 @@
       "name": "FlyQuest",
       "flagName": "🇦🇺 FlyQuest",
       "initials": "FlyQuest",
+      "logoFlag": "🇦🇺",
+      "logoCode": "flyquest",
+      "logoWhite": false,
       "roster": [
         "🇦🇺 INS ♛",
         "🇦🇺 Vexite",
@@ -1137,6 +1195,9 @@
       "name": "Fnatic",
       "flagName": "🇺🇦 Fnatic",
       "initials": "Fnatic",
+      "logoFlag": "🇺🇦",
+      "logoCode": "fnatic",
+      "logoWhite": false,
       "roster": [
         "🇺🇦 fear ♛",
         "🇺🇦 jambo ⊕",
@@ -1162,6 +1223,9 @@
       "name": "FURIA Esports",
       "flagName": "🇧🇷 FURIA Esports",
       "initials": "FURIA",
+      "logoFlag": "🇧🇷",
+      "logoCode": "furia",
+      "logoWhite": false,
       "roster": [
         "🇧🇷 yuurih",
         "🇧🇷 KSCERATO",
@@ -1227,6 +1291,9 @@
       "name": "FUT Esports",
       "flagName": "🇪🇺 FUT Esports",
       "initials": "FUT",
+      "logoFlag": "🇪🇺",
+      "logoCode": "fut",
+      "logoWhite": false,
       "roster": [
         "🇺🇦 dem0n",
         "🇽🇰 Krabeni ♛",
@@ -1290,6 +1357,9 @@
       "name": "G2 Esports",
       "flagName": "🇪🇺 G2 Esports",
       "initials": "G2",
+      "logoFlag": "🇪🇺",
+      "logoCode": "g2",
+      "logoWhite": true,
       "roster": [
         "🇧🇦 huNter- ♛",
         "🇮🇱 HeavyGod",
@@ -1357,6 +1427,9 @@
       "name": "GamerLegion",
       "flagName": "🇪🇺 GamerLegion",
       "initials": "GL",
+      "logoFlag": "🇪🇺",
+      "logoCode": "gamerleg",
+      "logoWhite": false,
       "roster": [
         "🇩🇰 Tauson",
         "🇸🇪 REZ",
@@ -1382,6 +1455,9 @@
       "name": "HAVU",
       "flagName": "🇫🇮 HAVU",
       "initials": "HAVU",
+      "logoFlag": "🇫🇮",
+      "logoCode": "havu",
+      "logoWhite": false,
       "roster": [
         "🇫🇮 uli",
         "🇫🇮 ottob ⊕",
@@ -1407,6 +1483,9 @@
       "name": "HEROIC",
       "flagName": "🇸🇪 HEROIC",
       "initials": "HEROIC",
+      "logoFlag": "🇸🇪",
+      "logoCode": "heroic",
+      "logoWhite": true,
       "roster": [
         "🇸🇪 nilo",
         "🇩🇰 Chr1zN ♛",
@@ -1462,6 +1541,9 @@
       "name": "HOTU",
       "flagName": "🇷🇺 HOTU",
       "initials": "HOTU",
+      "logoFlag": "🇷🇺",
+      "logoCode": "lang-ru",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 mizu",
         "🇰🇿 kade0 ♛",
@@ -1487,6 +1569,9 @@
       "name": "The Huns Esports",
       "flagName": "🇲🇳 The Huns Esports",
       "initials": "Huns",
+      "logoFlag": "🇲🇳",
+      "logoCode": "thehuns",
+      "logoWhite": false,
       "roster": [
         "🇲🇳 nin9",
         "🇲🇳 Bart4k",
@@ -1527,6 +1612,9 @@
       "name": "Imperial Esports",
       "flagName": "🇧🇷 Imperial Esports",
       "initials": "Imperial",
+      "logoFlag": "🇧🇷",
+      "logoCode": "imperial",
+      "logoWhite": false,
       "roster": [
         "🇧🇷 VINI ♛",
         "🇧🇷 noway",
@@ -1552,6 +1640,9 @@
       "name": "Inner Circle Esports",
       "flagName": "🇺🇦 Inner Circle Esports",
       "initials": "IC",
+      "logoFlag": "🇺🇦",
+      "logoCode": "lang-ua",
+      "logoWhite": false,
       "roster": [
         "🇺🇦 onic ♛",
         "🇺🇦 Dawy",
@@ -1604,6 +1695,9 @@
       "name": "Isurus",
       "flagName": "🇦🇷 Isurus",
       "initials": "Isurus",
+      "logoFlag": "🇦🇷",
+      "logoCode": "isurus",
+      "logoWhite": false,
       "roster": [
         "🇦🇷 deco ♛",
         "🇦🇷 atarax1a ⊕",
@@ -1628,6 +1722,9 @@
       "name": "JiJieHao",
       "flagName": "🌍 JiJieHao",
       "initials": "JiJieHao",
+      "logoFlag": "🌍",
+      "logoCode": "lang-earth",
+      "logoWhite": false,
       "roster": [
         "🇱🇧 m1N1 ⊕",
         "🇮🇶 Bibu",
@@ -1669,6 +1766,9 @@
       "name": "K27",
       "flagName": "🇷🇺 K27",
       "initials": "K27",
+      "logoFlag": "🇷🇺",
+      "logoCode": "lang-ru",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 kashl1d ⊕",
         "🇧🇾 xeedo",
@@ -1708,6 +1808,9 @@
       "name": "Kaleido Gaming",
       "flagName": "🇨🇳 Kaleido Gaming",
       "initials": "Kaleido",
+      "logoFlag": "🇨🇳",
+      "logoCode": "lang-cn",
+      "logoWhite": false,
       "roster": [
         "🇨🇳 SPine ♛",
         "🇨🇳 rage ⊕",
@@ -1737,6 +1840,9 @@
       "name": "Legacy",
       "flagName": "🇧🇷 Legacy",
       "initials": "Legacy",
+      "logoFlag": "🇧🇷",
+      "logoCode": "legacy",
+      "logoWhite": false,
       "roster": [
         "🇧🇷 latto",
         "🇧🇷 dumau",
@@ -1788,6 +1894,9 @@
       "name": "Team Liquid",
       "flagName": "🌎 Team Liquid",
       "initials": "Liquid",
+      "logoFlag": "🌎",
+      "logoCode": "tl",
+      "logoWhite": false,
       "roster": [
         "🇨🇦 NAF",
         "🇺🇸 EliGE",
@@ -1813,6 +1922,9 @@
       "name": "Luminosity Gaming",
       "flagName": "🇪🇺 Luminosity Gaming",
       "initials": "LG",
+      "logoFlag": "🇪🇺",
+      "logoCode": "lg",
+      "logoWhite": false,
       "roster": [
         "🇫🇷 afro ⊕",
         "🇬🇧 AZUWU",
@@ -1860,6 +1972,9 @@
       "name": "Lynn Vision Gaming",
       "flagName": "🇨🇳 Lynn Vision Gaming",
       "initials": "LVG",
+      "logoFlag": "🇨🇳",
+      "logoCode": "lynn",
+      "logoWhite": false,
       "roster": [
         "🇨🇳 Westmelon ♛",
         "🇨🇳 z4KR ⊕",
@@ -1909,6 +2024,9 @@
       "name": "M80",
       "flagName": "🇺🇸 M80",
       "initials": "M80",
+      "logoFlag": "🇺🇸",
+      "logoCode": "m80",
+      "logoWhite": false,
       "roster": [
         "🇺🇸 Swisher",
         "🇩🇪 slaxz- ⊕",
@@ -1958,6 +2076,9 @@
       "name": "magic",
       "flagName": "🇪🇺 magic",
       "initials": "magic",
+      "logoFlag": "🇪🇺",
+      "logoCode": "lang-eu",
+      "logoWhite": false,
       "roster": [
         "🇧🇾 MaSvAl",
         "🇷🇺 tenzy",
@@ -1983,6 +2104,9 @@
       "name": "MIBR",
       "flagName": "🇧🇷 MIBR",
       "initials": "MIBR",
+      "logoFlag": "🇧🇷",
+      "logoCode": "mibr",
+      "logoWhite": false,
       "roster": [
         "🇧🇷 brnz4n",
         "🇧🇷 insani",
@@ -2008,6 +2132,9 @@
       "name": "The MongolZ",
       "flagName": "🇲🇳 The MongolZ",
       "initials": "MongolZ",
+      "logoFlag": "🇲🇳",
+      "logoCode": "mongolz",
+      "logoWhite": true,
       "roster": [
         "🇲🇳 bLitz ♛",
         "🇲🇳 Techno",
@@ -2033,6 +2160,9 @@
       "name": "MOUZ",
       "flagName": "🇪🇺 MOUZ",
       "initials": "MOUZ",
+      "logoFlag": "🇪🇺",
+      "logoCode": "msports",
+      "logoWhite": false,
       "roster": [
         "🇭🇺 torzsi ⊕",
         "🇮🇱 xertioN ♛",
@@ -2098,6 +2228,9 @@
       "name": "MOUZ NXT",
       "flagName": "🇪🇺 MOUZ NXT",
       "initials": "MOUZ NXT",
+      "logoFlag": "🇪🇺",
+      "logoCode": "msports",
+      "logoWhite": false,
       "roster": [
         "🇱🇻 ay0k",
         "🇩🇰 Nikodeon ♛",
@@ -2164,6 +2297,9 @@
       "name": "Natus Vincere",
       "flagName": "🇪🇺 Natus Vincere",
       "initials": "NAVI",
+      "logoFlag": "🇪🇺",
+      "logoCode": "navi",
+      "logoWhite": false,
       "roster": [
         "🇺🇦 b1t",
         "🇫🇮 Aleksib ♛",
@@ -2229,6 +2365,9 @@
       "name": "Team Nemesis",
       "flagName": "🇷🇺 Team Nemesis",
       "initials": "Nemesis",
+      "logoFlag": "🇷🇺",
+      "logoCode": "lang-ru",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 SELLTER ♛",
         "🇷🇺 Sdaim",
@@ -2288,6 +2427,9 @@
       "name": "Nemiga Gaming",
       "flagName": "🇷🇺 Nemiga Gaming",
       "initials": "Nemiga",
+      "logoFlag": "🇷🇺",
+      "logoCode": "nemiga",
+      "logoWhite": false,
       "roster": [
         "🇰🇿 khaN ⊕",
         "🇰🇿 syph0",
@@ -2343,6 +2485,9 @@
       "name": "Ninjas in Pyjamas",
       "flagName": "🇩🇰 Ninjas in Pyjamas",
       "initials": "NIP",
+      "logoFlag": "🇩🇰",
+      "logoCode": "nip",
+      "logoWhite": true,
       "roster": [
         "🇩🇰 sjuush",
         "🇩🇰 Snappi ♛",
@@ -2368,6 +2513,9 @@
       "name": "OG",
       "flagName": "🇪🇺 OG",
       "initials": "OG",
+      "logoFlag": "🇪🇺",
+      "logoCode": "og",
+      "logoWhite": false,
       "roster": [
         "🇸🇪 spooke",
         "🇸🇪 adamb",
@@ -2393,6 +2541,9 @@
       "name": "paiN Gaming",
       "flagName": "🇧🇷 paiN Gaming",
       "initials": "paiN",
+      "logoFlag": "🇧🇷",
+      "logoCode": "pain",
+      "logoWhite": true,
       "roster": [
         "🇧🇷 biguzera ♛",
         "🇧🇷 snow",
@@ -2449,6 +2600,9 @@
       "name": "PVISION",
       "flagName": "🇷🇺 PVISION",
       "initials": "VISION",
+      "logoFlag": "🇷🇺",
+      "logoCode": "paravision",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 Jame ♛⊕",
         "🇷🇺 xiELO",
@@ -2502,6 +2656,9 @@
       "name": "Rare Atom",
       "flagName": "🇨🇳 Rare Atom",
       "initials": "RA",
+      "logoFlag": "🇨🇳",
+      "logoCode": "rareatom",
+      "logoWhite": false,
       "roster": [
         "🇨🇳 Summer ♛",
         "🇨🇳 L1haNg",
@@ -2549,6 +2706,9 @@
       "name": "SAW",
       "flagName": "🇵🇹 SAW",
       "initials": "SAW",
+      "logoFlag": "🇵🇹",
+      "logoCode": "saw",
+      "logoWhite": false,
       "roster": [
         "🇵🇹 ewjerkz",
         "🇵🇹 NOPEEj",
@@ -2610,6 +2770,9 @@
       "name": "Team Spirit",
       "flagName": "🇷🇺 Team Spirit",
       "initials": "Spirit",
+      "logoFlag": "🇷🇺",
+      "logoCode": "spirit",
+      "logoWhite": true,
       "roster": [
         "🇷🇺 magixx ♛",
         "🇺🇦 zont1x",
@@ -2669,6 +2832,9 @@
       "name": "Team Spirit Academy",
       "flagName": "🇷🇺 Team Spirit Academy",
       "initials": "Spirit AC",
+      "logoFlag": "🇷🇺",
+      "logoCode": "spirit",
+      "logoWhite": true,
       "roster": [
         "🇷🇺 Kiryasoo ⊕",
         "🇷🇺 VILBy ♛",
@@ -2720,6 +2886,9 @@
       "name": "TYLOO",
       "flagName": "🇨🇳 TYLOO",
       "initials": "TYLOO",
+      "logoFlag": "🇨🇳",
+      "logoCode": "tyloo",
+      "logoWhite": false,
       "roster": [
         "🇨🇳 JamYoung",
         "🇨🇳 Moseyuh",
@@ -2771,6 +2940,9 @@
       "name": "Virtus.pro",
       "flagName": "🇷🇺 Virtus.pro",
       "initials": "VP",
+      "logoFlag": "🇷🇺",
+      "logoCode": "vp",
+      "logoWhite": false,
       "roster": [
         "🇷🇺 tO0RO",
         "🇷🇺 b1st ⊕",
@@ -2830,6 +3002,9 @@
       "name": "Team Vitality",
       "flagName": "🇪🇺 Team Vitality",
       "initials": "Vitality",
+      "logoFlag": "🇪🇺",
+      "logoCode": "vitality",
+      "logoWhite": false,
       "roster": [
         "🇫🇷 apEX ♛",
         "🇫🇷 ZywOo ⊕",

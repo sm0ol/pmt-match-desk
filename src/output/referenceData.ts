@@ -31,6 +31,10 @@ export interface TeamReference {
   subs: string[];
   links: Array<{ label: string; url: string }>;
   aliases?: string[];
+  /** r/GlobalOffensive stylesheet icon, e.g. flag "🇷🇺" + code "betboom". */
+  logoFlag?: string;
+  logoCode?: string;
+  logoWhite?: boolean;
 }
 
 function normalize(value: string): string {
@@ -43,9 +47,23 @@ for (const event of [...(data.events as EventReference[]), ...(liquipediaData.ev
   for (const alias of event.aliases ?? []) eventsByName.set(normalize(alias), event);
 }
 const teamsByHltvName = new Map<string, TeamReference>();
-for (const team of [...(data.teams as TeamReference[]), ...(liquipediaTeams.teams as TeamReference[])]) {
-  teamsByHltvName.set(normalize(team.hltvName), team);
-  for (const alias of team.aliases ?? []) teamsByHltvName.set(normalize(alias), team);
+function indexTeam(team: TeamReference) {
+  for (const key of [team.hltvName, team.name, ...(team.aliases ?? [])]) {
+    if (key) teamsByHltvName.set(normalize(key), team);
+  }
+}
+for (const team of data.teams as TeamReference[]) indexTeam(team);
+for (const liquipediaTeam of liquipediaTeams.teams as TeamReference[]) {
+  // Liquipedia has no subreddit icon codes; keep them from the curated data.
+  const existing = teamsByHltvName.get(normalize(liquipediaTeam.hltvName));
+  const merged: TeamReference = {
+    ...liquipediaTeam,
+    logoFlag: liquipediaTeam.logoFlag ?? existing?.logoFlag,
+    logoCode: liquipediaTeam.logoCode ?? existing?.logoCode,
+    logoWhite: liquipediaTeam.logoWhite ?? existing?.logoWhite,
+    initials: liquipediaTeam.initials || existing?.initials || "",
+  };
+  indexTeam(merged);
 }
 
 export function findEventReference(name: string): EventReference | undefined {
