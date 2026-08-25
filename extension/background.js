@@ -57,9 +57,26 @@ async function captureStatsPage(url) {
   }
 }
 
+async function tryDeliver(tabId, captures) {
+  // The bridge content script may not be ready yet; retry until it answers.
+  // The bridge itself only reports ok once the app acknowledged the batch.
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    try {
+      const response = await chrome.tabs.sendMessage(tabId, { type: "pmt-deliver", captures });
+      return Boolean(response && response.ok);
+    } catch {
+      await sleep(500);
+    }
+  }
+  return false;
+}
+
 async function deliverToApp(captures, sourceWindowId) {
   const openTabs = await chrome.tabs.query({ url: APP_URL_PATTERNS });
-  let appTab = openTabs[0];
+  // Prefer the production app over a local dev tab.
+  let appTab =
+    openTabs.find((candidate) => candidate.url && candidate.url.startsWith(APP_HOME)) ??
+    openTabs[0];
   if (appTab) {
     await chrome.tabs.update(appTab.id, { active: true });
     await chrome.windows.update(appTab.windowId, { focused: true }).catch(() => {});
@@ -67,15 +84,13 @@ async function deliverToApp(captures, sourceWindowId) {
     appTab = await chrome.tabs.create({ url: APP_HOME, active: true, windowId: sourceWindowId });
     await waitForComplete(appTab.id, 30000);
   }
-  // The bridge content script may not be ready yet; retry until it answers.
-  for (let attempt = 0; attempt < 20; attempt += 1) {
-    try {
-      await chrome.tabs.sendMessage(appTab.id, { type: "pmt-deliver", captures });
-      return;
-    } catch {
-      await sleep(500);
-    }
-  }
+  if (await tryDeliver(appTab.id, captures)) return;
+  // No acknowledgment: the tab predates the extension install or runs an old
+  // app bundle without the listener. Reload it and try once more.
+  await chrome.tabs.reload(appTab.id);
+  await waitForComplete(appTab.id, 30000);
+  await sleep(500);
+  if (await tryDeliver(appTab.id, captures)) return;
   throw new Error("The Match Desk tab did not accept the captures.");
 }
 

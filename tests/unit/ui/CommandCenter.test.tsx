@@ -53,29 +53,54 @@ describe("command center", () => {
     expect(screen.getByText(/ready to post/i)).toBeVisible();
   });
 
-  it("imports captures forwarded by the browser extension", async () => {
+  it("imports extension capture batches and acknowledges them", async () => {
     render(<App />);
     await screen.findByLabelText(/paste copied hltv page/i);
 
-    window.dispatchEvent(
-      new MessageEvent("message", {
-        data: { source: "pmt-match-desk-extension", kind: "hltv-capture", plain, html },
-        origin: window.location.origin,
-        source: window,
-      }),
-    );
+    const acks: string[] = [];
+    const onAck = (event: MessageEvent) => {
+      const data = event.data as { source?: string; kind?: string; batchId?: string } | null;
+      if (data?.source === "pmt-match-desk-app" && data.kind === "batch-received" && data.batchId) {
+        acks.push(data.batchId);
+      }
+    };
+    window.addEventListener("message", onAck);
+    try {
+      const batch = {
+        source: "pmt-match-desk-extension",
+        kind: "capture-batch",
+        batchId: "batch-1",
+        captures: [{ plain, html }],
+      };
+      const send = () =>
+        window.dispatchEvent(
+          new MessageEvent("message", { data: batch, origin: window.location.origin, source: window }),
+        );
+      send();
+      send(); // a bridge retry of the same batch must not import twice
 
-    expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
-    expect(screen.getByText(/ready to post/i)).toBeVisible();
+      expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
+      expect(screen.getByText(/ready to post/i)).toBeVisible();
+      await waitFor(() => expect(acks).toContain("batch-1"));
+      const historyItems = screen.getByTestId("import-history").querySelectorAll(":scope > li");
+      expect(historyItems).toHaveLength(1);
+    } finally {
+      window.removeEventListener("message", onAck);
+    }
   });
 
-  it("ignores window messages that are not extension captures", async () => {
+  it("ignores window messages that are not extension capture batches", async () => {
     render(<App />);
     await screen.findByLabelText(/paste copied hltv page/i);
 
     window.dispatchEvent(
       new MessageEvent("message", {
-        data: { source: "someone-else", kind: "hltv-capture", plain, html },
+        data: {
+          source: "someone-else",
+          kind: "capture-batch",
+          batchId: "batch-x",
+          captures: [{ plain, html }],
+        },
         origin: window.location.origin,
         source: window,
       }),

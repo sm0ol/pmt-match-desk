@@ -447,25 +447,56 @@ export default function App() {
     return () => window.removeEventListener("paste", globalPaste);
   }, [importClipboard]);
 
-  // The browser extension forwards HLTV captures through window.postMessage.
-  // Imports run one at a time so a match page and its map-stats pages land in
-  // order on the same draft.
+  // The browser extension forwards capture batches through window.postMessage
+  // and re-posts until the app acknowledges. The listener only exists once the
+  // draft store has hydrated, so early posts are simply retried by the bridge.
+  // Imports run one at a time, and the queue waits while a match-decision
+  // dialog is open so a batch for a different match resolves in order.
+  const pendingDecisionRef = useRef(controller.pendingDecision);
+  pendingDecisionRef.current = controller.pendingDecision;
+  const { hydrated } = controller;
   useEffect(() => {
+    if (!hydrated) return;
+    const processed = new Set<string>();
     let queue: Promise<unknown> = Promise.resolve();
+    let stopped = false;
+    const waitForDecision = async () => {
+      const startedAt = Date.now();
+      while (!stopped && pendingDecisionRef.current && Date.now() - startedAt < 300_000) {
+        await new Promise((resolve) => window.setTimeout(resolve, 300));
+      }
+    };
     const onMessage = (event: MessageEvent) => {
       if (event.source !== window || event.origin !== window.location.origin) return;
       const data = event.data as
-        | { source?: unknown; kind?: unknown; plain?: unknown; html?: unknown }
+        | { source?: unknown; kind?: unknown; batchId?: unknown; captures?: unknown }
         | null;
-      if (!data || data.source !== "pmt-match-desk-extension" || data.kind !== "hltv-capture") return;
-      const plain = typeof data.plain === "string" ? data.plain : "";
-      const html = typeof data.html === "string" ? data.html : "";
-      if (!plain && !html) return;
-      queue = queue.then(() => importClipboard({ plain, html })).catch(() => {});
+      if (!data || data.source !== "pmt-match-desk-extension" || data.kind !== "capture-batch") return;
+      const batchId = typeof data.batchId === "string" ? data.batchId : "";
+      if (!batchId) return;
+      window.postMessage(
+        { source: "pmt-match-desk-app", kind: "batch-received", batchId },
+        window.location.origin,
+      );
+      if (processed.has(batchId)) return;
+      processed.add(batchId);
+      const captures = Array.isArray(data.captures) ? data.captures : [];
+      for (const entry of captures as Array<{ plain?: unknown; html?: unknown }>) {
+        const plain = typeof entry?.plain === "string" ? entry.plain : "";
+        const html = typeof entry?.html === "string" ? entry.html : "";
+        if (!plain && !html) continue;
+        queue = queue
+          .then(waitForDecision)
+          .then(() => (stopped ? undefined : importClipboard({ plain, html })))
+          .catch(() => {});
+      }
     };
     window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, [importClipboard]);
+    return () => {
+      stopped = true;
+      window.removeEventListener("message", onMessage);
+    };
+  }, [hydrated, importClipboard]);
 
   if (!controller.hydrated) {
     return <div className="grid min-h-screen place-items-center text-muted-foreground">Loading…</div>;

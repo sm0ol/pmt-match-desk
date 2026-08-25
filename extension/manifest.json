@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PMT Match Desk Capture",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "One click sends the current HLTV match page — and each finished map's stats page — to PMT Match Desk.",
   "action": {
     "default_title": "Send this HLTV page to PMT Match Desk"
