@@ -1,0 +1,10 @@
+{
+  "sourceKind": "map-stats",
+  "sourceUrl": "https://www.hltv.org/stats/matches/mapstatsid/235806/100-thieves-vs-eternal-fire",
+  "capturedAt": "2026-08-25T00:00:00.000Z",
+  "captureMethod": "Visible body text plus stable links from the in-app Chromium page; rich clipboard access was unavailable for this protected page.",
+  "browser": "Codex in-app Chromium",
+  "matchId": "2397078",
+  "mapId": "235806",
+  "map": "Ancient"
+}

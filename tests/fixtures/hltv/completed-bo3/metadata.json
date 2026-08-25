@@ -1,0 +1,19 @@
+{
+  "sourceKind": "main-match",
+  "sourceUrl": "https://www.hltv.org/matches/2397078/100-thieves-vs-eternal-fire-iem-beijing-2026-open-qualifier",
+  "capturedAt": "2026-08-24T00:00:00.000Z",
+  "browser": "Codex in-app Chromium",
+  "matchId": "2397078",
+  "series": "bo3",
+  "state": "completed",
+  "teams": [
+    {
+      "id": "8474",
+      "name": "100 Thieves"
+    },
+    {
+      "id": "11251",
+      "name": "Eternal Fire"
+    }
+  ]
+}
