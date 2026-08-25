@@ -1,81 +1,147 @@
 # PMT Match Desk
 
-A free, local-first thread creator for the r/GlobalOffensive Post-Match Team. It turns a normal `Ctrl+A` → `Ctrl+C` capture from HLTV into the familiar PMT title and Markdown body without scraping HLTV from a server.
+A free, local-first thread creator for the r/GlobalOffensive Post-Match Team.
+It turns an HLTV match page into the PMT title and Markdown body. It does not
+scrape HLTV from a server.
 
-## The fast workflow
+Live desk: https://pmt-production-4bee.up.railway.app
 
-1. Open the finished match on HLTV.
-2. Press `Ctrl+A`, then `Ctrl+C`.
-3. Paste into Match Desk.
-4. Resolve any highlighted issue, then copy the Reddit title and body separately.
+## Quick start for a new member
 
-The match page carries everything except the per-map player tables — current
-HLTV pages load those on demand, so they are not part of the copy. To fill the
-MAP sections: click **Get stats** next to a map (it opens that map's HLTV stats
-page), press `Ctrl+A`, `Ctrl+C`, and paste into the same draft. Maps with
-loaded tables show **✓ stats**.
+1. Install the browser extension. See [extension/README.md](extension/README.md).
+2. Open a match page on HLTV.
+3. Click the extension button. The desk opens with a complete draft.
+4. Check the preview. Fix any item listed under "Fix before copying".
+5. Set the subreddit field. Click **Post on Reddit**.
+6. Check the prefilled submit form. Click submit.
 
-A live match page works too: paste it to prepare the draft early, then paste
-the final page after the match to replace live numbers with final ones.
+If you do not have the extension: press `Ctrl+A`, then `Ctrl+C` on the HLTV
+page, and paste into the desk. The result is the same.
 
-## The one-click workflow (browser extension)
+## The thread lifecycle
 
-The `extension/` directory contains an unpacked Chrome extension that removes
-the copy gesture: on an HLTV match page, one click captures the page and each
-finished map's stats page, then feeds them all into Match Desk as one draft.
-See [extension/README.md](extension/README.md) for install steps.
+**Before the match ends.** Capture the live match page. The desk builds the
+draft early: teams, flags, event, stage, vetoes, finished maps, and running
+stats. The action bar shows "Match is live". You can post early — the title
+is already final, because the title contains only the teams, the event, and
+the stage.
 
-The real completed-match regression fixture becomes copy-ready in roughly 0.2 seconds in automated Chromium runs. The executable timing protocol is part of the end-to-end test suite.
+**When the match ends.** Capture the final match page into the same draft.
+Final numbers replace the live numbers. Your manual edits stay.
 
-## What the MVP does
+**Per-map player stats.** Current HLTV match pages do not include the per-map
+player tables. The extension opens each map's stats page and captures it for
+you. Without the extension, click **Get stats** next to a map, copy that
+page, and paste it into the same draft. A map with loaded tables shows
+**✓ stats**.
 
-- Reads both plain-text and rich HTML clipboard data from an explicit paste.
-- Parses current HLTV main-match and map-stat pages without making a request to HLTV.
-- Shows a rendered preview of the post title and Markdown body in the established PMT structure.
-- Keeps new snapshots in an import history with added, changed, and retained-value summaries.
-- Prevents a different match from silently overwriting the active draft.
-- Preserves human corrections across later imports; team, event, stage, context, map, and player-stat values are directly editable.
-- Reverts or restores individual source snapshots.
-- Autosaves complete drafts in IndexedDB and restores them after reload.
-- Exports and imports a validated recovery bundle, with explicit raw-data disclosure.
-- Runs entirely in the browser: no account, analytics, telemetry, backend, or runtime fetch.
+**Editing.** All core fields are editable in the desk: teams, scores, event,
+stage, context, maps, and player stats. Edit here, not in Reddit's editor.
+Your edits survive later captures. If a newer capture disagrees with your
+edit, the desk shows a conflict and asks you to choose.
 
-When HLTV changes a layout, the importer fails conservatively and leaves the last good draft alone. The checked-in capture fixtures make parser drift reproducible.
+**Posting.** **Post on Reddit** opens the old-Reddit submit page with the
+title prefilled. The body arrives three ways, in this order:
 
-## Event and team reference data
+1. The extension fills the body into the form.
+2. If the body is small enough for the URL, it arrives prefilled.
+3. The body is always copied to your clipboard as a fallback — paste it if
+   the form is empty.
 
-The Event Information and Team Information sections come from two sources:
+Reddit titles cannot be edited after posting. Bodies can. To update a posted
+thread: capture the newest page into the draft, click **Copy body**, and
+paste over the body on Reddit.
 
-1. **Our own databases, built from Liquipedia.** Humans only enter URLs:
-   `npm run add-event -- https://liquipedia.net/counterstrike/<event-page>`
-   and `npm run add-team -- https://liquipedia.net/counterstrike/<team-page>`
-   add pages to `data/event-sources.json` / `data/team-sources.json` and
-   fetch them through the Liquipedia API, within their API terms of use.
-   Events carry name, location, prize pool, LAN/Online, and official streams.
-   Teams carry the active roster with flags, the IGL mark, loan/trial notes,
-   coach, benched players, and profile links; the AWPer mark and the HLTV
-   team link are filled in from each match's own page at render time.
-   `npm run refresh-events` / `npm run refresh-teams` re-fetch everything
-   listed. Pass an HLTV name as a second argument when HLTV names the event
-   or team differently than Liquipedia.
-2. **The Post-Match Team's live Google Sheets** (the same sheets the PMT
-   lead edits — display names, logo codes, rosters, links). `npm run
-   refresh-data` pulls them directly, falling back to the CSV snapshot in
-   [Post-Match-Thread-Creator](https://github.com/asbmeyers/Post-Match-Thread-Creator)
-   when the sheets are unreachable. Edits made in the sheets flow in on the
-   next refresh with no npm work on the editor's side.
+## How the desk merges captures
 
-Our own source lists can also live in a Google Sheet: publish a tab to the
-web as CSV and paste its URL into `data/sources-config.json` (see the column
-notes there). Sheet rows merge over the local JSON lists, so team members
-manage sources — including display-name overrides — in the sheet.
+Each capture becomes an import in the draft's history. The rules:
 
-Our Liquipedia entries win on name collisions. A GitHub Actions cron
-(`.github/workflows/refresh-events.yml`) refreshes everything daily and
-commits changes; redeploy to publish them (connect the repo to Railway for
-automatic deploys). A match whose event or team is in neither source simply
-renders without that block; team rosters fall back to the players parsed
-from the match page.
+- A completed page beats a live page.
+- A map-stats page owns that map's detail; the match page owns the rest.
+- Your manual edits beat every import. A disagreement becomes a conflict
+  prompt, never a silent overwrite.
+- A capture for a different match never overwrites the active draft. A paste
+  asks; an extension capture switches to or creates that match's draft.
+- You can revert or restore any import in the history.
+
+## Where names and information come from
+
+The post is built from the match page first. The reference database only
+adds to it. **A missing database entry never blocks a post** — the section
+renders from the match page alone, or is omitted.
+
+When a team or event is in the database, this precedence applies:
+
+1. **Our Liquipedia database** (`data/team-sources.json`,
+   `data/event-sources.json`). Entries here win.
+2. **The Post-Match Team's live Google Sheets** — the same sheets the PMT
+   lead edits. These fill everything our database does not cover, and they
+   supply the subreddit logo codes.
+3. **The match page itself** — the fallback for everything.
+
+What each source contributes:
+
+- **Display names.** The database name replaces the HLTV name everywhere,
+  title included. This protects against Reddit auto-removal of gambling org
+  names: BetBoom posts as "BB Team", BC.Game as "BC".
+- **Logo codes.** `[🇷🇺](#betboom-logo)` renders the team logo on
+  r/GlobalOffensive and degrades to the flag everywhere else.
+- **Rosters.** From Liquipedia: players with flags, the IGL mark, loan and
+  trial notes, coach, and benched players. The AWPer mark and the HLTV team
+  link come from the match page at render time, because Liquipedia does not
+  track them.
+- **Events.** Name, location flag, prize pool, LAN or Online, and official
+  stream links.
+
+## How to keep teams and events updated
+
+**Before a tournament**, add its event and its teams once:
+
+```bash
+npm run add-event -- https://liquipedia.net/counterstrike/BLAST/Open/2026/Fall
+npm run add-team  -- https://liquipedia.net/counterstrike/FURIA_Esports
+```
+
+- If HLTV uses a different name, pass it as a second argument.
+- To override the display name (for example a gambling org), add
+  `--name <display-name>`.
+- Entries are plain JSON in `data/` and can be edited by hand.
+
+**Or manage sources in a Google Sheet.** Publish a sheet tab to the web as
+CSV and paste its URL into `data/sources-config.json` (column names are
+documented there). Sheet rows merge over the local JSON by URL. Members then
+add teams and edit name overrides in the sheet, without npm.
+
+**The automatic update flow.** A GitHub Actions cron runs daily:
+
+1. It re-fetches every listed Liquipedia event and team page.
+2. It pulls the PMT team's live Google Sheets (with the GitHub CSV snapshot
+   as fallback).
+3. If the data changed, it commits. The commit deploys itself through
+   Railway's GitHub integration.
+
+So: an edit in a sheet is live on the desk within a day, with no npm work.
+For an immediate refresh, run the "Refresh event database" workflow from the
+repository's Actions tab, or run the npm scripts locally and push.
+
+Liquipedia is fetched within its API terms of use: a descriptive User-Agent,
+gzip, and one request per two seconds. The desk itself makes no runtime
+requests — data is baked in at build time.
+
+## What the desk does
+
+- Reads both the plain-text and the HTML halves of a capture.
+- Parses main-match, live-match, and map-stat pages without contacting HLTV.
+- Shows a rendered preview of the title and body in the PMT structure.
+- Keeps every capture in an import history with change summaries.
+- Autosaves drafts in the browser and restores them after reload.
+- Exports and imports a validated recovery bundle.
+- Runs entirely in the browser: no account, no analytics, no telemetry, no
+  runtime fetch.
+
+When HLTV changes a layout, the importer fails conservatively and leaves the
+last good draft alone. The checked-in capture fixtures make parser drift
+reproducible.
 
 ## Run it locally
 
@@ -86,33 +152,38 @@ npm install
 npm run dev
 ```
 
-Open the local URL Vite prints. For a production-static build:
-
-```bash
-npm run build
-```
-
-Serve the generated `dist/` directory from any static host. Public hosting is intentionally outside this local MVP.
+For a production build: `npm run build`, then serve `dist/` from any static
+host. Production deploys automatically from pushes to `main` through
+Railway.
 
 ## Validate it
 
-Install Playwright’s pinned browser once:
+Install Playwright's pinned browser once:
 
 ```bash
 npx playwright install chromium
 npm run validate
 ```
 
-`validate` runs lint, strict TypeScript, unit/component tests, the production build, and real Chromium flows for paste, clipboard copy, local persistence, bundle recovery, updates and conflicts, wrong-match protection, hostile input, narrow layouts, and the timing protocol.
+`validate` runs lint, strict TypeScript, unit tests, the production build,
+and real Chromium flows: paste, clipboard copy, persistence, bundle
+recovery, updates and conflicts, wrong-match protection, live matches,
+hostile input, narrow layouts, and the timing protocol.
 
 ## Privacy and recovery
 
-Pasted source data and drafts stay in the browser origin’s local storage. Copy actions write only the selected PMT output to the clipboard. Exported `.pmt.json` bundles intentionally contain the full import history and raw clipboard payloads; the UI discloses this before download. Treat those files as source records and share them only with people you trust.
+Pasted source data and drafts stay in the browser origin's local storage.
+Copy actions write only the selected PMT output to the clipboard. Exported
+`.pmt.json` bundles contain the full import history and the raw clipboard
+payloads; the UI discloses this before download. Share those files only with
+people you trust.
 
-“Clear this draft” removes the selected local draft, its snapshots, edits, and history. It does not remove other drafts.
+"Clear this draft" removes the selected local draft, its snapshots, edits,
+and history. It does not remove other drafts. Drafts live per browser — use
+Export bundle / Import bundle to move a draft between machines.
 
 ## Current boundary
 
-This is the human-assisted MVP. It does not monitor HLTV, sign into Reddit, submit posts, coordinate volunteers, or bypass bot protection. A Chrome extension can later remove the select/copy gesture while feeding the same parser and draft model.
-
-The corpus currently includes a real completed BO3 main-page capture and a real protected map-stat capture, plus deterministic layout, sparse, update, hostile-input, and series-shape variants. More real tournament captures should be added as the community encounters them.
+The desk does not monitor HLTV, sign into Reddit, submit posts for you, or
+bypass bot protection. The extension only captures pages you visit and
+prefills the submit form; a human always reviews and clicks submit.
