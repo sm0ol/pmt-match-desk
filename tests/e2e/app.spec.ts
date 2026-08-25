@@ -43,7 +43,7 @@ async function pasteCapture(
 test("first run leads with the focused three-step paste workflow", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { name: /turn hltv into a post/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /paste an hltv match page/i })).toBeVisible();
   await expect(page.getByText("Open the finished match on HLTV")).toBeVisible();
   await expect(page.getByText("Nothing leaves this browser.")).toBeVisible();
   await expect(page.getByLabel("Paste copied HLTV page")).toBeFocused();
@@ -60,8 +60,8 @@ test("a real HLTV paste becomes a copy-ready Reddit preview well under 30 second
   const startedAt = Date.now();
   await pasteCapture(page);
 
-  await expect(page.getByText("READY TO POST")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
+  await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
   await expect(page.getByText("Full Match Stats")).toBeVisible();
   const twoDigitMapScore = page.getByLabel("Ancient Eternal Fire score");
   await expect(twoDigitMapScore).toHaveValue("13");
@@ -78,12 +78,12 @@ test("a real HLTV paste becomes a copy-ready Reddit preview well under 30 second
 test("the active draft and manual fixes survive a reload", async ({ page }) => {
   await page.goto("/");
   await pasteCapture(page);
-  await expect(page.getByText("READY TO POST")).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
 
   await page.getByLabel("Event").fill("Community Cup");
   await expect(page.getByRole("heading", { name: /community cup/i })).toBeVisible();
   await expect(page.getByText("Saved manual correction.")).toBeVisible();
-  await expect(page.getByText("READY TO POST")).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
   await page.getByLabel("Ancient 100 Thieves score").fill("16");
   await expect(page.getByText("Saved map correction.")).toBeVisible();
   await page.reload();
@@ -113,17 +113,17 @@ test("an exported raw-data bundle restores a cleared draft exactly", async ({ pa
     "import history",
   );
   await page.getByRole("dialog", { name: /clear this draft/i }).getByRole("button", { name: "Clear draft" }).click();
-  await expect(page.getByRole("heading", { name: /turn hltv into a post/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /paste an hltv match page/i })).toBeVisible();
 
   await page.locator("input[type='file']").setInputFiles(bundlePath!);
   await expect(page.getByLabel("Event")).toHaveValue("Community Cup");
-  await expect(page.locator(".signal-list dd").first()).toHaveText("01");
+  await expect(page.getByTestId("import-history").locator("> li")).toHaveCount(1);
 });
 
 test("a paste for a different match cannot silently overwrite the active draft", async ({ page }) => {
   await page.goto("/");
   await pasteCapture(page);
-  await expect(page.getByText("READY TO POST")).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
 
   const incoming = {
     plain: plain.replaceAll("100 Thieves", "Ninjas in Pyjamas").replaceAll("Eternal Fire", "Astralis"),
@@ -138,8 +138,8 @@ test("a paste for a different match cannot silently overwrite the active draft",
   await expect(dialog.getByRole("button", { name: "Cancel" })).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
-  await expect(page.getByLabel("Paste copied HLTV page")).toBeFocused();
-  await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
+  await expect(page.getByLabel("Paste copied HLTV page").first()).toBeFocused();
+  await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
 });
 
 test("Create new keeps a different match isolated from the active draft", async ({ page }) => {
@@ -152,12 +152,12 @@ test("Create new keeps a different match isolated from the active draft", async 
   await pasteCapture(page, incoming);
 
   await page.getByRole("dialog", { name: /another match/i }).getByRole("button", { name: "Create new draft" }).click();
-  await expect(page.getByRole("heading", { name: "Ninjas in Pyjamas vs Astralis", exact: true })).toBeVisible();
-  const switcher = page.locator(".draft-select-label select");
+  await expect(page.getByRole("heading", { name: /Ninjas in Pyjamas vs Astralis/ })).toBeVisible();
+  const switcher = page.getByLabel("Draft");
   await expect(switcher.locator("option")).toHaveCount(2);
   await switcher.selectOption({ label: "100 Thieves / Eternal Fire" });
-  await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
-  await expect(page.locator(".signal-list dd").first()).toHaveText("01");
+  await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
+  await expect(page.getByTestId("import-history").locator("> li")).toHaveCount(1);
 });
 
 test("Switch and import reopens a matching draft without duplicating its capture", async ({ page }) => {
@@ -169,32 +169,32 @@ test("Switch and import reopens a matching draft without duplicating its capture
   };
   await pasteCapture(page, incoming);
   await page.getByRole("dialog", { name: /another match/i }).getByRole("button", { name: "Create new draft" }).click();
-  await expect(page.getByRole("heading", { name: "Ninjas in Pyjamas vs Astralis", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Ninjas in Pyjamas vs Astralis/ })).toBeVisible();
 
   await pasteCapture(page);
   const dialog = page.getByRole("dialog", { name: /another match/i });
   await dialog.getByRole("button", { name: "Switch and import" }).click();
 
-  await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
-  await expect(page.locator(".signal-list dd").first()).toHaveText("01");
+  await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
+  await expect(page.getByTestId("import-history").locator("> li")).toHaveCount(1);
   await expect(page.getByText(/no changes/i)).toBeVisible();
 });
 
 test("the sole reverted source stays visible and can be restored", async ({ page }) => {
   await page.goto("/");
   await pasteCapture(page);
-  await page.locator(".history-list li").first().getByRole("button", { name: "Revert" }).click();
+  await page.getByTestId("import-history").locator("> li").first().getByRole("button", { name: "Revert" }).click();
 
   await expect(page.getByRole("heading", { name: /fully reverted/i })).toBeVisible();
   await page.getByRole("button", { name: "Restore" }).click();
-  await expect(page.getByText("READY TO POST")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
+  await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
 });
 
 test("a newer snapshot shows its diff and preserves a human-owned correction", async ({ page }) => {
   await page.goto("/");
   await pasteCapture(page);
-  await expect(page.getByText("READY TO POST")).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
   await page.getByLabel("Stage").fill("Community final");
   await expect(page.getByText("Saved manual correction.")).toBeVisible();
 
@@ -210,9 +210,9 @@ test("a newer snapshot shows its diff and preserves a human-owned correction", a
   await expect(page.getByText("1 parser conflict")).toBeVisible();
   await expect(page.getByLabel("Stage")).toHaveValue("Community final");
   await page.getByRole("button", { name: "Keep mine" }).click();
-  await expect(page.getByText("READY TO POST")).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
   await expect(page.getByLabel("Stage")).toHaveValue("Community final");
-  const latestImport = page.locator(".history-list li").first();
+  const latestImport = page.getByTestId("import-history").locator("> li").first();
   await latestImport.locator("summary[aria-label='Show import changes']").click();
   await expect(latestImport.getByText("stage", { exact: true })).toBeVisible();
   await latestImport.getByRole("button", { name: "Revert" }).click();
@@ -223,13 +223,13 @@ test("a map-stat page can arrive before the main page and enriches one draft", a
   await page.goto("/");
   await pasteCapture(page, { plain: mapPlain, html: mapHtml });
 
-  await expect(page.getByText("REVIEW NEEDED")).toBeVisible();
+  await expect(page.getByText("Review needed")).toBeVisible();
   await expect(page.getByLabel("Map 1 name")).toHaveValue("Ancient");
   await pasteCapture(page);
 
-  await expect(page.getByText("READY TO POST")).toBeVisible();
-  await expect(page.locator(".signal-list dd").first()).toHaveText("02");
-  await expect(page.getByRole("heading", { name: "100 Thieves vs Eternal Fire", exact: true })).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
+  await expect(page.getByTestId("import-history").locator("> li")).toHaveCount(2);
+  await expect(page.getByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
 });
 
 test("the command center remains usable at a narrow phone viewport", async ({ page }) => {

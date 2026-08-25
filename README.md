@@ -15,7 +15,7 @@ The real completed-match regression fixture becomes copy-ready in roughly 0.2 se
 
 - Reads both plain-text and rich HTML clipboard data from an explicit paste.
 - Parses current HLTV main-match and map-stat pages without making a request to HLTV.
-- Shows a central Reddit-style preview using the established PMT Markdown structure.
+- Shows a rendered preview of the post title and Markdown body in the established PMT structure.
 - Keeps new snapshots in an import history with added, changed, and retained-value summaries.
 - Prevents a different match from silently overwriting the active draft.
 - Preserves human corrections across later imports; team, event, stage, context, map, and player-stat values are directly editable.

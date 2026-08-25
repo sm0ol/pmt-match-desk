@@ -33,7 +33,7 @@ async function timeWorkflow(browser: Browser, workflow: TimedWorkflow): Promise<
   const startedAt = performance.now();
   await paste(page, workflow.capture);
   if (workflow.fix) await workflow.fix(page);
-  await expect(page.getByText("READY TO POST")).toBeVisible();
+  await expect(page.getByText("Ready to post")).toBeVisible();
   await page.getByRole("button", { name: "Copy title" }).click();
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain("Post-Match Discussion");
   await page.getByRole("button", { name: "Copy body" }).click();
@@ -58,7 +58,7 @@ test("three consecutive core, flagged-fix, and enriched runs remain under 30 sec
         html,
       },
       fix: async (page) => {
-        await expect(page.getByText("REVIEW NEEDED")).toBeVisible();
+        await expect(page.getByText("Review needed")).toBeVisible();
         await page.getByLabel("Stage").fill("Quarter-final");
       },
     },

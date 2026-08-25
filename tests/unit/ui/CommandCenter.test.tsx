@@ -33,7 +33,7 @@ describe("command center", () => {
 
   it("starts with a focused, concise paste workflow", async () => {
     render(<App />);
-    expect(await screen.findByRole("heading", { name: /turn hltv into a post/i })).toBeVisible();
+    expect(await screen.findByRole("heading", { name: /paste an hltv match page/i })).toBeVisible();
     const paste = await screen.findByLabelText(/paste copied hltv page/i);
     await waitFor(() => expect(paste).toHaveFocus());
     expect(screen.queryByRole("button", { name: /copy title/i })).not.toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("command center", () => {
       },
     });
 
-    expect(await screen.findByRole("heading", { name: /^100 Thieves vs Eternal Fire$/ })).toBeVisible();
+    expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /copy title/i })).toBeEnabled();
     expect(screen.getByText(/ready to post/i)).toBeVisible();
   });
@@ -62,8 +62,8 @@ describe("command center", () => {
       },
     });
 
-    expect(await screen.findByRole("heading", { name: /^QuantumX vs Alter Ego$/ })).toBeVisible();
-    expect(screen.getByRole("heading", { name: /fix before copying/i })).toBeVisible();
+    expect(await screen.findByRole("heading", { name: /QuantumX vs Alter Ego/ })).toBeVisible();
+    expect(screen.getByText(/fix before copying/i)).toBeVisible();
     expect(screen.getByText(/match URL could not be identified/i)).toBeVisible();
     const sourceUrl = screen.getByLabelText(/HLTV match URL/i);
     expect(screen.getByRole("button", { name: /copy body/i })).toBeDisabled();
