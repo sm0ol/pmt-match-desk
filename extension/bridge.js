@@ -5,6 +5,27 @@
 
 let batchCounter = 0;
 
+// The app announces a Reddit post; the background worker keeps it for the
+// submit-page filler.
+window.addEventListener("message", (event) => {
+  if (event.source !== window) return;
+  const data = event.data;
+  if (!data || data.source !== "pmt-match-desk-app" || data.kind !== "reddit-post") return;
+  chrome.runtime
+    .sendMessage({
+      type: "pmt-reddit-post",
+      post: {
+        subreddit: typeof data.subreddit === "string" ? data.subreddit : "",
+        title: typeof data.title === "string" ? data.title : "",
+        body: typeof data.body === "string" ? data.body : "",
+        at: Date.now(),
+      },
+    })
+    .catch(() => {
+      // The background worker is unavailable; the clipboard fallback covers it.
+    });
+});
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (!message || message.type !== "pmt-deliver" || !Array.isArray(message.captures)) {
     return false;

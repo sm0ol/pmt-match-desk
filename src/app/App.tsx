@@ -378,6 +378,50 @@ function PostPreview({ title, body }: { title: string; body: string }) {
   );
 }
 
+const SUBREDDIT_STORAGE_KEY = "pmt-subreddit";
+const DEFAULT_SUBREDDIT = "GlobalOffensive";
+// old.reddit.com rejects URIs somewhere above 8000 characters.
+const MAX_SUBMIT_URL_CHARS = 7500;
+
+function RedditPostButton({
+  title,
+  body,
+  subreddit,
+  disabled,
+}: {
+  title: string;
+  body: string;
+  subreddit: string;
+  disabled?: boolean;
+}) {
+  const post = async () => {
+    const sub = subreddit.trim().replace(/^r\//i, "") || DEFAULT_SUBREDDIT;
+    // The extension, when present, stores the post and fills the submit form.
+    window.postMessage(
+      { source: "pmt-match-desk-app", kind: "reddit-post", subreddit: sub, title, body },
+      window.location.origin,
+    );
+    // The clipboard is the universal fallback for the body.
+    try {
+      await navigator.clipboard.writeText(body);
+    } catch {
+      // The URL prefill or the extension covers it.
+    }
+    const base = `https://old.reddit.com/r/${encodeURIComponent(sub)}/submit?selftext=true&title=${encodeURIComponent(title)}`;
+    const withText = `${base}&text=${encodeURIComponent(body)}`;
+    window.open(withText.length <= MAX_SUBMIT_URL_CHARS ? withText : base, "_blank", "noopener");
+  };
+  return (
+    <Button
+      onClick={() => void post()}
+      disabled={disabled}
+      title="Opens old Reddit with the title prefilled. The body is copied to the clipboard and filled in by the extension."
+    >
+      Post on Reddit
+    </Button>
+  );
+}
+
 function CopyButton({ label, value, disabled }: { label: string; value: string; disabled?: boolean }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const resetTimer = useRef<number | null>(null);
@@ -413,7 +457,7 @@ function CopyButton({ label, value, disabled }: { label: string; value: string; 
   };
   return (
     <div className="relative">
-      <Button onClick={copy} disabled={disabled}>
+      <Button variant="outline" onClick={copy} disabled={disabled}>
         {state === "copied" ? "Copied" : label}
       </Button>
       {state === "failed" && (
@@ -430,6 +474,21 @@ export default function App() {
   const { importClipboard } = controller;
   const [showExport, setShowExport] = useState(false);
   const [showClear, setShowClear] = useState(false);
+  const [subreddit, setSubreddit] = useState(() => {
+    try {
+      return localStorage.getItem(SUBREDDIT_STORAGE_KEY) ?? DEFAULT_SUBREDDIT;
+    } catch {
+      return DEFAULT_SUBREDDIT;
+    }
+  });
+  const updateSubreddit = (value: string) => {
+    setSubreddit(value);
+    try {
+      localStorage.setItem(SUBREDDIT_STORAGE_KEY, value);
+    } catch {
+      // The value still applies for this session.
+    }
+  };
   const match = controller.projection.match;
   const ledger = controller.ledger;
 
@@ -827,7 +886,22 @@ export default function App() {
                 </span>
               )}
             </span>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <span>r/</span>
+                <Input
+                  aria-label="Subreddit"
+                  value={subreddit}
+                  onChange={(event) => updateSubreddit(event.target.value)}
+                  className="h-8 w-40"
+                />
+              </div>
+              <RedditPostButton
+                title={controller.output.title}
+                body={controller.output.body}
+                subreddit={subreddit}
+                disabled={!ready}
+              />
               <CopyButton label="Copy title" value={controller.output.title} disabled={!ready} />
               <CopyButton label="Copy body" value={controller.output.body} disabled={!ready} />
             </div>

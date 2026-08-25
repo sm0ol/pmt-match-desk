@@ -102,6 +102,22 @@ async function setBadge(text, color) {
   }, 5000);
 }
 
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message && message.type === "pmt-reddit-post" && message.post) {
+    chrome.storage.session.set({ pendingRedditPost: message.post });
+    sendResponse({ ok: true });
+    return false;
+  }
+  if (message && message.type === "pmt-get-reddit-post") {
+    chrome.storage.session
+      .get("pendingRedditPost")
+      .then((data) => sendResponse({ post: data.pendingRedditPost ?? null }))
+      .catch(() => sendResponse({ post: null }));
+    return true; // sendResponse is called asynchronously
+  }
+  return false;
+});
+
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id || !tab.url) return;
   if (!HLTV_PAGE.test(tab.url)) {

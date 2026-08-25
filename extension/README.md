@@ -21,6 +21,21 @@ The badge shows progress: `…` while capturing, the number of captured pages
 on success, `!` on failure. On a map-stats page, the button sends just that
 page. Anywhere else, the button opens Match Desk.
 
+## Posting to Reddit
+
+The desk's **Post on Reddit** button opens the old-Reddit submit page for the
+configured subreddit with the title prefilled through the URL. The body
+travels three ways, in order of preference:
+
+1. When this extension is installed, it fills the body into the submit form
+   automatically.
+2. When the body is small enough for the URL, it arrives prefilled too.
+3. The body is always copied to the clipboard as a fallback — paste it if the
+   form is empty.
+
+Review the form, then click submit. Reddit titles cannot be edited after
+posting; bodies can.
+
 ## Notes
 
 - The extension talks only to HLTV pages you visit and to the Match Desk app.

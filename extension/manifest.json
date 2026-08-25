@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
   "name": "PMT Match Desk Capture",
-  "version": "0.1.1",
-  "description": "One click sends the current HLTV match page — and each finished map's stats page — to PMT Match Desk.",
+  "version": "0.2.0",
+  "description": "One click sends the current HLTV match page — and each finished map's stats page — to PMT Match Desk, then prefills the Reddit submit form.",
   "action": {
     "default_title": "Send this HLTV page to PMT Match Desk"
   },
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "storage"],
   "host_permissions": ["https://www.hltv.org/*"],
   "content_scripts": [
     {
@@ -29,6 +29,11 @@
         "http://127.0.0.1:4173/*"
       ],
       "js": ["bridge.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://old.reddit.com/*"],
+      "js": ["reddit-fill.js"],
       "run_at": "document_idle"
     }
   ]

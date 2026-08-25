@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../../../src/app/App";
 
 const plain = readFileSync(
@@ -115,6 +115,31 @@ describe("command center", () => {
     expect(await screen.findByRole("heading", { name: /100 Thieves vs Eternal Fire/ })).toBeVisible();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(screen.getByText(/ready to post/i)).toBeVisible();
+  });
+
+  it("opens the old Reddit submit page with the title prefilled", async () => {
+    const open = vi.spyOn(window, "open").mockReturnValue(null);
+    try {
+      render(<App />);
+      const paste = await screen.findByLabelText(/paste copied hltv page/i);
+      fireEvent.paste(paste, {
+        clipboardData: {
+          getData: (type: string) => (type === "text/html" ? html : plain),
+        },
+      });
+      const button = await screen.findByRole("button", { name: /post on reddit/i });
+      await waitFor(() => expect(button).toBeEnabled());
+
+      fireEvent.click(button);
+
+      await waitFor(() => expect(open).toHaveBeenCalledTimes(1));
+      const url = String(open.mock.calls[0][0]);
+      expect(url).toContain("https://old.reddit.com/r/GlobalOffensive/submit?selftext=true&title=");
+      expect(url).toContain(encodeURIComponent("Post-Match Discussion"));
+      expect(url.length).toBeLessThanOrEqual(7500);
+    } finally {
+      open.mockRestore();
+    }
   });
 
   it("ignores window messages that are not extension capture batches", async () => {
