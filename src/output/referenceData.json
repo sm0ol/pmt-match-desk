@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-25T21:14:52.236Z",
+  "refreshedAt": "2026-08-26T06:45:20.841Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -905,9 +905,7 @@
         "🇲🇳 mzinho"
       ],
       "coach": "🇵🇱 TaZ",
-      "subs": [
-        "🇪🇪 aNdu"
-      ],
+      "subs": [],
       "links": []
     },
     {
@@ -1765,7 +1763,7 @@
         "🇦🇷 Hezz",
         "🇦🇷 dott1"
       ],
-      "coach": "🇧🇷 Xamp",
+      "coach": "🇦🇷 pino",
       "subs": [],
       "links": [
         {
@@ -2169,14 +2167,15 @@
       "logoCode": "mibr",
       "logoWhite": false,
       "roster": [
-        "🇧🇷 brnz4n",
         "🇧🇷 insani",
         "🇸🇪 LNZ ♛",
         "🇧🇷 venomzera",
         "🇧🇷 nqz ⊕"
       ],
       "coach": "🇷🇸 LETN1",
-      "subs": [],
+      "subs": [
+        "🇧🇷 brnz4n"
+      ],
       "links": [
         {
           "label": "Liquipedia",
