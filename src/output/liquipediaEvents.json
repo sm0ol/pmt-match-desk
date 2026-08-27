@@ -1,6 +1,6 @@
 {
   "source": "https://liquipedia.net (see data/event-sources.json)",
-  "refreshedAt": "2026-08-26T06:45:11.780Z",
+  "refreshedAt": "2026-08-27T17:20:20.643Z",
   "events": [
     {
       "name": "BLAST Open Fall 2026",
@@ -22,6 +22,10 @@
         {
           "label": "YouTube",
           "url": "https://www.youtube.com/@BLASTPremier"
+        },
+        {
+          "label": "Kick",
+          "url": "https://kick.com/BLASTPremier"
         }
       ]
     }

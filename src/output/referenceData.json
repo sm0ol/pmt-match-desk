@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-26T06:45:20.841Z",
+  "refreshedAt": "2026-08-27T17:20:29.807Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -58,14 +58,6 @@
         {
           "label": "Twitch B",
           "url": "https://www.twitch.tv/gluck_esports"
-        },
-        {
-          "label": "Kick A",
-          "url": "https://kick.com/gluck-esports-2"
-        },
-        {
-          "label": "Kick B",
-          "url": "https://kick.com/gluck-esports"
         }
       ]
     },
@@ -101,10 +93,6 @@
         {
           "label": "Twitch A",
           "url": "https://www.twitch.tv/gluck_esports"
-        },
-        {
-          "label": "Kick A",
-          "url": "https://kick.com/gluck-esports"
         }
       ]
     },
@@ -307,10 +295,6 @@
         {
           "label": "Twitch A",
           "url": "https://www.twitch.tv/BLASTPremier"
-        },
-        {
-          "label": "Kick A",
-          "url": "https://kick.com/BLASTPremier"
         }
       ]
     },
@@ -382,12 +366,7 @@
       "liquipedia": "https://liquipedia.net/counterstrike/Valve_Tier_2_Events",
       "hltv": "https://www.hltv.org/events/9265/frag-midwest-st-louis-2026",
       "reddit": "",
-      "streams": [
-        {
-          "label": "Kick A",
-          "url": "https://kick.com/frag"
-        }
-      ]
+      "streams": []
     },
     {
       "name": "1xBet FRAG Season 17",
@@ -460,6 +439,37 @@
         {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UC1RJg9vZUkzlpgQgx5wjmng"
+        }
+      ]
+    },
+    {
+      "hltvName": "3DMAX",
+      "name": "3DMAX",
+      "flagName": "🇫🇷 3DMAX",
+      "initials": "3DMAX",
+      "logoFlag": "🇫🇷",
+      "logoCode": "3dmax",
+      "logoWhite": false,
+      "roster": [
+        "🇫🇷 Lucky",
+        "🇫🇷 Maka ♛⊕",
+        "🇫🇷 Graviti",
+        "🇫🇷 misutaaa",
+        "🇫🇷 Kursy"
+      ],
+      "coach": "🇫🇷 wasiNk",
+      "subs": [
+        "🇫🇷 Ex3rcice",
+        "🇫🇷 bodyy (loan: OG)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/3DMAX"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/4914/3dmax"
         }
       ]
     },
@@ -685,10 +695,6 @@
           "url": "https://www.instagram.com/alteregoesports"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@alterego.esports"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCu3Oq_wEChEPaV7abgY688g"
         }
@@ -906,6 +912,34 @@
       ],
       "coach": "🇵🇱 TaZ",
       "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/BESTIA"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12144/bestia"
+        }
+      ]
+    },
+    {
+      "hltvName": "BESTIA",
+      "name": "BESTIA",
+      "flagName": "🌎 BESTIA",
+      "initials": "BESTIA",
+      "logoFlag": "🌎",
+      "logoCode": "lang-earth",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇷 cass1n ⊕",
+        "🇺🇾 timo",
+        "🇦🇷 buda ♛"
+      ],
+      "coach": "🇧🇷 tge",
+      "subs": [
+        "🇦🇷 nacho"
+      ],
       "links": []
     },
     {
@@ -1013,6 +1047,38 @@
       ]
     },
     {
+      "hltvName": "Eternal Fire",
+      "name": "Eternal Fire",
+      "flagName": "🇪🇺 Eternal Fire",
+      "initials": "EF",
+      "logoFlag": "🇪🇺",
+      "logoCode": "eternalfire",
+      "logoWhite": false,
+      "roster": [
+        "🇹🇷 jottAAA",
+        "🇷🇴 regali ⊕",
+        "🇿🇦 MisteM ♛",
+        "🇺🇦 Kvem",
+        "🇹🇷 soulfly"
+      ],
+      "coach": "🇹🇷 yT",
+      "subs": [
+        "🇩🇰 br0",
+        "🇺🇦 Woro2k",
+        "🇹🇷 imoRR"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Eternal_Fire"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11251/eternal-fire"
+        }
+      ]
+    },
+    {
       "hltvName": "EYEBALLERS",
       "name": "EYEBALLERS",
       "flagName": "🇸🇪 EYEBALLERS",
@@ -1083,10 +1149,6 @@
           "url": "https://www.instagram.com/teamfalconsgg"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@falcons.esports"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/@FalconsEsport"
         },
@@ -1143,10 +1205,6 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/fazeesports"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@fazegaming"
         },
         {
           "label": "YouTube",
@@ -1236,10 +1294,6 @@
           "url": "https://www.instagram.com/flyquest"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@FlyQuest"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/Flyquest"
         },
@@ -1324,10 +1378,6 @@
           "url": "https://www.instagram.com/furiagg"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@furiagg"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCT1F3iuRk0j7owMzNC09q1w"
         },
@@ -1394,20 +1444,12 @@
           "url": "https://www.instagram.com/futesportsgg"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@futesportsgg"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/FutbolistCo"
         },
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/futbolistco"
-        },
-        {
-          "label": "Discord",
-          "url": "https://discord.gg/cdX4taKYS2"
         }
       ]
     },
@@ -1582,10 +1624,6 @@
           "url": "https://www.instagram.com/heroic_gg"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@heroicgg"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/Heroicgg"
         },
@@ -1736,10 +1774,6 @@
           "url": "https://www.instagram.com/InCircleEsports"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@incircleesports"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCrDsLD0bnB9f51rRLP7YcJw"
         },
@@ -1809,10 +1843,6 @@
         {
           "label": "Twitter",
           "url": "https://twitter.com/jijiehaocs2"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://live.douyin.com/JJH_Club"
         },
         {
           "label": "Weibo",
@@ -1935,10 +1965,6 @@
           "url": "https://www.instagram.com/legacyggbr"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@legacyggbr"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCS8ZobLj4V21iLRm0cwo2bw"
         },
@@ -2059,10 +2085,6 @@
         {
           "label": "Twitter",
           "url": "https://twitter.com/lynnvision_"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://live.douyin.com/LVGdianzijin"
         },
         {
           "label": "Steam",
@@ -2399,10 +2421,6 @@
           "url": "https://www.instagram.com/natus_vincere_official"
         },
         {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@navi_gg"
-        },
-        {
           "label": "YouTube",
           "url": "https://www.youtube.com/navicsgo"
         },
@@ -2413,10 +2431,6 @@
         {
           "label": "Steam",
           "url": "https://steamcommunity.com/groups/Natus-Vincere"
-        },
-        {
-          "label": "Discord",
-          "url": "https://discord.gg/navination"
         }
       ]
     },
@@ -2467,10 +2481,6 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/nmss_gg"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@nmss_gg"
         },
         {
           "label": "YouTube",
@@ -2595,6 +2605,54 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/6673/nrg"
+        }
+      ]
+    },
+    {
+      "hltvName": "Nuclear TigeRES",
+      "name": "Nuclear TigeRES",
+      "flagName": "🇷🇺 Nuclear TigeRES",
+      "initials": "NTR",
+      "logoFlag": "🇷🇺",
+      "logoCode": "lang-ru",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇾 senka ♛",
+        "🇷🇺 flouzer",
+        "🇷🇺 z1k4 ⊕",
+        "🇧🇾 m1QUSE",
+        "🇷🇺 ayuki"
+      ],
+      "coach": "🇷🇺 Polt",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Nuclear_TigeRES"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13027/nuclear-tigeres"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://ntr.pro/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/ecc58df2-7ee1-46d7-a370-3c389b7d355f"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/nuclear_tigeres"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@NuclearTigeRES"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/nuclear_tigeres"
         }
       ]
     },
@@ -2777,10 +2835,6 @@
           "url": "https://twitter.com/rare_atom"
         },
         {
-          "label": "TikTok",
-          "url": "https://live.douyin.com/RACS2"
-        },
-        {
           "label": "Weibo",
           "url": "https://weibo.com/7736530902"
         },
@@ -2835,10 +2889,6 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/sawofficialgg"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@sawggofficial"
         },
         {
           "label": "YouTube",
@@ -3011,10 +3061,6 @@
           "url": "https://facebook.com/tyloogamingg"
         },
         {
-          "label": "TikTok",
-          "url": "https://live.douyin.com/tyloogg"
-        },
-        {
           "label": "Weibo",
           "url": "https://weibo.com/tyloogaming"
         },
@@ -3127,10 +3173,6 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/teamvitality"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://tiktok.com/@teamvitality"
         },
         {
           "label": "YouTube",
