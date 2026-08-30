@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-29T12:19:10.890Z",
+  "refreshedAt": "2026-08-30T11:17:47.182Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -666,13 +666,14 @@
       "logoCode": "lang-earth",
       "logoWhite": false,
       "roster": [
-        "🇱🇧 b1lal ♛",
-        "🇮🇩 BnTeT"
+        "🇮🇩 BnTeT",
+        "🇵🇰 PokemoN",
+        "🇲🇳 laxiee",
+        "🇷🇴 adeX ⊕",
+        "🇱🇻 shadiy"
       ],
       "coach": "🇮🇩 bali",
-      "subs": [
-        "🇯🇴 BOROS"
-      ],
+      "subs": [],
       "links": [
         {
           "label": "Liquipedia",
@@ -1019,6 +1020,29 @@
       ]
     },
     {
+      "hltvName": "DETONATE",
+      "name": "DETONATE",
+      "flagName": "🇺🇸 DETONATE",
+      "initials": "DETONATE",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 tatm ♛",
+        "🇺🇸 chante",
+        "🇺🇸 carN",
+        "🇺🇸 Maxuel"
+      ],
+      "coach": "🇦🇺 OrangeZ",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/DETONATE"
+        }
+      ]
+    },
+    {
       "hltvName": "ENCE",
       "name": "ENCE",
       "flagName": "🇫🇮 ENCE",
@@ -1328,6 +1352,65 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/4991/fnatic"
+        }
+      ]
+    },
+    {
+      "hltvName": "FORZE Reload",
+      "name": "FORZE Reload",
+      "flagName": "🇷🇺 FORZE Reload",
+      "initials": "FORZE",
+      "logoFlag": "🇷🇺",
+      "logoCode": "forzenew",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇺 KusMe",
+        "🇷🇺 Kaide ♛",
+        "🇷🇺 HeCkBNk",
+        "🇷🇺 YumsaN ⊕",
+        "🇰🇿 Lack1"
+      ],
+      "coach": "🇷🇺 PASHANOJ",
+      "subs": [
+        "🇷🇺 spirit (loan: JP)",
+        "🇷🇺 swetsi (loan: EJ)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/FORZE_Reload"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12857/forze-reload"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://forze.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/8689f8ac-c01b-40f4-96c6-9e7627665b65"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/forzegg"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/forzegg"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/forzegg"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/c/forzegg"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/forzegaming"
         }
       ]
     },
@@ -1999,6 +2082,34 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/5973/liquid"
+        }
+      ]
+    },
+    {
+      "hltvName": "LAG",
+      "name": "Life's A Game",
+      "flagName": "🇺🇸 Life's A Game",
+      "initials": "LAG",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 Sandman",
+        "🇨🇦 djay ♛",
+        "🇺🇸 Cryptic",
+        "🇺🇸 Bwills",
+        "🇺🇸 SLIGHT ⊕"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Life%27s_A_Game"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11955/lag"
         }
       ]
     },
@@ -2845,6 +2956,30 @@
       ]
     },
     {
+      "hltvName": "ex-RESTEC",
+      "name": "ex-RUSTEC",
+      "flagName": "🇷🇺 ex-RUSTEC",
+      "initials": "ex-RUSTEC",
+      "logoFlag": "🇷🇺",
+      "logoCode": "lang-ru",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇾 Brilliance",
+        "🇷🇺 jakekeS",
+        "🇷🇺 youka",
+        "🇷🇺 Patsi",
+        "🇷🇺 yiksrezo"
+      ],
+      "coach": "🇷🇺 dimasss",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13901/ex-rustec"
+        }
+      ]
+    },
+    {
       "hltvName": "SAW",
       "name": "SAW",
       "flagName": "🇵🇹 SAW",
@@ -3193,6 +3328,30 @@
       ]
     },
     {
+      "hltvName": "Wanted Goons",
+      "name": "Wanted Goons",
+      "flagName": "🇺🇸 Wanted Goons",
+      "initials": "WG",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 Johan",
+        "🇺🇸 febreeze",
+        "🇺🇸 Magic",
+        "🇺🇸 killerPandas",
+        "🇺🇸 hibui"
+      ],
+      "coach": "🇺🇸 Fraq-KTR",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12971/wanted-goons"
+        }
+      ]
+    },
+    {
       "hltvName": "Wildcard",
       "name": "Wildcard",
       "flagName": "🌎 Wildcard",
@@ -3241,6 +3400,38 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/wildcardgamingtv"
+        }
+      ]
+    },
+    {
+      "hltvName": "Without a Roof",
+      "name": "Without a Roof",
+      "flagName": "🇺🇸 Without a Roof",
+      "initials": "WaR",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 Stewie2K ♛",
+        "🇺🇸 Brehze",
+        "🇺🇸 autimatic",
+        "🇨🇦 FaNg",
+        "🇧🇬 CeRq ⊕"
+      ],
+      "coach": "🇨🇦 steel",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Without_a_Roof"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/6914/without-a-roof"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/e59c9c49-907d-43db-a6b9-ed0ee7bb21e6"
         }
       ]
     }
