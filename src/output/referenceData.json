@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-08-30T11:17:47.182Z",
+  "refreshedAt": "2026-08-31T12:45:12.470Z",
   "events": [
     {
       "name": "StarLadder StarSeries Fall 2026 North America Closed Qualifier",
@@ -319,10 +319,10 @@
       "streams": []
     },
     {
-      "name": "WINLINE MPKBK CIS LAN Season 6",
+      "name": "Kibertochka Season 2",
       "flag": "🇷🇺",
       "city": "Moscow",
-      "prize": "$40k",
+      "prize": "$10k",
       "liquipedia": "",
       "hltv": "",
       "reddit": "",
@@ -361,12 +361,17 @@
     {
       "name": "FRAG Midwest St. Louis 2026",
       "flag": "🇺🇸",
-      "city": "St. Louis",
+      "city": "Fairview Heights",
       "prize": "$10k",
       "liquipedia": "https://liquipedia.net/counterstrike/Valve_Tier_2_Events",
       "hltv": "https://www.hltv.org/events/9265/frag-midwest-st-louis-2026",
       "reddit": "",
-      "streams": []
+      "streams": [
+        {
+          "label": "Twitch A",
+          "url": "https://www.twitch.tv/fragadelphia"
+        }
+      ]
     },
     {
       "name": "1xBet FRAG Season 17",
@@ -757,6 +762,30 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/betclicapogee"
+        }
+      ]
+    },
+    {
+      "hltvName": "Arcade",
+      "name": "Arcade",
+      "flagName": "🇦🇺 Arcade",
+      "initials": "Arcade",
+      "logoFlag": "🇦🇺",
+      "logoCode": "lang-au",
+      "logoWhite": false,
+      "roster": [
+        "🇻🇳 N1ghtraid ⊕",
+        "🇦🇺 Mechanical",
+        "🇦🇺 Kras",
+        "🇦🇺 74LOR",
+        "🇦🇺 Jynx"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12363/arcade"
         }
       ]
     },
@@ -1250,7 +1279,7 @@
       "flagName": "🇧🇷 Fluxo W7M",
       "initials": "Fluxo",
       "logoFlag": "🇧🇷",
-      "logoCode": "lang-br",
+      "logoCode": "fluxo",
       "logoWhite": false,
       "roster": [
         "🇧🇷 zevy ⊕",
@@ -1352,6 +1381,30 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/4991/fnatic"
+        }
+      ]
+    },
+    {
+      "hltvName": "For Fun",
+      "name": "For Fun",
+      "flagName": "🇺🇸 For Fun",
+      "initials": "For Fun",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇵🇰 Momo",
+        "🇺🇸 Wilky",
+        "🇵🇰 Shooter",
+        "🇺🇸 jsfeltner",
+        "🇺🇸 mason"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12800/for-fun"
         }
       ]
     },
@@ -1607,6 +1660,40 @@
       ]
     },
     {
+      "hltvName": "Galorys",
+      "name": "Galorys",
+      "flagName": "🇧🇷 Galorys",
+      "initials": "Galorys",
+      "logoFlag": "🇧🇷",
+      "logoCode": "lang-br",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇷 tomate",
+        "🇧🇷 gbb",
+        "🇧🇷 PKL",
+        "🇧🇷 detr0ittJ",
+        "🇧🇷 destiny"
+      ],
+      "coach": "🇧🇷 turner",
+      "subs": [
+        "🇧🇷 k1not1 (loan: BESTIA AC)",
+        "🇧🇷 nython",
+        "🇧🇷 Kadzz",
+        "🇧🇷 bacc",
+        "🇧🇷 divine (loan: LP)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Galorys"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12677/galorys"
+        }
+      ]
+    },
+    {
       "hltvName": "GamerLegion",
       "name": "GamerLegion",
       "flagName": "🇪🇺 GamerLegion",
@@ -1631,6 +1718,34 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/9928/gamerlegion"
+        }
+      ]
+    },
+    {
+      "hltvName": "Ground Zero",
+      "name": "Ground Zero Gaming",
+      "flagName": "🇦🇺 Ground Zero Gaming",
+      "initials": "GZ",
+      "logoFlag": "🇦🇺",
+      "logoCode": "groundzero",
+      "logoWhite": false,
+      "roster": [
+        "🇦🇺 apocdud ♛⊕",
+        "🇦🇺 vision",
+        "🇦🇺 Omichella",
+        "🇦🇺 HaZR",
+        "🇦🇺 sliimey"
+      ],
+      "coach": "🇦🇺 tucks",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Ground_Zero_Gaming"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/8536/ground-zero"
         }
       ]
     },
@@ -1932,6 +2047,25 @@
           "url": "https://weibo.com/7312190286"
         }
       ]
+    },
+    {
+      "hltvName": "Just Swing",
+      "name": "Just Swing",
+      "flagName": "🇨🇳 Just Swing",
+      "initials": "Just Swing",
+      "logoFlag": "🇨🇳",
+      "logoCode": "lang-cn",
+      "logoWhite": false,
+      "roster": [
+        "🇨🇳 gas",
+        "🇨🇳 Purely ⊕",
+        "🇷🇺 qqGOD",
+        "🇨🇳 sATOR1",
+        "🇨🇳 skrr"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": []
     },
     {
       "hltvName": "K27",
@@ -2292,6 +2426,37 @@
       ]
     },
     {
+      "hltvName": "Marsborne",
+      "name": "Marsborne",
+      "flagName": "🇺🇸 Marsborne",
+      "initials": "Marsborne",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 Grizz",
+        "🇺🇸 ogwizard ⊕",
+        "🇨🇦 freshie ♛",
+        "🇺🇸 WUMBO",
+        "🇺🇸 nicx"
+      ],
+      "coach": "🇺🇸 Lucid",
+      "subs": [
+        "🇺🇸 marekiew",
+        "🇺🇸 chop"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Marsborne"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13124/marsborne"
+        }
+      ]
+    },
+    {
       "hltvName": "MIBR",
       "name": "MIBR",
       "flagName": "🇧🇷 MIBR",
@@ -2303,7 +2468,8 @@
         "🇧🇷 insani",
         "🇸🇪 LNZ ♛",
         "🇧🇷 venomzera",
-        "🇧🇷 nqz ⊕"
+        "🇧🇷 nqz ⊕",
+        "🇦🇷 tomaszin"
       ],
       "coach": "🇷🇸 LETN1",
       "subs": [
@@ -2662,6 +2828,30 @@
       ]
     },
     {
+      "hltvName": "NEXVOID",
+      "name": "NEXVOID",
+      "flagName": "🇲🇳 NEXVOID",
+      "initials": "NEXVOID",
+      "logoFlag": "🇲🇳",
+      "logoCode": "lang-mn",
+      "logoWhite": false,
+      "roster": [
+        "🇲🇳 AccuracyTG ⊕",
+        "🇲🇳 xerolte",
+        "🇲🇳 MiQ",
+        "🇲🇳 erkaSt",
+        "🇲🇳 Zesta"
+      ],
+      "coach": "🇲🇳 Diesen",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13667/nexvoid"
+        }
+      ]
+    },
+    {
       "hltvName": "Ninjas in Pyjamas",
       "name": "Ninjas in Pyjamas",
       "flagName": "🇩🇰 Ninjas in Pyjamas",
@@ -2792,6 +2982,30 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/10503/og"
+        }
+      ]
+    },
+    {
+      "hltvName": "Overtake Sector",
+      "name": "Overtake Sector",
+      "flagName": "🇺🇸 Overtake Sector",
+      "initials": "OS",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 intra",
+        "🇺🇸 Umar ⊕",
+        "🇧🇷 LEARSI",
+        "🇺🇸 jason",
+        "🇺🇸 corim"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13855/overtake-sector"
         }
       ]
     },
@@ -2956,7 +3170,7 @@
       ]
     },
     {
-      "hltvName": "ex-RESTEC",
+      "hltvName": "ex-RUSTEC",
       "name": "ex-RUSTEC",
       "flagName": "🇷🇺 ex-RUSTEC",
       "initials": "ex-RUSTEC",
@@ -3036,6 +3250,34 @@
         {
           "label": "Steam",
           "url": "https://steamcommunity.com/groups/sawarrior"
+        }
+      ]
+    },
+    {
+      "hltvName": "ShindeN",
+      "name": "ShindeN",
+      "flagName": "🇦🇷 ShindeN",
+      "initials": "ShindeN",
+      "logoFlag": "🇦🇷",
+      "logoCode": "lang-ar",
+      "logoWhite": false,
+      "roster": [
+        "🇦🇷 abizz",
+        "🇦🇷 ivz ⊕",
+        "🇦🇷 naz",
+        "🇦🇷 tom1jed ♛",
+        "🇦🇷 guty"
+      ],
+      "coach": "🇦🇷 ninro",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/ShindeN"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12959/shinden"
         }
       ]
     },
@@ -3152,6 +3394,57 @@
         {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCCo2nH5KDA1OE4m2VZAEbLg"
+        }
+      ]
+    },
+    {
+      "hltvName": "SportsBetExpert",
+      "name": "SBE",
+      "flagName": "🇺🇸 SBE",
+      "initials": "SBE",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 Peeping",
+        "🇺🇸 consti ⊕",
+        "🇺🇸 Infinite",
+        "🇺🇸 shane",
+        "🇺🇸 motm"
+      ],
+      "coach": "🇺🇸 Aureo",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13375/sportsbetexpert"
+        }
+      ]
+    },
+    {
+      "hltvName": "THUNDER dOWNUNDER",
+      "name": "THUNDERdOWNUNDER",
+      "flagName": "🇦🇺 THUNDERdOWNUNDER",
+      "initials": "TdU",
+      "logoFlag": "🇦🇺",
+      "logoCode": "thunder",
+      "logoWhite": false,
+      "roster": [
+        "🇦🇺 dexter",
+        "🇦🇺 Liazz",
+        "🇦🇺 asap",
+        "🇦🇺 TjP"
+      ],
+      "coach": "🇦🇺 viridian",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/THUNDERdOWNUNDER"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13486/thunder-downunder"
         }
       ]
     },
@@ -3324,6 +3617,34 @@
         {
           "label": "Bilibili",
           "url": "https://space.bilibili.com/3546778047613811"
+        }
+      ]
+    },
+    {
+      "hltvName": "Voca",
+      "name": "Team Voca",
+      "flagName": "🇺🇸 Team Voca",
+      "initials": "Voca",
+      "logoFlag": "🇺🇸",
+      "logoCode": "lang-us",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 snav",
+        "🇺🇸 nosraC ♛",
+        "🇺🇸 junior ⊕",
+        "🇺🇸 dare",
+        "🇲🇽 MarKE"
+      ],
+      "coach": "🇨🇦 SEMPHIS",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Team_Voca"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13499/voca"
         }
       ]
     },
