@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-04T10:37:54.883Z",
+  "refreshedAt": "2026-09-05T09:59:20.959Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -582,7 +582,7 @@
         "🇩🇰 kraghen",
         "🇵🇱 Flayy",
         "🇹🇷 rim3",
-        "b1elany"
+        "🇵🇱 b1elany"
       ],
       "coach": "🇩🇰 BERRY",
       "subs": [],
@@ -853,28 +853,6 @@
       ]
     },
     {
-      "hltvName": "Arcade",
-      "name": "Arcade",
-      "flagName": "🇦🇺 Arcade",
-      "initials": "Arcade",
-      "logoWhite": false,
-      "roster": [
-        "🇻🇳 N1ghtraid ⊕",
-        "🇦🇺 Mechanical",
-        "🇦🇺 Kras",
-        "🇦🇺 74LOR",
-        "🇦🇺 Jynx"
-      ],
-      "coach": "",
-      "subs": [],
-      "links": [
-        {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/12363/arcade"
-        }
-      ]
-    },
-    {
       "hltvName": "Astralis",
       "name": "Astralis",
       "flagName": "🇩🇰 Astralis",
@@ -1047,14 +1025,17 @@
       "logoCode": "betboom",
       "logoWhite": false,
       "roster": [
-        "🇷🇺 S1ren",
-        "🇷🇺 zorte ⊕",
+        "🇷🇺 s1ren",
+        "🇷🇺 zorte",
         "🇷🇺 Magnojez",
         "🇷🇺 Boombl4 ♛",
         "🇷🇺 d1Ledez"
       ],
       "coach": "🇷🇺 Fierce",
-      "subs": [],
+      "subs": [
+        "🇷🇺 ArtFr0st (loan: 1w)",
+        "🇷🇺 RAiLWAY"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -1063,58 +1044,52 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/12394/betboom"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://betboom.team/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/9d74574f-b739-466f-a261-1db5ae5cf2a7"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/BetBoomTeam"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/betboom.team"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/betboom_team"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@BBTEAMCS2"
         }
       ]
     },
     {
       "hltvName": "BC.Game",
-      "name": "BESTIA",
-      "flagName": "🇪🇺 BESTIA",
+      "name": "BC",
+      "flagName": "🇪🇺 BC",
       "initials": "BC",
       "logoWhite": false,
       "roster": [
-        "🇧🇷 cass1n",
-        "🇺🇾 timo",
-        "🇦🇷 buda ♛",
+        "🇺🇦 s1mple",
+        "🇷🇺 electroNic",
+        "🇲🇳 Senzu",
         "🇩🇰 Magisk ♛",
         "🇲🇳 mzinho"
       ],
-      "coach": "🇧🇷 tge",
-      "subs": [
-        "🇦🇷 nacho"
-      ],
+      "coach": "🇵🇱 TaZ",
+      "subs": [],
       "links": [
-        {
-          "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/BESTIA"
-        },
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/12144/bestia"
-        },
-        {
-          "label": "Faceit",
-          "url": "https://www.faceit.com/en/teams/69c030a8-fd5d-4e49-b655-8f3d8c8179c2"
-        },
-        {
-          "label": "Twitter",
-          "url": "https://twitter.com/bestia_corp"
-        },
-        {
-          "label": "Instagram",
-          "url": "https://www.instagram.com/bestia_corp"
-        },
-        {
-          "label": "TikTok",
-          "url": "https://www.tiktok.com/@bestia_corp"
-        },
-        {
-          "label": "YouTube",
-          "url": "https://www.youtube.com/@bestia_corp"
-        },
-        {
-          "label": "Twitch",
-          "url": "https://www.twitch.tv/bestia_corp"
         }
       ]
     },
@@ -1277,23 +1252,6 @@
       ]
     },
     {
-      "hltvName": "Color",
-      "name": "Color",
-      "flagName": "🇷🇺 Color",
-      "initials": "Color",
-      "logoWhite": false,
-      "roster": [
-        "🇺🇿 Ryujin",
-        "🇷🇺 lattykk ⊕",
-        "🇷🇺 reyoz",
-        "🇷🇺 cronuss",
-        "🇷🇺 oz1k"
-      ],
-      "coach": "🇰🇿 cau",
-      "subs": [],
-      "links": []
-    },
-    {
       "hltvName": "DENDELE",
       "name": "DENDELE CS",
       "flagName": "🇧🇷 DENDELE CS",
@@ -1400,6 +1358,10 @@
           "url": "https://liquipedia.net/counterstrike/DETONATE"
         },
         {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11336/detonate"
+        },
+        {
           "label": "Official Site",
           "url": "https://detonate.gg"
         },
@@ -1480,22 +1442,6 @@
         {
           "label": "Weibo",
           "url": "https://weibo.com/ez4ence"
-        }
-      ]
-    },
-    {
-      "hltvName": "Entropy",
-      "name": "Entropy",
-      "flagName": "🇸🇪 Entropy",
-      "initials": "Entropy",
-      "logoWhite": false,
-      "roster": [],
-      "coach": "",
-      "subs": [],
-      "links": [
-        {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/7120/entropy"
         }
       ]
     },
@@ -1905,24 +1851,44 @@
       ]
     },
     {
-      "hltvName": "For Fun",
-      "name": "For Fun",
-      "flagName": "🇺🇸 For Fun",
-      "initials": "For Fun",
+      "hltvName": "FOKUS",
+      "name": "FOKUS",
+      "flagName": "🇪🇺 FOKUS",
+      "initials": "FOKUS",
       "logoWhite": false,
       "roster": [
-        "🇵🇰 Momo",
-        "🇺🇸 Wilky",
-        "🇵🇰 Shooter",
-        "🇺🇸 jsfeltner",
-        "🇺🇸 mason"
+        "🇭🇷 Matheos",
+        "🇫🇮 Banjo",
+        "🇸🇪 ztr ♛",
+        "🇫🇮 podi",
+        "🇸🇪 jocab"
       ],
-      "coach": "",
+      "coach": "🇵🇱 kuben",
       "subs": [],
       "links": [
         {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/12800/for-fun"
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/FOKUS"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.fokusclan.gg"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/1ce6e6c4-ea5f-4fca-8a62-e9e55a06ed37"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/fokusclancs"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/fokusclangg"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@FOKUSCLANGG"
         }
       ]
     },
@@ -1987,8 +1953,8 @@
     },
     {
       "hltvName": "FURIA",
-      "name": "FURIA Esports",
-      "flagName": "🇧🇷 FURIA Esports",
+      "name": "FURIA",
+      "flagName": "🇧🇷 FURIA",
       "initials": "FURIA",
       "logoFlag": "🇧🇷",
       "logoCode": "furia",
@@ -1997,7 +1963,7 @@
         "🇧🇷 yuurih",
         "🇧🇷 KSCERATO",
         "🇧🇷 FalleN ♛",
-        "🇰🇿 molodoy ⊕",
+        "🇰🇿 molodoy",
         "🇱🇻 YEKINDAR"
       ],
       "coach": "🇧🇷 sidde",
@@ -2005,7 +1971,7 @@
       "links": [
         {
           "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/FURIA_Esports"
+          "url": "https://liquipedia.net/counterstrike/FURIA"
         },
         {
           "label": "HLTV",
@@ -2013,7 +1979,7 @@
         },
         {
           "label": "Official Site",
-          "url": "https://furia.gg/"
+          "url": "https://furia.gg"
         },
         {
           "label": "Faceit",
@@ -2030,6 +1996,10 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/furiagg"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@furiagg"
         },
         {
           "label": "YouTube",
@@ -2199,8 +2169,7 @@
         "🇧🇷 nython",
         "🇧🇷 Kadzz",
         "🇧🇷 bacc",
-        "🇧🇷 divine (loan: LargadosyPelados)",
-        "🇧🇷 divine (loan: LP)"
+        "🇧🇷 divine (loan: LargadosyPelados)"
       ],
       "links": [
         {
@@ -2369,7 +2338,7 @@
       "logoWhite": false,
       "roster": [
         "🇫🇮 uli",
-        "🇫🇮 ottob ⊕",
+        "🇫🇮 ottob",
         "🇫🇮 p3kko ♛",
         "🇫🇮 Alxc",
         "🇫🇮 8Juho8"
@@ -2379,11 +2348,35 @@
       "links": [
         {
           "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/HAVU_Gaming"
+          "url": "https://liquipedia.net/counterstrike/HAVU"
         },
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/7865/havu"
+        },
+        {
+          "label": "Official Site",
+          "url": "http://www.havu.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/42583b1a-43b0-494c-9d35-744b9ddfe6d1"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/HAVUgaming"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/HavuGaming"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/havugaming"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/HAVUGaming"
         }
       ]
     },
@@ -2399,17 +2392,17 @@
         "🇸🇪 nilo",
         "🇩🇰 Chr1zN ♛",
         "🇸🇪 susp",
-        "🇪🇸 MartinezSa ⊕",
+        "🇪🇸 Martinez",
         "🇸🇪 Brollan"
       ],
       "coach": "🇫🇮 doto",
       "subs": [
-        "🇰🇿 Alkaren"
+        "🇰🇿 Alkaren (loan: cybershoke esports)"
       ],
       "links": [
         {
           "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/Heroic"
+          "url": "https://liquipedia.net/counterstrike/HEROIC"
         },
         {
           "label": "HLTV",
@@ -2417,7 +2410,7 @@
         },
         {
           "label": "Official Site",
-          "url": "https://heroic.gg/"
+          "url": "https://heroic.gg"
         },
         {
           "label": "Twitter",
@@ -2430,6 +2423,10 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/heroic_gg"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@heroicgg"
         },
         {
           "label": "YouTube",
@@ -2583,18 +2580,48 @@
       ]
     },
     {
-      "hltvName": "Inner Circle Academy",
-      "name": "Inner Circle Academy",
-      "flagName": "🇺🇦 Inner Circle Academy",
-      "initials": "IC AC",
+      "hltvName": "INFINITE",
+      "name": "INFINITE",
+      "flagName": "🇪🇺 INFINITE",
+      "initials": "INFINITE",
       "logoWhite": false,
-      "roster": [],
-      "coach": "",
+      "roster": [
+        "🇸🇪 kreaz ♛",
+        "🇨🇿 Dytor",
+        "🇭🇺 sl3nd",
+        "🇷🇴 Blytz",
+        "🇷🇴 volt"
+      ],
+      "coach": "🇩🇪 Tionix",
       "subs": [],
       "links": [
         {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/INFINITE"
+        },
+        {
           "label": "HLTV",
-          "url": "https://www.hltv.org/team/13681/inner-circle-academy"
+          "url": "https://www.hltv.org/team/10823/infinite"
+        },
+        {
+          "label": "Official Site",
+          "url": "http://infinitegg.ro"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/infiniteggro"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/infiniteggro"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/infiniteggro"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/InfiniteGamingRo"
         }
       ]
     },
@@ -2741,23 +2768,6 @@
           "url": "https://weibo.com/7312190286"
         }
       ]
-    },
-    {
-      "hltvName": "Just Swing",
-      "name": "Just Swing",
-      "flagName": "🇨🇳 Just Swing",
-      "initials": "Just Swing",
-      "logoWhite": false,
-      "roster": [
-        "🇨🇳 gas",
-        "🇨🇳 Purely ⊕",
-        "🇷🇺 qqGOD",
-        "🇨🇳 sATOR1",
-        "🇨🇳 skrr"
-      ],
-      "coach": "",
-      "subs": [],
-      "links": []
     },
     {
       "hltvName": "K27",
@@ -2957,7 +2967,7 @@
         "🇨🇦 djay ♛",
         "🇺🇸 Cryptic",
         "🇺🇸 Bwills",
-        "🇺🇸 SLIGHT ⊕"
+        "🇺🇸 SLIGHT"
       ],
       "coach": "",
       "subs": [],
@@ -2969,6 +2979,26 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/11955/lag"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.lifesagame.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/053839e3-d2ff-40a1-998b-cd6c5c1e9083"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/LifesAGameGG"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@@laggaming_"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCWFp882DabbNhPD_7rtUWbQ"
         }
       ]
     },
@@ -3206,6 +3236,60 @@
       ]
     },
     {
+      "hltvName": "Metizport",
+      "name": "Metizport",
+      "flagName": "🇪🇺 Metizport",
+      "initials": "Metizport",
+      "logoWhite": false,
+      "roster": [
+        "🇸🇪 Plopski",
+        "🇸🇪 MaiL09",
+        "🇨🇿 forsyy",
+        "🇨🇦 stanislaw ♛",
+        "🇵🇱 F1KU"
+      ],
+      "coach": "🇵🇱 vinS",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Metizport"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11641/metizport"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.metizport.com"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/abc63167-bde1-46e5-862e-5091597267e1"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/MetizportCS"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/Metizport"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/metizport"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@metizport"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/Metizport"
+        }
+      ]
+    },
+    {
       "hltvName": "MIBR",
       "name": "MIBR",
       "flagName": "🇧🇷 MIBR",
@@ -3392,17 +3476,17 @@
       "roster": [
         "🇱🇻 ay0k",
         "🇩🇰 Nikodeon ♛",
-        "🇫🇷 eSx ⊕",
+        "🇫🇷 eSx-",
         "🇨🇳 mixer"
       ],
-      "coach": "🇺🇦 Lmbt",
+      "coach": "🇺🇦 lmbt",
       "subs": [
         "🇵🇹 opdust"
       ],
       "links": [
         {
           "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/Mouz_NXT"
+          "url": "https://liquipedia.net/counterstrike/MOUZ_NXT"
         },
         {
           "label": "HLTV",
@@ -3410,7 +3494,7 @@
         },
         {
           "label": "Official Site",
-          "url": "http://www.mousesports.com/"
+          "url": "http://www.mousesports.com"
         },
         {
           "label": "Faceit",
@@ -3642,14 +3726,8 @@
       "flagName": "🇲🇳 NEXVOID",
       "initials": "NEXVOID",
       "logoWhite": false,
-      "roster": [
-        "🇲🇳 AccuracyTG ⊕",
-        "🇲🇳 xerolte",
-        "🇲🇳 MiQ",
-        "🇲🇳 erkaSt",
-        "🇲🇳 Zesta"
-      ],
-      "coach": "🇲🇳 Diesen",
+      "roster": [],
+      "coach": "",
       "subs": [],
       "links": [
         {
@@ -3661,9 +3739,9 @@
     {
       "hltvName": "Ninjas in Pyjamas",
       "name": "Ninjas in Pyjamas",
-      "flagName": "🇩🇰 Ninjas in Pyjamas",
+      "flagName": "🇪🇺 Ninjas in Pyjamas",
       "initials": "NIP",
-      "logoFlag": "🇩🇰",
+      "logoFlag": "🇪🇺",
       "logoCode": "nip",
       "logoWhite": true,
       "roster": [
@@ -3885,28 +3963,6 @@
       ]
     },
     {
-      "hltvName": "Overtake Sector",
-      "name": "Overtake Sector",
-      "flagName": "🇺🇸 Overtake Sector",
-      "initials": "OS",
-      "logoWhite": false,
-      "roster": [
-        "🇺🇸 intra",
-        "🇺🇸 Umar ⊕",
-        "🇧🇷 LEARSI",
-        "🇺🇸 jason",
-        "🇺🇸 corim"
-      ],
-      "coach": "",
-      "subs": [],
-      "links": [
-        {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/13855/overtake-sector"
-        }
-      ]
-    },
-    {
       "hltvName": "paiN",
       "name": "paiN Gaming",
       "flagName": "🇧🇷 paiN Gaming",
@@ -4034,6 +4090,46 @@
       ]
     },
     {
+      "hltvName": "QUAZAR",
+      "name": "QUAZAR",
+      "flagName": "🇷🇺 QUAZAR",
+      "initials": "QUAZAR",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇺 gehji ♛",
+        "🇷🇺 kaiori",
+        "🇷🇺 newt",
+        "🇷🇺 Ne1XXX",
+        "🇷🇺 Porya"
+      ],
+      "coach": "🇷🇺 44",
+      "subs": [
+        "🇷🇺 1zz"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/QUAZAR"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11312/quazar"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/27eab7ad-4684-44b5-aa87-0c680d8c21d9"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/QUAZARGG"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/qzrgg"
+        }
+      ]
+    },
+    {
       "hltvName": "Rare Atom",
       "name": "Rare Atom",
       "flagName": "🇨🇳 Rare Atom",
@@ -4079,28 +4175,6 @@
       ]
     },
     {
-      "hltvName": "ex-RUSTEC",
-      "name": "ex-RUSTEC",
-      "flagName": "🇷🇺 ex-RUSTEC",
-      "initials": "ex-RUSTEC",
-      "logoWhite": false,
-      "roster": [
-        "🇧🇾 Brilliance",
-        "🇷🇺 jakekeS",
-        "🇷🇺 youka",
-        "🇷🇺 Patsi",
-        "🇷🇺 yiksrezo"
-      ],
-      "coach": "🇷🇺 dimasss",
-      "subs": [],
-      "links": [
-        {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/13901/ex-rustec"
-        }
-      ]
-    },
-    {
       "hltvName": "SAW",
       "name": "SAW",
       "flagName": "🇵🇹 SAW",
@@ -4113,14 +4187,14 @@
         "🇵🇹 NOPEEj",
         "🇵🇹 MUTiRiS ♛",
         "🇵🇹 krazy",
-        "🇵🇹 story ⊕"
+        "🇵🇹 story"
       ],
       "coach": "🇵🇹 mowzassa",
       "subs": [],
       "links": [
         {
           "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/SAw_%28Portuguese_team%29"
+          "url": "https://liquipedia.net/counterstrike/SAW"
         },
         {
           "label": "HLTV",
@@ -4145,6 +4219,10 @@
         {
           "label": "Instagram",
           "url": "https://www.instagram.com/sawofficialgg"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@sawggofficial"
         },
         {
           "label": "YouTube",
@@ -4569,9 +4647,7 @@
       "roster": [
         "🇺🇸 snav",
         "🇺🇸 nosraC",
-        "🇺🇸 junior",
-        "🇺🇸 dare",
-        "🇲🇽 MarKE"
+        "🇺🇸 junior"
       ],
       "coach": "🇨🇦 SEMPHIS",
       "subs": [],
@@ -4595,49 +4671,11 @@
       ]
     },
     {
-      "hltvName": "Wanted Goons",
-      "name": "Wanted Goons",
-      "flagName": "🇺🇸 Wanted Goons",
-      "initials": "WG",
-      "logoWhite": false,
-      "roster": [
-        "🇺🇸 Johan",
-        "🇺🇸 febreeze",
-        "🇺🇸 Magic",
-        "🇺🇸 killerPandas",
-        "🇺🇸 hibui"
-      ],
-      "coach": "🇺🇸 Fraq-KTR",
-      "subs": [],
-      "links": [
-        {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/12971/wanted-goons"
-        }
-      ]
-    },
-    {
-      "hltvName": "WBT",
-      "name": "WBT",
-      "flagName": "🇺🇦 WBT",
-      "initials": "WBT",
-      "logoWhite": false,
-      "roster": [],
-      "coach": "",
-      "subs": [],
-      "links": [
-        {
-          "label": "HLTV",
-          "url": "https://www.hltv.org/team/13683/wbt"
-        }
-      ]
-    },
-    {
       "hltvName": "Wildcard",
       "name": "Wildcard",
-      "flagName": "🌎 Wildcard",
+      "flagName": "🇺🇸 Wildcard",
       "initials": "Wildcard",
-      "logoFlag": "🌎",
+      "logoFlag": "🇺🇸",
       "logoCode": "wildcard",
       "logoWhite": true,
       "roster": [
