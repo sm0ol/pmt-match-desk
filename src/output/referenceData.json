@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-05T09:59:20.959Z",
+  "refreshedAt": "2026-09-06T10:17:48.062Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -201,24 +201,11 @@
       "name": "Esports World Cup 2026",
       "flag": "🇫🇷",
       "city": "Paris",
-      "prize": "$2m",
+      "prize": "$2,000,000",
       "liquipedia": "https://liquipedia.net/counterstrike/Esports_World_Cup/2026",
       "hltv": "https://www.hltv.org/events/8261/esports-world-cup-2026",
       "reddit": "",
-      "streams": [
-        {
-          "label": "YouTube",
-          "url": "https://www.youtube.com/channel/UCENNtCRTPTdH_IGXs42LuHQ/streams"
-        },
-        {
-          "label": "Twitch A",
-          "url": "https://www.twitch.tv/ewc_stcarena_en"
-        },
-        {
-          "label": "Twitch B",
-          "url": "https://www.twitch.tv/ewc_stcarena_en2"
-        }
-      ]
+      "streams": []
     },
     {
       "name": "IEM Cologne Major 2026 Stage 1",
@@ -3240,6 +3227,8 @@
       "name": "Metizport",
       "flagName": "🇪🇺 Metizport",
       "initials": "Metizport",
+      "logoFlag": "🇪🇺",
+      "logoCode": "metiz",
       "logoWhite": false,
       "roster": [
         "🇸🇪 Plopski",
