@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-06T10:17:48.062Z",
+  "refreshedAt": "2026-09-07T11:38:05.581Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -386,9 +386,9 @@
     {
       "hltvName": "100 Thieves",
       "name": "100 Thieves",
-      "flagName": "🇪🇺 100 Thieves",
+      "flagName": "🇺🇸 100 Thieves",
       "initials": "100T",
-      "logoFlag": "🇪🇺",
+      "logoFlag": "🇺🇸",
       "logoCode": "100t",
       "logoWhite": true,
       "roster": [
@@ -565,13 +565,9 @@
       "logoCode": "9ine",
       "logoWhite": false,
       "roster": [
-        "🇩🇰 raalz ♛",
-        "🇩🇰 kraghen",
-        "🇵🇱 Flayy",
-        "🇹🇷 rim3",
-        "🇵🇱 b1elany"
+        "🇩🇰 raalz ♛"
       ],
-      "coach": "🇩🇰 BERRY",
+      "coach": "",
       "subs": [],
       "links": [
         {
@@ -615,9 +611,9 @@
     {
       "hltvName": "9z",
       "name": "9z Team",
-      "flagName": "🌎 9z Team",
+      "flagName": "🇪🇸 9z Team",
       "initials": "9z",
-      "logoFlag": "🌎",
+      "logoFlag": "🇪🇸",
       "logoCode": "9z",
       "logoWhite": false,
       "roster": [
@@ -916,9 +912,7 @@
       ],
       "coach": "🇬🇧 ashhh",
       "subs": [
-        "🇹🇷 MAJ3R",
-        "🇹🇷 Fabre",
-        "🇷🇺 deko (loan: ww team)"
+        "🇹🇷 MAJ3R"
       ],
       "links": [
         {
@@ -1083,7 +1077,7 @@
     {
       "hltvName": "BESTIA",
       "name": "BESTIA",
-      "flagName": "🌎 BESTIA",
+      "flagName": "🇦🇷 BESTIA",
       "initials": "BESTIA",
       "logoWhite": false,
       "roster": [
@@ -1139,13 +1133,9 @@
       "logoCode": "big",
       "logoWhite": true,
       "roster": [
-        "🇩🇪 tabseN",
-        "🇩🇪 JDC",
-        "🇧🇾 gr1ks",
-        "🇩🇰 blameF ♛",
-        "🇩🇪 faveN"
+        "🇩🇪 tabseN"
       ],
-      "coach": "🇩🇪 xenn",
+      "coach": "",
       "subs": [
         "🇩🇪 Krimbo (loan: nip)"
       ],
@@ -1373,9 +1363,9 @@
     {
       "hltvName": "ENCE",
       "name": "ENCE",
-      "flagName": "🇫🇮 ENCE",
+      "flagName": "🇪🇺 ENCE",
       "initials": "ENCE",
-      "logoFlag": "🇫🇮",
+      "logoFlag": "🇪🇺",
       "logoCode": "ence",
       "logoWhite": false,
       "roster": [
@@ -1435,23 +1425,17 @@
     {
       "hltvName": "Eternal Fire",
       "name": "Eternal Fire",
-      "flagName": "🇪🇺 Eternal Fire",
+      "flagName": "🇹🇷 Eternal Fire",
       "initials": "EF",
-      "logoFlag": "🇪🇺",
+      "logoFlag": "🇹🇷",
       "logoCode": "eternalfire",
       "logoWhite": false,
       "roster": [
-        "🇹🇷 jottAAA",
-        "🇷🇴 regali",
-        "🇿🇦 MisteM ♛",
-        "🇺🇦 Kvem",
-        "🇹🇷 soulfly"
+        "🇹🇷 jottAAA"
       ],
-      "coach": "🇹🇷 yT",
+      "coach": "",
       "subs": [
-        "🇩🇰 br0",
-        "🇺🇦 Woro2k",
-        "🇹🇷 imoRR"
+        "🇩🇰 br0"
       ],
       "links": [
         {
@@ -1896,8 +1880,7 @@
       ],
       "coach": "🇷🇺 PASHANOJ",
       "subs": [
-        "🇷🇺 spirit (loan: just players)",
-        "🇷🇺 swetsi (loan: EJ)"
+        "🇷🇺 spirit (loan: just players)"
       ],
       "links": [
         {
@@ -2147,7 +2130,7 @@
       "roster": [
         "🇧🇷 tomate",
         "🇧🇷 gbb",
-        "🇧🇷 PKL",
+        "🇧🇷 PKL ♛",
         "🇧🇷 detr0ittJ",
         "🇧🇷 destiny"
       ],
@@ -2569,7 +2552,7 @@
     {
       "hltvName": "INFINITE",
       "name": "INFINITE",
-      "flagName": "🇪🇺 INFINITE",
+      "flagName": "🇷🇴 INFINITE",
       "initials": "INFINITE",
       "logoWhite": false,
       "roster": [
@@ -2839,8 +2822,7 @@
         "🇧🇷 dumau",
         "🇧🇷 n1ssim",
         "🇧🇷 arT ♛",
-        "🇦🇷 try",
-        "🇧🇷 adr"
+        "🇦🇷 try"
       ],
       "coach": "🇧🇷 adr",
       "subs": [
@@ -3146,7 +3128,7 @@
     {
       "hltvName": "magic",
       "name": "magic",
-      "flagName": "🇪🇺 magic",
+      "flagName": "🇷🇺 magic",
       "initials": "magic",
       "logoWhite": false,
       "roster": [
@@ -3182,7 +3164,7 @@
       "roster": [
         "🇺🇸 Grizz",
         "🇺🇸 ogwizard",
-        "🇨🇦 freshie",
+        "🇨🇦 freshie ♛",
         "🇺🇸 WUMBO",
         "🇺🇸 nicx"
       ],
@@ -3960,14 +3942,15 @@
       "logoCode": "pain",
       "logoWhite": true,
       "roster": [
-        "🇧🇷 biguzera",
+        "🇧🇷 biguzera ♛",
         "🇧🇷 snow",
         "🇧🇷 piriajr",
-        "🇧🇷 v$m",
-        "🇧🇷 saffee"
+        "🇧🇷 saffee",
+        "🇧🇷 Rkzinho"
       ],
       "coach": "🇧🇷 rikz",
       "subs": [
+        "🇧🇷 v$m",
         "🇺🇾 dgt (loan: 9z)",
         "🇧🇷 kauez (loan: red canids)"
       ],
@@ -4342,9 +4325,9 @@
     {
       "hltvName": "Spirit Academy",
       "name": "Team Spirit Academy",
-      "flagName": "🇷🇺 Team Spirit Academy",
+      "flagName": "🇪🇺 Team Spirit Academy",
       "initials": "Spirit AC",
-      "logoFlag": "🇷🇺",
+      "logoFlag": "🇪🇺",
       "logoCode": "spirit",
       "logoWhite": true,
       "roster": [
@@ -4463,7 +4446,7 @@
       ],
       "coach": "🇨🇳 zhokiNg",
       "subs": [
-        "🇨🇳 DANK1NG (loan: )"
+        "🇨🇳 DANK1NG"
       ],
       "links": [
         {
@@ -4509,8 +4492,7 @@
         "🇷🇺 b1st",
         "🇷🇺 mir ♛",
         "🇷🇺 AquaRS",
-        "🇰🇿 F0R3VER",
-        "🇷🇺 ProbLeM"
+        "🇰🇿 F0R3VER"
       ],
       "coach": "🇷🇺 ProbLeM",
       "subs": [
@@ -4635,7 +4617,7 @@
       "logoWhite": false,
       "roster": [
         "🇺🇸 snav",
-        "🇺🇸 nosraC",
+        "🇺🇸 nosraC ♛",
         "🇺🇸 junior"
       ],
       "coach": "🇨🇦 SEMPHIS",
@@ -4718,7 +4700,7 @@
       "initials": "WaR",
       "logoWhite": false,
       "roster": [
-        "🇺🇸 Stewie2K",
+        "🇺🇸 Stewie2K ♛",
         "🇺🇸 Brehze",
         "🇺🇸 autimatic",
         "🇨🇦 FaNg",
