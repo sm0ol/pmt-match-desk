@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-08T10:37:08.417Z",
+  "refreshedAt": "2026-09-09T10:47:38.600Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -480,6 +480,40 @@
       ]
     },
     {
+      "hltvName": "BET-M",
+      "name": "33",
+      "flagName": "🇷🇺 33",
+      "initials": "33",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇺 executor",
+        "🇷🇺 z1Nny",
+        "🇷🇺 bluewh1te",
+        "🇷🇺 Raijin",
+        "🇺🇦 synyx"
+      ],
+      "coach": "🇷🇺 Wierd_1k",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/33"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13619/bet-m"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/2a02ecd8-c3cd-43d5-8341-a9bf26cd4bfe"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@team33_official"
+        }
+      ]
+    },
+    {
       "hltvName": "3DMAX",
       "name": "3DMAX",
       "flagName": "🇫🇷 3DMAX",
@@ -565,9 +599,13 @@
       "logoCode": "9ine",
       "logoWhite": false,
       "roster": [
-        "🇩🇰 raalz ♛"
+        "🇩🇰 raalz ♛",
+        "🇩🇰 kraghen",
+        "🇵🇱 Flayy",
+        "🇹🇷 rim3",
+        "🇵🇱 b1elany"
       ],
-      "coach": "",
+      "coach": "🇩🇰 BERRY",
       "subs": [],
       "links": [
         {
@@ -611,9 +649,9 @@
     {
       "hltvName": "9z",
       "name": "9z Team",
-      "flagName": "🇪🇸 9z Team",
+      "flagName": "🇦🇷 9z Team",
       "initials": "9z",
-      "logoFlag": "🇪🇸",
+      "logoFlag": "🇦🇷",
       "logoCode": "9z",
       "logoWhite": false,
       "roster": [
@@ -669,6 +707,56 @@
         {
           "label": "Subreddit",
           "url": "https://www.reddit.com/r/9zteam/"
+        }
+      ]
+    },
+    {
+      "hltvName": "Acend",
+      "name": "Acend",
+      "flagName": "🇧🇬 Acend",
+      "initials": "Acend",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇬 SPELLAN ♛",
+        "🇧🇬 Skrimo",
+        "🇧🇬 KalubeR",
+        "🇧🇬 h4rn",
+        "🇧🇬 REDSTAR"
+      ],
+      "coach": "🇧🇬 milky",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Acend"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13518/acend"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.acendclub.com"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/AcendClub"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/acendclub"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/acendclub"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@AcendClub"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/acendclub"
         }
       ]
     },
@@ -912,7 +1000,9 @@
       ],
       "coach": "🇬🇧 ashhh",
       "subs": [
-        "🇹🇷 MAJ3R"
+        "🇹🇷 MAJ3R",
+        "🇹🇷 Fabre",
+        "🇷🇺 deko (loan: ww team)"
       ],
       "links": [
         {
@@ -998,7 +1088,23 @@
       ]
     },
     {
-      "hltvName": "BetBoom",
+      "hltvName": "BBL",
+      "name": "BBL Esports",
+      "flagName": "🇩🇰 BBL Esports",
+      "initials": "BBL",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13996/bbl"
+        }
+      ]
+    },
+    {
+      "hltvName": "BETBOOM",
       "name": "BB Team",
       "flagName": "🇷🇺 BB Team",
       "initials": "BB",
@@ -1083,7 +1189,9 @@
       "roster": [
         "🇧🇷 cass1n",
         "🇺🇾 timo",
-        "🇦🇷 buda ♛"
+        "🇦🇷 buda ♛",
+        "🇧🇷 drop",
+        "🇧🇷 kauez"
       ],
       "coach": "🇧🇷 tge",
       "subs": [
@@ -1133,9 +1241,13 @@
       "logoCode": "big",
       "logoWhite": true,
       "roster": [
-        "🇩🇪 tabseN"
+        "🇩🇪 tabseN",
+        "🇩🇪 JDC",
+        "🇧🇾 gr1ks",
+        "🇩🇰 blameF ♛",
+        "🇩🇪 faveN"
       ],
-      "coach": "",
+      "coach": "🇩🇪 xenn",
       "subs": [
         "🇩🇪 Krimbo (loan: nip)"
       ],
@@ -1175,6 +1287,56 @@
         {
           "label": "YouTube",
           "url": "https://www.youtube.com/channel/UCe3r6YBJYaQYGZLLT6wxblQ"
+        }
+      ]
+    },
+    {
+      "hltvName": "Chicken Coop",
+      "name": "Chicken Coop Esports",
+      "flagName": "🇺🇸 Chicken Coop Esports",
+      "initials": "CCoop",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 Crisp",
+        "🇺🇸 jared",
+        "🇺🇸 REKMEISTER",
+        "🇨🇦 Drop",
+        "🇺🇸 mds ♛"
+      ],
+      "coach": "🇧🇷 darkpsy",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Chicken_Coop_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13107/chicken-coop"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://chickencoop.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/ba165b6b-97b0-4f34-95fd-d5c188460aff"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/chickencoopgg"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/chickencoopgg"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCugv_bRlcZSDLQNAWbbB3Rg"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/chickencoopgg"
         }
       ]
     },
@@ -1431,11 +1593,17 @@
       "logoCode": "eternalfire",
       "logoWhite": false,
       "roster": [
-        "🇹🇷 jottAAA"
+        "🇹🇷 jottAAA",
+        "🇷🇴 regali",
+        "🇿🇦 MisteM ♛",
+        "🇺🇦 Kvem",
+        "🇹🇷 soulfly"
       ],
       "coach": "",
       "subs": [
-        "🇩🇰 br0"
+        "🇩🇰 br0",
+        "🇺🇦 Woro2k",
+        "🇹🇷 imoRR"
       ],
       "links": [
         {
@@ -1840,6 +2008,10 @@
         {
           "label": "Liquipedia",
           "url": "https://liquipedia.net/counterstrike/FOKUS"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13679/fokus"
         },
         {
           "label": "Official Site",
@@ -2499,6 +2671,35 @@
       ]
     },
     {
+      "hltvName": "Iberian Soul",
+      "name": "Iberian Soul",
+      "flagName": "🇪🇸 Iberian Soul",
+      "initials": "IS",
+      "logoWhite": false,
+      "roster": [
+        "🇪🇸 mopoz",
+        "🇪🇸 dav1g",
+        "🇪🇸 sausol",
+        "🇪🇸 alex ♛"
+      ],
+      "coach": "🇸🇪 djL",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Iberian_Soul"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13104/iberian-soul"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/IberianSoul"
+        }
+      ]
+    },
+    {
       "hltvName": "Imperial",
       "name": "Imperial Esports",
       "flagName": "🇧🇷 Imperial Esports",
@@ -2645,6 +2846,49 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/incircleesports"
+        }
+      ]
+    },
+    {
+      "hltvName": "INOX Division",
+      "name": "INOX Division",
+      "flagName": "🇷🇺 INOX Division",
+      "initials": "INOX",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇾 k1slll ♛",
+        "🇷🇺 k0s",
+        "🇷🇺 finW",
+        "🇧🇾 FenomeN",
+        "🇷🇺 gooddeph",
+        "🇧🇾 Iqlity"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/INOX_Division"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13814/inox-division"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.inoxdivision.pro/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/686c668b-13e5-4603-b8fe-86202fa7c6ac"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/inoxdivision"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/inoxdivisiontv"
         }
       ]
     },
@@ -3952,7 +4196,7 @@
       "subs": [
         "🇧🇷 v$m",
         "🇺🇾 dgt (loan: 9z)",
-        "🇧🇷 kauez (loan: red canids)"
+        "🇧🇷 kauez (loan: bestia)"
       ],
       "links": [
         {
@@ -4261,6 +4505,60 @@
       ]
     },
     {
+      "hltvName": "SINNERS",
+      "name": "SINNERS Esports",
+      "flagName": "🌍 SINNERS Esports",
+      "initials": "SINNERS",
+      "logoWhite": false,
+      "roster": [
+        "🇨🇿 beastik ♛",
+        "🇨🇿 SHOCK",
+        "🇵🇱 kisserek",
+        "🇲🇰 stressarN",
+        "🇷🇴 MoDo"
+      ],
+      "coach": "🇨🇿 bfull",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/SINNERS_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/10577/sinners"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.sinners.gg"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/63727283-6362-4d39-abfa-2a64ea752fce"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/SINNERS_Esports"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/sinnersesports"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/sinnersesports"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCugCCPlVHCuY3em-tIMvXsQ"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/SINNERS_Esports"
+        }
+      ]
+    },
+    {
       "hltvName": "Spirit",
       "name": "Team Spirit",
       "flagName": "🇷🇺 Team Spirit",
@@ -4378,14 +4676,8 @@
       "flagName": "🇺🇸 SBE",
       "initials": "SBE",
       "logoWhite": false,
-      "roster": [
-        "🇺🇸 Peeping",
-        "🇺🇸 consti ⊕",
-        "🇺🇸 Infinite",
-        "🇺🇸 shane",
-        "🇺🇸 motm"
-      ],
-      "coach": "🇺🇸 Aureo",
+      "roster": [],
+      "coach": "",
       "subs": [],
       "links": [
         {
@@ -4642,6 +4934,22 @@
       ]
     },
     {
+      "hltvName": "WBT",
+      "name": "WBT",
+      "flagName": "🇺🇦 WBT",
+      "initials": "WBT",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13683/wbt"
+        }
+      ]
+    },
+    {
       "hltvName": "Wildcard",
       "name": "Wildcard",
       "flagName": "🇺🇸 Wildcard",
@@ -4720,6 +5028,40 @@
         {
           "label": "Faceit",
           "url": "https://www.faceit.com/en/teams/e59c9c49-907d-43db-a6b9-ed0ee7bb21e6"
+        }
+      ]
+    },
+    {
+      "hltvName": "WW",
+      "name": "WW TEAM",
+      "flagName": "🇷🇺 WW TEAM",
+      "initials": "WW",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇺 ct0m",
+        "🇷🇺 StRoGo",
+        "🇷🇺 m3wsu",
+        "🇷🇺 deko",
+        "🇷🇺 kelieN ♛"
+      ],
+      "coach": "🇷🇺 shadowkek",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/WW_TEAM"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12967/ww"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/de68b666-7fd4-488a-ace9-6fa48164f7cf"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/WWTEAMCS"
         }
       ]
     }
