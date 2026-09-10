@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-09T10:47:38.600Z",
+  "refreshedAt": "2026-09-10T10:39:44.857Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -386,9 +386,9 @@
     {
       "hltvName": "100 Thieves",
       "name": "100 Thieves",
-      "flagName": "🇺🇸 100 Thieves",
+      "flagName": "🇪🇺 100 Thieves",
       "initials": "100T",
-      "logoFlag": "🇺🇸",
+      "logoFlag": "🇪🇺",
       "logoCode": "100t",
       "logoWhite": true,
       "roster": [
@@ -649,9 +649,9 @@
     {
       "hltvName": "9z",
       "name": "9z Team",
-      "flagName": "🇦🇷 9z Team",
+      "flagName": "🌎 9z Team",
       "initials": "9z",
-      "logoFlag": "🇦🇷",
+      "logoFlag": "🌎",
       "logoCode": "9z",
       "logoWhite": false,
       "roster": [
@@ -720,11 +720,12 @@
         "🇧🇬 SPELLAN ♛",
         "🇧🇬 Skrimo",
         "🇧🇬 KalubeR",
-        "🇧🇬 h4rn",
         "🇧🇬 REDSTAR"
       ],
       "coach": "🇧🇬 milky",
-      "subs": [],
+      "subs": [
+        "🇧🇬 h4rn"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -1183,7 +1184,7 @@
     {
       "hltvName": "BESTIA",
       "name": "BESTIA",
-      "flagName": "🇦🇷 BESTIA",
+      "flagName": "🇧🇷 BESTIA",
       "initials": "BESTIA",
       "logoWhite": false,
       "roster": [
@@ -1525,9 +1526,9 @@
     {
       "hltvName": "ENCE",
       "name": "ENCE",
-      "flagName": "🇪🇺 ENCE",
+      "flagName": "🇫🇮 ENCE",
       "initials": "ENCE",
-      "logoFlag": "🇪🇺",
+      "logoFlag": "🇫🇮",
       "logoCode": "ence",
       "logoWhite": false,
       "roster": [
@@ -1587,9 +1588,9 @@
     {
       "hltvName": "Eternal Fire",
       "name": "Eternal Fire",
-      "flagName": "🇹🇷 Eternal Fire",
+      "flagName": "🇪🇺 Eternal Fire",
       "initials": "EF",
-      "logoFlag": "🇹🇷",
+      "logoFlag": "🇪🇺",
       "logoCode": "eternalfire",
       "logoWhite": false,
       "roster": [
@@ -2753,7 +2754,7 @@
     {
       "hltvName": "INFINITE",
       "name": "INFINITE",
-      "flagName": "🇷🇴 INFINITE",
+      "flagName": "🇪🇺 INFINITE",
       "initials": "INFINITE",
       "logoWhite": false,
       "roster": [
@@ -3050,6 +3051,40 @@
         {
           "label": "Faceit",
           "url": "https://www.faceit.com/en/teams/7240e513-7689-4206-8968-9efa8a0610db"
+        }
+      ]
+    },
+    {
+      "hltvName": "LP",
+      "name": "LargadosyPelados",
+      "flagName": "🇧🇷 LargadosyPelados",
+      "initials": "LP",
+      "logoWhite": false,
+      "roster": [
+        "🇧🇷 happ",
+        "🇧🇷 zmb ♛",
+        "🇧🇷 Leomonster",
+        "🇧🇷 divine",
+        "🇧🇷 Alisson"
+      ],
+      "coach": "🇧🇷 disturbed",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/LargadosyPelados"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13304/lp"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/c0eb9a9d-98f8-4e44-90f4-f9b171094546"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/LyPcs2"
         }
       ]
     },
@@ -3372,7 +3407,7 @@
     {
       "hltvName": "magic",
       "name": "magic",
-      "flagName": "🇷🇺 magic",
+      "flagName": "🇪🇺 magic",
       "initials": "magic",
       "logoWhite": false,
       "roster": [
@@ -4239,8 +4274,8 @@
     },
     {
       "hltvName": "PARIVISION",
-      "name": "PVISION",
-      "flagName": "🇷🇺 PVISION",
+      "name": "VISION",
+      "flagName": "🇷🇺 VISION",
       "initials": "VISION",
       "logoFlag": "🇷🇺",
       "logoCode": "paravision",
@@ -4507,7 +4542,7 @@
     {
       "hltvName": "SINNERS",
       "name": "SINNERS Esports",
-      "flagName": "🌍 SINNERS Esports",
+      "flagName": "🇪🇺 SINNERS Esports",
       "initials": "SINNERS",
       "logoWhite": false,
       "roster": [
@@ -4623,9 +4658,9 @@
     {
       "hltvName": "Spirit Academy",
       "name": "Team Spirit Academy",
-      "flagName": "🇪🇺 Team Spirit Academy",
+      "flagName": "🇷🇺 Team Spirit Academy",
       "initials": "Spirit AC",
-      "logoFlag": "🇪🇺",
+      "logoFlag": "🇷🇺",
       "logoCode": "spirit",
       "logoWhite": true,
       "roster": [
@@ -4935,8 +4970,8 @@
     },
     {
       "hltvName": "WBT",
-      "name": "WBT",
-      "flagName": "🇺🇦 WBT",
+      "name": "WhiteBIT Team",
+      "flagName": "🇺🇦 WhiteBIT Team",
       "initials": "WBT",
       "logoWhite": false,
       "roster": [],
@@ -4952,9 +4987,9 @@
     {
       "hltvName": "Wildcard",
       "name": "Wildcard",
-      "flagName": "🇺🇸 Wildcard",
+      "flagName": "🌎 Wildcard",
       "initials": "Wildcard",
-      "logoFlag": "🇺🇸",
+      "logoFlag": "🌎",
       "logoCode": "wildcard",
       "logoWhite": true,
       "roster": [
@@ -5028,6 +5063,48 @@
         {
           "label": "Faceit",
           "url": "https://www.faceit.com/en/teams/e59c9c49-907d-43db-a6b9-ed0ee7bb21e6"
+        }
+      ]
+    },
+    {
+      "hltvName": "WOPA",
+      "name": "WOPA Esport",
+      "flagName": "🇩🇰 WOPA Esport",
+      "initials": "WOPA",
+      "logoWhite": false,
+      "roster": [
+        "🇩🇰 Zanto",
+        "🇩🇰 Patti ♛",
+        "🇩🇰 kwezz",
+        "🇩🇰 sL1m3",
+        "🇩🇰 Queenix"
+      ],
+      "coach": "🇩🇰 Dengzoe",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/WOPA_Esport"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12787/wopa"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.wopa.gg"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/3b845294-ec28-4f3d-a833-2cc456e97691"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/STATEesport"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/WopaTV"
         }
       ]
     },
