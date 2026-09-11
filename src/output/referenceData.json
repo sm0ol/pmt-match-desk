@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-10T10:39:44.857Z",
+  "refreshedAt": "2026-09-11T10:39:08.446Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -587,6 +587,22 @@
         {
           "label": "Facebook",
           "url": "https://facebook.com/5star.esports"
+        }
+      ]
+    },
+    {
+      "hltvName": "6666",
+      "name": "6666 Esports",
+      "flagName": "🇺🇦 6666 Esports",
+      "initials": "6666",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13882/6666"
         }
       ]
     },
@@ -3484,6 +3500,22 @@
       ]
     },
     {
+      "hltvName": "MAYBE",
+      "name": "MAYBE",
+      "flagName": "🇺🇦 MAYBE",
+      "initials": "MAYBE",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13945/maybe"
+        }
+      ]
+    },
+    {
       "hltvName": "Metizport",
       "name": "Metizport",
       "flagName": "🇪🇺 Metizport",
@@ -4422,6 +4454,22 @@
         {
           "label": "Bilibili",
           "url": "https://space.bilibili.com/676459665"
+        }
+      ]
+    },
+    {
+      "hltvName": "REVENIX",
+      "name": "REVENIX",
+      "flagName": "🇺🇦 REVENIX",
+      "initials": "REVENIX",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13960/revenix"
         }
       ]
     },
