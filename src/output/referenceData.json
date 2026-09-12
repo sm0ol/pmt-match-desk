@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-11T10:39:08.446Z",
+  "refreshedAt": "2026-09-12T10:08:06.450Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1018,7 +1018,6 @@
       "coach": "🇬🇧 ashhh",
       "subs": [
         "🇹🇷 MAJ3R",
-        "🇹🇷 Fabre",
         "🇷🇺 deko (loan: ww team)"
       ],
       "links": [
@@ -1616,7 +1615,7 @@
         "🇺🇦 Kvem",
         "🇹🇷 soulfly"
       ],
-      "coach": "",
+      "coach": "🇹🇷 Fabre",
       "subs": [
         "🇩🇰 br0",
         "🇺🇦 Woro2k",
@@ -4245,6 +4244,44 @@
       ]
     },
     {
+      "hltvName": "Omega",
+      "name": "OMEGA",
+      "flagName": "🇰🇿 OMEGA",
+      "initials": "OMEGA",
+      "logoWhite": false,
+      "roster": [
+        "🇰🇿 dan4o",
+        "🇰🇿 Botpa1",
+        "🇰🇿 adai",
+        "🇰🇿 Aldikon",
+        "🇰🇿 def1zer"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/OMEGA"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13479/omega"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/566b8543-b1c6-4648-b610-74ba576a4493"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/teamomega.cs"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@omegacyberlounge"
+        }
+      ]
+    },
+    {
       "hltvName": "paiN",
       "name": "paiN Gaming",
       "flagName": "🇧🇷 paiN Gaming",
@@ -4470,6 +4507,50 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/13960/revenix"
+        }
+      ]
+    },
+    {
+      "hltvName": "Rune Eaters",
+      "name": "Rune Eaters Esports",
+      "flagName": "🇰🇿 Rune Eaters Esports",
+      "initials": "Rune Eaters",
+      "logoWhite": false,
+      "roster": [
+        "🇰🇿 forkyz",
+        "🇰🇿 her1tage",
+        "🇰🇿 noni",
+        "🇰🇿 demente",
+        "🇰🇿 dukefissura ♛"
+      ],
+      "coach": "",
+      "subs": [
+        "🇰🇿 kumao"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Rune_Eaters_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12194/rune-eaters"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://re.netshards.com"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/RuneEaters"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/r.e.esports"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@re.esports"
         }
       ]
     },
