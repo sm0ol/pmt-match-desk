@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-12T10:08:06.450Z",
+  "refreshedAt": "2026-09-13T11:07:43.810Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1058,7 +1058,7 @@
       "initials": "B8",
       "logoFlag": "🇺🇦",
       "logoCode": "b8",
-      "logoWhite": true,
+      "logoWhite": false,
       "roster": [
         "🇺🇦 npl",
         "🇺🇦 esenthial",
@@ -5120,7 +5120,7 @@
       "initials": "Wildcard",
       "logoFlag": "🌎",
       "logoCode": "wildcard",
-      "logoWhite": true,
+      "logoWhite": false,
       "roster": [
         "🇺🇸 reck",
         "🇵🇱 mhL",
