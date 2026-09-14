@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-13T11:07:43.810Z",
+  "refreshedAt": "2026-09-14T11:51:44.042Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1104,6 +1104,46 @@
       ]
     },
     {
+      "hltvName": "BAKS",
+      "name": "BAKS Esports",
+      "flagName": "🇷🇺 BAKS Esports",
+      "initials": "BAKS",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇺 [xdENiSZERA](https://liquipedia.net/counterstrike/xdENiSZERA)",
+        "🇷🇺 [turbo](https://liquipedia.net/counterstrike/turbo)",
+        "🇷🇺 [whisper](https://liquipedia.net/counterstrike/whisper)",
+        "🇷🇺 [danistzz](https://liquipedia.net/counterstrike/danistzz)",
+        "🇷🇺 [Norwi ♛](https://liquipedia.net/counterstrike/Norwi)"
+      ],
+      "coach": "🇷🇺 [XomA](https://liquipedia.net/counterstrike/XomA)",
+      "subs": [
+        "🇷🇺 [Sa1nTy](https://liquipedia.net/counterstrike/Sa1nTy)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/BAKS_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11699/baks"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/baks_esports"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/baks_esports"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/baks_esports"
+        }
+      ]
+    },
+    {
       "hltvName": "BBL",
       "name": "BBL Esports",
       "flagName": "🇩🇰 BBL Esports",
@@ -1181,13 +1221,13 @@
       "initials": "BC",
       "logoWhite": false,
       "roster": [
-        "🇺🇦 s1mple",
-        "🇷🇺 electroNic",
-        "🇲🇳 Senzu",
-        "🇩🇰 Magisk ♛",
-        "🇲🇳 mzinho"
+        "🇺🇦 [s1mple](https://liquipedia.net/counterstrike/S1mple)",
+        "🇷🇺 [electroNic](https://liquipedia.net/counterstrike/ElectroNic)",
+        "🇲🇳 [Senzu](https://liquipedia.net/counterstrike/Senzu)",
+        "🇩🇰 [Magisk ♛](https://liquipedia.net/counterstrike/Magisk)",
+        "🇲🇳 [mzinho](https://liquipedia.net/counterstrike/Mzinho)"
       ],
-      "coach": "🇵🇱 TaZ",
+      "coach": "🇵🇱 [TaZ](https://liquipedia.net/counterstrike/TaZ)",
       "subs": [],
       "links": [
         {
@@ -1403,6 +1443,57 @@
         {
           "label": "YouTube",
           "url": "https://www.youtube.com/@ChinggisWarriors"
+        }
+      ]
+    },
+    {
+      "hltvName": "CYBERSHOKE",
+      "name": "CYBERSHOKE Esports",
+      "flagName": "🇷🇺 CYBERSHOKE Esports",
+      "initials": "CYBERSHOKE",
+      "logoWhite": false,
+      "roster": [
+        "🌍 [alpha ♛](https://liquipedia.net/counterstrike/alpha)",
+        "🇷🇺 [Mokuj1n](https://liquipedia.net/counterstrike/Mokuj1n)",
+        "🇰🇿 [Alkaren](https://liquipedia.net/counterstrike/Alkaren)",
+        "🇷🇺 [H4SAN4TOR](https://liquipedia.net/counterstrike/H4SAN4TOR)",
+        "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)"
+      ],
+      "coach": "",
+      "subs": [
+        "🇷🇺 [bl1x1](https://liquipedia.net/counterstrike/bl1x1)",
+        "🇷🇺 [glowiing](https://liquipedia.net/counterstrike/glowiing)",
+        "🇧🇾 [FenomeN (loan: INOX Division)](https://liquipedia.net/counterstrike/FenomeN)",
+        "🇷🇺 [lov1kus (loan: Bebop)](https://liquipedia.net/counterstrike/lov1kus)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/CYBERSHOKE_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12380/cybershoke"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://cybershoke.net/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/98efa65f-0bbe-4cbe-8f86-288303d2f129"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/team_cybershoke"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/team_cybershoke"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/cybershoke_tv"
         }
       ]
     },
@@ -2381,15 +2472,15 @@
       "logoCode": "gamerleg",
       "logoWhite": false,
       "roster": [
-        "🇩🇰 Tauson",
-        "🇸🇪 REZ",
-        "🇵🇱 hypex",
-        "🇵🇱 Snax ♛",
-        "🇷🇺 FL4MUS"
+        "🇩🇰 [Tauson](https://liquipedia.net/counterstrike/Tauson)",
+        "🇸🇪 [REZ](https://liquipedia.net/counterstrike/REZ)",
+        "🇵🇱 [hypex](https://liquipedia.net/counterstrike/hypex)",
+        "🇵🇱 [Snax ♛](https://liquipedia.net/counterstrike/Snax)",
+        "🇷🇺 [FL4MUS](https://liquipedia.net/counterstrike/FL4MUS)"
       ],
-      "coach": "🇵🇱 imd",
+      "coach": "🇵🇱 [imd](https://liquipedia.net/counterstrike/imd)",
       "subs": [
-        "🇸🇪 ztr (loan: fokus)"
+        "🇸🇪 [ztr (loan: fokus)](https://liquipedia.net/counterstrike/ztr)"
       ],
       "links": [
         {
@@ -5094,6 +5185,22 @@
         {
           "label": "Twitter",
           "url": "https://twitter.com/Team_Voca"
+        }
+      ]
+    },
+    {
+      "hltvName": "UPGRADE",
+      "name": "UPGRADE Team",
+      "flagName": "",
+      "initials": "UPGRADE",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13989/upgrade"
         }
       ]
     },
