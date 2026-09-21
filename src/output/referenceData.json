@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-18T10:36:41.412Z",
+  "refreshedAt": "2026-09-21T12:03:15.316Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -941,6 +941,22 @@
       ]
     },
     {
+      "hltvName": "ASTRAL",
+      "name": "ASTRAL Esports",
+      "flagName": "🇪🇺 ASTRAL Esports",
+      "initials": "ASTRAL",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13333/astral"
+        }
+      ]
+    },
+    {
       "hltvName": "Astralis",
       "name": "Astralis",
       "flagName": "🇩🇰 Astralis",
@@ -1018,7 +1034,7 @@
       "coach": "🇬🇧 [ashhh](https://liquipedia.net/counterstrike/ashhh)",
       "subs": [
         "🇹🇷 [MAJ3R](https://liquipedia.net/counterstrike/MAJ3R)",
-        "🇷🇺 [deko (loan: ww team)](https://liquipedia.net/counterstrike/deko)"
+        "🇷🇺 [deko](https://liquipedia.net/counterstrike/deko)"
       ],
       "links": [
         {
@@ -1347,6 +1363,58 @@
       ]
     },
     {
+      "hltvName": "Bounty Hunters",
+      "name": "Bounty Hunters Esports",
+      "flagName": "🇧🇷 Bounty Hunters Esports",
+      "initials": "BH",
+      "logoWhite": false,
+      "roster": [
+        "🇦🇷 [KAISER ♛](https://liquipedia.net/counterstrike/KAISER)",
+        "🇺🇾 [zock](https://liquipedia.net/counterstrike/zock%20(Uruguayan%20player))",
+        "🇧🇷 [ponter](https://liquipedia.net/counterstrike/ponter)",
+        "🇧🇷 [pepe](https://liquipedia.net/counterstrike/pepe)",
+        "🇧🇷 [urban0](https://liquipedia.net/counterstrike/urban0)"
+      ],
+      "coach": "🇦🇷 [gusihx](https://liquipedia.net/counterstrike/gusihx)",
+      "subs": [
+        "🇧🇷 [fREQ](https://liquipedia.net/counterstrike/fREQ)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Bounty_Hunters_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12776/bounty-hunters"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.bhbountyhunters.com/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/621b97a0-92fe-480b-96cb-aad95cf2515e"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/bhbountyhunters"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/bhbountyhunters"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/bhbountyhunters"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/bhbountyhunters"
+        }
+      ]
+    },
+    {
       "hltvName": "Chicken Coop",
       "name": "Chicken Coop Esports",
       "flagName": "🇺🇸 Chicken Coop Esports",
@@ -1405,15 +1473,15 @@
       "logoCode": "chinggis",
       "logoWhite": false,
       "roster": [
-        "🇲🇳 ROUX",
-        "🇲🇳 efire",
-        "🇲🇳 cool4st",
-        "🇲🇳 ligroo"
+        "🇲🇳 [ROUX](https://liquipedia.net/counterstrike/ROUX)",
+        "🇲🇳 [efire](https://liquipedia.net/counterstrike/efire)",
+        "🇲🇳 [cool4st](https://liquipedia.net/counterstrike/cool4st)",
+        "🇲🇳 [ligroo](https://liquipedia.net/counterstrike/ligroo)"
       ],
-      "coach": "🇲🇳 Redka",
+      "coach": "🇲🇳 [Redka](https://liquipedia.net/counterstrike/Redka)",
       "subs": [
-        "🇲🇳 yAmi",
-        "🇲🇳 ariucle"
+        "🇲🇳 [yAmi](https://liquipedia.net/counterstrike/yAmi)",
+        "🇲🇳 [ariucle](https://liquipedia.net/counterstrike/ariucle)"
       ],
       "links": [
         {
@@ -1546,18 +1614,20 @@
     {
       "hltvName": "DEPO",
       "name": "DEPO",
-      "flagName": "🇺🇿 DEPO",
+      "flagName": "🌏 DEPO",
       "initials": "DEPO",
       "logoWhite": false,
       "roster": [
         "🇺🇿 [wetfy](https://liquipedia.net/counterstrike/wetfy)",
         "🇺🇿 [shoxs](https://liquipedia.net/counterstrike/shoxs)",
-        "🇺🇿 [sh1seido](https://liquipedia.net/counterstrike/sh1seido)",
         "🇰🇿 [buster ♛](https://liquipedia.net/counterstrike/buster)",
-        "🇷🇺 [Krad](https://liquipedia.net/counterstrike/Krad)"
+        "🇷🇺 [Krad](https://liquipedia.net/counterstrike/Krad)",
+        "🇰🇬 [SNk](https://liquipedia.net/counterstrike/SNk)"
       ],
       "coach": "🇷🇺 [bullet](https://liquipedia.net/counterstrike/bullet%20(Russian%20player))",
-      "subs": [],
+      "subs": [
+        "🇺🇿 [sh1seido](https://liquipedia.net/counterstrike/sh1seido)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -1588,15 +1658,14 @@
       "initials": "DETONATE",
       "logoWhite": false,
       "roster": [
-        "🇺🇸 tatm ♛",
-        "🇺🇸 chante",
-        "🇺🇸 carN",
-        "🇺🇸 Maxuel",
-        "🇧🇪 CrePoW"
+        "🇺🇸 [tatm ♛](https://liquipedia.net/counterstrike/tatm)",
+        "🇺🇸 [chante](https://liquipedia.net/counterstrike/chante)",
+        "🇺🇸 [carN](https://liquipedia.net/counterstrike/carN)",
+        "🇧🇪 [CrePoW](https://liquipedia.net/counterstrike/CrePoW)"
       ],
-      "coach": "🇦🇺 OrangeZ",
+      "coach": "",
       "subs": [
-        "🇳🇿 Feral"
+        "🇳🇿 [Feral](https://liquipedia.net/counterstrike/Feral)"
       ],
       "links": [
         {
@@ -1630,6 +1699,48 @@
       ]
     },
     {
+      "hltvName": "EAC",
+      "name": "Esport Academy Copenhagen",
+      "flagName": "🇩🇰 Esport Academy Copenhagen",
+      "initials": "EAC",
+      "logoWhite": false,
+      "roster": [
+        "🇩🇰 [bekker](https://liquipedia.net/counterstrike/bekker)",
+        "🇩🇰 [n1Xen](https://liquipedia.net/counterstrike/n1Xen)",
+        "🇩🇰 [sSen](https://liquipedia.net/counterstrike/sSen)",
+        "🇩🇰 [anber ♛](https://liquipedia.net/counterstrike/anber)",
+        "🇩🇰 [Fessor](https://liquipedia.net/counterstrike/Fessor)"
+      ],
+      "coach": "🇩🇰 [redeye](https://liquipedia.net/counterstrike/redeye%20(Danish%20player))",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Esport_Academy_Copenhagen"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13838/eac"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://esportcph.com/"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/TeamEAC"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@esportacademycopenhagen"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/teameactv"
+        }
+      ]
+    },
+    {
       "hltvName": "ENCE",
       "name": "ENCE",
       "flagName": "🇫🇮 ENCE",
@@ -1638,15 +1749,15 @@
       "logoCode": "ence",
       "logoWhite": false,
       "roster": [
-        "🇫🇮 teme",
-        "🇫🇮 millert",
-        "🇬🇪 Schwarz ♛",
-        "🇫🇮 HENU",
-        "🇫🇮 joeski"
+        "🇫🇮 [teme](https://liquipedia.net/counterstrike/teme)",
+        "🇫🇮 [millert](https://liquipedia.net/counterstrike/millert)",
+        "🇬🇪 [Schwarz ♛](https://liquipedia.net/counterstrike/Schwarz)",
+        "🇫🇮 [HENU](https://liquipedia.net/counterstrike/HENU)",
+        "🇫🇮 [joeski](https://liquipedia.net/counterstrike/joeski)"
       ],
-      "coach": "🇫🇮 allu",
+      "coach": "🇫🇮 [allu](https://liquipedia.net/counterstrike/allu)",
       "subs": [
-        "🇵🇱 kRaSnaL"
+        "🇵🇱 [kRaSnaL](https://liquipedia.net/counterstrike/kRaSnaL)"
       ],
       "links": [
         {
@@ -3055,15 +3166,15 @@
       "initials": "JiJieHao",
       "logoWhite": false,
       "roster": [
-        "🇱🇧 m1N1",
-        "🇮🇶 bibu",
-        "🇵🇸 0SAMAS",
-        "🇽🇰 sinnopsyy",
-        "🇲🇰 CacaNito"
+        "🇱🇧 [m1N1](https://liquipedia.net/counterstrike/m1N1)",
+        "🇮🇶 [bibu](https://liquipedia.net/counterstrike/bibu)",
+        "🇵🇸 [0SAMAS](https://liquipedia.net/counterstrike/0SAMAS)",
+        "🇽🇰 [sinnopsyy](https://liquipedia.net/counterstrike/sinnopsyy)",
+        "🇲🇰 [CacaNito](https://liquipedia.net/counterstrike/CacaNito)"
       ],
-      "coach": "🇩🇰 mithR",
+      "coach": "🇩🇰 [mithR](https://liquipedia.net/counterstrike/mithR)",
       "subs": [
-        "🇩🇰 Kjaerbye"
+        "🇩🇰 [Kjaerbye](https://liquipedia.net/counterstrike/Kjaerbye)"
       ],
       "links": [
         {
@@ -3085,6 +3196,60 @@
         {
           "label": "Weibo",
           "url": "https://weibo.com/7312190286"
+        }
+      ]
+    },
+    {
+      "hltvName": "Johnny Speeds",
+      "name": "Johnny Speeds",
+      "flagName": "🇸🇪 Johnny Speeds",
+      "initials": "JS",
+      "logoWhite": false,
+      "roster": [
+        "🇸🇪 [draken](https://liquipedia.net/counterstrike/draken%20(William%20Sundin))",
+        "🇸🇪 [hampus ♛](https://liquipedia.net/counterstrike/hampus)",
+        "🇸🇪 [Rack](https://liquipedia.net/counterstrike/Rack)",
+        "🇸🇪 [bsover](https://liquipedia.net/counterstrike/bsover)",
+        "🇸🇪 [Svedjehed](https://liquipedia.net/counterstrike/Svedjehed)"
+      ],
+      "coach": "",
+      "subs": [
+        "🇸🇪 [Lekr0](https://liquipedia.net/counterstrike/Lekr0)",
+        "🇸🇪 [nawwk](https://liquipedia.net/counterstrike/nawwk)",
+        "🇸🇪 [friberg](https://liquipedia.net/counterstrike/friberg)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Johnny_Speeds"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12604/johnny-speeds"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/760ced16-9ac2-4104-96ba-6a5dbf20d370"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/JohnnySpeedsCS"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/johnnyspeeeds"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@@johnnyspeeds"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@JohnnySpeeds"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/johnnyspeeds"
         }
       ]
     },
@@ -3201,15 +3366,15 @@
       "logoCode": "legacy",
       "logoWhite": false,
       "roster": [
-        "🇧🇷 latto",
-        "🇧🇷 dumau",
-        "🇧🇷 n1ssim",
-        "🇧🇷 arT ♛",
-        "🇦🇷 try"
+        "🇧🇷 [latto](https://liquipedia.net/counterstrike/latto)",
+        "🇧🇷 [dumau](https://liquipedia.net/counterstrike/dumau)",
+        "🇧🇷 [n1ssim](https://liquipedia.net/counterstrike/n1ssim)",
+        "🇧🇷 [arT ♛](https://liquipedia.net/counterstrike/arT)",
+        "🇦🇷 [try](https://liquipedia.net/counterstrike/try)"
       ],
-      "coach": "🇧🇷 adr",
+      "coach": "🇧🇷 [adr](https://liquipedia.net/counterstrike/adr)",
       "subs": [
-        "🇧🇷 RiVAS"
+        "🇧🇷 [RiVAS](https://liquipedia.net/counterstrike/RiVAS)"
       ],
       "links": [
         {
@@ -3975,15 +4140,15 @@
       "initials": "Nemesis",
       "logoWhite": false,
       "roster": [
-        "🇷🇺 SELLTER ♛",
-        "🇷🇺 Sdaim",
-        "🇷🇺 tex1y",
-        "🇰🇿 mag1k3Y",
-        "🇷🇺 r3salt"
+        "🇷🇺 [SELLTER ♛](https://liquipedia.net/counterstrike/SELLTER)",
+        "🇷🇺 [Sdaim](https://liquipedia.net/counterstrike/Sdaim)",
+        "🇷🇺 [tex1y](https://liquipedia.net/counterstrike/tex1y)",
+        "🇰🇿 [mag1k3Y](https://liquipedia.net/counterstrike/mag1k3Y)",
+        "🇷🇺 [r3salt](https://liquipedia.net/counterstrike/r3salt)"
       ],
-      "coach": "🇰🇿 NMV",
+      "coach": "🇰🇿 [NMV](https://liquipedia.net/counterstrike/NMV)",
       "subs": [
-        "🇷🇺 yiksrezo"
+        "🇷🇺 [yiksrezo](https://liquipedia.net/counterstrike/yiksrezo)"
       ],
       "links": [
         {
@@ -4240,12 +4405,15 @@
       "roster": [
         "🇧🇾 [senka ♛](https://liquipedia.net/counterstrike/senka)",
         "🇷🇺 [flouzer](https://liquipedia.net/counterstrike/flouzer)",
-        "🇷🇺 [z1k4](https://liquipedia.net/counterstrike/z1k4)",
-        "🇧🇾 [m1QUSE](https://liquipedia.net/counterstrike/m1QUSE)",
-        "🇷🇺 [ayuki](https://liquipedia.net/counterstrike/ayuki)"
+        "🇷🇺 [ayuki](https://liquipedia.net/counterstrike/ayuki)",
+        "🇷🇺 [tronic](https://liquipedia.net/counterstrike/tronic)",
+        "🇷🇺 [Djon8](https://liquipedia.net/counterstrike/Djon8)"
       ],
       "coach": "🇷🇺 [Polt](https://liquipedia.net/counterstrike/Polt)",
-      "subs": [],
+      "subs": [
+        "🇷🇺 [z1k4](https://liquipedia.net/counterstrike/z1k4)",
+        "🇧🇾 [m1QUSE](https://liquipedia.net/counterstrike/m1QUSE)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -4432,71 +4600,48 @@
       ]
     },
     {
-      "hltvName": "PARIVISION",
-      "name": "VISION",
-      "flagName": "🇷🇺 VISION",
-      "initials": "VISION",
-      "logoFlag": "🇷🇺",
-      "logoCode": "paravision",
+      "hltvName": "Phantom",
+      "name": "Phantom Esports",
+      "flagName": "🇵🇱 Phantom Esports",
+      "initials": "Phantom",
       "logoWhite": false,
       "roster": [
-        "🇷🇺 [Jame ♛](https://liquipedia.net/counterstrike/Jame)",
-        "🇷🇺 [xiELO](https://liquipedia.net/counterstrike/xiELO)",
-        "🇷🇺 [zweih](https://liquipedia.net/counterstrike/zweih)",
-        "🇷🇺 [FL1T](https://liquipedia.net/counterstrike/FL1T)",
-        "🇰🇿 [HObbit](https://liquipedia.net/counterstrike/HObbit)"
+        "🇵🇱 [Kylar](https://liquipedia.net/counterstrike/Kylar)",
+        "🇵🇱 [KEi](https://liquipedia.net/counterstrike/KEi)",
+        "🇩🇰 [TMB ♛](https://liquipedia.net/counterstrike/TMB)",
+        "🇩🇰 [nicoodoz](https://liquipedia.net/counterstrike/nicoodoz)",
+        "🇵🇱 [cej0t](https://liquipedia.net/counterstrike/cej0t)"
       ],
-      "coach": "🇰🇿 [dastan](https://liquipedia.net/counterstrike/dastan)",
+      "coach": "🇵🇱 [lunAtic](https://liquipedia.net/counterstrike/lunAtic)",
       "subs": [
-        "🇷🇺 [slaxejezzz](https://liquipedia.net/counterstrike/slaxejezzz)",
-        "🇷🇺 [nota (loan: cybershoke)](https://liquipedia.net/counterstrike/nota)",
-        "🇷🇺 [BELCHONOKK (loan: 1w)](https://liquipedia.net/counterstrike/BELCHONOKK)",
-        "🇷🇺 [Jerry](https://liquipedia.net/counterstrike/Jerry)"
+        "🇵🇱 [mwlky](https://liquipedia.net/counterstrike/mwlky)",
+        "🇵🇱 [mynio](https://liquipedia.net/counterstrike/mynio)",
+        "🇵🇱 [DGL](https://liquipedia.net/counterstrike/DGL)"
       ],
       "links": [
         {
           "label": "Liquipedia",
-          "url": "https://liquipedia.net/counterstrike/PARIVISION"
+          "url": "https://liquipedia.net/counterstrike/Phantom_Esports"
         },
         {
           "label": "HLTV",
-          "url": "https://www.hltv.org/team/12467/parivision"
+          "url": "https://www.hltv.org/team/13173/phantom"
         },
         {
           "label": "Official Site",
-          "url": "https://ogs.gg/"
-        },
-        {
-          "label": "Faceit",
-          "url": "https://www.faceit.com/en/teams/4b47cb38-347c-42cc-8fda-c760d2cad3cd"
+          "url": "https://phantomesports.com/"
         },
         {
           "label": "Twitter",
-          "url": "https://twitter.com/parivisiongg"
-        },
-        {
-          "label": "Facebook",
-          "url": "https://facebook.com/OGcounterstrike"
+          "url": "https://twitter.com/phnt_esports"
         },
         {
           "label": "Instagram",
-          "url": "https://www.instagram.com/parivision"
+          "url": "https://www.instagram.com/team.phantomesports"
         },
         {
-          "label": "TikTok",
-          "url": "https://www.tiktok.com/@parivisioncs2"
-        },
-        {
-          "label": "YouTube",
-          "url": "https://www.youtube.com/channel/UCdsdMvkwE-9WYocp_tdd-Vw"
-        },
-        {
-          "label": "Weibo",
-          "url": "https://weibo.com/u/7267465977"
-        },
-        {
-          "label": "Bilibili",
-          "url": "https://space.bilibili.com/3707027073272546"
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/phantomesports_"
         }
       ]
     },
@@ -4616,7 +4761,7 @@
       ],
       "coach": "",
       "subs": [
-        "🇰🇿 [kumao](https://liquipedia.net/counterstrike/kumao)"
+        "🇰🇿 [kumao (loan: arcred)](https://liquipedia.net/counterstrike/kumao)"
       ],
       "links": [
         {
@@ -4646,6 +4791,106 @@
       ]
     },
     {
+      "hltvName": "Sangal",
+      "name": "Sangal Esports",
+      "flagName": "🇪🇺 Sangal Esports",
+      "initials": "Sangal",
+      "logoWhite": false,
+      "roster": [
+        "🇹🇷 [R4DYX](https://liquipedia.net/counterstrike/R4DYX)",
+        "🇪🇸 [Joey](https://liquipedia.net/counterstrike/Joey)",
+        "🇫🇮 [puuha ♛](https://liquipedia.net/counterstrike/puuha)",
+        "🇷🇴 [adamS](https://liquipedia.net/counterstrike/adamS)",
+        "🇵🇱 [bnox](https://liquipedia.net/counterstrike/bnox)"
+      ],
+      "coach": "🇸🇪 [Jumpy](https://liquipedia.net/counterstrike/Jumpy)",
+      "subs": [
+        "🇩🇪 [pr1metapz (loan: og)](https://liquipedia.net/counterstrike/pr1metapz)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Sangal_Esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/10333/sangal"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://sangal.gg/"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/sangalgg"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/sangalgg"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/sangalgg"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/sangalesports"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/sangalgg"
+        }
+      ]
+    },
+    {
+      "hltvName": "Sashi",
+      "name": "Sashi Esport",
+      "flagName": "🇩🇰 Sashi Esport",
+      "initials": "Sashi",
+      "logoWhite": false,
+      "roster": [
+        "🇩🇰 [Cabbi ♛](https://liquipedia.net/counterstrike/Cabbi)",
+        "🇩🇰 [Zyphon](https://liquipedia.net/counterstrike/Zyphon)",
+        "🇩🇰 [MistR](https://liquipedia.net/counterstrike/MistR)",
+        "🇩🇰 [acoR](https://liquipedia.net/counterstrike/acoR)",
+        "🇩🇰 [Anlelele](https://liquipedia.net/counterstrike/Anlelele)"
+      ],
+      "coach": "🇩🇰 [HUNDEN](https://liquipedia.net/counterstrike/HUNDEN)",
+      "subs": [
+        "🇩🇰 [Beccie](https://liquipedia.net/counterstrike/Beccie)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Sashi_Esport"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/11712/sashi"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://sashiesport.com"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/bfa558a2-c693-4179-9b9e-64158f5626d4"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/Sashi_Esport"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/people/Sashi-Esport/100089453507426"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/sashi_esport"
+        }
+      ]
+    },
+    {
       "hltvName": "SAW",
       "name": "SAW",
       "flagName": "🇵🇹 SAW",
@@ -4654,13 +4899,13 @@
       "logoCode": "saw",
       "logoWhite": false,
       "roster": [
-        "🇵🇹 ewjerkz",
-        "🇵🇹 NOPEEj",
-        "🇵🇹 MUTiRiS ♛",
-        "🇵🇹 krazy",
-        "🇵🇹 story"
+        "🇵🇹 [ewjerkz](https://liquipedia.net/counterstrike/ewjerkz)",
+        "🇵🇹 [NOPEEj](https://liquipedia.net/counterstrike/NOPEEj)",
+        "🇵🇹 [MUTiRiS ♛](https://liquipedia.net/counterstrike/MUTiRiS)",
+        "🇵🇹 [krazy](https://liquipedia.net/counterstrike/krazy)",
+        "🇵🇹 [story](https://liquipedia.net/counterstrike/story)"
       ],
-      "coach": "🇵🇹 mowzassa",
+      "coach": "🇵🇹 [mowzassa](https://liquipedia.net/counterstrike/mowzassa)",
       "subs": [],
       "links": [
         {
@@ -5105,6 +5350,75 @@
       ]
     },
     {
+      "hltvName": "PARIVISION",
+      "name": "VISION",
+      "flagName": "🇷🇺 VISION",
+      "initials": "VISION",
+      "logoFlag": "🇷🇺",
+      "logoCode": "paravision",
+      "logoWhite": true,
+      "roster": [
+        "🇷🇺 [Jame ♛](https://liquipedia.net/counterstrike/Jame)",
+        "🇷🇺 [xiELO](https://liquipedia.net/counterstrike/xiELO)",
+        "🇷🇺 [zweih](https://liquipedia.net/counterstrike/zweih)",
+        "🇷🇺 [FL1T](https://liquipedia.net/counterstrike/FL1T)",
+        "🇰🇿 [HObbit](https://liquipedia.net/counterstrike/HObbit)"
+      ],
+      "coach": "🇰🇿 [dastan](https://liquipedia.net/counterstrike/dastan)",
+      "subs": [
+        "🇷🇺 [slaxejezzz](https://liquipedia.net/counterstrike/slaxejezzz)",
+        "🇷🇺 [nota (loan: cybershoke)](https://liquipedia.net/counterstrike/nota)",
+        "🇷🇺 [BELCHONOKK (loan: 1w)](https://liquipedia.net/counterstrike/BELCHONOKK)",
+        "🇷🇺 [Jerry](https://liquipedia.net/counterstrike/Jerry)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/PARIVISION"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12467/parivision"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://ogs.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/4b47cb38-347c-42cc-8fda-c760d2cad3cd"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/parivisiongg"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/OGcounterstrike"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/parivision"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@parivisioncs2"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCdsdMvkwE-9WYocp_tdd-Vw"
+        },
+        {
+          "label": "Weibo",
+          "url": "https://weibo.com/u/7267465977"
+        },
+        {
+          "label": "Bilibili",
+          "url": "https://space.bilibili.com/3707027073272546"
+        }
+      ]
+    },
+    {
       "hltvName": "Vitality",
       "name": "Team Vitality",
       "flagName": "🇪🇺 Team Vitality",
@@ -5230,13 +5544,15 @@
       "logoWhite": false,
       "roster": [
         "🇺🇸 [reck](https://liquipedia.net/counterstrike/reck)",
-        "🇵🇱 [mhL](https://liquipedia.net/counterstrike/mhL)",
         "🇨🇦 [HexT](https://liquipedia.net/counterstrike/HexT)",
         "🇷🇸 [nEMANHA ♛](https://liquipedia.net/counterstrike/nEMANHA)",
-        "🇺🇸 [Cxzi](https://liquipedia.net/counterstrike/Cxzi)"
+        "🇺🇸 [Cxzi](https://liquipedia.net/counterstrike/Cxzi)",
+        "🇵🇱 [fr3nd](https://liquipedia.net/counterstrike/fr3nd)"
       ],
       "coach": "🇵🇱 [splawik](https://liquipedia.net/counterstrike/splawik)",
-      "subs": [],
+      "subs": [
+        "🇵🇱 [mhL](https://liquipedia.net/counterstrike/mhL)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -5304,18 +5620,16 @@
     },
     {
       "hltvName": "WOPA",
-      "name": "WOPA Esport",
-      "flagName": "🇩🇰 WOPA Esport",
+      "name": "WW TEAM",
+      "flagName": "🇷🇺 WW TEAM",
       "initials": "WOPA",
       "logoWhite": false,
       "roster": [
-        "🇩🇰 [Zanto](https://liquipedia.net/counterstrike/Zanto)",
-        "🇩🇰 [Patti ♛](https://liquipedia.net/counterstrike/Patti)",
-        "🇩🇰 [kwezz](https://liquipedia.net/counterstrike/kwezz)",
-        "🇩🇰 [sL1m3](https://liquipedia.net/counterstrike/sL1m3)",
-        "🇩🇰 [Queenix](https://liquipedia.net/counterstrike/Queenix)"
+        "🇷🇺 [StRoGo](https://liquipedia.net/counterstrike/StRoGo)",
+        "🇷🇺 [m3wsu](https://liquipedia.net/counterstrike/m3wsu)",
+        "🇷🇺 [kelieN ♛](https://liquipedia.net/counterstrike/kelieN)"
       ],
-      "coach": "🇩🇰 [Dengzoe](https://liquipedia.net/counterstrike/Dengzoe)",
+      "coach": "🇷🇺 [shadowkek](https://liquipedia.net/counterstrike/shadowkek)",
       "subs": [],
       "links": [
         {
@@ -5332,11 +5646,11 @@
         },
         {
           "label": "Faceit",
-          "url": "https://www.faceit.com/en/teams/3b845294-ec28-4f3d-a833-2cc456e97691"
+          "url": "https://www.faceit.com/en/teams/de68b666-7fd4-488a-ace9-6fa48164f7cf"
         },
         {
           "label": "Twitter",
-          "url": "https://twitter.com/STATEesport"
+          "url": "https://twitter.com/WWTEAMCS"
         },
         {
           "label": "Twitch",
