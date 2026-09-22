@@ -1,6 +1,6 @@
 {
   "source": "https://liquipedia.net (see data/team-sources.json)",
-  "refreshedAt": "2026-09-21T12:03:07.697Z",
+  "refreshedAt": "2026-09-22T10:59:33.407Z",
   "teams": [
     {
       "hltvName": "FURIA",
@@ -79,9 +79,7 @@
         "🇷🇺 Xant3r"
       ],
       "coach": "🇧🇾 boX",
-      "subs": [
-        "🇷🇺 Sowalio"
-      ],
+      "subs": [],
       "links": [
         {
           "label": "Liquipedia",
