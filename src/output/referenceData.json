@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-22T10:59:39.657Z",
+  "refreshedAt": "2026-09-23T10:48:16.573Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -5197,7 +5197,6 @@
       "roster": [
         "🇦🇺 [dexter](https://liquipedia.net/counterstrike/dexter)",
         "🇦🇺 [Liazz](https://liquipedia.net/counterstrike/Liazz)",
-        "🇦🇺 [asap](https://liquipedia.net/counterstrike/asap)",
         "🇦🇺 [TjP](https://liquipedia.net/counterstrike/TjP)"
       ],
       "coach": "🇦🇺 [viridian](https://liquipedia.net/counterstrike/viridian)",
@@ -5620,17 +5619,20 @@
     },
     {
       "hltvName": "WOPA",
-      "name": "WW TEAM",
-      "flagName": "🇷🇺 WW TEAM",
+      "name": "WOPA Esport",
+      "flagName": "🇩🇰 WOPA Esport",
       "initials": "WOPA",
       "logoWhite": false,
       "roster": [
-        "🇷🇺 [StRoGo](https://liquipedia.net/counterstrike/StRoGo)",
-        "🇷🇺 [m3wsu](https://liquipedia.net/counterstrike/m3wsu)",
-        "🇷🇺 [kelieN ♛](https://liquipedia.net/counterstrike/kelieN)"
+        "🇩🇰 [Zanto](https://liquipedia.net/counterstrike/Zanto)",
+        "🇩🇰 [kwezz](https://liquipedia.net/counterstrike/kwezz)",
+        "🇩🇰 [sL1m3](https://liquipedia.net/counterstrike/sL1m3)",
+        "🇩🇰 [Queenix](https://liquipedia.net/counterstrike/Queenix)"
       ],
-      "coach": "🇷🇺 [shadowkek](https://liquipedia.net/counterstrike/shadowkek)",
-      "subs": [],
+      "coach": "🇩🇰 [Dengzoe](https://liquipedia.net/counterstrike/Dengzoe)",
+      "subs": [
+        "🇩🇰 [Patti](https://liquipedia.net/counterstrike/Patti)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -5646,11 +5648,11 @@
         },
         {
           "label": "Faceit",
-          "url": "https://www.faceit.com/en/teams/de68b666-7fd4-488a-ace9-6fa48164f7cf"
+          "url": "https://www.faceit.com/en/teams/3b845294-ec28-4f3d-a833-2cc456e97691"
         },
         {
           "label": "Twitter",
-          "url": "https://twitter.com/WWTEAMCS"
+          "url": "https://twitter.com/STATEesport"
         },
         {
           "label": "Twitch",
