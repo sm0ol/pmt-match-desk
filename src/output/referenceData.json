@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-24T11:08:40.252Z",
+  "refreshedAt": "2026-09-25T11:12:11.777Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1424,8 +1424,7 @@
         "🇺🇸 [Crisp](https://liquipedia.net/counterstrike/Crisp)",
         "🇺🇸 [jared](https://liquipedia.net/counterstrike/jared)",
         "🇺🇸 [REKMEISTER](https://liquipedia.net/counterstrike/REKMEISTER)",
-        "🇨🇦 [Drop](https://liquipedia.net/counterstrike/Drop%20(Canadian%20player))",
-        "🇺🇸 [mds ♛](https://liquipedia.net/counterstrike/mds%20(American%20player))"
+        "🇨🇦 [Drop](https://liquipedia.net/counterstrike/Drop%20(Canadian%20player))"
       ],
       "coach": "🇧🇷 [darkpsy](https://liquipedia.net/counterstrike/darkpsy)",
       "subs": [],
@@ -1517,14 +1516,13 @@
     {
       "hltvName": "CYBERSHOKE",
       "name": "CYBERSHOKE Esports",
-      "flagName": "🇷🇺 CYBERSHOKE Esports",
+      "flagName": "🇪🇺 CYBERSHOKE Esports",
       "initials": "CYBERSHOKE",
       "logoWhite": false,
       "roster": [
         "🌍 [alpha ♛](https://liquipedia.net/counterstrike/alpha)",
         "🇷🇺 [Mokuj1n](https://liquipedia.net/counterstrike/Mokuj1n)",
         "🇰🇿 [Alkaren](https://liquipedia.net/counterstrike/Alkaren)",
-        "🇷🇺 [H4SAN4TOR](https://liquipedia.net/counterstrike/H4SAN4TOR)",
         "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)"
       ],
       "coach": "",
@@ -2219,8 +2217,10 @@
         "🇫🇮 [podi](https://liquipedia.net/counterstrike/podi)",
         "🇸🇪 [jocab](https://liquipedia.net/counterstrike/jocab)"
       ],
-      "coach": "🇵🇱 [kuben](https://liquipedia.net/counterstrike/kuben)",
-      "subs": [],
+      "coach": "🇵🇹 [JTR](https://liquipedia.net/counterstrike/JTR)",
+      "subs": [
+        "🇵🇱 [kuben](https://liquipedia.net/counterstrike/kuben)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
