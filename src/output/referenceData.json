@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-26T10:50:46.603Z",
+  "refreshedAt": "2026-09-27T11:26:32.891Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -774,6 +774,26 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/acendclub"
+        }
+      ]
+    },
+    {
+      "hltvName": "aimclub",
+      "name": "aimclub",
+      "flagName": "🇪🇺 aimclub",
+      "initials": "aimclub",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://www.hltv.org/matches/2398684/eternal-fire-vs-k27-stake-ranked-episode-5-closed-qualifier"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/6810/aimclub"
         }
       ]
     },
@@ -3013,6 +3033,22 @@
       ]
     },
     {
+      "hltvName": "Inner Circle Academy",
+      "name": "IC Academy",
+      "flagName": "🇺🇦 IC Academy",
+      "initials": "IC ACAD",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13681/inner-circle-academy"
+        }
+      ]
+    },
+    {
       "hltvName": "Inner Circle",
       "name": "IC Esports",
       "flagName": "🇺🇦 IC Esports",
@@ -4411,7 +4447,7 @@
       ],
       "coach": "🇷🇺 [Polt](https://liquipedia.net/counterstrike/Polt)",
       "subs": [
-        "🇷🇺 [z1k4](https://liquipedia.net/counterstrike/z1k4)",
+        "🇷🇺 [z1k4 (loan: private)](https://liquipedia.net/counterstrike/z1k4)",
         "🇧🇾 [m1QUSE](https://liquipedia.net/counterstrike/m1QUSE)"
       ],
       "links": [
@@ -4727,6 +4763,62 @@
         {
           "label": "Bilibili",
           "url": "https://space.bilibili.com/676459665"
+        }
+      ]
+    },
+    {
+      "hltvName": "RBLS",
+      "name": "Rebels Gaming",
+      "flagName": "🇵🇹 Rebels Gaming",
+      "initials": "RBLS",
+      "logoWhite": false,
+      "roster": [
+        "🇵🇹 [Icarus](https://liquipedia.net/counterstrike/Icarus)",
+        "🇵🇹 [stadodo](https://liquipedia.net/counterstrike/stadodo)",
+        "🇵🇹 [arrozdoce](https://liquipedia.net/counterstrike/arrozdoce)",
+        "🇵🇹 [shr](https://liquipedia.net/counterstrike/shr)",
+        "🇵🇹 [aragornN](https://liquipedia.net/counterstrike/aragornN)"
+      ],
+      "coach": "🇧🇷 [horvy](https://liquipedia.net/counterstrike/horvy)",
+      "subs": [
+        "🇵🇹 [TMKj](https://liquipedia.net/counterstrike/TMKj)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Rebels_Gaming"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12642/rbls"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://rebelsgaming.gg/"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/RebelsGaming"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/RebelsGaming.gg"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/rebelsgaming_gg"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@rebelsgaming"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/RebelsGaming_gg"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/rebelsgaming_gg"
         }
       ]
     },
@@ -5627,7 +5719,8 @@
         "🇩🇰 [Zanto](https://liquipedia.net/counterstrike/Zanto)",
         "🇩🇰 [kwezz](https://liquipedia.net/counterstrike/kwezz)",
         "🇩🇰 [sL1m3](https://liquipedia.net/counterstrike/sL1m3)",
-        "🇩🇰 [Queenix](https://liquipedia.net/counterstrike/Queenix)"
+        "🇩🇰 [Queenix](https://liquipedia.net/counterstrike/Queenix)",
+        "🇩🇰 [Altekz ♛](https://liquipedia.net/counterstrike/Altekz)"
       ],
       "coach": "🇩🇰 [Dengzoe](https://liquipedia.net/counterstrike/Dengzoe)",
       "subs": [
