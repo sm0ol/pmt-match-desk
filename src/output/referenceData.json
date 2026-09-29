@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-28T12:58:03.362Z",
+  "refreshedAt": "2026-09-29T12:10:07.616Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -472,6 +472,10 @@
         {
           "label": "Twitter",
           "url": "https://twitter.com/1win_cs2"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/1win_esports"
         },
         {
           "label": "YouTube",
@@ -1253,18 +1257,20 @@
     {
       "hltvName": "BC.Game",
       "name": "BC",
-      "flagName": "🇪🇺 BC",
+      "flagName": "🌏 BC",
       "initials": "BC",
       "logoWhite": false,
       "roster": [
         "🇺🇦 [s1mple](https://liquipedia.net/counterstrike/S1mple)",
-        "🇷🇺 [electroNic](https://liquipedia.net/counterstrike/ElectroNic)",
         "🇲🇳 [Senzu](https://liquipedia.net/counterstrike/Senzu)",
         "🇩🇰 [Magisk ♛](https://liquipedia.net/counterstrike/Magisk)",
-        "🇲🇳 [mzinho](https://liquipedia.net/counterstrike/Mzinho)"
+        "🇲🇳 [mzinho](https://liquipedia.net/counterstrike/Mzinho)",
+        "🇦🇺 [asap](https://liquipedia.net/counterstrike/Asap)"
       ],
       "coach": "🇵🇱 [TaZ](https://liquipedia.net/counterstrike/TaZ)",
-      "subs": [],
+      "subs": [
+        "🇷🇺 [electroNic](https://liquipedia.net/counterstrike/ElectroNic)"
+      ],
       "links": [
         {
           "label": "HLTV",
@@ -1537,14 +1543,15 @@
     {
       "hltvName": "CYBERSHOKE",
       "name": "CYBERSHOKE Esports",
-      "flagName": "🇪🇺 CYBERSHOKE Esports",
+      "flagName": "🇷🇺 CYBERSHOKE Esports",
       "initials": "CYBERSHOKE",
       "logoWhite": false,
       "roster": [
         "🌍 [alpha ♛](https://liquipedia.net/counterstrike/alpha)",
         "🇷🇺 [Mokuj1n](https://liquipedia.net/counterstrike/Mokuj1n)",
         "🇰🇿 [Alkaren](https://liquipedia.net/counterstrike/Alkaren)",
-        "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)"
+        "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)",
+        "🇷🇺 [yiksrezo](https://liquipedia.net/counterstrike/yiksrezo)"
       ],
       "coach": "",
       "subs": [
@@ -3934,7 +3941,6 @@
       ],
       "coach": "🇲🇳 [maaRaa](https://liquipedia.net/counterstrike/maaRaa)",
       "subs": [
-        "🇲🇳 [Tikuak](https://liquipedia.net/counterstrike/Tikuak)",
         "🇲🇳 [DarkMeister](https://liquipedia.net/counterstrike/DarkMeister)",
         "🇲🇳 [cobrazera](https://liquipedia.net/counterstrike/cobrazera)"
       ],
@@ -4049,7 +4055,8 @@
         "🇱🇻 [ay0k](https://liquipedia.net/counterstrike/ay0k)",
         "🇩🇰 [Nikodeon ♛](https://liquipedia.net/counterstrike/Nikodeon)",
         "🇫🇷 [eSx-](https://liquipedia.net/counterstrike/eSx-)",
-        "🇨🇳 [mixer](https://liquipedia.net/counterstrike/mixer)"
+        "🇨🇳 [mixer](https://liquipedia.net/counterstrike/mixer)",
+        "🇱🇻 [deeN](https://liquipedia.net/counterstrike/deeN)"
       ],
       "coach": "🇺🇦 [lmbt](https://liquipedia.net/counterstrike/lmbt)",
       "subs": [
@@ -4183,9 +4190,9 @@
         "🇰🇿 [mag1k3Y](https://liquipedia.net/counterstrike/mag1k3Y)",
         "🇷🇺 [r3salt](https://liquipedia.net/counterstrike/r3salt)"
       ],
-      "coach": "🇰🇿 [NMV](https://liquipedia.net/counterstrike/NMV)",
+      "coach": "",
       "subs": [
-        "🇷🇺 [yiksrezo](https://liquipedia.net/counterstrike/yiksrezo)"
+        "🇰🇿 [NMV](https://liquipedia.net/counterstrike/NMV)"
       ],
       "links": [
         {
@@ -4683,6 +4690,22 @@
       ]
     },
     {
+      "hltvName": "Procyon",
+      "name": "Procyon Team",
+      "flagName": "🇦🇷 Procyon Team",
+      "initials": "Procyon",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/10997/procyon"
+        }
+      ]
+    },
+    {
       "hltvName": "QUAZAR",
       "name": "QUAZAR",
       "flagName": "🇷🇺 QUAZAR",
@@ -4820,6 +4843,38 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/rebelsgaming_gg"
+        }
+      ]
+    },
+    {
+      "hltvName": "regain",
+      "name": "regain",
+      "flagName": "🇺🇸 regain",
+      "initials": "regain",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇸 [Zucar](https://liquipedia.net/counterstrike/Zucar)",
+        "🇺🇸 [sasha ♛](https://liquipedia.net/counterstrike/sasha)",
+        "🇺🇸 [grape](https://liquipedia.net/counterstrike/grape)"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Regain"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12554/regain"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/3523360c-7235-452a-b9d9-e587e97ba4b5"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/regaincs"
         }
       ]
     },
@@ -5217,7 +5272,7 @@
       "hltvName": "Spirit Academy",
       "name": "Team Spirit Academy",
       "flagName": "🇷🇺 Team Spirit Academy",
-      "initials": "Spirit AC",
+      "initials": "Spirit ACAD",
       "logoFlag": "🇷🇺",
       "logoCode": "spirit",
       "logoWhite": true,
@@ -5310,6 +5365,22 @@
         {
           "label": "Twitter",
           "url": "https://twitter.com/THUNDERdUNDERcs"
+        }
+      ]
+    },
+    {
+      "hltvName": "Turma do Pagode",
+      "name": "Turma do Pagode",
+      "flagName": "🇧🇷 Turma do Pagode",
+      "initials": "TDP",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/9686/turma-do-pagode"
         }
       ]
     },
