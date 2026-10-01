@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-09-29T12:10:07.616Z",
+  "refreshedAt": "2026-10-01T12:28:43.535Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -520,18 +520,12 @@
     {
       "hltvName": "3DMAX",
       "name": "3DMAX",
-      "flagName": "🇫🇷 3DMAX",
+      "flagName": "3DMAX",
       "initials": "3DMAX",
-      "logoFlag": "🇫🇷",
+      "logoFlag": "",
       "logoCode": "3dmax",
       "logoWhite": false,
-      "roster": [
-        "🇫🇷 [Lucky](https://liquipedia.net/counterstrike/Lucky%20(French%20player))",
-        "🇫🇷 [Maka ♛](https://liquipedia.net/counterstrike/Maka)",
-        "🇫🇷 [Graviti](https://liquipedia.net/counterstrike/Graviti)",
-        "🇫🇷 [misutaaa](https://liquipedia.net/counterstrike/misutaaa)",
-        "🇫🇷 [Kursy](https://liquipedia.net/counterstrike/Kursy)"
-      ],
+      "roster": [],
       "coach": "🇫🇷 [wasiNk](https://liquipedia.net/counterstrike/wasiNk)",
       "subs": [
         "🇫🇷 [Ex3rcice](https://liquipedia.net/counterstrike/Ex3rcice)",
@@ -739,12 +733,12 @@
       "roster": [
         "🇧🇬 [SPELLAN ♛](https://liquipedia.net/counterstrike/SPELLAN)",
         "🇧🇬 [Skrimo](https://liquipedia.net/counterstrike/Skrimo)",
-        "🇧🇬 [KalubeR](https://liquipedia.net/counterstrike/KalubeR)",
+        "🇧🇬 [h4rn](https://liquipedia.net/counterstrike/h4rn)",
         "🇧🇬 [REDSTAR](https://liquipedia.net/counterstrike/REDSTAR)"
       ],
       "coach": "🇧🇬 [milky](https://liquipedia.net/counterstrike/milky)",
       "subs": [
-        "🇧🇬 [h4rn](https://liquipedia.net/counterstrike/h4rn)"
+        "🇧🇬 [KalubeR](https://liquipedia.net/counterstrike/KalubeR)"
       ],
       "links": [
         {
@@ -1449,10 +1443,10 @@
       "roster": [
         "🇺🇸 [Crisp](https://liquipedia.net/counterstrike/Crisp)",
         "🇺🇸 [jared](https://liquipedia.net/counterstrike/jared)",
-        "🇺🇸 [REKMEISTER](https://liquipedia.net/counterstrike/REKMEISTER)",
-        "🇨🇦 [Drop](https://liquipedia.net/counterstrike/Drop%20(Canadian%20player))"
+        "🇨🇦 [Drop](https://liquipedia.net/counterstrike/Drop%20(Canadian%20player))",
+        "🇺🇸 [Wolffe](https://liquipedia.net/counterstrike/Wolffe)"
       ],
-      "coach": "🇧🇷 [darkpsy](https://liquipedia.net/counterstrike/darkpsy)",
+      "coach": "",
       "subs": [],
       "links": [
         {
@@ -1825,6 +1819,62 @@
         {
           "label": "Weibo",
           "url": "https://weibo.com/ez4ence"
+        }
+      ]
+    },
+    {
+      "hltvName": "Envy",
+      "name": "ENVY",
+      "flagName": "🇫🇷 ENVY",
+      "initials": "ENVY",
+      "logoFlag": "🇫🇷",
+      "logoCode": "envyus",
+      "logoWhite": true,
+      "roster": [
+        "🇫🇷 [Lucky](https://liquipedia.net/counterstrike/Lucky%20(French%20player))",
+        "🇫🇷 [Maka ♛](https://liquipedia.net/counterstrike/Maka)",
+        "🇫🇷 [Graviti](https://liquipedia.net/counterstrike/Graviti)",
+        "🇫🇷 [misutaaa](https://liquipedia.net/counterstrike/misutaaa)",
+        "🇫🇷 [Kursy](https://liquipedia.net/counterstrike/Kursy)"
+      ],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/ENVY"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/5991/envy"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://envy.gg"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/d3bfe683-11fe-43db-a89c-5ec4ebc3425d"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/Envy"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/Envy"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/teamenvy"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/TeamEnVyUs"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/team/teamenvyus"
         }
       ]
     },
@@ -4855,7 +4905,9 @@
       "roster": [
         "🇺🇸 [Zucar](https://liquipedia.net/counterstrike/Zucar)",
         "🇺🇸 [sasha ♛](https://liquipedia.net/counterstrike/sasha)",
-        "🇺🇸 [grape](https://liquipedia.net/counterstrike/grape)"
+        "🇺🇸 [grape](https://liquipedia.net/counterstrike/grape)",
+        "🇺🇦 [fuzenko](https://liquipedia.net/counterstrike/fuzenko)",
+        "🇺🇸 [z0mb1e](https://liquipedia.net/counterstrike/z0mb1e)"
       ],
       "coach": "",
       "subs": [],
