@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-01T12:28:43.535Z",
+  "refreshedAt": "2026-10-02T11:55:08.383Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1174,6 +1174,58 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/baks_esports"
+        }
+      ]
+    },
+    {
+      "hltvName": "BASEMENT BOYS",
+      "name": "BASEMENT BOYS",
+      "flagName": "🇺🇦 BASEMENT BOYS",
+      "initials": "BOYS",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇦 [Tr0ublE](https://liquipedia.net/counterstrike/Tr0ublE)",
+        "🇺🇦 [OWNER ♛](https://liquipedia.net/counterstrike/OWNER)",
+        "🇺🇦 [maggent](https://liquipedia.net/counterstrike/maggent)",
+        "🇺🇦 [kr1vda](https://liquipedia.net/counterstrike/kr1vda)",
+        "🇰🇿 [kAlash](https://liquipedia.net/counterstrike/kAlash)"
+      ],
+      "coach": "",
+      "subs": [
+        "🇺🇦 [fakerealityy](https://liquipedia.net/counterstrike/fakerealityy)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/BASEMENT_BOYS"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13181/basement-boys"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/e3ef49cf-b51e-4b0d-92c5-59f317194a5b"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/BasementBoysCS2"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/basementboys_cs"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@basementboyscs2"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@BasementBoysCS"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/basementboys_cs"
         }
       ]
     },
@@ -2467,12 +2519,13 @@
       "roster": [
         "🇺🇦 [dem0n](https://liquipedia.net/counterstrike/dem0n)",
         "🇽🇰 [Krabeni ♛](https://liquipedia.net/counterstrike/Krabeni)",
-        "🇺🇦 [cmtry](https://liquipedia.net/counterstrike/cmtry)",
         "🇱🇹 [dziugss](https://liquipedia.net/counterstrike/dziugss)",
-        "🇹🇷 [xfl0ud](https://liquipedia.net/counterstrike/xfl0ud)"
+        "🇹🇷 [xfl0ud](https://liquipedia.net/counterstrike/xfl0ud)",
+        "🇪🇸 [SunPayus](https://liquipedia.net/counterstrike/SunPayus)"
       ],
       "coach": "🇭🇺 [coolio](https://liquipedia.net/counterstrike/coolio)",
       "subs": [
+        "🇺🇦 [cmtry](https://liquipedia.net/counterstrike/cmtry)",
         "🇷🇴 [lauNX](https://liquipedia.net/counterstrike/lauNX)"
       ],
       "links": [
@@ -2832,8 +2885,9 @@
         "🇪🇸 [Martinez](https://liquipedia.net/counterstrike/Martinez)",
         "🇸🇪 [Brollan](https://liquipedia.net/counterstrike/Brollan)"
       ],
-      "coach": "🇫🇮 [doto](https://liquipedia.net/counterstrike/doto)",
+      "coach": "🇩🇰 [Snappi](https://liquipedia.net/counterstrike/Snappi)",
       "subs": [
+        "🇫🇮 [doto](https://liquipedia.net/counterstrike/doto)",
         "🇰🇿 [Alkaren (loan: cybershoke esports)](https://liquipedia.net/counterstrike/Alkaren)"
       ],
       "links": [
@@ -3426,7 +3480,6 @@
       "roster": [
         "🇧🇷 [happ](https://liquipedia.net/counterstrike/happ)",
         "🇧🇷 [zmb ♛](https://liquipedia.net/counterstrike/zmb)",
-        "🇧🇷 [Leomonster](https://liquipedia.net/counterstrike/Leomonster)",
         "🇧🇷 [divine](https://liquipedia.net/counterstrike/divine%20(Brazilian%20player))",
         "🇧🇷 [Alisson](https://liquipedia.net/counterstrike/Alisson)"
       ],
@@ -4382,8 +4435,7 @@
       ],
       "coach": "🇸🇪 [Xizt](https://liquipedia.net/counterstrike/Xizt)",
       "subs": [
-        "🇧🇪 [n0te](https://liquipedia.net/counterstrike/n0te)",
-        "🇩🇰 [Snappi](https://liquipedia.net/counterstrike/Snappi)"
+        "🇧🇪 [n0te](https://liquipedia.net/counterstrike/n0te)"
       ],
       "links": [
         {
@@ -4736,6 +4788,46 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/phantomesports_"
+        }
+      ]
+    },
+    {
+      "hltvName": "Prestige",
+      "name": "Prestige Esport",
+      "flagName": "🇪🇺 Prestige Esport",
+      "initials": "Prestige",
+      "logoWhite": false,
+      "roster": [
+        "🇪🇪 [fejtZ](https://liquipedia.net/counterstrike/fejtZ)",
+        "🇩🇰 [qx](https://liquipedia.net/counterstrike/qx)",
+        "🇩🇰 [N4xx1s](https://liquipedia.net/counterstrike/N4xx1s)",
+        "🇫🇮 [jelo ♛](https://liquipedia.net/counterstrike/jelo)",
+        "🇫🇮 [oopee](https://liquipedia.net/counterstrike/oopee)"
+      ],
+      "coach": "🇩🇰 [ko5te](https://liquipedia.net/counterstrike/ko5te)",
+      "subs": [
+        "🇩🇰 [Folke](https://liquipedia.net/counterstrike/Folke)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Prestige_Esport"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13159/prestige"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/Team__Prestige"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@PrestigeEsport"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/prestigeesportscs"
         }
       ]
     },
