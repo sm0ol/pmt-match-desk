@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-04T11:48:39.096Z",
+  "refreshedAt": "2026-10-05T13:39:43.630Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -528,7 +528,6 @@
       "roster": [],
       "coach": "🇫🇷 [wasiNk](https://liquipedia.net/counterstrike/wasiNk)",
       "subs": [
-        "🇫🇷 [Ex3rcice](https://liquipedia.net/counterstrike/Ex3rcice)",
         "🇫🇷 [bodyy (loan: og)](https://liquipedia.net/counterstrike/bodyy)"
       ],
       "links": [
@@ -4602,12 +4601,16 @@
       "logoWhite": false,
       "roster": [
         "🇸🇪 [spooke](https://liquipedia.net/counterstrike/spooke)",
-        "🇩🇰 [cadiaN ♛](https://liquipedia.net/counterstrike/cadiaN)",
-        "🇫🇷 [bodyy](https://liquipedia.net/counterstrike/bodyy)",
-        "🇩🇪 [pr1metapz](https://liquipedia.net/counterstrike/pr1metapz)"
+        "🇫🇷 [bodyy ♛](https://liquipedia.net/counterstrike/bodyy)",
+        "🇫🇷 [Ex3rcice](https://liquipedia.net/counterstrike/Ex3rcice)",
+        "🇧🇪 [Chuckyy](https://liquipedia.net/counterstrike/Chuckyy)",
+        "🇩🇰 [nut nut](https://liquipedia.net/counterstrike/nut%20nut)"
       ],
       "coach": "🇫🇷 [Lambert](https://liquipedia.net/counterstrike/Lambert)",
-      "subs": [],
+      "subs": [
+        "🇩🇰 [cadiaN](https://liquipedia.net/counterstrike/cadiaN)",
+        "🇩🇪 [pr1metapz (loan: sangal esports)](https://liquipedia.net/counterstrike/pr1metapz)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
