@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-05T13:39:43.630Z",
+  "refreshedAt": "2026-10-06T12:47:03.683Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -2985,7 +2985,6 @@
       "logoCode": "thehuns",
       "logoWhite": false,
       "roster": [
-        "🇲🇳 [nin9](https://liquipedia.net/counterstrike/nin9)",
         "🇲🇳 [Bart4k](https://liquipedia.net/counterstrike/Bart4k)",
         "🇲🇳 [controlez ♛](https://liquipedia.net/counterstrike/controlez)",
         "🇲🇳 [ANNIHILATION](https://liquipedia.net/counterstrike/ANNIHILATION)"
@@ -4040,12 +4039,13 @@
       "roster": [
         "🇲🇳 [bLitz ♛](https://liquipedia.net/counterstrike/bLitz)",
         "🇲🇳 [Techno4K](https://liquipedia.net/counterstrike/Techno4K)",
-        "🇲🇳 [910](https://liquipedia.net/counterstrike/910)"
+        "🇲🇳 [910](https://liquipedia.net/counterstrike/910)",
+        "🇲🇳 [cobrazera](https://liquipedia.net/counterstrike/cobrazera)",
+        "🇲🇳 [nin9](https://liquipedia.net/counterstrike/nin9)"
       ],
       "coach": "🇲🇳 [maaRaa](https://liquipedia.net/counterstrike/maaRaa)",
       "subs": [
-        "🇲🇳 [DarkMeister](https://liquipedia.net/counterstrike/DarkMeister)",
-        "🇲🇳 [cobrazera](https://liquipedia.net/counterstrike/cobrazera)"
+        "🇲🇳 [DarkMeister](https://liquipedia.net/counterstrike/DarkMeister)"
       ],
       "links": [
         {
@@ -4293,7 +4293,7 @@
         "🇰🇿 [mag1k3Y](https://liquipedia.net/counterstrike/mag1k3Y)",
         "🇷🇺 [r3salt](https://liquipedia.net/counterstrike/r3salt)"
       ],
-      "coach": "",
+      "coach": "🇷🇺 [brain](https://liquipedia.net/counterstrike/brain)",
       "subs": [
         "🇰🇿 [NMV](https://liquipedia.net/counterstrike/NMV)"
       ],
@@ -5140,18 +5140,20 @@
     {
       "hltvName": "Sashi",
       "name": "Sashi Esport",
-      "flagName": "🇩🇰 Sashi Esport",
+      "flagName": "🌏 Sashi Esport",
       "initials": "Sashi",
       "logoWhite": false,
       "roster": [
-        "🇩🇰 [Cabbi ♛](https://liquipedia.net/counterstrike/Cabbi)",
         "🇩🇰 [Zyphon](https://liquipedia.net/counterstrike/Zyphon)",
-        "🇩🇰 [MistR](https://liquipedia.net/counterstrike/MistR)",
         "🇩🇰 [acoR](https://liquipedia.net/counterstrike/acoR)",
-        "🇩🇰 [Anlelele](https://liquipedia.net/counterstrike/Anlelele)"
+        "🇻🇳 [Anlelele](https://liquipedia.net/counterstrike/Anlelele)",
+        "🇦🇺 [TjP](https://liquipedia.net/counterstrike/TjP)",
+        "🇦🇺 [Hatz](https://liquipedia.net/counterstrike/Hatz)"
       ],
       "coach": "🇩🇰 [HUNDEN](https://liquipedia.net/counterstrike/HUNDEN)",
       "subs": [
+        "🇩🇰 [Cabbi](https://liquipedia.net/counterstrike/Cabbi)",
+        "🇩🇰 [MistR](https://liquipedia.net/counterstrike/MistR)",
         "🇩🇰 [Beccie](https://liquipedia.net/counterstrike/Beccie)"
       ],
       "links": [
@@ -5484,15 +5486,14 @@
     {
       "hltvName": "THUNDER dOWNUNDER",
       "name": "THUNDERdOWNUNDER",
-      "flagName": "🇦🇺 THUNDERdOWNUNDER",
+      "flagName": "🌍 THUNDERdOWNUNDER",
       "initials": "TdU",
-      "logoFlag": "🇦🇺",
+      "logoFlag": "🌍",
       "logoCode": "thunder",
       "logoWhite": false,
       "roster": [
         "🇦🇺 [dexter](https://liquipedia.net/counterstrike/dexter)",
-        "🇦🇺 [Liazz](https://liquipedia.net/counterstrike/Liazz)",
-        "🇦🇺 [TjP](https://liquipedia.net/counterstrike/TjP)"
+        "🇦🇺 [Liazz](https://liquipedia.net/counterstrike/Liazz)"
       ],
       "coach": "🇦🇺 [viridian](https://liquipedia.net/counterstrike/viridian)",
       "subs": [],
