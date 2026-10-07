@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-06T12:47:03.683Z",
+  "refreshedAt": "2026-10-07T12:41:17.733Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -3822,7 +3822,7 @@
     {
       "hltvName": "magic",
       "name": "magic",
-      "flagName": "🇪🇺 magic",
+      "flagName": "🇷🇺 magic",
       "initials": "magic",
       "logoWhite": false,
       "roster": [
@@ -3830,10 +3830,12 @@
         "🇷🇺 [tenzy](https://liquipedia.net/counterstrike/tenzy)",
         "🇺🇦 [sFade8 ♛](https://liquipedia.net/counterstrike/sFade8)",
         "🇷🇺 [AW](https://liquipedia.net/counterstrike/AW)",
-        "🇰🇿 [mo0N](https://liquipedia.net/counterstrike/mo0N)"
+        "🇷🇺 [lattykk](https://liquipedia.net/counterstrike/lattykk)"
       ],
       "coach": "🇷🇺 [eksiver](https://liquipedia.net/counterstrike/eksiver)",
-      "subs": [],
+      "subs": [
+        "🇰🇿 [mo0N](https://liquipedia.net/counterstrike/mo0N)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
