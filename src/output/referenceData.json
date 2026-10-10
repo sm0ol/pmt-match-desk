@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-09T12:36:23.604Z",
+  "refreshedAt": "2026-10-10T11:56:41.131Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -976,20 +976,21 @@
     {
       "hltvName": "Astralis",
       "name": "Astralis",
-      "flagName": "🇩🇰 Astralis",
+      "flagName": "🇪🇺 Astralis",
       "initials": "Astralis",
-      "logoFlag": "🇩🇰",
+      "logoFlag": "🇪🇺",
       "logoCode": "astralis",
       "logoWhite": false,
       "roster": [
         "🇩🇰 [Staehr](https://liquipedia.net/counterstrike/Staehr)",
-        "🇩🇰 [jabbi](https://liquipedia.net/counterstrike/jabbi)",
-        "🇩🇰 [HooXi ♛](https://liquipedia.net/counterstrike/HooXi)",
         "🇸🇪 [phzy](https://liquipedia.net/counterstrike/phzy)",
         "🇱🇹 [ryu](https://liquipedia.net/counterstrike/ryu%20(Lithuanian%20player))"
       ],
       "coach": "🇵🇱 [NEO](https://liquipedia.net/counterstrike/NEO)",
-      "subs": [],
+      "subs": [
+        "🇩🇰 [jabbi](https://liquipedia.net/counterstrike/jabbi)",
+        "🇩🇰 [HooXi](https://liquipedia.net/counterstrike/HooXi)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -5147,15 +5148,15 @@
       "logoWhite": false,
       "roster": [
         "🇩🇰 [Zyphon](https://liquipedia.net/counterstrike/Zyphon)",
-        "🇩🇰 [acoR](https://liquipedia.net/counterstrike/acoR)",
         "🇻🇳 [Anlelele](https://liquipedia.net/counterstrike/Anlelele)",
         "🇦🇺 [TjP](https://liquipedia.net/counterstrike/TjP)",
-        "🇦🇺 [Hatz](https://liquipedia.net/counterstrike/Hatz)"
+        "🇦🇺 [Hatz](https://liquipedia.net/counterstrike/Hatz)",
+        "🇳🇿 [chelleos](https://liquipedia.net/counterstrike/chelleos)"
       ],
       "coach": "🇩🇰 [HUNDEN](https://liquipedia.net/counterstrike/HUNDEN)",
       "subs": [
+        "🇩🇰 [acoR](https://liquipedia.net/counterstrike/acoR)",
         "🇩🇰 [Cabbi](https://liquipedia.net/counterstrike/Cabbi)",
-        "🇩🇰 [MistR](https://liquipedia.net/counterstrike/MistR)",
         "🇩🇰 [Beccie](https://liquipedia.net/counterstrike/Beccie)"
       ],
       "links": [
