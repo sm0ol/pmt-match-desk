@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-10T11:56:41.131Z",
+  "refreshedAt": "2026-10-11T12:08:36.513Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -3107,7 +3107,6 @@
       "initials": "INFINITE",
       "logoWhite": false,
       "roster": [
-        "🇸🇪 [kreaz ♛](https://liquipedia.net/counterstrike/kreaz)",
         "🇭🇺 [sl3nd](https://liquipedia.net/counterstrike/sl3nd)",
         "🇷🇴 [Blytz](https://liquipedia.net/counterstrike/Blytz)",
         "🇷🇴 [volt](https://liquipedia.net/counterstrike/volt)"
@@ -4280,6 +4279,62 @@
         {
           "label": "Steam",
           "url": "https://steamcommunity.com/groups/Natus-Vincere"
+        }
+      ]
+    },
+    {
+      "hltvName": "NAVI Junior",
+      "name": "Natus Vincere Junior",
+      "flagName": "🇪🇺 Natus Vincere Junior",
+      "initials": "NAVI JR",
+      "logoFlag": "🇪🇺",
+      "logoCode": "navi",
+      "logoWhite": false,
+      "roster": [
+        "🇺🇦 [kodak ♛](https://liquipedia.net/counterstrike/kodak)",
+        "🇺🇦 [Yoki](https://liquipedia.net/counterstrike/Yoki)",
+        "🇨🇿 [FAZERY](https://liquipedia.net/counterstrike/FAZERY)",
+        "🇨🇿 [MahaR](https://liquipedia.net/counterstrike/MahaR)",
+        "🇲🇰 [skizzyee](https://liquipedia.net/counterstrike/skizzyee)"
+      ],
+      "coach": "🇵🇱 [snatchie](https://liquipedia.net/counterstrike/snatchie)",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Natus_Vincere_Junior"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/10371/navi-junior"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://navi.gg/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/05eaa5ef-90f4-495d-8db1-b9866debc5b0"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/navijunior"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/NatusVincere"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/natus_vincere_junior"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UC7_UKvkGpNuZMqz_DnANDLg"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/team/navi"
         }
       ]
     },
