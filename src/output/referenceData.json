@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-15T10:53:39.018Z",
+  "refreshedAt": "2026-10-16T10:44:34.399Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -2285,7 +2285,6 @@
       ],
       "coach": "🇱🇻 [Independent](https://liquipedia.net/counterstrike/Independent)",
       "subs": [
-        "🇺🇦 [Br4tkO](https://liquipedia.net/counterstrike/Br4tkO)",
         "🇩🇰 [casle](https://liquipedia.net/counterstrike/casle)"
       ],
       "links": [
@@ -3413,7 +3412,7 @@
         "🇷🇺 [X5G7V ♛](https://liquipedia.net/counterstrike/X5G7V)",
         "🇷🇺 [clax](https://liquipedia.net/counterstrike/clax)"
       ],
-      "coach": "🇷🇺 [balblna](https://liquipedia.net/counterstrike/balblna)",
+      "coach": "🇷🇺 [Twizell](https://liquipedia.net/counterstrike/Twizell)",
       "subs": [
         "🇷🇺 [relaxxie (loan: ex-ruby)](https://liquipedia.net/counterstrike/relaxxie)"
       ],
@@ -3864,7 +3863,7 @@
         "🇺🇸 [WUMBO](https://liquipedia.net/counterstrike/WUMBO)",
         "🇺🇸 [nicx](https://liquipedia.net/counterstrike/nicx)"
       ],
-      "coach": "🇺🇸 [Lucid](https://liquipedia.net/counterstrike/Lucid)",
+      "coach": "",
       "subs": [
         "🇺🇸 [marekiew](https://liquipedia.net/counterstrike/marekiew)",
         "🇺🇸 [chop](https://liquipedia.net/counterstrike/chop)"
@@ -4888,6 +4887,22 @@
         {
           "label": "Twitch",
           "url": "https://www.twitch.tv/prestigeesportscs"
+        }
+      ]
+    },
+    {
+      "hltvName": "PRIVATE",
+      "name": "PRIVATE",
+      "flagName": "🇷🇺 PRIVATE",
+      "initials": "PRIVATE",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/14030/private"
         }
       ]
     },
