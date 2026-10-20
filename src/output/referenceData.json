@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-19T12:11:44.799Z",
+  "refreshedAt": "2026-10-20T10:57:22.016Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1301,9 +1301,9 @@
     },
     {
       "hltvName": "BC.Game",
-      "name": "BC",
-      "flagName": "🌏 BC",
-      "initials": "BC",
+      "name": "BCG",
+      "flagName": "🌏 BCG",
+      "initials": "BCG",
       "logoWhite": false,
       "roster": [
         "🇺🇦 [s1mple](https://liquipedia.net/counterstrike/S1mple)",
@@ -3018,6 +3018,48 @@
       ]
     },
     {
+      "hltvName": "HYPERSPIRIT",
+      "name": "HYPERSPIRIT",
+      "flagName": "🇷🇴 HYPERSPIRIT",
+      "initials": "HYPERSPIRIT",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇴 [Ciocardau](https://liquipedia.net/counterstrike/Ciocardau)",
+        "🇷🇴 [d1maje](https://liquipedia.net/counterstrike/d1maje)",
+        "🇷🇴 [starplajerz ♛](https://liquipedia.net/counterstrike/starplajerz)",
+        "🇩🇰 [Q-Q](https://liquipedia.net/counterstrike/Q-Q)",
+        "🇩🇰 [Scr0b](https://liquipedia.net/counterstrike/Scr0b)"
+      ],
+      "coach": "🇧🇪 [Rickertje](https://liquipedia.net/counterstrike/Rickertje)",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/HYPERSPIRIT"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13012/hyperspirit"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/279be3c7-f7ac-4aef-a02e-f4a63be91136"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/hyperspiritro"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/hyperspiritro"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@hyperspiritro"
+        }
+      ]
+    },
+    {
       "hltvName": "Iberian Soul",
       "name": "Iberian Soul",
       "flagName": "🇪🇸 Iberian Soul",
@@ -4457,6 +4499,54 @@
         {
           "label": "Steam",
           "url": "https://steamcommunity.com/groups/nemiga"
+        }
+      ]
+    },
+    {
+      "hltvName": "Nexus",
+      "name": "Nexus Gaming",
+      "flagName": "🇷🇴 Nexus Gaming",
+      "initials": "Nexus",
+      "logoWhite": false,
+      "roster": [
+        "🇷🇴 [s0und](https://liquipedia.net/counterstrike/s0und)",
+        "🇷🇴 [fNk ♛](https://liquipedia.net/counterstrike/fNk)",
+        "🇧🇪 [Nexius](https://liquipedia.net/counterstrike/Nexius)",
+        "🇱🇻 [shield](https://liquipedia.net/counterstrike/shield)",
+        "🇷🇴 [HOLY](https://liquipedia.net/counterstrike/HOLY)"
+      ],
+      "coach": "🇷🇴 [H4rder](https://liquipedia.net/counterstrike/H4rder)",
+      "subs": [
+        "🇷🇴 [BTN](https://liquipedia.net/counterstrike/BTN)"
+      ],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/Nexus_Gaming"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/7187/nexus"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://nexus-media.ro/"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/1d3cd71f-cc24-45a8-a681-f63910cbc3d1"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/NexusGamingRo"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/nexusgamingro"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/nexusgamingro"
         }
       ]
     },
