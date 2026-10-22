@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-21T11:12:37.344Z",
+  "refreshedAt": "2026-10-22T11:11:07.179Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1143,11 +1143,11 @@
       "initials": "BAKS",
       "logoWhite": false,
       "roster": [
-        "🇷🇺 [xdENiSZERA](https://liquipedia.net/counterstrike/xdENiSZERA)",
         "🇷🇺 [turbo](https://liquipedia.net/counterstrike/turbo)",
         "🇷🇺 [whisper](https://liquipedia.net/counterstrike/whisper)",
         "🇷🇺 [danistzz](https://liquipedia.net/counterstrike/danistzz)",
-        "🇷🇺 [Norwi ♛](https://liquipedia.net/counterstrike/Norwi)"
+        "🇷🇺 [Norwi ♛](https://liquipedia.net/counterstrike/Norwi)",
+        "🇷🇺 [glowiing](https://liquipedia.net/counterstrike/glowiing)"
       ],
       "coach": "🇷🇺 [XomA](https://liquipedia.net/counterstrike/XomA)",
       "subs": [
@@ -1545,9 +1545,9 @@
       "logoWhite": false,
       "roster": [
         "🇲🇳 [ROUX](https://liquipedia.net/counterstrike/ROUX)",
-        "🇲🇳 [yAmi](https://liquipedia.net/counterstrike/yAmi)",
-        "🇲🇳 [hasteka](https://liquipedia.net/counterstrike/hasteka)",
         "🇲🇳 [sk0R](https://liquipedia.net/counterstrike/sk0R)",
+        "🇲🇳 [fury5k](https://liquipedia.net/counterstrike/fury5k)",
+        "🇲🇳 [cool4st](https://liquipedia.net/counterstrike/cool4st)",
         "🇲🇳 [tikuak](https://liquipedia.net/counterstrike/tikuak)"
       ],
       "coach": "🇲🇳 [Redka](https://liquipedia.net/counterstrike/Redka)",
@@ -1604,7 +1604,6 @@
         "🌍 [alpha](https://liquipedia.net/counterstrike/alpha)",
         "🇷🇺 [Mokuj1n](https://liquipedia.net/counterstrike/Mokuj1n)",
         "🇷🇺 [bl1x1](https://liquipedia.net/counterstrike/bl1x1)",
-        "🇷🇺 [glowiing](https://liquipedia.net/counterstrike/glowiing)",
         "🇷🇺 [lov1kus (loan: Bebop)](https://liquipedia.net/counterstrike/lov1kus)"
       ],
       "links": [
@@ -1778,11 +1777,9 @@
       "initials": "EAC",
       "logoWhite": false,
       "roster": [
-        "🇩🇰 [bekker](https://liquipedia.net/counterstrike/bekker)",
-        "🇩🇰 [n1Xen](https://liquipedia.net/counterstrike/n1Xen)",
-        "🇩🇰 [sSen](https://liquipedia.net/counterstrike/sSen)",
-        "🇩🇰 [anber ♛](https://liquipedia.net/counterstrike/anber)",
-        "🇩🇰 [Fessor](https://liquipedia.net/counterstrike/Fessor)"
+        "🇩🇰 [Fallis](https://liquipedia.net/counterstrike/Fallis)",
+        "🇩🇰 [ETYYY](https://liquipedia.net/counterstrike/ETYYY)",
+        "🇩🇰 [Viggo](https://liquipedia.net/counterstrike/Viggo)"
       ],
       "coach": "🇩🇰 [redeye](https://liquipedia.net/counterstrike/redeye%20(Danish%20player))",
       "subs": [],
@@ -2656,8 +2653,7 @@
       "subs": [
         "🇧🇷 [nython](https://liquipedia.net/counterstrike/nython)",
         "🇧🇷 [Kadzz](https://liquipedia.net/counterstrike/Kadzz)",
-        "🇧🇷 [bacc](https://liquipedia.net/counterstrike/bacc)",
-        "🇧🇷 [divine (loan: LargadosyPelados)](https://liquipedia.net/counterstrike/divine%20(Brazilian%20player))"
+        "🇧🇷 [bacc](https://liquipedia.net/counterstrike/bacc)"
       ],
       "links": [
         {
@@ -2714,11 +2710,12 @@
         "🇩🇰 [Tauson](https://liquipedia.net/counterstrike/Tauson)",
         "🇸🇪 [REZ](https://liquipedia.net/counterstrike/REZ)",
         "🇵🇱 [hypex](https://liquipedia.net/counterstrike/hypex)",
-        "🇵🇱 [Snax ♛](https://liquipedia.net/counterstrike/Snax)",
-        "🇷🇺 [FL4MUS](https://liquipedia.net/counterstrike/FL4MUS)"
+        "🇷🇺 [FL4MUS](https://liquipedia.net/counterstrike/FL4MUS)",
+        "🇷🇺 [shalfey ♛](https://liquipedia.net/counterstrike/shalfey)"
       ],
       "coach": "🇵🇱 [imd](https://liquipedia.net/counterstrike/imd)",
       "subs": [
+        "🇵🇱 [Snax](https://liquipedia.net/counterstrike/Snax)",
         "🇸🇪 [ztr (loan: fokus)](https://liquipedia.net/counterstrike/ztr)"
       ],
       "links": [
@@ -3308,7 +3305,6 @@
       "roster": [
         "🇦🇷 [deco ♛](https://liquipedia.net/counterstrike/deco)",
         "🇦🇷 [atarax1a](https://liquipedia.net/counterstrike/atarax1a)",
-        "🇦🇷 [Hezz](https://liquipedia.net/counterstrike/Hezz)",
         "🇦🇷 [dott1](https://liquipedia.net/counterstrike/dott1)"
       ],
       "coach": "🇦🇷 [pino](https://liquipedia.net/counterstrike/pino)",
@@ -5594,7 +5590,7 @@
         "🇷🇺 [k0gaSs](https://liquipedia.net/counterstrike/k0gaSs)",
         "🇷🇺 [Netrix](https://liquipedia.net/counterstrike/Netrix)"
       ],
-      "coach": "🇷🇺 [Flash_1](https://liquipedia.net/counterstrike/Flash_1)",
+      "coach": "🇰🇿 [Qikert](https://liquipedia.net/counterstrike/Qikert)",
       "subs": [
         "🇰🇿 [SYPH0 (loan: nemiga)](https://liquipedia.net/counterstrike/SYPH0)"
       ],
