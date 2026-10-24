@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-23T11:02:49.914Z",
+  "refreshedAt": "2026-10-24T10:18:59.212Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -5301,14 +5301,12 @@
     {
       "hltvName": "Sashi",
       "name": "Sashi Esport",
-      "flagName": "🌏 Sashi Esport",
+      "flagName": "🌍 Sashi Esport",
       "initials": "Sashi",
       "logoWhite": false,
       "roster": [
         "🇩🇰 [Zyphon](https://liquipedia.net/counterstrike/Zyphon)",
-        "🇻🇳 [Anlelele](https://liquipedia.net/counterstrike/Anlelele)",
-        "🇦🇺 [TjP](https://liquipedia.net/counterstrike/TjP)",
-        "🇦🇺 [Hatz](https://liquipedia.net/counterstrike/Hatz)"
+        "🇻🇳 [Anlelele](https://liquipedia.net/counterstrike/Anlelele)"
       ],
       "coach": "🇩🇰 [HUNDEN](https://liquipedia.net/counterstrike/HUNDEN)",
       "subs": [
@@ -5965,13 +5963,14 @@
       "logoWhite": false,
       "roster": [
         "🇺🇸 [snav](https://liquipedia.net/counterstrike/snav)",
-        "🇺🇸 [nosraC ♛](https://liquipedia.net/counterstrike/nosraC)",
         "🇺🇸 [junior](https://liquipedia.net/counterstrike/junior)",
         "🇲🇽 [MarKE](https://liquipedia.net/counterstrike/MarKE)",
         "🇺🇸 [dare](https://liquipedia.net/counterstrike/dare)"
       ],
       "coach": "🇨🇦 [SEMPHIS](https://liquipedia.net/counterstrike/SEMPHIS)",
-      "subs": [],
+      "subs": [
+        "🇺🇸 [nosraC](https://liquipedia.net/counterstrike/nosraC)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
