@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-26T12:17:31.362Z",
+  "refreshedAt": "2026-10-27T11:38:01.460Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -2934,7 +2934,6 @@
       "logoWhite": false,
       "roster": [
         "🇷🇺 [mizu](https://liquipedia.net/counterstrike/mizu%20(Russian%20player))",
-        "🇷🇺 [lampada](https://liquipedia.net/counterstrike/lampada)",
         "🇰🇿 [kade0 ♛](https://liquipedia.net/counterstrike/kade0)",
         "🇷🇺 [frontales](https://liquipedia.net/counterstrike/frontales)",
         "🇷🇺 [n0rb3r7](https://liquipedia.net/counterstrike/n0rb3r7)",
@@ -3307,6 +3306,7 @@
         "🇦🇷 [deco ♛](https://liquipedia.net/counterstrike/deco)",
         "🇦🇷 [atarax1a](https://liquipedia.net/counterstrike/atarax1a)",
         "🇦🇷 [dott1](https://liquipedia.net/counterstrike/dott1)",
+        "🇦🇷 [rzk](https://liquipedia.net/counterstrike/rzk)",
         "🇦🇷 [Rivo](https://liquipedia.net/counterstrike/Rivo)"
       ],
       "coach": "🇦🇷 [pino](https://liquipedia.net/counterstrike/pino)",
@@ -5209,14 +5209,15 @@
       "initials": "Rune Eaters",
       "logoWhite": false,
       "roster": [
-        "🇰🇿 [forkyz](https://liquipedia.net/counterstrike/forkyz)",
-        "🇰🇿 [her1tage](https://liquipedia.net/counterstrike/her1tage)",
-        "🇰🇿 [noni](https://liquipedia.net/counterstrike/noni)",
         "🇰🇿 [demente](https://liquipedia.net/counterstrike/demente)",
-        "🇰🇿 [dukefissura ♛](https://liquipedia.net/counterstrike/dukefissura)"
+        "🇰🇿 [dukefissura ♛](https://liquipedia.net/counterstrike/dukefissura)",
+        "🇰🇿 [sorrow](https://liquipedia.net/counterstrike/sorrow)"
       ],
       "coach": "",
       "subs": [
+        "🇰🇿 [forkyz](https://liquipedia.net/counterstrike/forkyz)",
+        "🇰🇿 [her1tage](https://liquipedia.net/counterstrike/her1tage)",
+        "🇰🇿 [noni](https://liquipedia.net/counterstrike/noni)",
         "🇰🇿 [kumao (loan: arcred)](https://liquipedia.net/counterstrike/kumao)"
       ],
       "links": [
