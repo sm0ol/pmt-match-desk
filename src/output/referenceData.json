@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-27T11:38:01.460Z",
+  "refreshedAt": "2026-10-28T12:09:09.396Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -861,11 +861,11 @@
       "initials": "AE",
       "logoWhite": false,
       "roster": [
-        "🇮🇩 [BnTeT](https://liquipedia.net/counterstrike/BnTeT)",
         "🇵🇰 [PokemoN](https://liquipedia.net/counterstrike/PokemoN)",
         "🇲🇳 [laxiee](https://liquipedia.net/counterstrike/laxiee)",
         "🇷🇴 [adeX](https://liquipedia.net/counterstrike/adeX)",
-        "🇱🇻 [shadiy](https://liquipedia.net/counterstrike/shadiy)"
+        "🇱🇻 [shadiy](https://liquipedia.net/counterstrike/shadiy)",
+        "🇵🇰 [Bloody](https://liquipedia.net/counterstrike/Bloody)"
       ],
       "coach": "🇮🇩 [bali](https://liquipedia.net/counterstrike/bali)",
       "subs": [],
@@ -4430,7 +4430,7 @@
         },
         {
           "label": "YouTube",
-          "url": "https://www.youtube.com/@nmss_gg"
+          "url": "https://www.youtube.com/@nmss_cs2"
         },
         {
           "label": "Twitch",
@@ -5361,7 +5361,7 @@
         "🇵🇹 [krazy](https://liquipedia.net/counterstrike/krazy)",
         "🇵🇹 [story](https://liquipedia.net/counterstrike/story)"
       ],
-      "coach": "🇵🇹 [mowzassa](https://liquipedia.net/counterstrike/mowzassa)",
+      "coach": "",
       "subs": [],
       "links": [
         {
