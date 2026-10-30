@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-29T12:20:02.609Z",
+  "refreshedAt": "2026-10-30T12:10:23.623Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -719,6 +719,22 @@
         {
           "label": "Subreddit",
           "url": "https://www.reddit.com/r/9zteam/"
+        }
+      ]
+    },
+    {
+      "hltvName": "Abyssal",
+      "name": "Abyssal",
+      "flagName": "🇦🇺 Abyssal",
+      "initials": "Abyssal",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/13686/abyssal"
         }
       ]
     },
