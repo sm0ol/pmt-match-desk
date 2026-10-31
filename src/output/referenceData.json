@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-30T12:10:23.623Z",
+  "refreshedAt": "2026-10-31T11:43:23.879Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1704,15 +1704,13 @@
     {
       "hltvName": "DEPO",
       "name": "DEPO",
-      "flagName": "🌏 DEPO",
+      "flagName": "🌍 DEPO",
       "initials": "DEPO",
       "logoWhite": false,
       "roster": [
         "🇺🇿 [wetfy](https://liquipedia.net/counterstrike/wetfy)",
         "🇺🇿 [shoxs](https://liquipedia.net/counterstrike/shoxs)",
-        "🇰🇿 [buster ♛](https://liquipedia.net/counterstrike/buster)",
-        "🇷🇺 [Krad](https://liquipedia.net/counterstrike/Krad)",
-        "🇰🇬 [SNk](https://liquipedia.net/counterstrike/SNk)"
+        "🇷🇺 [Krad](https://liquipedia.net/counterstrike/Krad)"
       ],
       "coach": "🇷🇺 [bullet](https://liquipedia.net/counterstrike/bullet%20(Russian%20player))",
       "subs": [
@@ -5228,6 +5226,7 @@
       "roster": [
         "🇰🇿 [demente](https://liquipedia.net/counterstrike/demente)",
         "🇰🇿 [dukefissura ♛](https://liquipedia.net/counterstrike/dukefissura)",
+        "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)",
         "🇰🇿 [sorrow](https://liquipedia.net/counterstrike/sorrow)"
       ],
       "coach": "",
@@ -5854,7 +5853,7 @@
       "coach": "🇰🇿 [dastan](https://liquipedia.net/counterstrike/dastan)",
       "subs": [
         "🇷🇺 [slaxejezzz](https://liquipedia.net/counterstrike/slaxejezzz)",
-        "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)",
+        "🇷🇺 [nota (loan: rune eaters)](https://liquipedia.net/counterstrike/nota)",
         "🇷🇺 [Jerry](https://liquipedia.net/counterstrike/Jerry)"
       ],
       "links": [
