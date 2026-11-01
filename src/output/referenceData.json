@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-10-31T11:43:23.879Z",
+  "refreshedAt": "2026-11-01T12:42:26.466Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1338,6 +1338,22 @@
         {
           "label": "HLTV",
           "url": "https://www.hltv.org/team/12144/bestia"
+        }
+      ]
+    },
+    {
+      "hltvName": "BARCA",
+      "name": "BARCA esports",
+      "flagName": "🇧🇷 BARCA esports",
+      "initials": "BARCA",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/14107/barca"
         }
       ]
     },
@@ -3721,6 +3737,22 @@
       ]
     },
     {
+      "hltvName": "🇧🇷 Low Cortisol BR",
+      "name": "Low Cortisol",
+      "flagName": "🇧🇷 Low Cortisol",
+      "initials": "Low Cortisol",
+      "logoWhite": false,
+      "roster": [],
+      "coach": "",
+      "subs": [],
+      "links": [
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/14051/low-cortisol-br"
+        }
+      ]
+    },
+    {
       "hltvName": "Luminosity",
       "name": "Luminosity Gaming",
       "flagName": "🇪🇺 Luminosity Gaming",
@@ -5227,6 +5259,7 @@
         "🇰🇿 [demente](https://liquipedia.net/counterstrike/demente)",
         "🇰🇿 [dukefissura ♛](https://liquipedia.net/counterstrike/dukefissura)",
         "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)",
+        "🇰🇿 [tasman](https://liquipedia.net/counterstrike/tasman)",
         "🇰🇿 [sorrow](https://liquipedia.net/counterstrike/sorrow)"
       ],
       "coach": "",
