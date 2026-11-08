@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-11-07T12:29:50.432Z",
+  "refreshedAt": "2026-11-08T12:47:27.432Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -670,11 +670,12 @@
         "🇺🇾 [max ♛](https://liquipedia.net/counterstrike/max)",
         "🇨🇱 [HUASOPEEK](https://liquipedia.net/counterstrike/HUASOPEEK)",
         "🇦🇷 [luchov](https://liquipedia.net/counterstrike/luchov)",
-        "🇦🇷 [meyern](https://liquipedia.net/counterstrike/meyern)",
         "🇺🇾 [dgt](https://liquipedia.net/counterstrike/dgt)"
       ],
       "coach": "🇧🇷 [BIT](https://liquipedia.net/counterstrike/BIT)",
-      "subs": [],
+      "subs": [
+        "🇦🇷 [meyern](https://liquipedia.net/counterstrike/meyern)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
@@ -4951,7 +4952,7 @@
         "🇩🇰 [nicoodoz](https://liquipedia.net/counterstrike/nicoodoz)",
         "🇵🇱 [Kunai](https://liquipedia.net/counterstrike/Kunai)"
       ],
-      "coach": "",
+      "coach": "🇫🇷 [NBK-](https://liquipedia.net/counterstrike/NBK-)",
       "subs": [
         "🇵🇱 [cej0t](https://liquipedia.net/counterstrike/cej0t)",
         "🇵🇱 [mynio](https://liquipedia.net/counterstrike/mynio)"
@@ -5252,6 +5253,7 @@
       "initials": "Rune Eaters",
       "logoWhite": false,
       "roster": [
+        "🇰🇿 [noni](https://liquipedia.net/counterstrike/noni)",
         "🇰🇿 [demente](https://liquipedia.net/counterstrike/demente)",
         "🇰🇿 [dukefissura ♛](https://liquipedia.net/counterstrike/dukefissura)",
         "🇷🇺 [nota](https://liquipedia.net/counterstrike/nota)",
@@ -5262,7 +5264,6 @@
       "subs": [
         "🇰🇿 [forkyz](https://liquipedia.net/counterstrike/forkyz)",
         "🇰🇿 [her1tage](https://liquipedia.net/counterstrike/her1tage)",
-        "🇰🇿 [noni](https://liquipedia.net/counterstrike/noni)",
         "🇰🇿 [kumao (loan: arcred)](https://liquipedia.net/counterstrike/kumao)"
       ],
       "links": [
