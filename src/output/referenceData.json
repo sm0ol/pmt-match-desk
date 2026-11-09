@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-11-08T12:47:27.432Z",
+  "refreshedAt": "2026-11-09T15:14:32.634Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1758,13 +1758,11 @@
     {
       "hltvName": "DETONATE",
       "name": "DETONATE",
-      "flagName": "🇺🇸 DETONATE",
+      "flagName": "🌍 DETONATE",
       "initials": "DETONATE",
       "logoWhite": false,
       "roster": [
         "🇺🇸 [tatm ♛](https://liquipedia.net/counterstrike/tatm)",
-        "🇺🇸 [chante](https://liquipedia.net/counterstrike/chante)",
-        "🇺🇸 [carN](https://liquipedia.net/counterstrike/carN)",
         "🇧🇪 [CrePoW](https://liquipedia.net/counterstrike/CrePoW)"
       ],
       "coach": "",
@@ -2026,13 +2024,14 @@
       "logoWhite": false,
       "roster": [
         "🇸🇪 [JW ♛](https://liquipedia.net/counterstrike/JW)",
-        "🇸🇪 [dex](https://liquipedia.net/counterstrike/dex)",
         "🇸🇪 [Ro1f](https://liquipedia.net/counterstrike/Ro1f)",
         "🇸🇪 [maxster](https://liquipedia.net/counterstrike/maxster)",
         "🇸🇪 [KRIMZ](https://liquipedia.net/counterstrike/KRIMZ)"
       ],
       "coach": "🇸🇪 [pita](https://liquipedia.net/counterstrike/pita)",
-      "subs": [],
+      "subs": [
+        "🇸🇪 [dex](https://liquipedia.net/counterstrike/dex)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
