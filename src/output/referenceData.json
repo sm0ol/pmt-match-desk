@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-11-13T13:57:31.852Z",
+  "refreshedAt": "2026-11-15T13:27:51.665Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -5407,13 +5407,15 @@
       "logoWhite": false,
       "roster": [
         "🇵🇹 [ewjerkz](https://liquipedia.net/counterstrike/ewjerkz)",
-        "🇵🇹 [NOPEEj](https://liquipedia.net/counterstrike/NOPEEj)",
         "🇵🇹 [MUTiRiS ♛](https://liquipedia.net/counterstrike/MUTiRiS)",
         "🇵🇹 [krazy](https://liquipedia.net/counterstrike/krazy)",
-        "🇵🇹 [story](https://liquipedia.net/counterstrike/story)"
+        "🇵🇹 [story](https://liquipedia.net/counterstrike/story)",
+        "🇵🇹 [Jayy2s](https://liquipedia.net/counterstrike/Jayy2s)"
       ],
       "coach": "",
-      "subs": [],
+      "subs": [
+        "🇵🇹 [NOPEEj](https://liquipedia.net/counterstrike/NOPEEj)"
+      ],
       "links": [
         {
           "label": "Liquipedia",
