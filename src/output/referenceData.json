@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-11-17T15:30:45.008Z",
+  "refreshedAt": "2026-11-18T15:08:22.423Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -1001,12 +1001,10 @@
         "🇩🇰 [Staehr](https://liquipedia.net/counterstrike/Staehr)",
         "🇸🇪 [phzy](https://liquipedia.net/counterstrike/phzy)",
         "🇱🇹 [ryu](https://liquipedia.net/counterstrike/ryu%20(Lithuanian%20player))",
-        "🇵🇱 [siuhy ♛](https://liquipedia.net/counterstrike/siuhy)",
-        "🇺🇦 [cmtry](https://liquipedia.net/counterstrike/cmtry)"
+        "🇵🇱 [siuhy ♛](https://liquipedia.net/counterstrike/siuhy)"
       ],
       "coach": "🇵🇱 [NEO](https://liquipedia.net/counterstrike/NEO)",
       "subs": [
-        "🇩🇰 [jabbi](https://liquipedia.net/counterstrike/jabbi)",
         "🇩🇰 [HooXi](https://liquipedia.net/counterstrike/HooXi)"
       ],
       "links": [
@@ -1485,8 +1483,7 @@
         "🇦🇷 [KAISER](https://liquipedia.net/counterstrike/KAISER)",
         "🇺🇾 [zock](https://liquipedia.net/counterstrike/zock%20(Uruguayan%20player))",
         "🇧🇷 [pepe](https://liquipedia.net/counterstrike/pepe)",
-        "🇧🇷 [urban0](https://liquipedia.net/counterstrike/urban0)",
-        "🇦🇷 [gusihx](https://liquipedia.net/counterstrike/gusihx)"
+        "🇧🇷 [urban0](https://liquipedia.net/counterstrike/urban0)"
       ],
       "links": [
         {
@@ -2558,7 +2555,8 @@
       ],
       "coach": "🇭🇺 [coolio](https://liquipedia.net/counterstrike/coolio)",
       "subs": [
-        "🇷🇴 [lauNX](https://liquipedia.net/counterstrike/lauNX)"
+        "🇷🇴 [lauNX](https://liquipedia.net/counterstrike/lauNX)",
+        "🇺🇦 [cmtry](https://liquipedia.net/counterstrike/cmtry)"
       ],
       "links": [
         {
@@ -5791,6 +5789,56 @@
         {
           "label": "Bilibili",
           "url": "https://space.bilibili.com/373076765"
+        }
+      ]
+    },
+    {
+      "hltvName": "UNiTY",
+      "name": "UNiTY esports",
+      "flagName": "🇪🇺 UNiTY esports",
+      "initials": "UNiTY",
+      "logoWhite": false,
+      "roster": [
+        "🇸🇰 [M1key](https://liquipedia.net/counterstrike/M1key)",
+        "🇨🇿 [KWERTZZ](https://liquipedia.net/counterstrike/KWERTZZ)",
+        "🇲🇰 [2high ♛](https://liquipedia.net/counterstrike/2high)",
+        "🇸🇪 [Sn0w](https://liquipedia.net/counterstrike/Sn0w)",
+        "🇨🇿 [Dytor](https://liquipedia.net/counterstrike/Dytor)"
+      ],
+      "coach": "🇨🇿 [replay](https://liquipedia.net/counterstrike/replay)",
+      "subs": [],
+      "links": [
+        {
+          "label": "Liquipedia",
+          "url": "https://liquipedia.net/counterstrike/UNiTY_esports"
+        },
+        {
+          "label": "HLTV",
+          "url": "https://www.hltv.org/team/12267/unity"
+        },
+        {
+          "label": "Official Site",
+          "url": "https://www.unityesports.eu"
+        },
+        {
+          "label": "Faceit",
+          "url": "https://www.faceit.com/en/teams/8e2802a8-6364-499f-9d51-c67b42165339"
+        },
+        {
+          "label": "Twitter",
+          "url": "https://twitter.com/UNiTYesports_eu"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/esports_team_unity"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@unity_esportsgg"
+        },
+        {
+          "label": "Twitch",
+          "url": "https://www.twitch.tv/unityesportseu"
         }
       ]
     },
