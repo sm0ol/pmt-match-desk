@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-11-21T14:15:15.594Z",
+  "refreshedAt": "2026-11-22T14:04:50.925Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -559,11 +559,9 @@
       "initials": "5star",
       "logoWhite": false,
       "roster": [
-        "🇲🇳 [hoolig4n](https://liquipedia.net/counterstrike/hoolig4n)",
         "🇲🇳 [clouden](https://liquipedia.net/counterstrike/clouden)",
         "🇲🇳 [ariucle](https://liquipedia.net/counterstrike/ariucle)",
-        "🇲🇳 [NEUZ ♛](https://liquipedia.net/counterstrike/NEUZ)",
-        "🇲🇳 [rate](https://liquipedia.net/counterstrike/rate)"
+        "🇲🇳 [NEUZ ♛](https://liquipedia.net/counterstrike/NEUZ)"
       ],
       "coach": "🇲🇳 [shinobi](https://liquipedia.net/counterstrike/shinobi%20(Mongolian%20player))",
       "subs": [],
@@ -928,7 +926,7 @@
         "🇵🇱 [Demho](https://liquipedia.net/counterstrike/Demho)",
         "🇵🇱 [Qlocuu](https://liquipedia.net/counterstrike/Qlocuu)",
         "🇵🇱 [Ex1st](https://liquipedia.net/counterstrike/Ex1st)",
-        "🇵🇱 [ultimate](https://liquipedia.net/counterstrike/ultimate)"
+        "🇵🇱 [Brain](https://liquipedia.net/counterstrike/Brain%20(Polish%20player))"
       ],
       "coach": "🇵🇱 [SZPERO](https://liquipedia.net/counterstrike/SZPERO)",
       "subs": [
@@ -1759,14 +1757,17 @@
     {
       "hltvName": "DETONATE",
       "name": "DETONATE",
-      "flagName": "🌍 DETONATE",
+      "flagName": "🇺🇸 DETONATE",
       "initials": "DETONATE",
       "logoWhite": false,
       "roster": [
         "🇺🇸 [tatm ♛](https://liquipedia.net/counterstrike/tatm)",
-        "🇧🇪 [CrePoW](https://liquipedia.net/counterstrike/CrePoW)"
+        "🇧🇪 [CrePoW](https://liquipedia.net/counterstrike/CrePoW)",
+        "🇺🇸 [Pose1doNN](https://liquipedia.net/counterstrike/Pose1doNN)",
+        "🇬🇧 [CoolComs](https://liquipedia.net/counterstrike/CoolComs)",
+        "🇺🇸 [corn](https://liquipedia.net/counterstrike/corn)"
       ],
-      "coach": "",
+      "coach": "🇺🇸 [ynoT](https://liquipedia.net/counterstrike/ynoT)",
       "subs": [
         "🇳🇿 [Feral](https://liquipedia.net/counterstrike/Feral)"
       ],
