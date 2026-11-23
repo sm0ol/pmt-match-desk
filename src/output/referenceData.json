@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/asbmeyers/Post-Match-Thread-Creator",
-  "refreshedAt": "2026-11-22T14:04:50.925Z",
+  "refreshedAt": "2026-11-23T17:26:27.971Z",
   "events": [
     {
       "name": "ESL Challenger League Season 52 North America Cup 1",
@@ -447,9 +447,9 @@
     },
     {
       "hltvName": "1win",
-      "name": "1w Team",
-      "flagName": "🇷🇺 1w Team",
-      "initials": "1w",
+      "name": "The One",
+      "flagName": "🇷🇺 The One",
+      "initials": "One",
       "logoWhite": false,
       "roster": [
         "🇷🇺 [nafany ♛](https://liquipedia.net/counterstrike/nafany)",
@@ -1315,9 +1315,9 @@
     },
     {
       "hltvName": "BC.Game",
-      "name": "BCG",
-      "flagName": "🌏 BCG",
-      "initials": "BCG",
+      "name": "GOSH",
+      "flagName": "🌏 GOSH",
+      "initials": "GOSH",
       "logoWhite": false,
       "roster": [
         "🇺🇦 [s1mple](https://liquipedia.net/counterstrike/S1mple)",
@@ -3237,7 +3237,6 @@
       "initials": "IC",
       "logoWhite": false,
       "roster": [
-        "🇺🇦 [onic ♛](https://liquipedia.net/counterstrike/onic)",
         "🇺🇦 [Dawy](https://liquipedia.net/counterstrike/Dawy)",
         "🇺🇦 [zeRRoFIX](https://liquipedia.net/counterstrike/zeRRoFIX)",
         "🇺🇦 [cptkurtka023](https://liquipedia.net/counterstrike/cptkurtka023)",
@@ -3245,6 +3244,7 @@
       ],
       "coach": "",
       "subs": [
+        "🇺🇦 [onic](https://liquipedia.net/counterstrike/onic)",
         "🇺🇦 [Flierax](https://liquipedia.net/counterstrike/Flierax)",
         "🇺🇦 [nifee](https://liquipedia.net/counterstrike/nifee)"
       ],
